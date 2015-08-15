@@ -17,6 +17,7 @@ gem 'omniauth-vkontakte'
 gem 'omniauth-twitter'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'puma'
 
 group :development, :test do
   gem 'byebug'
@@ -34,6 +35,11 @@ group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'spring-commands-rspec'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
 end
 
 group :test do
