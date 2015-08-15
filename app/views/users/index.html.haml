@@ -1,0 +1,14 @@
+%h3 Users
+
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %th Name
+      %th Provider
+      %th Uid
+      %th Created at
+      %th Updated at
+    %tbody
+      - @users.each do |user|
+        %tr
+          = render user
