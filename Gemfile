@@ -16,6 +16,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'omniauth-twitter'
 gem 'bootstrap-sass'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
