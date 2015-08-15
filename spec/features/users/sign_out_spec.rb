@@ -1,0 +1,17 @@
+feature 'Sign out', %q{
+  As a user
+  I want to sign out
+  So I can protect my account from unauthorized access
+}, :omniauth do
+
+  scenario 'User signs out successfully', %q{
+    Given I am signed in
+    When I sign out
+    Then I see a signed out message
+  } do
+    signin
+    click_link 'Sign out'
+    expect(page).to have_content 'Signed out'
+  end
+
+end
