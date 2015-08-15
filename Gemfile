@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
 gem 'bootstrap-sass'
 
 group :development, :test do
