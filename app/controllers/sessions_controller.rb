@@ -11,7 +11,11 @@ class SessionsController < ApplicationController
     auth_link = session[:login_link]
     reset_session
     session[:user_id] = user.id
-    redirect_to auth_link
+    if auth_link
+      redirect_to auth_link
+    else
+      redirect_to root_path, notice: 'Signed in!'
+    end
   end
 
   def destroy
