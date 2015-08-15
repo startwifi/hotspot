@@ -14,17 +14,17 @@ class SessionsController < ApplicationController
     if auth_link
       redirect_to auth_link
     else
-      redirect_to root_path, notice: 'Signed in!'
+      redirect_to social_path, notice: 'Signed in!'
     end
   end
 
   def destroy
     reset_session
-    redirect_to root_url, notice: 'Signed out!'
+    redirect_to social_url, notice: 'Signed out!'
   end
 
   def failure
-    redirect_to root_url, alert: "Authentication error: #{params[:message].humanize}"
+    redirect_to social_url, alert: "Authentication error: #{params[:message].humanize}"
   end
 
 end
