@@ -17,11 +17,25 @@ module Omniauth
   end
 
   module SessionHelpers
-    def signin
+    def sign_in_facebook
       visit root_path
-      expect(page).to have_content 'Sign in'
+      expect(page).to have_content 'Facebook'
       auth_mock
-      click_link 'Sign in'
+      click_link 'Facebook'
+    end
+
+    def sign_in_vk
+      visit root_path
+      expect(page).to have_content 'Vkontakte'
+      auth_mock
+      click_link 'Vkontakte'
+    end
+
+    def sign_in_twitter
+      visit root_path
+      expect(page).to have_content 'Vkontakte'
+      auth_mock
+      click_link 'Vkontakte'
     end
   end
 

@@ -9,7 +9,7 @@ feature 'Sign out', %q{
     When I sign out
     Then I see a signed out message
   } do
-    signin
+    sign_in_facebook
     click_link 'Sign out'
     expect(page).to have_content 'Signed out'
   end

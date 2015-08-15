@@ -10,7 +10,7 @@ feature 'Sign in', %q{
     When I sign in
     Then I see a success message
   } do
-    signin
+    sign_in_facebook
     expect(page).to have_content('Sign out')
   end
 
@@ -22,8 +22,8 @@ feature 'Sign in', %q{
   } do
     OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
     visit root_path
-    expect(page).to have_content('Sign in')
-    click_link 'Sign in'
+    expect(page).to have_content('Facebook')
+    click_link 'Facebook'
     expect(page).to have_content('Authentication error')
   end
 
