@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: hotspot_development
+
+test:
+  <<: *default
+  database: hotspot_test
+
+production:
+  <<: *default
+  database: hotspot_production
+  username: hotspot
+  password: <%= ENV['HOTSPOT_DATABASE_PASSWORD'] %>
