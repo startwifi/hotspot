@@ -14,6 +14,7 @@ gem 'haml-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
+gem 'omniauth-twitter'
 gem 'bootstrap-sass'
 
 group :development, :test do
