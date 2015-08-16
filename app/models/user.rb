@@ -1,5 +1,11 @@
 class User < ActiveRecord::Base
+  has_many :events
+
   validates :name, :provider, :uid, presence: true
+
+  def add_event(action = '')
+    events.create!(action: action)
+  end
 
   def self.create_with_omniauth(auth)
     create! do |user|
