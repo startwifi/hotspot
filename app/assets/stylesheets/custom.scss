@@ -5,6 +5,17 @@ h1, h2, h3, h4 {
   text-align: center;
 }
 
+.gl-right {
+  float: right;
+}
+
+.profile-image {
+  position: relative;
+  top: -5px;
+  float: left;
+  left: -5px;
+}
+
 // make all images responsive by default
 img {
   @extend .img-responsive;

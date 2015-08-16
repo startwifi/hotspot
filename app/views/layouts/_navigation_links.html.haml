@@ -1,6 +1,26 @@
-%li= link_to 'About', '#'
 - if admin_signed_in?
-  %li= link_to 'Users', users_path
-  %li= link_to 'Sign out', destroy_admin_session_path, method: :delete
+  %li.dropdown
+    = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown', role: 'button', 'aria-haspopup': true, 'aria-expanded': false } do
+      = image_tag get_avatar, class: 'profile-image img-circle'
+      = current_admin.email
+      %span.caret
+    %ul.dropdown-menu
+      %li.disabled
+        = link_to '#' do
+          Admin Panel
+          %span.gl-right.glyphicon.glyphicon-wrench
+      %li
+        = link_to users_path do
+          All Users
+          %span.gl-right.glyphicon.glyphicon-user
+      %li
+        = link_to edit_admin_registration_path do
+          Settings
+          %span.gl-right.glyphicon.glyphicon-cog
+      %li.divider{role: 'separator'}
+      %li
+        = link_to destroy_admin_session_path, method: :delete do
+          Sign out
+          %span.gl-right.glyphicon.glyphicon-log-out
 - else
   %li= link_to 'Sign in', new_admin_session_path
