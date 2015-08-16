@@ -5,6 +5,10 @@
       = current_admin.email
       %span.caret
     %ul.dropdown-menu
+      %li
+        = link_to dashboard_path do
+          Dashboard
+          %span.gl-right.glyphicon.glyphicon-dashboard
       %li.disabled
         = link_to '#' do
           Admin Panel

@@ -1,0 +1,16 @@
+%h2 Dashboard
+
+.col-md-6
+  %table.table.table-striped
+    %thead
+      %th
+      %th Time
+      %th Action
+      %th Link
+    %tbody
+      - @recent_events.each do |event|
+        %tr
+          %th= fa_icon event.user.provider == 'vkontakte' ? 'vk' : event.user.provider
+          %td= event.created_at.strftime("%H:%M:%S")
+          %td= event.action
+          %td= event.user.name
