@@ -17,9 +17,9 @@ RSpec.describe SessionsController, type: :controller do
       expect(session[:user_id]).not_to be_nil
     end
 
-    it 'redirects to the home page' do
+    it 'redirects to the social page' do
       post :create, provider: :facebook
-      expect(response).to redirect_to root_url
+      expect(response).to redirect_to social_url
     end
   end
 
@@ -34,9 +34,9 @@ RSpec.describe SessionsController, type: :controller do
       expect(session[:user_id]).to be_nil
     end
 
-    it 'redirects to the home page' do
+    it 'redirects to the social page' do
       delete :destroy
-      expect(response).to redirect_to root_url
+      expect(response).to redirect_to social_url
     end
   end
 
