@@ -21,7 +21,7 @@ feature 'Sign in', %q{
     Then I see an authentication error message
   } do
     OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
-    visit root_path
+    visit social_path
     expect(page).to have_content('Facebook')
     click_link 'Facebook'
     expect(page).to have_content('Authentication error')
