@@ -5,9 +5,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    auth = request.env['omniauth.auth']
-    user = User.where(provider: auth['provider'],
-                      uid: auth['uid'].to_s).first || User.create_with_omniauth(auth)
+    # render json: request.env['omniauth.auth']
+    user = User.from_omniauth(request.env['omniauth.auth'])
     user.add_event(:login)
     auth_link = session[:login_link]
     reset_session
