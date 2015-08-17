@@ -6,6 +6,8 @@ class VisitorsController < ApplicationController
   end
 
   def login
+    render_404 if params[:hs].blank?
+
     link = params[:hs][:link_login]
     mac  = params[:hs][:mac_esc]
     login_link = "#{link}&username=T-#{mac}"

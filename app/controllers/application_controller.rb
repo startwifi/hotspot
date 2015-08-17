@@ -10,15 +10,19 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def render_404
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
   def get_avatar
     hash = Digest::MD5.hexdigest(current_admin.email)
-    avatar = "http://www.gravatar.com/avatar/#{hash}?s=30&d=identicon"
+    "http://www.gravatar.com/avatar/#{hash}?s=30&d=identicon"
   end
 
   def current_user
     begin
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    rescue Exception => e
+    rescue
       nil
     end
   end
