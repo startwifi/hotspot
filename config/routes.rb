@@ -18,9 +18,7 @@ Rails.application.routes.draw do
   resource  :dashboard, only: :show
   resources :users
   get '/auth/:provider/callback', to: 'sessions#create'
-  get '/signin',       to: 'sessions#new',     as: :signin
   get '/signout',      to: 'sessions#destroy', as: :signout
   get '/auth/failure', to: 'sessions#failure'
-  get '/social',       to: 'visitors#index'
-  get '/auth_guest',   to: 'visitors#login'
+  get '/auth',         to: 'visitors#index'
 end

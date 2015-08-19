@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :events
 
-  validates :name, :provider, :uid, presence: true
+  validates :name, :provider, :uid, :company, presence: true
 
   def add_event(action = '')
     events.create!(action: action)
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
       elsif hash.bdate
         hash.bdate.to_date
       else
-        ''
+        nil
       end
     end
   end

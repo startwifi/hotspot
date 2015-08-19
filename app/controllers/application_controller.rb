@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
   helper_method :correct_user?
 
+  def make_link(link, dst, mac)
+    "#{link}?dst=#{dst}&username=T-#{mac}"
+  end
+
   private
 
   def render_404
