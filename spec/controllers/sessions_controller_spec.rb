@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
+  let!(:company) { create(:company) }
+  let(:auth_link) { 'http://router/auth' }
+
+  before do
+    session[:company_token] = company.token
+    session[:auth_link] = "http://router/auth"
+  end
 
   describe 'GET #create' do
     context 'facebook' do
@@ -18,9 +25,9 @@ RSpec.describe SessionsController, type: :controller do
         expect(session[:user_id]).not_to be_nil
       end
 
-      it 'redirects to the social page' do
+      it 'redirects to the auth link' do
         post :create, provider: :facebook
-        expect(response).to redirect_to social_url
+        expect(response).to redirect_to auth_link
       end
     end
 
@@ -39,9 +46,9 @@ RSpec.describe SessionsController, type: :controller do
         expect(session[:user_id]).not_to be_nil
       end
 
-      it 'redirects to the social page' do
+      it 'redirects to the auth link' do
         post :create, provider: :vkontakte
-        expect(response).to redirect_to social_url
+        expect(response).to redirect_to auth_link
       end
     end
   end
@@ -58,9 +65,9 @@ RSpec.describe SessionsController, type: :controller do
       expect(session[:user_id]).to be_nil
     end
 
-    it 'redirects to the social page' do
+    it 'redirects to the auth link' do
       delete :destroy
-      expect(response).to redirect_to social_url
+      expect(response).to redirect_to auth_path
     end
   end
 

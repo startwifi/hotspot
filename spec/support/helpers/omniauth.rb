@@ -44,21 +44,21 @@ module Omniauth
 
   module SessionHelpers
     def sign_in_facebook
-      visit social_path
+      visit auth_path
       expect(page).to have_content 'Facebook'
       auth_mock_facebook
       click_link 'Facebook'
     end
 
     def sign_in_vk
-      visit social_path
+      visit auth_path
       expect(page).to have_content 'Vkontakte'
       auth_mock_vkontakte
       click_link 'Vkontakte'
     end
 
     def sign_in_twitter
-      visit social_path
+      visit auth_path
       expect(page).to have_content 'Vkontakte'
       auth_mock
       click_link 'Vkontakte'

@@ -4,7 +4,7 @@ feature 'Sign out', %q{
   So I can protect my account from unauthorized access
 }, :omniauth do
 
-  scenario 'User signs out successfully', %q{
+  xscenario 'User signs out successfully', %q{
     Given I am signed in
     When I sign out
     Then I see a signed out message
