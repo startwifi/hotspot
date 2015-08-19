@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  belongs_to :company
   has_many :events
 
   validates :name, :provider, :uid, presence: true
