@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :company
+
   has_many :events
 
   validates :name, :provider, :uid, presence: true
@@ -8,14 +9,15 @@ class User < ActiveRecord::Base
     events.create!(action: action)
   end
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid.to_s).first || User.create_with_omniauth(auth)
+  def self.from_omniauth(auth, company)
+    where(provider: auth.provider, uid: auth.uid.to_s, company: company).first || User.create_with_omniauth(auth, company)
   end
 
-  def self.create_with_omniauth(auth)
+  def self.create_with_omniauth(auth, company)
     create! do |user|
       user.provider = auth.provider
-      user.uid = auth.uid
+      user.uid      = auth.uid
+      user.company  = company
       hash = auth.extra.raw_info
       if auth.info
         user.name = auth.info.name || ""
