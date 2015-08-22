@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
       hash = auth.extra.raw_info
       if auth.info
         user.name = auth.info.name || ""
-        user.url = auth.info.urls.first[1] || ""
+        user.url = auth.info.urls[user.provider.capitalize] || ""
       end
       user.birthday = if hash.birthday
         Date.strptime(hash.birthday, '%m/%d/%Y')
