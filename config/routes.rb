@@ -16,7 +16,12 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   resource  :dashboard, only: :show
+  resource  :vk
   resources :users
+  resources :companies do
+    get  '/new_admin', to: 'companies#new_admin',    on: :member
+    post '/admin',     to: 'companies#create_admin', on: :member
+  end
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/signout',      to: 'sessions#destroy', as: :signout
   get '/auth/failure', to: 'sessions#failure'

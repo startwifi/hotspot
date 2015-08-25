@@ -6,4 +6,5 @@ RSpec.describe Company, type: :model do
   it { should have_many :admins }
   it { should have_many :users }
   it { should have_many(:events).through(:users) }
+  it { should have_one :vk }
 end

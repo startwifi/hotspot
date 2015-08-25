@@ -1,0 +1,25 @@
+%h2 Add company
+
+.row
+  .col-md-offset-4.col-md-4
+    - if @company.errors.any?
+      #error_explanation
+        %h2= "Form contains #{pluralize(@company.errors.count, 'error')}:"
+        %ul
+          - @company.errors.full_messages.each do |error|
+            %li= error
+    = form_for @company do |f|
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+      .form-group
+        = f.label :owner_name
+        = f.text_field :owner_name, class: 'form-control'
+      .form-group
+        = f.label :phone
+        = f.text_field :phone, class: 'form-control'
+      .form-group
+        = f.label :address
+        = f.text_field :address, class: 'form-control'
+      .form-group
+        = f.submit class: 'btn btn-primary'

@@ -19,6 +19,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'puma'
+gem 'has_secure_token'
 
 group :development, :test do
   gem 'byebug'
