@@ -14,13 +14,17 @@
           Admin Panel
           %span.gl-right.glyphicon.glyphicon-wrench
       %li
-        = link_to users_path do
-          All Users
-          %span.gl-right.glyphicon.glyphicon-user
-      %li
-        = link_to edit_admin_registration_path do
+        = link_to settings_path do
           Settings
           %span.gl-right.glyphicon.glyphicon-cog
+      %li
+        = link_to users_path do
+          All Users
+          %span.gl-right.glyphicon.glyphicon-th-list
+      %li
+        = link_to edit_admin_registration_path do
+          Profile
+          %span.gl-right.glyphicon.glyphicon-user
       %li.divider{role: 'separator'}
       %li
         = link_to destroy_admin_session_path, method: :delete do

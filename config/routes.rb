@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   resource  :dashboard, only: :show
-  resource  :vk
+  resource  :settings,  only: [:index, :show] do
+    resource :vk, except: :destroy
+  end
   resources :users
   resources :companies do
     get  '/new_admin', to: 'companies#new_admin',    on: :member

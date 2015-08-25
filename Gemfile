@@ -20,6 +20,7 @@ gem 'font-awesome-rails'
 gem 'devise'
 gem 'puma'
 gem 'has_secure_token'
+gem 'rest-client'
 
 group :development, :test do
   gem 'byebug'

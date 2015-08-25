@@ -1,0 +1,19 @@
+= form_for @vk, url: settings_vk_path do |f|
+  .form-group
+    = f.label :group_name
+    = f.text_field :group_name, class: 'form-control'
+  .form-group
+    = f.label :post_text
+    = f.text_area :post_text, row: 3, class: 'form-control'
+  .form-group
+    = f.label :post_link
+    = f.text_field :post_link, class: 'form-control'
+  .form-group
+    = f.label :link_redirect
+    = f.text_field :link_redirect, class: 'form-control'
+  .form-group
+    = f.label :action
+    = f.select :action, [['Join group', :join], ['Make post', :post]], { include_blank: true },
+      { class: 'form-control' }
+  .form-group
+    = f.submit class: 'btn btn-primary'
