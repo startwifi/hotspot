@@ -40,7 +40,11 @@ class VksController < ApplicationController
   end
 
   def get_group_id(group_name)
-    group = RestClient.post 'https://api.vk.com/method/groups.getById', { group_id: group_name }
-    group_id = JSON.parse(group.body).first[1][0]['gid']
+    begin
+      group = RestClient.post 'https://api.vk.com/method/groups.getById', { group_id: group_name }
+      group_id = JSON.parse(group.body).first[1][0]['gid']
+    rescue
+      errors.add :group_name, "can't be blank."
+    end
   end
 end

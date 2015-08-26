@@ -9,6 +9,13 @@ class User < ActiveRecord::Base
     events.create!(action: action)
   end
 
+  def is_member?(social, group)
+    if social == 'vk'
+      group = RestClient.post 'https://api.vk.com/method/groups.isMember', { group_id: group, user_id: self.uid }
+      member = JSON.parse(group.body).first[1] == 1 ? true : false
+    end
+  end
+
   def self.from_omniauth(auth, company)
     where(provider: auth.provider, uid: auth.uid.to_s, company: company).first || User.create_with_omniauth(auth, company)
   end

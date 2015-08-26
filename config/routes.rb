@@ -16,7 +16,8 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   resource  :dashboard, only: :show
-  resource  :settings,  only: [:index, :show] do
+  resource  :widget,    only: :show
+  resource  :settings,  only: :show do
     resource :vk, except: :destroy
   end
   resources :users
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
     get  '/new_admin', to: 'companies#new_admin',    on: :member
     post '/admin',     to: 'companies#create_admin', on: :member
   end
+  get '/event/subscribe', to: 'events#subscribe', as: 'event_subscribe'
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/signout',      to: 'sessions#destroy', as: :signout
   get '/auth/failure', to: 'sessions#failure'

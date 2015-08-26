@@ -1,20 +1,17 @@
 class SessionsController < ApplicationController
 
-  def new
-    redirect_to '/auth/facebook'
-  end
-
   def create
     # render json: request.env['omniauth.auth']
-    user = User.from_omniauth(request.env['omniauth.auth'])
+    company = Company.find_by_token(session[:company_token])
+    user = User.from_omniauth(request.env['omniauth.auth'], company)
     user.add_event(:login)
-    auth_link = session[:login_link]
+    auth_link = session[:auth_link]
     reset_session
     session[:user_id] = user.id
-    if auth_link
-      redirect_to auth_link
+    if auth_link && company
+      redirect_to widget_path
     else
-      redirect_to social_path, notice: 'Signed in!'
+      render_404
     end
   end
 
@@ -22,11 +19,11 @@ class SessionsController < ApplicationController
     user = User.find(session[:user_id])
     user.add_event(:logout)
     reset_session
-    redirect_to social_url, notice: 'Signed out!'
+    redirect_to auth_url, notice: 'Signed out!'
   end
 
   def failure
-    redirect_to social_url, alert: "Authentication error: #{params[:message].humanize}"
+    redirect_to auth_url, alert: "Authentication error: #{params[:message].humanize}"
   end
 
 end
