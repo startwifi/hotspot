@@ -7,28 +7,28 @@
     %ul.dropdown-menu
       %li
         = link_to dashboard_path do
-          Dashboard
           %span.gl-right.glyphicon.glyphicon-dashboard
+          Dashboard
       %li
         = link_to companies_path do
-          Companies
           %span.gl-right.glyphicon.glyphicon-wrench
+          Companies
       %li
         = link_to settings_path do
-          Settings
           %span.gl-right.glyphicon.glyphicon-cog
+          Settings
       %li
         = link_to users_path do
-          All Users
           %span.gl-right.glyphicon.glyphicon-th-list
+          All Users
       %li
         = link_to edit_admin_registration_path do
-          Profile
           %span.gl-right.glyphicon.glyphicon-user
+          Profile
       %li.divider{role: 'separator'}
       %li
         = link_to destroy_admin_session_path, method: :delete do
-          Sign out
           %span.gl-right.glyphicon.glyphicon-log-out
+          Sign out
 - else
   %li= link_to 'Sign in', new_admin_session_path
