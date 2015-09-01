@@ -5,6 +5,8 @@
     %meta{:name => "viewport", content: "width=device-width, initial-scale=1.0"}/
     %title Hotspot
     = javascript_include_tag "https://vk.com/js/api/openapi.js?117"
+    :javascript
+      VK.init({apiId: "#{ENV['VK_KEY']}", onlyWidgets: true});
     = csrf_meta_tags
   %body
     .col-md-12

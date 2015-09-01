@@ -2,13 +2,15 @@ class SessionsController < ApplicationController
 
   def create
     # render json: request.env['omniauth.auth']
+    # return
     company = Company.find_by_token(session[:company_token])
     user = User.from_omniauth(request.env['omniauth.auth'], company)
     user.add_event(:login)
-    auth_link = session[:auth_link]
-    reset_session
+    # auth_link = session[:auth_link]
+    # reset_session
     session[:user_id] = user.id
-    if auth_link && company
+    # if auth_link && company
+    if company
       redirect_to widget_path
     else
       render_404

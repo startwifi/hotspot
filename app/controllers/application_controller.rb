@@ -7,12 +7,26 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :correct_user?
+  helper_method :make_link
+  helper_method :router_url
+
+  private
 
   def make_link(link, dst, mac)
     "#{link}?dst=#{dst}&username=T-#{mac}"
   end
 
-  private
+  def router_url
+    dst = case current_user.provider
+          when 'vkontakte'
+            unless current_user.company.vk.link_redirect.empty?
+              current_user.company.vk.link_redirect
+            else
+              session[:dst]
+            end
+          end
+    make_link(session[:link], dst, session[:mac])
+  end
 
   def render_404
     raise ActionController::RoutingError.new('Not Found')

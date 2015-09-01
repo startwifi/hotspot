@@ -1,8 +1,8 @@
 <!-- VK Widget -->
 #vk_subscribe
 :javascript
-  VK.Widgets.Subscribe("vk_subscribe", {}, "-#{@company.vk.group_id}");
+  VK.Widgets.Subscribe("vk_subscribe", {mode: 2, soft: 1}, "-#{@company.vk.group_id}");
   VK.Observer.subscribe("widgets.subscribed", function f()
   {
-  location.replace('/event/subscribe')
+  location.replace("#{event_subscribe_path(:vk)}")
   });

@@ -1,0 +1,7 @@
+= link_to 'Wall post', '#', id: 'button_post'
+:javascript
+  button_post.onclick = function() {
+    var delay = 200;
+    window.open("https://vk.com/share.php?url=#{@company.vk.post_link}&description=#{@company.vk.post_text}&image=#{@company.vk.post_image}&noparse=true", '', 'width=626,height=436');
+    setTimeout('document.location.replace("#{event_post_path(:vk)}")', delay);
+  };
