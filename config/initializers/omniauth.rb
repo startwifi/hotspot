@@ -4,7 +4,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook,
     Rails.application.secrets.facebook_key,
     Rails.application.secrets.facebook_secret,
-    scope: 'public_profile,user_birthday',
+    scope: 'public_profile,user_birthday,user_likes,publish_actions',
     info_fields: 'birthday,name,link'
   provider :vkontakte,
     Rails.application.secrets.vk_key,

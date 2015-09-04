@@ -1,0 +1,27 @@
+%h2 Facebook
+
+- if @fb
+  .row
+    .col-md-6.col-md-offset-3
+      %table.table
+        %tr
+          %th Group
+          %td= @fb.group_name
+        %tr
+          %th Text on the wall
+          %td= @fb.post_text
+        %tr
+          %th Image on the wall
+          %td= @fb.post_image
+        %tr
+          %th Link
+          %td= @fb.post_link
+        %tr
+          %th Redirection
+          %td= @fb.link_redirect
+        %tr
+          %th Action
+          %td= @fb.action
+      %p= link_to 'Edit', edit_settings_fb_path, class: 'btn btn-default'
+- else
+  %p= link_to 'Add facebook', new_settings_fb_path, class: 'btn btn-primary'

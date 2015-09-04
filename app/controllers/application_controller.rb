@@ -24,6 +24,12 @@ class ApplicationController < ActionController::Base
             else
               session[:dst]
             end
+          when 'facebook'
+            unless current_user.company.fb.link_redirect.empty?
+              current_user.company.fb.link_redirect
+            else
+              session[:dst]
+            end
           end
     make_link(session[:link], dst, session[:mac])
   end

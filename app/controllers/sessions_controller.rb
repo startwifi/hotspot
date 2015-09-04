@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
     # return
     company = Company.find_by_token(session[:company_token])
     user = User.from_omniauth(request.env['omniauth.auth'], company)
+    session[:user_access_token] = request.env['omniauth.auth']['credentials']['token']
     user.add_event(:login)
     # auth_link = session[:auth_link]
     # reset_session

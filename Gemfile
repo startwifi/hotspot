@@ -21,6 +21,7 @@ gem 'devise'
 gem 'puma'
 gem 'has_secure_token'
 gem 'rest-client'
+gem 'koala'
 
 group :development, :test do
   gem 'byebug'

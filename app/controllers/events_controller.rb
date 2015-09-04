@@ -5,7 +5,19 @@ class EventsController < ApplicationController
   end
 
   def post
-    current_user.add_event(:post)
-    redirect_to router_url
+    if params[:provider] == 'vk'
+      current_user.add_event(:post)
+      redirect_to router_url
+    elsif params[:provider] == 'fb'
+      graph = Koala::Facebook::API.new(session[:user_access_token])
+      share = graph.put_wall_post(current_user.company.fb.post_text,
+        { link: current_user.company.fb.post_link,
+        description: current_user.company.fb.post_text })
+      if share['id']
+        redirect_to router_url
+      else
+        render text: 'Error'
+      end
+    end
   end
 end
