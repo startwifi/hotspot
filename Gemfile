@@ -22,6 +22,8 @@ gem 'puma'
 gem 'has_secure_token'
 gem 'rest-client'
 gem 'koala'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug'

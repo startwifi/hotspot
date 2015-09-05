@@ -37,7 +37,8 @@ class VksController < ApplicationController
   private
 
   def vk_params
-    params.require(:vk).permit(:group_name, :post_text, :post_link, :link_redirect, :action)
+    params.require(:vk).permit(:group_name, :post_text, :post_link,
+      :link_redirect, :action, :post_image, :post_image_cache, :remove_post_image)
   end
 
   def get_group_id(group_name)
