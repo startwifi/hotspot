@@ -42,7 +42,8 @@ class FbsController < ApplicationController
 
   def get_group_id(group_name)
     begin
-      oauth = Koala::Facebook::OAuth.new(ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'])
+      oauth = Koala::Facebook::OAuth.new(Rails.application.secrets.facebook_key,
+                                         Rails.application.secrets.facebook_secret)
       graph = Koala::Facebook::API.new(oauth.get_app_access_token)
       graph.get_object(group_name)['id']
     rescue
