@@ -16,7 +16,8 @@ class EventsController < ApplicationController
       graph = Koala::Facebook::API.new(session[:user_access_token])
       share = graph.put_wall_post(current_user.company.fb.post_text,
         { link: current_user.company.fb.post_link,
-        description: current_user.company.fb.post_text })
+        description: current_user.company.fb.post_text,
+        picture: root_url.chop + current_user.company.fb.post_image })
       if share['id']
         current_user.add_event(:share)
         redirect_to router_url

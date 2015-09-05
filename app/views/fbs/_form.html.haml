@@ -12,6 +12,20 @@
     = f.label :link_redirect
     = f.text_field :link_redirect, class: 'form-control'
   .form-group
+    = f.label :post_image
+    - if @fb.post_image?
+      %div
+      = image_tag(@fb.post_image)
+    = f.file_field :post_image
+    %p.help-block
+      537x240px:
+      = @fb.post_image.extension_white_list.join(', ')
+    = f.hidden_field :post_image_cache
+  %div.checkbox
+    %label
+      = f.check_box :remove_post_image
+      = f.label :remove_post_image
+  .form-group
     = f.label :action
     = f.select :action, [['Join group', :join], ['Make post', :post]], { include_blank: true },
       { class: 'form-control' }

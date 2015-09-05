@@ -37,7 +37,8 @@ class FbsController < ApplicationController
   private
 
   def fb_params
-    params.require(:fb).permit(:group_name, :post_text, :post_link, :link_redirect, :action)
+    params.require(:fb).permit(:group_name, :post_text, :post_link,
+      :link_redirect, :action, :post_image, :post_image_cache, :remove_post_image)
   end
 
   def get_group_id(group_name)
