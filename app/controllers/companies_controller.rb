@@ -8,6 +8,7 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     @admins = @company.admins
+    @recent_events = @company.events.order('created_at DESC').first(10)
   end
 
   def new
