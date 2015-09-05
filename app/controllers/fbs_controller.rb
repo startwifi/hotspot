@@ -26,7 +26,7 @@ class FbsController < ApplicationController
 
   def update
     @fb = current_admin.company.fb
-    @fb.group_id = get_group_id(@fb.group_name)
+    @fb.group_id = get_group_id(params[:fb][:group_name])
     if @fb.update(fb_params)
       redirect_to settings_fb_path, notice: "Facebook successfully updated."
     else
@@ -37,17 +37,16 @@ class FbsController < ApplicationController
   private
 
   def fb_params
-    params.require(:fb).permit(:group_id, :group_name, :post_text, :post_link, :link_redirect, :action)
+    params.require(:fb).permit(:group_name, :post_text, :post_link, :link_redirect, :action)
   end
 
   def get_group_id(group_name)
     begin
       oauth = Koala::Facebook::OAuth.new(ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'])
       graph = Koala::Facebook::API.new(oauth.get_app_access_token)
-      group_id = graph.get_object(group_name)['id']
+      graph.get_object(group_name)['id']
     rescue
       nil
-      # errors.add :group_id, "can't find a page."
     end
   end
 end

@@ -26,6 +26,7 @@ class VksController < ApplicationController
 
   def update
     @vk = current_admin.company.vk
+    @vk.group_id = get_group_id(params[:vk][:group_name])
     if @vk.update(vk_params)
       redirect_to settings_vk_path, notice: "Vk successfully updated."
     else
@@ -44,7 +45,7 @@ class VksController < ApplicationController
       group = RestClient.post 'https://api.vk.com/method/groups.getById', { group_id: group_name }
       group_id = JSON.parse(group.body).first[1][0]['gid']
     rescue
-      errors.add :group_name, "can't be blank."
+      nil
     end
   end
 end
