@@ -45,9 +45,9 @@ class WidgetsController < ApplicationController
       member = JSON.parse(group.body).first[1] == 1 ? true : false
     elsif social == 'fb'
       graph = Koala::Facebook::API.new(session[:user_access_token])
-      member = begin
-        true if graph.get_connections('me', "likes/#{group}")
-      rescue
+      member = unless graph.get_connections('me', "likes/#{group}").empty?
+        true
+      else
         false
       end
     end
