@@ -15,6 +15,8 @@ class WidgetsController < ApplicationController
         is_member?('fb', @company.fb.group_id) ? redirect_to(router_url) : render('widgets/fb/join')
       elsif current_user.provider == 'twitter' && @company.tw.action == 'join'
         render 'widgets/tw/join'
+      elsif current_user.provider == 'twitter' && @company.tw.action == 'post'
+        render 'widgets/tw/post'
       elsif current_user.provider == 'odnoklassniki'
         redirect_to router_url
       end

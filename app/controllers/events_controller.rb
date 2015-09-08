@@ -8,12 +8,7 @@ class EventsController < ApplicationController
       current_user.add_event(:subscribe)
       redirect_to router_url
     when 'tw'
-      client = Twitter::REST::Client.new do |config|
-        config.consumer_key        = Rails.application.secrets.twitter_key
-        config.consumer_secret     = Rails.application.secrets.twitter_secret
-        config.access_token        = session[:user_token]
-        config.access_token_secret = session[:user_secret]
-      end
+      client = twitter_client
       client.follow(current_user.company.tw.group_name)
       current_user.add_event(:follow)
       redirect_to router_url
@@ -38,6 +33,26 @@ class EventsController < ApplicationController
     when 'vk'
       current_user.add_event(:post)
       redirect_to router_url
+    when 'tw'
+      client = twitter_client
+      if current_user.company.tw.post_image?
+        client.update_with_media(current_user.company.tw.post_text, File.new("#{current_user.company.tw.post_image.path}"))
+      else
+        client.update(current_user.company.tw.post_text)
+      end
+      current_user.add_event(:tweet)
+      redirect_to router_url
+    end
+  end
+
+  private
+
+  def twitter_client
+    Twitter::REST::Client.new do |config|
+      config.consumer_key        = Rails.application.secrets.twitter_key
+      config.consumer_secret     = Rails.application.secrets.twitter_secret
+      config.access_token        = session[:user_token]
+      config.access_token_secret = session[:user_secret]
     end
   end
 end

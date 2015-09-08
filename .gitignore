@@ -16,3 +16,4 @@
 /.powenv
 /.ruby-gemset
 /.env
+/public/uploads
