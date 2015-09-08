@@ -1,11 +1,11 @@
 .text-center
   %h1 Welcome to Hotspot!
   %p This is a free wifi hotspot. You need to sign in with a social network.
-  - if @company.fb.action?
+  - if @company.fb && @company.fb.action?
     %h2= link_to 'Facebook',      '/auth/facebook'
-  - if @company.vk.action?
+  - if @company.vk && @company.vk.action?
     %h2= link_to 'Vkontakte',     '/auth/vkontakte'
-  - if @company.tw.action?
+  - if @company.tw && @company.tw.action?
     %h2= link_to 'Twitter',       '/auth/twitter'
   -# - if @company.ok.action?
     %h2= link_to 'Odnoklassniki', '/auth/odnoklassniki'
