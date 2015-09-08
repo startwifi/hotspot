@@ -7,6 +7,16 @@ class EventsController < ApplicationController
     when 'vk'
       current_user.add_event(:subscribe)
       redirect_to router_url
+    when 'tw'
+      client = Twitter::REST::Client.new do |config|
+        config.consumer_key        = Rails.application.secrets.twitter_key
+        config.consumer_secret     = Rails.application.secrets.twitter_secret
+        config.access_token        = session[:user_token]
+        config.access_token_secret = session[:user_secret]
+      end
+      client.follow(current_user.company.tw.group_name)
+      current_user.add_event(:follow)
+      redirect_to router_url
     end
   end
 

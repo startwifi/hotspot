@@ -6,11 +6,12 @@ class SessionsController < ApplicationController
     company = Company.find_by_token(session[:company_token])
     user = User.from_omniauth(request.env['omniauth.auth'], company)
     session[:user_access_token] = request.env['omniauth.auth']['credentials']['token']
+    if user.provider == 'twitter'
+      session[:user_token] = request.env['omniauth.auth']['credentials']['token']
+      session[:user_secret] = request.env['omniauth.auth']['credentials']['secret']
+    end
     user.add_event(:login)
-    # auth_link = session[:auth_link]
-    # reset_session
     session[:user_id] = user.id
-    # if auth_link && company
     if company
       redirect_to widget_path
     else
