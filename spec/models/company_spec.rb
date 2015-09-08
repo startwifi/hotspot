@@ -7,4 +7,5 @@ RSpec.describe Company, type: :model do
   it { should have_many(:events).through(:users) }
   it { should have_one :vk }
   it { should have_one :fb }
+  it { should have_one :tw }
 end

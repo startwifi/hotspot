@@ -25,6 +25,7 @@ gem 'rest-client'
 gem 'koala'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'twitter'
 
 group :development, :test do
   gem 'byebug'

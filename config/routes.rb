@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resource  :settings,  only: :show do
     resource :vk, except: :destroy
     resource :fb, except: :destroy
+    resource :tw, except: :destroy
   end
   resources :users
   resources :companies do

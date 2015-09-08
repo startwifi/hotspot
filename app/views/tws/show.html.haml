@@ -1,0 +1,30 @@
+%h2 Twitter
+
+- if @tw
+  .row
+    .col-md-6.col-md-offset-3
+      %table.table
+        %tr
+          %th Group id
+          %td= @tw.group_id
+        %tr
+          %th Group
+          %td= @tw.group_name
+        %tr
+          %th Text on the wall
+          %td= @tw.post_text
+        %tr
+          %th Image on the wall
+          %td= @tw.post_image
+        %tr
+          %th Link
+          %td= @tw.post_link
+        %tr
+          %th Redirection
+          %td= @tw.link_redirect
+        %tr
+          %th Action
+          %td= @tw.action
+      %p= link_to 'Edit', edit_settings_tw_path, class: 'btn btn-default'
+- else
+  %p= link_to 'Add Twitter', new_settings_tw_path, class: 'btn btn-primary'

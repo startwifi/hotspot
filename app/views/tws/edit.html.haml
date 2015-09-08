@@ -1,0 +1,7 @@
+%h2 Edit twitter
+
+.row
+  .col-md-offset-4.col-md-4
+    - if @tw.errors.any?
+      = render 'error_message', object: @tw
+    = render 'form'
