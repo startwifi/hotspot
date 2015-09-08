@@ -2,6 +2,6 @@
 :javascript
   button_post.onclick = function() {
     var delay = 200;
-    window.open("https://vk.com/share.php?url=#{@company.vk.post_link}&description=#{@company.vk.post_text}&image=#{root_url.chop + @company.vk.post_image.url}&noparse=true", '', 'width=626,height=436');
+    window.open("https://vk.com/share.php?url=#{@company.vk.post_link}&description=#{@company.vk.post_text}&image=#{@image}&noparse=true", '', 'width=626,height=436');
     setTimeout('document.location.replace("#{event_post_path(:vk)}")', delay);
   };

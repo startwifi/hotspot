@@ -5,21 +5,14 @@ class WidgetsController < ApplicationController
     begin
       @company = current_user.company
       if current_user.provider == 'vkontakte' && @company.vk.action == 'post'
+        @image = @company.vk.post_image? ? "#{root_url.chop + @company.vk.post_image.url}": nil
         render 'widgets/vk/post'
       elsif current_user.provider == 'vkontakte' && @company.vk.action == 'join'
-        if is_member?('vk', @company.vk.group_name)
-          redirect_to router_url
-        else
-          render 'widgets/vk/join'
-        end
+        is_member?('vk', @company.vk.group_name) ? redirect_to(router_url) : render('widgets/vk/join')
       elsif current_user.provider == 'facebook' && @company.fb.action == 'post'
         render 'widgets/fb/post'
       elsif current_user.provider == 'facebook' && @company.fb.action == 'join'
-        if is_member?('fb', @company.fb.group_id)
-          redirect_to router_url
-        else
-          render 'widgets/fb/join'
-        end
+        is_member?('fb', @company.fb.group_id) ? redirect_to(router_url) : render('widgets/fb/join')
       end
     # rescue
     #   render_404
