@@ -23,10 +23,13 @@ class User < ActiveRecord::Base
         user.name = auth.info.name || ""
         user.url = auth.info.urls[user.provider.capitalize] || ""
       end
-      user.birthday = if hash.birthday
+      user.birthday = case user.provider
+      when 'facebook'
         Date.strptime(hash.birthday, '%m/%d/%Y')
-      elsif hash.bdate
+      when 'vkontakte'
         hash.bdate.to_date
+      when 'odnoklassniki'
+        Date.strptime(hash.birthday, '%Y-%m-%d')
       else
         nil
       end

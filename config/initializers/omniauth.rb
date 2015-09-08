@@ -12,5 +12,11 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :twitter,
     Rails.application.secrets.twitter_key,
     Rails.application.secrets.twitter_secret
+  provider :odnoklassniki,
+    Rails.application.secrets.ok_key,
+    Rails.application.secrets.ok_secret,
+    public_key: Rails.application.secrets.ok_public,
+    response_type: 'code',
+    redirect_uri: "http://hotspot.192.168.88.15.xip.io/auth/odnoklassniki/callback"
 end
 
