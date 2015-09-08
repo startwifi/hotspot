@@ -26,6 +26,7 @@ gem 'koala'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'twitter'
+gem 'cancancan'
 
 group :development, :test do
   gem 'byebug'

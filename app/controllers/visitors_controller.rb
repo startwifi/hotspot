@@ -17,8 +17,7 @@ class VisitorsController < ApplicationController
     session[:dst] = dst
     session[:mac] = mac
     session[:company_token] = token
-    # session[:auth_link] = make_link(link, dst, mac)
-    # session[:dst] = dst
+    @company = Company.find_by_token(token)
   end
 
 end

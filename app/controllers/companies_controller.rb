@@ -1,27 +1,23 @@
 class CompaniesController < ApplicationController
   before_filter :authenticate_admin!
+  load_and_authorize_resource
 
   def index
-    @companies = Company.all
   end
 
   def show
-    @company = Company.find(params[:id])
     @admins = @company.admins
     @recent_events = @company.events.order('created_at DESC').first(10)
   end
 
   def new
-    @company = Company.new
   end
 
   def new_admin
-    @company = Company.find_by(id: params[:id])
     @admin = Admin.new
   end
 
   def create
-    @company = Company.new(company_params)
     if @company.save
       redirect_to companies_path, notice: 'Company successfully created.'
     else
@@ -30,7 +26,6 @@ class CompaniesController < ApplicationController
   end
 
   def create_admin
-    @company = Company.find_by(id: params[:id])
     @admin = Admin.new(admin_params)
     @admin.company = @company
     if @admin.save
