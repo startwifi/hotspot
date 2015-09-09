@@ -1,8 +1,26 @@
 %h2 Settings
 %ul.nav.nav-tabs.nav-justified.settings-links
-  %li{class: "#{controller?('settings') ? 'active' : ''}"}= link_to 'Start page', settings_path
-  %li{class: "#{controller?('fbs') ? 'active' : ''}"}= link_to 'Facebook', settings_fb_path
-  %li{class: "#{controller?('vks') ? 'active' : ''}"}= link_to 'Vk', settings_vk_path
-  %li{class: "#{controller?('tws') ? 'active' : ''}"}= link_to 'Twitter', settings_tw_path
-  %li{class: "#{controller?('ins') ? 'active' : ''}"}= link_to 'Instagram', '#'
-  %li{class: "#{controller?('oks') ? 'active' : ''}"}= link_to 'OK', '#'
+  %li{class: "#{controller?('settings') ? 'active' : ''}"}
+    = link_to settings_path do
+      %i.fa.fa-lg.fa-home
+      Start page
+  %li{class: "#{controller?('fbs') ? 'active' : ''}"}
+    = link_to settings_fb_path do
+      %i.fa.fa-lg.fa-facebook-square
+      Facebook
+  %li{class: "#{controller?('vks') ? 'active' : ''}"}
+    = link_to settings_vk_path do
+      %i.fa.fa-lg.fa-vk
+      Vkontakte
+  %li{class: "#{controller?('tws') ? 'active' : ''}"}
+    = link_to settings_tw_path do
+      %i.fa.fa-lg.fa-twitter-square
+      Twitter
+  %li{class: "#{controller?('ins') ? 'active' : ''}"}
+    = link_to '#' do
+      %i.fa.fa-lg.fa-instagram
+      Instagram
+  %li{class: "#{controller?('oks') ? 'active' : ''}"}
+    = link_to '#' do
+      %i.fa.fa-lg.fa-odnoklassniki-square
+      Odnoklassniki

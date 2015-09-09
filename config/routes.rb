@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins,
-    path: '/', 
+    path: '/',
     path_names: {
       sign_in: 'login',
       sign_up: 'new',
