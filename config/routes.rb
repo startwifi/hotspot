@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     put '/profile',      to: 'devise/registrations#update', as: 'admin_registration'
   end
 
-  root to: 'dashboard#show'
+  root to: 'dashboards#show'
   resource  :dashboard, only: :show
   resource  :widget,    only: :show
   resource  :settings,  only: :show do
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
   get '/event/:provider/subscribe', to: 'events#subscribe', as: 'event_subscribe'
   get '/event/:provider/post',      to: 'events#post',      as: 'event_post'
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback',   to: 'sessions#create'
   get '/signout',      to: 'sessions#destroy', as: :signout
   get '/auth/failure', to: 'sessions#failure'
   get '/auth',         to: 'visitors#index'
