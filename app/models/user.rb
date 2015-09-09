@@ -22,17 +22,40 @@ class User < ActiveRecord::Base
       if auth.info
         user.name = auth.info.name || ""
         user.url = auth.info.urls[user.provider.capitalize] || ""
+        user.email = auth.info.email || ""
+        user.birthday = get_birthday(user.provider, hash)
+        user.gender = get_gender(user.provider, hash)
       end
-      user.birthday = case user.provider
-      when 'facebook'
-        Date.strptime(hash.birthday, '%m/%d/%Y')
-      when 'vkontakte'
-        hash.bdate.to_date
-      when 'odnoklassniki'
-        Date.strptime(hash.birthday, '%Y-%m-%d')
+    end
+  end
+
+  def self.get_birthday(provider, hash)
+    case provider
+    when 'facebook'
+      Date.strptime(hash.birthday, '%m/%d/%Y')
+    when 'vkontakte'
+      hash.bdate.to_date
+    when 'odnoklassniki'
+      Date.strptime(hash.birthday, '%Y-%m-%d')
+    else
+      nil
+    end if hash.birthday || hash.bdate
+  end
+
+  def self.get_gender(provider, hash)
+    case provider
+    when 'facebook'
+      hash.gender
+    when 'vkontakte'
+      if hash.sex == 1
+        :female
+      elsif hash.sex == 2
+        :male
       else
-        nil
+        ""
       end
+    when 'odnoklassniki'
+      hash.gender
     end
   end
 
