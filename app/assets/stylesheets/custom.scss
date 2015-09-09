@@ -19,6 +19,10 @@ h1, h2, h3, h4 {
   left: -5px;
 }
 
+.settings-links {
+  margin-bottom: 10px;
+}
+
 // make all images responsive by default
 img {
   @extend .img-responsive;

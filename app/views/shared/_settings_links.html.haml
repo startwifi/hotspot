@@ -1,0 +1,8 @@
+%h2 Settings
+%ul.nav.nav-tabs.nav-justified.settings-links
+  %li{class: "#{controller?('settings') ? 'active' : ''}"}= link_to 'Start page', settings_path
+  %li{class: "#{controller?('fbs') ? 'active' : ''}"}= link_to 'Facebook', settings_fb_path
+  %li{class: "#{controller?('vks') ? 'active' : ''}"}= link_to 'Vk', settings_vk_path
+  %li{class: "#{controller?('tws') ? 'active' : ''}"}= link_to 'Twitter', settings_tw_path
+  %li{class: "#{controller?('ins') ? 'active' : ''}"}= link_to 'Instagram', '#'
+  %li{class: "#{controller?('oks') ? 'active' : ''}"}= link_to 'OK', '#'
