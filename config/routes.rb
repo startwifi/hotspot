@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     put '/profile',      to: 'devise/registrations#update', as: 'admin_registration'
   end
 
-  root to: 'home#index'
+  root to: 'dashboard#show'
   resource  :dashboard, only: :show
   resource  :widget,    only: :show
   resource  :settings,  only: :show do

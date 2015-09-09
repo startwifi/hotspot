@@ -19,13 +19,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
-    user = User.find(session[:user_id])
-    user.add_event(:logout)
-    reset_session
-    redirect_to auth_url, notice: 'Signed out!'
-  end
-
   def failure
     redirect_to auth_url, alert: "Authentication error: #{params[:message].humanize}"
   end
