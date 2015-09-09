@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  def after_sign_in_path_for(resource_or_scope)
+    dashboard_path
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
+
   def current_ability
     @current_ability ||= Ability.new(current_admin)
   end

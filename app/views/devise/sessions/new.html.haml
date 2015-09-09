@@ -1,20 +1,18 @@
-%h2 Log in
-
 .row
-  .col-md-offset-4.col-md-4
+  .col-sm-offset-4.col-sm-4
+    .text-center.margin-bottom-sm
+      %i.fa.fa-5x.fa-wifi
+    = render 'layouts/messages'
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .input-group.margin-bottom-sm
+        %span.input-group-addon
+          %i.fa.fa-envelope-o.fa-fw
+        = f.label :email, class: 'sr-only'
+        = f.email_field :email, autofocus: true, placeholder: 'Email address', class: 'form-control'
+      .input-group.margin-bottom-sm
+        %span.input-group-addon
+          %i.fa.fa-key.fa-fw
+        = f.label :password, class: 'sr-only'
+        = f.password_field :password, autocomplete: 'off', placeholder: 'Password', class: 'form-control'
       .form-group
-        = f.label :email
-        = f.email_field :email, autofocus: true, class: 'form-control'
-      .form-group
-        = f.label :password
-        = f.password_field :password, autocomplete: 'off', class: 'form-control'
-      - if devise_mapping.rememberable?
-        %div.checkbox
-          %label
-            = f.check_box :remember_me
-            = f.label :remember_me
-        .form-group
-          = f.submit 'Log in', class: 'btn btn-primary'
-
-      = render 'devise/shared/links'
+        = f.submit 'Sign in', class: 'btn btn-default pull-right'

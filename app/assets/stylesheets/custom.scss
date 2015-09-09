@@ -23,6 +23,10 @@ h1, h2, h3, h4 {
   margin-bottom: 25px;
 }
 
+.margin-bottom-sm {
+  margin-bottom: 10px;
+}
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
