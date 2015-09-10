@@ -15,7 +15,7 @@
           %td= @fb.post_text
         %tr
           %th Image on the wall
-          %td= @fb.post_image
+          %td= link_to 'Show', @fb.post_image.url if @fb.post_image?
         %tr
           %th Link
           %td= @fb.post_link

@@ -1,18 +1,21 @@
 %h2 All companies
 
 - if @companies
-  %table.table.table-striped
-    %thead
-      %th Name
-      %th Contact name
-      %th Contact phone
-      %th Address
-      %th Options
-    - @companies.each do |company|
-      %tr
-        %td= company.name
-        %td= company.owner_name
-        %td= company.phone
-        %td= company.address
-        %td= link_to 'Show', company_path(company)
+  .table-responsive
+    %table.table.table-striped
+      %thead
+        %th Name
+        %th Contact name
+        %th Contact phone
+        %th Address
+        %th Token
+        %th Options
+      - @companies.each do |company|
+        %tr
+          %td= company.name
+          %td= company.owner_name
+          %td= company.phone
+          %td= company.address
+          %td= company.token
+          %td= link_to 'Show', company_path(company)
   %p= link_to 'Add new company', new_company_path, class: 'btn btn-primary'

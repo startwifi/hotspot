@@ -5,6 +5,9 @@
     .col-md-6.col-md-offset-3
       %table.table
         %tr
+          %th Group id
+          %td= @vk.group_id
+        %tr
           %th Group
           %td= @vk.group_name
         %tr
@@ -12,7 +15,7 @@
           %td= @vk.post_text
         %tr
           %th Image on the wall
-          %td= @vk.post_image
+          %td= link_to 'Show', @vk.post_image.url if @vk.post_image?
         %tr
           %th Link
           %td= @vk.post_link
