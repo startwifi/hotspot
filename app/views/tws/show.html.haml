@@ -4,9 +4,9 @@
   .row
     .col-md-6.col-md-offset-3
       %table.table
-        %tr
-          %th Group id
-          %td= @tw.group_id
+        -# %tr
+        -#   %th Group id
+        -#   %td= @tw.group_id
         %tr
           %th Group
           %td= @tw.group_name
@@ -15,7 +15,7 @@
           %td= @tw.post_text
         %tr
           %th Image on the wall
-          %td= @tw.post_image
+          %td= link_to 'Show', @tw.post_image.url if @tw.post_image?
         %tr
           %th Link
           %td= @tw.post_link
