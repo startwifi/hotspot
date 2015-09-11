@@ -1,4 +1,63 @@
 %h2 Dashboard
 
-.col-md-6
+.col-md-3
+  %h4 Current settings
+  %table
+    %tr
+      %td
+        %i.fa.fa-facebook-square
+      %td
+        = @company.fb.nil? ? 'off' : @company.fb.action
+    %tr
+      %td
+        %i.fa.fa-vk
+      %td
+        = @company.vk.nil? ? 'off' : @company.vk.action
+    %tr
+      %td
+        %i.fa.fa-twitter-square
+      %td
+        = @company.tw.nil? ? 'off' : @company.tw.action
+    %tr
+      %td
+        %i.fa.fa-instagram
+      %td
+        -# = @company.in.nil? ? 'off' : @company.in.action
+    %tr
+      %td
+        %i.fa.fa-odnoklassniki
+      %td
+        -# = @company.ok.nil? ? 'off' : @company.ok.action
+.col-md-9
+  %h3 Statistics
+  %table.table.table-bordered
+    %thead
+      %tr.text-center
+        %th Date
+        %th
+          %i.fa.fa-facebook-square
+          = @events.social_count(:facebook)
+        %th
+          %i.fa.fa-vk
+          = @events.social_count(:vkontakte)
+        %th
+          %i.fa.fa-twitter-square
+          = @events.social_count(:twitter)
+        %th
+          %i.fa.fa-instagram
+          = @events.social_count(:instagram)
+        %th
+          %i.fa.fa-odnoklassniki
+          = @events.social_count(:odnoklassniki)
+    %tbody
+      - @days_range.each do |event_date|
+        %tr
+          %td= event_date
+          %td= @events.by_date(event_date).social_count(:facebook)
+          %td= @events.by_date(event_date).social_count(:vkontakte)
+          %td= @events.by_date(event_date).social_count(:twitter)
+          %td= @events.by_date(event_date).social_count(:instagram)
+          %td= @events.by_date(event_date).social_count(:odnoklassniki)
+
+  %h3 Last events
   = render 'recent_events'
