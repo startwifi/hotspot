@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Company, type: :model do
   it { should validate_presence_of :name }
-  it { should have_many :admins }
-  it { should have_many :users }
-  it { should have_many(:events).through(:users) }
-  it { should have_one :vk }
-  it { should have_one :fb }
-  it { should have_one :tw }
+  it { should have_many(:admins).dependent(:destroy) }
+  it { should have_many(:users).dependent(:destroy) }
+  it { should have_many(:events).through(:users).dependent(:destroy) }
+  it { should have_one(:vk).dependent(:destroy) }
+  it { should have_one(:fb).dependent(:destroy) }
+  it { should have_one(:tw).dependent(:destroy) }
 end

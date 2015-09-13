@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'association' do
-    it { should have_many :events }
+    it { should have_many(:events).dependent(:destroy) }
   end
 
   describe 'attributes' do

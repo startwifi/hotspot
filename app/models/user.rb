@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :company
 
-  has_many :events
+  has_many :events, dependent: :destroy
 
   validates :name, :provider, :uid, :company, presence: true
 
