@@ -42,12 +42,9 @@ ActiveRecord::Schema.define(version: 20150909080244) do
     t.string   "token"
     t.string   "phone"
     t.string   "address"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "owner_name"
-    t.boolean  "fb",         default: false
-    t.boolean  "vk",         default: false
-    t.boolean  "twitter",    default: false
   end
 
   create_table "events", force: :cascade do |t|
