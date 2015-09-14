@@ -26,8 +26,4 @@
       = f.check_box :remove_post_image
       = f.label :remove_post_image
   .form-group
-    = f.label :action
-    = f.select :action, [['Join group', :join], ['Make post', :post]], { include_blank: true },
-      { class: 'form-control' }
-  .form-group
     = f.submit class: 'btn btn-primary'

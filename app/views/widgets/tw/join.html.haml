@@ -3,7 +3,8 @@
     %i.fa.fa-twitter-square
     Twitter: follow us for continue
   .panel-body
-    %h4= @company.name
+    %h3= @company.name
+    %h4= link_to "@#{@company.tw.group_name}", 'https://twitter.com/' + @company.tw.group_name
   .panel-footer
     = link_to 'Follow us', event_subscribe_path(:tw), class: 'btn btn-primary btn-block'
 .text-center= link_to 'Cancel', auth_path
