@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 
   validates :name, :provider, :uid, :company, presence: true
 
-  def add_event(action = '')
-    events.create!(action: action)
+  def add_event(action, provider, company)
+    events.create!(action: action, provider: provider, company: company)
   end
 
   def self.from_omniauth(auth, company)

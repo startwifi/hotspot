@@ -29,14 +29,10 @@ class WidgetsController < ApplicationController
 
   def social_layout
     case current_user.provider
-    when 'vkontakte'
-      'vk'
-    when 'facebook'
-      'fb'
-    when 'twitter'
-      'tw'
-    when 'odnoklassniki'
-      'ok'
+    when 'vkontakte'     then 'vk'
+    when 'facebook'      then 'fb'
+    when 'twitter'       then 'tw'
+    when 'odnoklassniki' then 'ok'
     end
   end
 

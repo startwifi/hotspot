@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_token] = request.env['omniauth.auth']['credentials']['token']
       session[:user_secret] = request.env['omniauth.auth']['credentials']['secret']
     end
-    user.add_event(:login)
+    user.add_event(:login, user.provider, company)
     session[:user_id] = user.id
     if company
       redirect_to widget_path
