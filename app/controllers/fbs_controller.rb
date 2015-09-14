@@ -1,10 +1,6 @@
 class FbsController < ApplicationController
   before_filter :authenticate_admin!
 
-  def show
-    @fb = current_admin.company.fb
-  end
-
   def new
     render_404 if current_admin.company.fb
     @fb = current_admin.company.build_fb
@@ -12,9 +8,8 @@ class FbsController < ApplicationController
 
   def create
     @fb = current_admin.company.build_fb(fb_params)
-    @fb.group_id = get_group_id(@fb.group_name)
     if @fb.save
-      redirect_to settings_fb_path, notice: "Facebook successfully created."
+      redirect_to edit_settings_fb_path, notice: "Facebook successfully created."
     else
       render :new
     end
@@ -26,9 +21,8 @@ class FbsController < ApplicationController
 
   def update
     @fb = current_admin.company.fb
-    @fb.group_id = get_group_id(params[:fb][:group_name])
     if @fb.update(fb_params)
-      redirect_to settings_fb_path, notice: "Facebook successfully updated."
+      redirect_to edit_settings_fb_path, notice: "Facebook successfully updated."
     else
       render :edit
     end
@@ -39,16 +33,5 @@ class FbsController < ApplicationController
   def fb_params
     params.require(:fb).permit(:group_name, :post_text, :post_link,
       :link_redirect, :action, :post_image, :post_image_cache, :remove_post_image)
-  end
-
-  def get_group_id(group_name)
-    begin
-      oauth = Koala::Facebook::OAuth.new(Rails.application.secrets.facebook_key,
-                                         Rails.application.secrets.facebook_secret)
-      graph = Koala::Facebook::API.new(oauth.get_app_access_token)
-      graph.get_object(group_name)['id']
-    rescue
-      nil
-    end
   end
 end

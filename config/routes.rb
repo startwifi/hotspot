@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   resource  :dashboard, only: :show
   resource  :widget,    only: :show
   resource  :settings,  only: :show do
-    resource :vk, except: :destroy
-    resource :fb, except: :destroy
-    resource :tw, except: :destroy
+    resource :vk, except: [:show, :destroy]
+    resource :fb, except: [:show, :destroy]
+    resource :tw, except: [:show, :destroy]
   end
   resources :users
   resources :companies do

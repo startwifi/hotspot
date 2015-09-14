@@ -5,15 +5,15 @@
       %i.fa.fa-lg.fa-home
       Start page
   %li{class: "#{controller?('fbs') ? 'active' : ''}"}
-    = link_to settings_fb_path do
+    = link_to edit_settings_fb_path do
       %i.fa.fa-lg.fa-facebook-square
       Facebook
   %li{class: "#{controller?('vks') ? 'active' : ''}"}
-    = link_to settings_vk_path do
+    = link_to edit_settings_vk_path do
       %i.fa.fa-lg.fa-vk
       Vkontakte
   %li{class: "#{controller?('tws') ? 'active' : ''}"}
-    = link_to settings_tw_path do
+    = link_to edit_settings_tw_path do
       %i.fa.fa-lg.fa-twitter-square
       Twitter
   %li{class: "#{controller?('ins') ? 'active' : ''}"}

@@ -1,10 +1,6 @@
 class TwsController < ApplicationController
   before_filter :authenticate_admin!
 
-  def show
-    @tw = current_admin.company.tw
-  end
-
   def new
     render_404 if current_admin.company.tw
     @tw = current_admin.company.build_tw
@@ -13,7 +9,7 @@ class TwsController < ApplicationController
   def create
     @tw = current_admin.company.build_tw(tw_params)
     if @tw.save
-      redirect_to settings_tw_path, notice: "Twitter successfully created."
+      redirect_to edit_settings_tw_path, notice: "Twitter successfully created."
     else
       render :new
     end
@@ -26,7 +22,7 @@ class TwsController < ApplicationController
   def update
     @tw = current_admin.company.tw
     if @tw.update(tw_params)
-      redirect_to settings_tw_path, notice: "Twitter successfully updated."
+      redirect_to edit_settings_tw_path, notice: "Twitter successfully updated."
     else
       render :edit
     end
