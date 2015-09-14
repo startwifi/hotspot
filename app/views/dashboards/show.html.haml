@@ -29,35 +29,34 @@
       %td
         -# = @company.ok.nil? ? 'off' : @company.ok.action
 .col-md-9
-  %h3 Statistics
-  %table.table.table-bordered
-    %thead
-      %tr.text-center
-        %th Date
-        %th
-          %i.fa.fa-facebook-square
-          = @events.social_count(:facebook)
-        %th
-          %i.fa.fa-vk
-          = @events.social_count(:vkontakte)
-        %th
-          %i.fa.fa-twitter-square
-          = @events.social_count(:twitter)
-        %th
-          %i.fa.fa-instagram
-          = @events.social_count(:instagram)
-        %th
-          %i.fa.fa-odnoklassniki
-          = @events.social_count(:odnoklassniki)
-    %tbody
-      - @days_range.each do |event_date|
-        %tr
-          %td= event_date
-          %td= @events.by_date(event_date).social_count(:facebook)
-          %td= @events.by_date(event_date).social_count(:vkontakte)
-          %td= @events.by_date(event_date).social_count(:twitter)
-          %td= @events.by_date(event_date).social_count(:instagram)
-          %td= @events.by_date(event_date).social_count(:odnoklassniki)
-
-  %h3 Last events
-  = render 'recent_events'
+  .col-md-5
+    %table.table.table-striped
+      %thead
+        %tr.text-center
+          %th Date
+          %th
+            %i.fa.fa-facebook-square
+            = @events.social_count(:facebook)
+          %th
+            %i.fa.fa-vk
+            = @events.social_count(:vkontakte)
+          %th
+            %i.fa.fa-twitter-square
+            = @events.social_count(:twitter)
+          %th
+            %i.fa.fa-instagram
+            = @events.social_count(:instagram)
+          %th
+            %i.fa.fa-odnoklassniki
+            = @events.social_count(:odnoklassniki)
+      %tbody
+        - @days_range.each do |event_date|
+          %tr
+            %td= event_date
+            %td= @events.by_date(event_date).social_count(:facebook)
+            %td= @events.by_date(event_date).social_count(:vkontakte)
+            %td= @events.by_date(event_date).social_count(:twitter)
+            %td= @events.by_date(event_date).social_count(:instagram)
+            %td= @events.by_date(event_date).social_count(:odnoklassniki)
+  .col-md-7
+    = render 'recent_events'
