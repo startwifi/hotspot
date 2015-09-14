@@ -1,4 +1,17 @@
-= link_to 'Wall post', '#', id: 'button_post'
+.panel.panel-default
+  .panel-heading
+    %i.fa.fa-vk
+    Vkontakte: share post for continue
+  .panel-body
+    %div
+      %b= current_user.name
+    %div
+      %small= "Today, #{Time.zone.now.strftime('%H:%M')}"
+    %div= @company.vk.post_text
+    %div= image_tag @company.vk.post_image, alt: @company.name, class: 'img-responsive'
+  .panel-footer
+    = link_to 'Share post', '#', class: 'btn btn-primary btn-block', id: 'button_post'
+.text-center= link_to 'Cancel', auth_path
 :javascript
   button_post.onclick = function() {
     var delay = 200;

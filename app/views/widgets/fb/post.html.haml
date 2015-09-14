@@ -1,1 +1,14 @@
-= link_to 'Share post', event_post_path(:fb)
+.panel.panel-default
+  .panel-heading
+    %i.fa.fa-facebook-square
+    Facebook: share post for continue
+  .panel-body
+    %div
+      %b= current_user.name
+    %div
+      %small= "Today, #{Time.zone.now.strftime('%H:%M')}"
+    %div= @company.fb.post_text
+    %div= image_tag @company.fb.post_image, alt: @company.name, class: 'img-responsive'
+  .panel-footer
+    = link_to 'Share post', event_post_path(:fb), class: 'btn btn-primary btn-block'
+.text-center= link_to 'Cancel', auth_path

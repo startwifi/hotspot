@@ -1,8 +1,14 @@
-<!-- VK Widget -->
-#vk_subscribe
-:javascript
-  VK.Widgets.Subscribe("vk_subscribe", {mode: 2, soft: 1}, "-#{@company.vk.group_id}");
-  VK.Observer.subscribe("widgets.subscribed", function f()
-  {
-  location.replace("#{event_subscribe_path(:vk)}")
-  });
+.panel.panel-default
+  .panel-heading
+    %i.fa.fa-vk
+    Vkontakte: subscribe for continue
+  .panel-body
+    %h4= @company.name
+    #vk_subscribe
+    :javascript
+      VK.Widgets.Subscribe("vk_subscribe", {mode: 2, soft: 1}, "-#{@company.vk.group_id}");
+      VK.Observer.subscribe("widgets.subscribed", function f()
+      {
+        location.replace("#{event_subscribe_path(:vk)}")
+      });
+.text-center= link_to 'Cancel', auth_path
