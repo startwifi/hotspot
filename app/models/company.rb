@@ -1,4 +1,6 @@
 class Company < ActiveRecord::Base
+  mount_uploader :cover, CoverUploader
+
   has_secure_token
 
   has_many :users, dependent: :destroy

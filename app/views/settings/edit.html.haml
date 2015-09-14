@@ -16,4 +16,17 @@
           = tw.label :twitter
           = tw.select :action, [['Join group', :join], ['Make post', :post], ['Just auth', :auth], ['Disabled', :disabled]], {}, class: 'form-control'
       .form-group
-        = f.submit class: 'btn btn-primary'
+        = f.label :cover
+        - if @company.cover?
+          %div
+          = image_tag(@company.cover)
+        = f.file_field :cover
+        %p.help-block
+          = @company.cover.extension_white_list.join(', ')
+        = f.hidden_field :cover_cache
+      %div.checkbox
+        %label
+          = f.check_box :remove_cover
+          = f.label :remove_cover
+      .form-group
+        = f.submit 'Save settings', class: 'btn btn-primary'
