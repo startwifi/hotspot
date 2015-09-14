@@ -1,7 +1,7 @@
 %h2 Settings
 %ul.nav.nav-tabs.nav-justified.settings-links
   %li{class: "#{controller?('settings') ? 'active' : ''}"}
-    = link_to settings_path do
+    = link_to edit_settings_path do
       %i.fa.fa-lg.fa-home
       Start page
   %li{class: "#{controller?('fbs') ? 'active' : ''}"}

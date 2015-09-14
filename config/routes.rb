@@ -19,12 +19,12 @@ Rails.application.routes.draw do
 
   resource  :dashboard, only: :show
   resource  :widget,    only: :show
-  resource  :settings,  only: :show do
-    resource :vk, except: [:show, :destroy]
-    resource :fb, except: [:show, :destroy]
-    resource :tw, except: [:show, :destroy]
+  resource  :settings,  only: [:edit, :update] do
+    resource :vk, only: [:edit, :update]
+    resource :fb, only: [:edit, :update]
+    resource :tw, only: [:edit, :update]
   end
-  resources :users
+  resources :users, only: [:index, :show]
   resources :companies do
     get  '/new_admin', to: 'companies#new_admin',    on: :member
     post '/admin',     to: 'companies#create_admin', on: :member
@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   get '/event/:provider/subscribe', to: 'events#subscribe', as: 'event_subscribe'
   get '/event/:provider/post',      to: 'events#post',      as: 'event_post'
   get '/auth/:provider/callback',   to: 'sessions#create'
-  get '/signout',      to: 'sessions#destroy', as: :signout
   get '/auth/failure', to: 'sessions#failure'
   get '/auth',         to: 'visitors#index'
 end

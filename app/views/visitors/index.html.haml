@@ -2,15 +2,15 @@
   %h1= @company.name
   %p This is a free wifi hotspot. You need to sign in with a social network.
   %ul.list-inline
-    - if @company.fb && @company.fb.action?
+    - unless @company.fb.action.eql?('disabled')
       %li
         = link_to '/auth/facebook' do
           = image_tag 'facebook.png'
-    - if @company.tw && @company.tw.action?
+    - unless @company.tw.action.eql?('disabled')
       %li
         = link_to '/auth/twitter' do
           = image_tag 'twitter.png'
-    - if @company.vk && @company.vk.action?
+    - unless @company.vk.action.eql?('disabled')
       %li
         = link_to '/auth/vkontakte' do
           = image_tag 'vkontakte.png'

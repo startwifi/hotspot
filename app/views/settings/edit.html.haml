@@ -1,0 +1,19 @@
+= render 'shared/settings_links'
+
+.row
+  .col-md-offset-4.col-md-4
+    = form_for @company, url: settings_path, method: :put do |f|
+      = fields_for @company.fb do |fb|
+        .form-group
+          = fb.label :facebook
+          = fb.select :action, [['Join group', :join], ['Make post', :post], ['Just auth', :auth], ['Disabled', :disabled]], {}, class: 'form-control'
+      = fields_for @company.vk do |vk|
+        .form-group
+          = vk.label :vkontakte
+          = vk.select :action, [['Join group', :join], ['Make post', :post], ['Just auth', :auth], ['Disabled', :disabled]], {}, class: 'form-control'
+      = fields_for @company.tw do |tw|
+        .form-group
+          = tw.label :twitter
+          = tw.select :action, [['Join group', :join], ['Make post', :post], ['Just auth', :auth], ['Disabled', :disabled]], {}, class: 'form-control'
+      .form-group
+        = f.submit class: 'btn btn-primary'
