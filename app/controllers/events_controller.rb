@@ -45,6 +45,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def by_date
+    @events = current_admin.company.events.by_date(params[:date])
+    render partial: 'by_date'
+  end
+
   private
 
   def twitter_client

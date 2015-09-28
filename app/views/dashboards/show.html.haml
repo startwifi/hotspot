@@ -30,7 +30,7 @@
         -# = @company.ok.nil? ? 'off' : @company.ok.action
 .col-md-9
   .col-md-5
-    %table.table.table-striped
+    %table.table.table-striped.table-hover
       %thead
         %tr.text-center
           %th Date
@@ -51,7 +51,7 @@
             = @events.social_count(:odnoklassniki)
       %tbody
         - @days_range.each do |event_date|
-          %tr
+          %tr.event-row{'data-event-date': event_date}
             %td= event_date
             %td= @events.by_date(event_date).social_count(:facebook)
             %td= @events.by_date(event_date).social_count(:vkontakte)
@@ -59,4 +59,35 @@
             %td= @events.by_date(event_date).social_count(:instagram)
             %td= @events.by_date(event_date).social_count(:odnoklassniki)
   .col-md-7
-    = render 'recent_events'
+    %table.table.table-striped
+      %thead
+        %th
+        %th Time
+        %th Action
+        %th Link
+      %tbody#events
+
+:javascript
+  var eventDate = "#{Time.zone.now.to_date}";
+  var getEvents = $.post("#{events_by_date_path}", { date: eventDate });
+  $(".event-row:first").addClass("info");
+
+  getEvents.done(function(data) {
+    $("#events").empty().append(data);
+  });
+
+  $(".event-row").on("click", function() {
+    var selected = $(this).hasClass("info");
+    var eventDate = $(this).attr("data-event-date");
+    var getEvents = $.post("#{events_by_date_path}", { date: eventDate });
+
+    getEvents.done(function(data) {
+      $("#events").empty().append(data);
+    });
+
+    $(".event-row").removeClass("info");
+
+    if(!selected) {
+      $(this).addClass("info");
+    }
+  });
