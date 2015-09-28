@@ -19,6 +19,8 @@ class WidgetsController < ApplicationController
         render 'widgets/tw/post'
       elsif current_user.provider == 'odnoklassniki'
         redirect_to router_url
+      else
+        redirect_to router_url
       end
     # rescue
     #   render_404

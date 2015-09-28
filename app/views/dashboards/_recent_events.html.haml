@@ -10,4 +10,4 @@
         %th= fa_icon event.user.provider == 'vkontakte' ? 'vk' : event.user.provider
         %td= event.created_at.strftime("%H:%M:%S")
         %td= event.action
-        %td= link_to event.user.name, event.user.url
+        %td= link_to event.user.name, user_path(event.user)

@@ -1,11 +1,26 @@
 %h3 User
 
-%p
-  Name:
-  = @user.name if @user.name
-%p
-  Provider:
-  = @user.provider
-%p
-  Uid:
-  = @user.uid
+.col-md-6.col-md-offset-3
+  %table.table.table-striped
+    %tr
+      %th{width: '20%'} Name
+      %td= @user.name if @user.name
+    %tr
+      %th Provider
+      %td= @user.provider
+    %tr
+      %th Uid
+      %td= @user.uid
+    %tr
+      %th Birthday
+      %td= @user.birthday
+    %tr
+      %th Url
+      %td= link_to @user.url, @user.url
+    %tr
+      %th Email
+      %td= @user.email
+    %tr
+      %th Gender
+      %td= @user.gender
+  %p= link_to 'Back', :back
