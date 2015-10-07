@@ -1,6 +1,10 @@
 %h2 Dashboard
 
 .col-md-3
+  %h4 Statistics by month
+  = form_tag :dashboard, method: 'get' do
+    - month = params[:date] ? params[:date][:month].to_i : Date.today
+    = select_month month, {}, {class: 'form-control', onchange: 'this.form.submit()'}
   %h4 Current settings
   %table
     %tr
@@ -68,7 +72,7 @@
       %tbody#events
 
 :javascript
-  var eventDate = "#{Time.zone.now.to_date}";
+  var eventDate = "#{params[:date] == Time.current.month ? Time.zone.now.to_date : nil}";
   var getEvents = $.post("#{events_by_date_path}", { date: eventDate });
   $(".event-row:first").addClass("info");
 

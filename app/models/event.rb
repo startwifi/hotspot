@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
 
   scope :today, ->{ where('created_at >= ?', Time.zone.now.beginning_of_day) }
   scope :month, ->{ where('created_at >= ?', Time.zone.now.beginning_of_month) }
+  scope :by_month, ->(month){ where('EXTRACT(MONTH FROM created_at) = ?', month) }
   scope :by_date, ->(date){ where('created_at::date = ?', date.to_date) }
   scope :social_count, ->(social){ where('provider = ?', social).count }
 end
