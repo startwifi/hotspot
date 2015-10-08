@@ -1,4 +1,3 @@
-server '146.185.141.239', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:gremax/hotspot.git'
 set :application,     'hotspot'
