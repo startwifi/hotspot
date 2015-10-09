@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resource :vk, only: [:edit, :update]
     resource :fb, only: [:edit, :update]
     resource :tw, only: [:edit, :update]
+    resource :ok, only: [:edit, :update]
     member do
       get 'advanced'
       put 'advanced', to: 'settings#advanced_update'

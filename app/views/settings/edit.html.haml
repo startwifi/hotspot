@@ -16,6 +16,10 @@
         .form-group
           = tw.label :twitter
           = tw.select :action, acts, {}, class: 'form-control'
+      = fields_for @company.ok do |ok|
+        .form-group
+          = ok.label :odnoklassniki
+          = ok.select :action, acts, {}, class: 'form-control'
       .form-group
         = f.label :cover
         - if @company.cover?

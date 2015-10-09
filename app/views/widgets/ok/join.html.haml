@@ -1,0 +1,10 @@
+.panel.panel-default
+  .panel-heading
+    %i.fa.fa-odnoklassniki-square
+    Ok: subscribe for continue
+  .panel-body
+    %h4= @company.name
+    %h4= link_to "@#{@company.ok.group_name}", 'http://ok.ru/grouo/' + @company.ok.group_name
+  .panel-footer
+    = link_to 'Join group', event_subscribe_path(:ok), class: 'btn btn-primary btn-block'
+.text-center= link_to 'Cancel', auth_path

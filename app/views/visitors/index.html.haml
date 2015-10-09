@@ -14,9 +14,9 @@
       %li
         = link_to '/auth/vkontakte' do
           = image_tag 'vkontakte.png'
-    -# - if @company.ok && @company.ok.action?
-    -#   %li
-    -#     = link_to '/auth/odnoklassniki' do
-    -#       = image_tag 'ok.png'
+    - unless @company.ok.action.eql?('disabled')
+      %li
+        = link_to '/auth/odnoklassniki' do
+          = image_tag 'ok.png'
   = image_tag @company.cover.url, alt: @company.name, class: 'img-responsive' if @company.cover?
 

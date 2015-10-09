@@ -8,4 +8,5 @@ RSpec.describe Company, type: :model do
   it { should have_one(:vk).dependent(:destroy) }
   it { should have_one(:fb).dependent(:destroy) }
   it { should have_one(:tw).dependent(:destroy) }
+  it { should have_one(:ok).dependent(:destroy) }
 end

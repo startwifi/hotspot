@@ -21,7 +21,7 @@
       %i.fa.fa-lg.fa-instagram
       Instagram
   %li{class: "#{controller?('oks') ? 'active' : ''}"}
-    = link_to '#' do
+    = link_to edit_settings_ok_path do
       %i.fa.fa-lg.fa-odnoklassniki-square
       Odnoklassniki
   %li{class: "#{controller?('settings') && action?('advanced') ? 'active' : ''}"}

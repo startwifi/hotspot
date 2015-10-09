@@ -56,7 +56,16 @@ class WidgetsController < ApplicationController
   end
 
   def widget_ok
-    redirect_to router_url
+    case @company.ok.action
+    when 'post'
+      render 'widgets/ok/post'
+    when 'join'
+      render 'widgets/ok/join'
+    when 'card'
+      render 'widgets/card'
+    else
+      redirect_to router_url
+    end
   end
 
   def social_layout
