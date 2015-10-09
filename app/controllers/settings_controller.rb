@@ -17,6 +17,19 @@ class SettingsController < ApplicationController
     end
   end
 
+  def advanced
+    @company = current_admin.company
+  end
+
+  def advanced_update
+    @company = current_admin.company
+    if @company.update(company_params)
+      redirect_to advanced_settings_path, notice: 'Settings successfully updated.'
+    else
+      render :advanced
+    end
+  end
+
   private
 
   def fb_params
@@ -32,6 +45,7 @@ class SettingsController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:link_redirect, :action, :cover, :cover_cache, :remove_cover)
+    params.require(:company).permit(:link_redirect, :action, :cover,
+      :cover_cache, :remove_cover, :card, :card_cache, :remove_card)
   end
 end

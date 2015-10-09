@@ -1,0 +1,14 @@
+.panel.panel-default
+  .panel-heading
+    %i.fa.fa-diamond
+    Card: download a bonus card
+  .panel-body
+    %div.text-center
+      %b= "Hi, #{current_user.name}!"
+    %div.text-center
+      %small= "Today, #{Time.zone.now.strftime('%H:%M')}"
+    .text-center Download a bonus card for contitnue
+    %div= image_tag @company.card, alt: @company.name, class: 'img-responsive'
+  .panel-footer
+    = link_to 'Download and continue', @company.card.url, download: @company.name, onclick: "location='/event/card'", class: 'btn btn-primary btn-block'
+.text-center= link_to 'Cancel', auth_path

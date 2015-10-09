@@ -3,18 +3,19 @@
 .row
   .col-md-offset-4.col-md-4
     = form_for @company, url: settings_path, method: :put do |f|
+      - acts = [['Join group', :join], ['Make post', :post], ['Just auth', :auth], ['Auth + Card', :card], ['Disabled', :disabled]]
       = fields_for @company.fb do |fb|
         .form-group
           = fb.label :facebook
-          = fb.select :action, [['Join group', :join], ['Make post', :post], ['Just auth', :auth], ['Disabled', :disabled]], {}, class: 'form-control'
+          = fb.select :action, acts, {}, class: 'form-control'
       = fields_for @company.vk do |vk|
         .form-group
           = vk.label :vkontakte
-          = vk.select :action, [['Join group', :join], ['Make post', :post], ['Just auth', :auth], ['Disabled', :disabled]], {}, class: 'form-control'
+          = vk.select :action, acts, {}, class: 'form-control'
       = fields_for @company.tw do |tw|
         .form-group
           = tw.label :twitter
-          = tw.select :action, [['Join group', :join], ['Make post', :post], ['Just auth', :auth], ['Disabled', :disabled]], {}, class: 'form-control'
+          = tw.select :action, acts, {}, class: 'form-control'
       .form-group
         = f.label :cover
         - if @company.cover?

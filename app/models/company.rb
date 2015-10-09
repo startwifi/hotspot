@@ -1,5 +1,6 @@
 class Company < ActiveRecord::Base
   mount_uploader :cover, CoverUploader
+  mount_uploader :card,  CardUploader
 
   has_secure_token
 

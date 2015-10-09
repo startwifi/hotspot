@@ -1,6 +1,6 @@
 %h2 Settings
 %ul.nav.nav-tabs.nav-justified.settings-links
-  %li{class: "#{controller?('settings') ? 'active' : ''}"}
+  %li{class: "#{controller?('settings') && action?('edit')? 'active' : ''}"}
     = link_to edit_settings_path do
       %i.fa.fa-lg.fa-home
       Start page
@@ -24,3 +24,7 @@
     = link_to '#' do
       %i.fa.fa-lg.fa-odnoklassniki-square
       Odnoklassniki
+  %li{class: "#{controller?('settings') && action?('advanced') ? 'active' : ''}"}
+    = link_to advanced_settings_path do
+      %i.fa.fa-lg.fa-cogs
+      Advanced

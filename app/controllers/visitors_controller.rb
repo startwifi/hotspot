@@ -3,7 +3,7 @@ class VisitorsController < ApplicationController
   layout 'visitors'
 
   def index
-    if Rails.env.production?
+    if Rails.env.production? || Rails.env.staging?
       render_404 if params[:hs].blank?
       token = params[:hs][:token]
       link  = params[:hs][:link_login_only]

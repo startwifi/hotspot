@@ -2,32 +2,62 @@ class WidgetsController < ApplicationController
   layout :social_layout
 
   def show
-    begin
-      @company = current_user.company
-      if current_user.provider == 'vkontakte' && @company.vk.action == 'post'
-        @image = @company.vk.post_image? ? "#{root_url.chop + @company.vk.post_image.url}": nil
-        render 'widgets/vk/post'
-      elsif current_user.provider == 'vkontakte' && @company.vk.action == 'join'
-        is_member?('vk', @company.vk.group_name) ? redirect_to(router_url) : render('widgets/vk/join')
-      elsif current_user.provider == 'facebook' && @company.fb.action == 'post'
-        render 'widgets/fb/post'
-      elsif current_user.provider == 'facebook' && @company.fb.action == 'join'
-        is_member?('fb', @company.fb.group_id) ? redirect_to(router_url) : render('widgets/fb/join')
-      elsif current_user.provider == 'twitter' && @company.tw.action == 'join'
-        render 'widgets/tw/join'
-      elsif current_user.provider == 'twitter' && @company.tw.action == 'post'
-        render 'widgets/tw/post'
-      elsif current_user.provider == 'odnoklassniki'
-        redirect_to router_url
-      else
-        redirect_to router_url
-      end
-    # rescue
-    #   render_404
+    @company = current_user.company
+    case current_user.provider
+    when 'facebook'  then widget_fb
+    when 'twitter'   then widget_tw
+    when 'vkontakte' then widget_vk
+    when 'odnoklassniki' then widget_ok
+    else
+      render_404
     end
   end
 
   private
+
+  def widget_fb
+    case @company.fb.action
+    when 'post'
+      render 'widgets/fb/post'
+    when 'join'
+      is_member?('fb', @company.fb.group_id) ? redirect_to(router_url) : render('widgets/fb/join')
+    when 'card'
+      render 'widgets/card'
+    else
+      redirect_to router_url
+    end
+  end
+
+  def widget_tw
+    case @company.tw.action
+    when 'join'
+      render 'widgets/tw/join'
+    when 'post'
+      render 'widgets/tw/post'
+    when 'card'
+      render 'widgets/card'
+    else
+      redirect_to router_url
+    end
+  end
+
+  def widget_vk
+    case @company.vk.action
+    when 'post'
+      @image = @company.vk.post_image? ? "#{root_url.chop + @company.vk.post_image.url}": nil
+      render 'widgets/vk/post'
+    when 'join'
+      is_member?('vk', @company.vk.group_name) ? redirect_to(router_url) : render('widgets/vk/join')
+    when 'card'
+      render 'widgets/card'
+    else
+      redirect_to router_url
+    end
+  end
+
+  def widget_ok
+    redirect_to router_url
+  end
 
   def social_layout
     case current_user.provider
