@@ -10,6 +10,7 @@ class Company < ActiveRecord::Base
   has_one :vk, dependent: :destroy
   has_one :fb, dependent: :destroy
   has_one :tw, dependent: :destroy
+  has_one :in, dependent: :destroy
   has_one :ok, dependent: :destroy
 
   validates :name, :owner_name, :phone, :address, presence: true
@@ -31,6 +32,7 @@ class Company < ActiveRecord::Base
     when :fb then ENV['FB_GROUP_NAME']
     when :vk then ENV['VK_GROUP_NAME']
     when :tw then ENV['TW_GROUP_NAME']
+    when :in then ENV['IN_GROUP_NAME']
     when :ok then ENV['OK_GROUP_NAME']
     end
   end
@@ -40,6 +42,7 @@ class Company < ActiveRecord::Base
     when :fb then "https://facebook.com/" + ENV['FB_GROUP_NAME']
     when :vk then "https://vk.com/" + ENV['VK_GROUP_NAME']
     when :tw then "https://twitter.com/" + ENV['TW_GROUP_NAME']
+    when :in then "https://instagram.com/" + ENV['IN_GROUP_NAME']
     when :ok then "http://ok.ru/group/" + ENV['OK_GROUP_NAME']
     end
   end

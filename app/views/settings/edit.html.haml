@@ -16,6 +16,10 @@
         .form-group
           = tw.label :twitter
           = tw.select :action, acts, {}, class: 'form-control'
+      = fields_for @company.in do |ins|
+        .form-group
+          = ins.label :instagram
+          = ins.select :action, acts, {}, class: 'form-control'
       = fields_for @company.ok do |ok|
         .form-group
           = ok.label :odnoklassniki

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009123721) do
+ActiveRecord::Schema.define(version: 20151009133128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,21 @@ ActiveRecord::Schema.define(version: 20151009123721) do
   end
 
   add_index "fbs", ["company_id"], name: "index_fbs_on_company_id", using: :btree
+
+  create_table "ins", force: :cascade do |t|
+    t.integer  "company_id"
+    t.string   "group_id"
+    t.string   "group_name"
+    t.string   "action"
+    t.string   "link_redirect"
+    t.string   "post_text"
+    t.string   "post_link"
+    t.string   "post_image"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "ins", ["company_id"], name: "index_ins_on_company_id", using: :btree
 
   create_table "oks", force: :cascade do |t|
     t.integer  "company_id"
@@ -140,6 +155,7 @@ ActiveRecord::Schema.define(version: 20151009123721) do
   add_foreign_key "events", "companies"
   add_foreign_key "events", "users"
   add_foreign_key "fbs", "companies"
+  add_foreign_key "ins", "companies"
   add_foreign_key "oks", "companies"
   add_foreign_key "tws", "companies"
   add_foreign_key "users", "companies"

@@ -20,7 +20,7 @@ class CompaniesController < ApplicationController
   def create
     @company.cover = Rails.root.join('app/assets/images/startwifi.png').open
     if @company.save
-      @company.create_dummy_social(:fb, :vk, :tw, :ok)
+      @company.create_dummy_social(:fb, :vk, :tw, :in, :ok)
       redirect_to companies_path, notice: 'Company successfully created.'
     else
       render :new

@@ -11,6 +11,7 @@ class SettingsController < ApplicationController
       @company.fb.update(fb_params)
       @company.vk.update(vk_params)
       @company.tw.update(tw_params)
+      @company.in.update(in_params)
       @company.ok.update(ok_params)
       redirect_to edit_settings_path, notice: 'Settings successfully updated.'
     else
@@ -43,6 +44,10 @@ class SettingsController < ApplicationController
 
   def tw_params
     params.require(:tw).permit(:action)
+  end
+
+  def in_params
+    params.require(:in).permit(:action)
   end
 
   def ok_params

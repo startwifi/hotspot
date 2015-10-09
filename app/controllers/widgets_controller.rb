@@ -7,6 +7,7 @@ class WidgetsController < ApplicationController
     when 'facebook'  then widget_fb
     when 'twitter'   then widget_tw
     when 'vkontakte' then widget_vk
+    when 'instagram' then widget_in
     when 'odnoklassniki' then widget_ok
     else
       render_404
@@ -48,6 +49,19 @@ class WidgetsController < ApplicationController
       render 'widgets/vk/post'
     when 'join'
       is_member?('vk', @company.vk.group_name) ? redirect_to(router_url) : render('widgets/vk/join')
+    when 'card'
+      render 'widgets/card'
+    else
+      redirect_to router_url
+    end
+  end
+
+  def widget_in
+    case @company.in.action
+    when 'post'
+      render 'widgets/in/post'
+    when 'join'
+      render 'widgets/in/join'
     when 'card'
       render 'widgets/card'
     else

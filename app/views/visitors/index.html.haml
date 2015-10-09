@@ -14,6 +14,10 @@
       %li
         = link_to '/auth/vkontakte' do
           = image_tag 'vkontakte.png'
+    - unless @company.in.action.eql?('disabled')
+      %li
+        = link_to '/auth/instagram' do
+          = image_tag 'instagram.png'
     - unless @company.ok.action.eql?('disabled')
       %li
         = link_to '/auth/odnoklassniki' do
