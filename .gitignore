@@ -13,6 +13,7 @@
 /tmp
 
 # Other
+.DS_Store
 /.powenv
 /.ruby-gemset
 /.env
