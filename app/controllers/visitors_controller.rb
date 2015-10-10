@@ -10,7 +10,6 @@ class VisitorsController < ApplicationController
       dst   = params[:hs][:dst]
       mac   = params[:hs][:mac_esc]
     else
-      token = params[:hs][:token]
       token = Company.first.token
       link  = 'http://192.168.1.1/login'
       dst   = 'http://ukr.net'
