@@ -55,7 +55,7 @@ class EventsController < ApplicationController
   end
 
   def by_date
-    @events = current_admin.company.events.by_date(params[:date])
+    @events = current_admin.company.events.by_date(params[:date]).order('id DESC')
     render partial: 'by_date'
   end
 
