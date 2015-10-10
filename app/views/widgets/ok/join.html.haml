@@ -4,7 +4,36 @@
     Ok: subscribe for continue
   .panel-body
     %h4= @company.name
-    %h4= link_to "@#{@company.ok.group_name}", 'http://ok.ru/grouo/' + @company.ok.group_name
-  .panel-footer
-    = link_to 'Join group', event_subscribe_path(:ok), class: 'btn btn-primary btn-block'
+    #ok_group_widget.text-center
 .text-center= link_to 'Cancel', auth_path
+
+:javascript
+  !function (d, id, did, st) {
+    var js = d.createElement("script");
+    js.src = "https://connect.ok.ru/connect.js";
+    js.onload = js.onreadystatechange = function () {
+    if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {
+      if (!this.executed) {
+        this.executed = true;
+        setTimeout(function () {
+          OK.CONNECT.insertGroupWidget(id,did,st);
+        }, 0);
+      }
+    }}
+    d.documentElement.appendChild(js);
+  }(document,"ok_group_widget","#{@company.ok.group_name}","{width:250,height:160}");
+
+  function listenForJoin() {
+      if (window.addEventListener) {
+          window.addEventListener('message', onJoin, false);
+      } else {
+          window.attachEvent('onmessage', onJoin);
+      }
+  }
+  function onJoin(e) {
+      var args = e.data.split("$");
+      if (args[0] == "ok_join") {
+        location.replace("#{event_subscribe_path(:ok)}");
+      }
+  }
+  listenForJoin();

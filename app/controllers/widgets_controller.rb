@@ -74,7 +74,7 @@ class WidgetsController < ApplicationController
     when 'post'
       render 'widgets/ok/post'
     when 'join'
-      render 'widgets/ok/join'
+      is_member?('ok', @company.ok.group_name) ? redirect_to(router_url) : render('widgets/ok/join')
     when 'card'
       render 'widgets/card'
     else
@@ -92,16 +92,16 @@ class WidgetsController < ApplicationController
   end
 
   def is_member?(social, group)
-    if social == 'vk'
+    case social
+    when 'vk'
       group = RestClient.post 'https://api.vk.com/method/groups.isMember', { group_id: group, user_id: current_user.uid }
       member = JSON.parse(group.body).first[1] == 1 ? true : false
-    elsif social == 'fb'
-      graph = Koala::Facebook::API.new(session[:user_access_token])
-      member = unless graph.get_connections('me', "likes/#{group}").empty?
-        true
-      else
-        false
-      end
+    when 'fb'
+      graph = Koala::Facebook::API.new(session[:user_token])
+      graph.get_connections('me', "likes/#{group}").any?
+    when 'ok'
+      client = Odnoklassniki::Client.new(access_token: session[:user_token])
+      client.get('group.getUserGroupsByIds', group_id: group, uids: current_user.uid).any?
     end
   end
 end

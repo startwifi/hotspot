@@ -28,6 +28,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'twitter'
 gem 'cancancan'
+gem 'odnoklassniki'
 
 group :development, :test do
   gem 'byebug'
