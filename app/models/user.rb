@@ -16,47 +16,52 @@ class User < ActiveRecord::Base
   def self.create_with_omniauth(auth, company)
     create! do |user|
       user.provider = auth.provider
-      user.uid      = auth.uid
-      user.company  = company
-      hash = auth.extra.raw_info
-      if auth.info
-        user.name = auth.info.name || ""
-        user.url = auth.info.urls[user.provider.capitalize] || ""
-        user.email = auth.info.email || ""
-        user.birthday = get_birthday(user.provider, hash)
-        user.gender = get_gender(user.provider, hash)
+      user.uid = auth.uid
+      user.company = company
+      user.name = auth.info.name || ""
+      case auth.provider
+      when 'facebook'  then create_facebook(user, auth)
+      when 'vkontakte' then create_vkontakte(user, auth)
+      when 'twitter'   then create_twitter(user, auth)
+      when 'instagram' then create_instagram(user, auth)
+      when 'odnoklassniki' then create_odnoklassniki(user, auth)
       end
     end
   end
 
-  def self.get_birthday(provider, hash)
-    case provider
-    when 'facebook'
-      Date.strptime(hash.birthday, '%m/%d/%Y')
-    when 'vkontakte'
-      hash.bdate.to_date
-    when 'odnoklassniki'
-      Date.strptime(hash.birthday, '%Y-%m-%d')
-    else
-      nil
-    end if hash.birthday || hash.bdate
+  def self.create_facebook(user, auth)
+    raw_info = auth.extra.raw_info
+    user.url = auth.info.urls[user.provider.capitalize] || ''
+    user.email = auth.info.email || ''
+    user.birthday = Date.strptime(raw_info.birthday, '%m/%d/%Y') if raw_info.birthday
+    user.gender = raw_info.gender
   end
 
-  def self.get_gender(provider, hash)
-    case provider
-    when 'facebook'
-      hash.gender
-    when 'vkontakte'
-      if hash.sex == 1
-        :female
-      elsif hash.sex == 2
-        :male
-      else
-        ""
-      end
-    when 'odnoklassniki'
-      hash.gender
+  def self.create_vkontakte(user, auth)
+    raw_info = auth.extra.raw_info
+    user.url = auth.info.urls[user.provider.capitalize] || ''
+    user.email = auth.info.email || ''
+    user.birthday = raw_info.bdate.to_date if raw_info.bdate
+    user.gender = case raw_info.sex
+      when 1 then :female
+      when 2 then :male
+      else ''
     end
   end
 
+  def self.create_twitter(user, auth)
+    user.url = auth.info.urls[user.provider.capitalize] || ''
+  end
+
+  def self.create_instagram(user, auth)
+    user.url = 'https://instagram.com/' + auth.info.nickname
+  end
+
+  def self.create_odnoklassniki(user, auth)
+    raw_info = auth.extra.raw_info
+    user.url = auth.info.urls[user.provider.capitalize] || ''
+    user.email = auth.info.email || ''
+    user.birthday = Date.strptime(raw_info.birthday, '%Y-%m-%d') if raw_info.birthday
+    user.gender = raw_info.gender
+  end
 end
