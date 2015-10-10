@@ -1,0 +1,9 @@
+= render 'shared/settings_links'
+
+.row
+  .col-md-offset-4.col-md-4
+    - if @fb.errors.any?
+      = render 'shared/error_message', object: @fb
+    = form_for @fb, url: social_fb_path do |f|
+      = render 'social/shared/form', f: f, object: @fb
+    .sr-only= "group_id: #{@fb.group_id}"

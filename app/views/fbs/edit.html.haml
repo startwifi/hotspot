@@ -1,8 +1,0 @@
-= render 'shared/settings_links'
-
-.row
-  .col-md-offset-4.col-md-4
-    - if @fb.errors.any?
-      = render 'error_message', object: @fb
-    = render 'form'
-    .sr-only= "group_id: #{@fb.group_id}"

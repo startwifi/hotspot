@@ -4,5 +4,6 @@
   .col-md-offset-4.col-md-4
     - if @in.errors.any?
       = render 'error_message', object: @in
-    = render 'form'
+    = form_for @in, url: social_in_path do |f|
+      = render 'social/shared/form', f: f, object: @in
     .sr-only= "group_id: #{@in.group_id}"

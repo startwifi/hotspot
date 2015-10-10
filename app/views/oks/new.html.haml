@@ -1,7 +1,0 @@
-= render 'shared/settings_links'
-
-.row
-  .col-md-offset-4.col-md-4
-    - if @ok.errors.any?
-      = render 'error_message', object: @ok
-    = render 'form'

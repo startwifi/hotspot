@@ -1,0 +1,28 @@
+.form-group
+  = f.label :group_name
+  = f.text_field :group_name, class: 'form-control'
+.form-group
+  = f.label :post_text
+  = f.text_area :post_text, row: 4, class: 'form-control'
+.form-group
+  = f.label :post_link
+  = f.url_field :post_link, class: 'form-control'
+.form-group
+  = f.label :link_redirect
+  = f.url_field :link_redirect, class: 'form-control'
+.form-group
+  = f.label :post_image
+  - if object.post_image?
+    %div
+    = image_tag(object.post_image)
+  = f.file_field :post_image
+  %p.help-block
+    537x240px:
+    = object.post_image.extension_white_list.join(', ')
+  = f.hidden_field :post_image_cache
+%div.checkbox
+  %label
+    = f.check_box :remove_post_image
+    = f.label :remove_post_image
+.form-group
+  = f.submit class: 'btn btn-primary'

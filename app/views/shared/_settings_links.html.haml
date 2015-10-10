@@ -4,24 +4,24 @@
     = link_to edit_settings_path do
       %i.fa.fa-lg.fa-home
       Start page
-  %li{class: "#{controller?('fbs') ? 'active' : ''}"}
-    = link_to edit_settings_fb_path do
+  %li{class: "#{controller?('social/fbs') ? 'active' : ''}"}
+    = link_to edit_social_fb_path do
       %i.fa.fa-lg.fa-facebook-square
       Facebook
-  %li{class: "#{controller?('vks') ? 'active' : ''}"}
-    = link_to edit_settings_vk_path do
+  %li{class: "#{controller?('social/vks') ? 'active' : ''}"}
+    = link_to edit_social_vk_path do
       %i.fa.fa-lg.fa-vk
       Vkontakte
-  %li{class: "#{controller?('tws') ? 'active' : ''}"}
-    = link_to edit_settings_tw_path do
+  %li{class: "#{controller?('social/tws') ? 'active' : ''}"}
+    = link_to edit_social_tw_path do
       %i.fa.fa-lg.fa-twitter-square
       Twitter
-  %li{class: "#{controller?('ins') ? 'active' : ''}"}
-    = link_to edit_settings_in_path do
+  %li{class: "#{controller?('social/ins') ? 'active' : ''}"}
+    = link_to edit_social_in_path do
       %i.fa.fa-lg.fa-instagram
       Instagram
-  %li{class: "#{controller?('oks') ? 'active' : ''}"}
-    = link_to edit_settings_ok_path do
+  %li{class: "#{controller?('social/oks') ? 'active' : ''}"}
+    = link_to edit_social_ok_path do
       %i.fa.fa-lg.fa-odnoklassniki-square
       Odnoklassniki
   %li{class: "#{controller?('settings') && action?('advanced') ? 'active' : ''}"}

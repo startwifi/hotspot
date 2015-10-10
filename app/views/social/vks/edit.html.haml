@@ -4,5 +4,6 @@
   .col-md-offset-4.col-md-4
     - if @vk.errors.any?
       = render 'error_message', object: @vk
-    = render 'form'
+    = form_for @vk, url: social_vk_path do |f|
+      = render 'social/shared/form', f: f, object: @vk
     .sr-only= "group_id: #{@vk.group_id}"

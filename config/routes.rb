@@ -19,12 +19,14 @@ Rails.application.routes.draw do
 
   resource  :dashboard, only: :show
   resource  :widget,    only: :show
-  resource  :settings,  only: [:edit, :update] do
+  namespace :social do
     resource :vk, only: [:edit, :update]
     resource :fb, only: [:edit, :update]
     resource :tw, only: [:edit, :update]
     resource :in, only: [:edit, :update]
     resource :ok, only: [:edit, :update]
+  end
+  resource  :settings,  only: [:edit, :update] do
     member do
       get 'advanced'
       put 'advanced', to: 'settings#advanced_update'
