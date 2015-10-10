@@ -13,6 +13,10 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :twitter,
     Rails.application.secrets.twitter_key,
     Rails.application.secrets.twitter_secret
+  provider :instagram,
+    Rails.application.secrets.instagram_key,
+    Rails.application.secrets.instagram_secret,
+    scope: 'likes comments relationships'
   provider :odnoklassniki,
     Rails.application.secrets.ok_key,
     Rails.application.secrets.ok_secret,
