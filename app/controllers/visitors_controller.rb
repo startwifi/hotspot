@@ -4,7 +4,7 @@ class VisitorsController < ApplicationController
 
   def index
     if Rails.env.production? || Rails.env.staging?
-      render_404 if session[:company_token].blank?
+      # render_404 if session[:company_token].blank?
       token = params[:hs][:token]
       link  = params[:hs][:link_login_only]
       dst   = params[:hs][:dst]
