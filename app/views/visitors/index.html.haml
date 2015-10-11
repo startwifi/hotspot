@@ -22,5 +22,10 @@
       %li
         = link_to '/auth/odnoklassniki' do
           = image_tag 'ok.png'
+  - if @company.card?
+    %h3.text-center
+      = link_to 'Download bonus card', @company.card.url,
+        download: @company.name.underscore.parameterize("_"),
+        onclick: "location='#{router_url}'", class: 'btn btn-primary'
   = image_tag @company.cover.url, alt: @company.name, class: 'img-responsive' if @company.cover?
 

@@ -3,7 +3,7 @@
 .row
   .col-md-offset-4.col-md-4
     = form_for @company, url: settings_path, method: :put do |f|
-      - acts = [['Join group', :join], ['Make post', :post], ['Just auth', :auth], ['Auth + Card', :card], ['Disabled', :disabled]]
+      - acts = [['Join group', :join], ['Make post', :post], ['Just auth', :auth], ['Disabled', :disabled]]
       = fields_for @company.fb do |fb|
         .form-group
           = fb.label :facebook

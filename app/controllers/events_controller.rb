@@ -49,11 +49,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def card
-    current_user.add_event(:card, current_user.provider, current_user.company)
-    redirect_to router_url
-  end
-
   def by_date
     @events = current_admin.company.events.by_date(params[:date]).order('id DESC')
     render partial: 'by_date'

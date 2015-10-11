@@ -9,8 +9,6 @@ class WidgetsController < ApplicationController
     when 'vkontakte' then widget_vk
     when 'instagram' then widget_in
     when 'odnoklassniki' then widget_ok
-    else
-      render_404
     end
   end
 
@@ -22,8 +20,6 @@ class WidgetsController < ApplicationController
       render 'widgets/fb/post'
     when 'join'
       is_member?('fb', @company.fb.group_id) ? redirect_to(router_url) : render('widgets/fb/join')
-    when 'card'
-      render 'widgets/card'
     else
       redirect_to router_url
     end
@@ -35,8 +31,6 @@ class WidgetsController < ApplicationController
       render 'widgets/tw/join'
     when 'post'
       render 'widgets/tw/post'
-    when 'card'
-      render 'widgets/card'
     else
       redirect_to router_url
     end
@@ -49,8 +43,6 @@ class WidgetsController < ApplicationController
       render 'widgets/vk/post'
     when 'join'
       is_member?('vk', @company.vk.group_name) ? redirect_to(router_url) : render('widgets/vk/join')
-    when 'card'
-      render 'widgets/card'
     else
       redirect_to router_url
     end
@@ -62,8 +54,6 @@ class WidgetsController < ApplicationController
       render 'widgets/in/post'
     when 'join'
       render 'widgets/in/join'
-    when 'card'
-      render 'widgets/card'
     else
       redirect_to router_url
     end
@@ -75,8 +65,6 @@ class WidgetsController < ApplicationController
       render 'widgets/ok/post'
     when 'join'
       is_member?('ok', @company.ok.group_name) ? redirect_to(router_url) : render('widgets/ok/join')
-    when 'card'
-      render 'widgets/card'
     else
       redirect_to router_url
     end
