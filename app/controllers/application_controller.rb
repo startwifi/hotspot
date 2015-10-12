@@ -33,41 +33,21 @@ class ApplicationController < ActionController::Base
   end
 
   def router_url
-    make_link(session[:link], destination_link, session[:mac])
+    link = current_user ? destination_link : session[:dst]
+    make_link(session[:link], link, session[:mac])
   end
 
   def destination_link
-    case current_user.provider
-    when 'vkontakte'
-      unless current_user.company.vk.link_redirect.empty?
-        current_user.company.vk.link_redirect
-      else
-        session[:dst]
-      end
-    when 'facebook'
-      unless current_user.company.fb.link_redirect.empty?
-        current_user.company.fb.link_redirect
-      else
-        session[:dst]
-      end
-    when 'twitter'
-      unless current_user.company.tw.link_redirect.empty?
-        current_user.company.tw.link_redirect
-      else
-        session[:dst]
-      end
-    when 'instagram'
-      unless current_user.company.in.link_redirect.empty?
-        current_user.company.in.link_redirect
-      else
-        session[:dst]
-      end
-    when 'odnoklassniki'
-      unless current_user.company.ok.link_redirect.empty?
-        current_user.company.ok.link_redirect
-      else
-        session[:dst]
-      end
+    provider = case current_user.provider
+    when 'vkontakte' then 'vk'
+    when 'facebook'  then 'fb'
+    when 'twitter'   then 'tw'
+    when 'instagram' then 'in'
+    when 'odnoklassniki' then 'ok'
+    end
+
+    if current_user.company.send(provider).link_redirect?
+      current_user.company.send(provider).link_redirect
     else
       session[:dst]
     end
