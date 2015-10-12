@@ -21,22 +21,31 @@ class EventsController < ApplicationController
   def post
     case params[:provider]
     when 'fb'
-      image = current_user.company.fb.post_image? ? "#{root_url.chop + current_user.company.fb.post_image.url}" : nil
-      graph = Koala::Facebook::API.new(session[:user_access_token])
-      share = graph.put_wall_post(current_user.company.fb.post_text,
-        { link: current_user.company.fb.post_link,
-        description: current_user.company.fb.post_text,
-        picture: image })
-      if share['id']
-        current_user.add_event(:post, :facebook, current_user.company)
-        redirect_to router_url
-      else
-        render text: 'Error'
-      end
+      post_facebook
     when 'vk'
       current_user.add_event(:post, :vkontakte, current_user.company)
       redirect_to router_url
     when 'tw'
+      post_twitter
+    end
+  end
+
+  def post_facebook
+    image = current_user.company.fb.post_image? ? "#{root_url.chop + current_user.company.fb.post_image.url}" : nil
+    graph = Koala::Facebook::API.new(session[:user_access_token])
+    share = graph.put_wall_post(current_user.company.fb.post_text,
+      { link: current_user.company.fb.post_link,
+      description: current_user.company.fb.post_text,
+      picture: image })
+    if share['id']
+      current_user.add_event(:post, :facebook, current_user.company)
+      redirect_to router_url
+    else
+      render text: 'Error'
+    end
+  end
+
+  def post_twitter
       client = twitter_client
       if current_user.company.tw.post_image?
         client.update_with_media(current_user.company.tw.post_text, File.new("#{current_user.company.tw.post_image.path}"))
@@ -45,8 +54,6 @@ class EventsController < ApplicationController
       end
       current_user.add_event(:post, :twitter, current_user.company)
       redirect_to router_url
-    when 'ok'
-    end
   end
 
   def by_date
