@@ -1,12 +1,16 @@
 class User < ActiveRecord::Base
   belongs_to :company
-
   has_many :events, dependent: :destroy
-
+  has_many :statistics, dependent: :destroy
   validates :name, :provider, :uid, :company, presence: true
 
   def add_event(action, provider, company)
     events.create!(action: action, provider: provider, company: company)
+  end
+
+  def add_statistic(browser, mac)
+    statistics.create!(company: self.company, provider: self.provider,
+      platform: browser.platform, browser: browser.name, mac: mac)
   end
 
   def self.from_omniauth(auth, company)

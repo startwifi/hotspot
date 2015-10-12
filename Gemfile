@@ -29,6 +29,7 @@ gem 'mini_magick'
 gem 'twitter'
 gem 'cancancan'
 gem 'odnoklassniki'
+gem 'browser'
 
 group :development, :test do
   gem 'byebug'
