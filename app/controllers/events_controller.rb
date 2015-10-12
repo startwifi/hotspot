@@ -2,18 +2,18 @@ class EventsController < ApplicationController
   def subscribe
     case params[:provider]
     when 'fb'
-      current_user.add_event(:join, :facebook, current_user.company)
+      current_user.add_event(:join)
       redirect_to router_url
     when 'vk'
-      current_user.add_event(:join, :vkontakte, current_user.company)
+      current_user.add_event(:join)
       redirect_to router_url
     when 'tw'
       client = twitter_client
       client.follow(current_user.company.tw.group_name)
-      current_user.add_event(:join, :twitter, current_user.company)
+      current_user.add_event(:join)
       redirect_to router_url
     when 'ok'
-      current_user.add_event(:join, :odnoklassniki, current_user.company)
+      current_user.add_event(:join)
       redirect_to router_url
     end
   end
@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     when 'fb'
       post_facebook
     when 'vk'
-      current_user.add_event(:post, :vkontakte, current_user.company)
+      current_user.add_event(:post)
       redirect_to router_url
     when 'tw'
       post_twitter
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
       description: current_user.company.fb.post_text,
       picture: image })
     if share['id']
-      current_user.add_event(:post, :facebook, current_user.company)
+      current_user.add_event(:post)
       redirect_to router_url
     else
       render text: 'Error'
@@ -52,7 +52,7 @@ class EventsController < ApplicationController
       else
         client.update(current_user.company.tw.post_text)
       end
-      current_user.add_event(:post, :twitter, current_user.company)
+      current_user.add_event(:post)
       redirect_to router_url
   end
 

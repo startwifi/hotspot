@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   has_many :statistics, dependent: :destroy
   validates :name, :provider, :uid, :company, presence: true
 
-  def add_event(action, provider, company)
-    events.create!(action: action, provider: provider, company: company)
+  def add_event(action)
+    events.create!(action: action, provider: self.provider, company: self.company)
   end
 
   def add_statistic(browser, mac)

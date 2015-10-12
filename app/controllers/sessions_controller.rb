@@ -7,14 +7,10 @@ class SessionsController < ApplicationController
     browser = Browser.new(ua: request.env['HTTP_USER_AGENT'])
     user = User.from_omniauth(request.env['omniauth.auth'], company)
     save_access_token(user.provider)
-    user.add_event(:login, user.provider, company)
+    user.add_event(:login)
     user.add_statistic(browser, session[:mac])
     session[:user_id] = user.id
-    if company
-      redirect_to widget_path
-    else
-      render_404
-    end
+    company ? redirect_to(widget_path) : render_404
   end
 
   def failure
