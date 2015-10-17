@@ -6,11 +6,13 @@ class DashboardsController < ApplicationController
       @company = current_admin.company
       @recent_events = @company.events.today.order('created_at DESC')
       @days_range = get_range.to_a.reverse
-      @events = get_events_by_month.where('action != ?', 'login')
+      @events = get_events_by_month
     else
       redirect_to companies_path
     end
   end
+
+  private
 
   def get_range
     if params[:date] && params[:date][:month].to_i < Time.current.month

@@ -20,8 +20,8 @@ class WidgetsController < ApplicationController
       render 'widgets/fb/post'
     when 'join'
       is_member?('fb', @company.fb.group_id) ? redirect_to(router_url) : render('widgets/fb/join')
-    else
-      redirect_to router_url
+    when 'auth'
+      redirect_to event_auth_path(:fb)
     end
   end
 
@@ -31,8 +31,8 @@ class WidgetsController < ApplicationController
       render 'widgets/tw/join'
     when 'post'
       render 'widgets/tw/post'
-    else
-      redirect_to router_url
+    when 'auth'
+      redirect_to event_auth_path(:tw)
     end
   end
 
@@ -43,8 +43,8 @@ class WidgetsController < ApplicationController
       render 'widgets/vk/post'
     when 'join'
       is_member?('vk', @company.vk.group_name) ? redirect_to(router_url) : render('widgets/vk/join')
-    else
-      redirect_to router_url
+    when 'auth'
+      redirect_to event_auth_path(:vk)
     end
   end
 
@@ -54,8 +54,8 @@ class WidgetsController < ApplicationController
       render 'widgets/in/post'
     when 'join'
       render 'widgets/in/join'
-    else
-      redirect_to router_url
+    when 'auth'
+      redirect_to event_auth_path(:in)
     end
   end
 
@@ -65,8 +65,8 @@ class WidgetsController < ApplicationController
       render 'widgets/ok/post'
     when 'join'
       is_member?('ok', @company.ok.group_name) ? redirect_to(router_url) : render('widgets/ok/join')
-    else
-      redirect_to router_url
+    when 'auth'
+      redirect_to event_auth_path(:ok)
     end
   end
 

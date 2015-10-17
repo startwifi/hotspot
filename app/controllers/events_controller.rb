@@ -30,6 +30,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def auth
+    current_user.add_event(:auth)
+    redirect_to router_url
+  end
+
   def post_facebook
     image = current_user.company.fb.post_image? ? "#{root_url.chop + current_user.company.fb.post_image.url}" : nil
     graph = Koala::Facebook::API.new(session[:user_token])
@@ -58,8 +63,7 @@ class EventsController < ApplicationController
 
   def by_date
     company_events = current_admin.company.events
-    @events = company_events.where('action != ?', 'login').
-      by_date(params[:date]).order('id DESC')
+    @events = company_events.by_date(params[:date]).order('id DESC')
     render partial: 'by_date'
   end
 
