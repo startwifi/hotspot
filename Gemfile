@@ -32,6 +32,7 @@ gem 'odnoklassniki'
 gem 'browser'
 gem 'chartkick'
 gem 'groupdate'
+gem 'exception_notification'
 
 group :development, :test do
   gem 'byebug'
