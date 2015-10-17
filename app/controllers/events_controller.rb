@@ -57,7 +57,9 @@ class EventsController < ApplicationController
   end
 
   def by_date
-    @events = current_admin.company.events.by_date(params[:date]).order('id DESC')
+    company_events = current_admin.company.events
+    @events = company_events.where('action != ?', 'login').
+      by_date(params[:date]).order('id DESC')
     render partial: 'by_date'
   end
 

@@ -6,7 +6,7 @@ class DashboardsController < ApplicationController
       @company = current_admin.company
       @recent_events = @company.events.today.order('created_at DESC')
       @days_range = get_range.to_a.reverse
-      @events = get_events_by_month
+      @events = get_events_by_month.where('action != ?', 'login')
     else
       redirect_to companies_path
     end
