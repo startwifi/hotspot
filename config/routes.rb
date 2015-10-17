@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resource  :dashboard, only: :show
+  resource  :stats,     only: :show
   resource  :widget,    only: :show
   namespace :social do
     resource :vk, only: [:edit, :update]
@@ -38,7 +39,6 @@ Rails.application.routes.draw do
     post '/admin',     to: 'companies#create_admin', on: :member
   end
   post '/events/by_date',           to: 'events#by_date',   as: 'events_by_date'
-  get '/event/card',                to: 'events#card',      as: 'event_card'
   get '/event/:provider/subscribe', to: 'events#subscribe', as: 'event_subscribe'
   get '/event/:provider/post',      to: 'events#post',      as: 'event_post'
   get '/event/:provider/auth',      to: 'events#auth',      as: 'event_auth'

@@ -3,6 +3,7 @@
     %li= link_to 'Companies', companies_path
   - else
     %li= link_to 'Dashboard', dashboard_path
+    %li= link_to 'Statistics', stats_path
     %li= link_to 'Settings', edit_settings_path
   %li.dropdown
     = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown', role: 'button', 'aria-haspopup': true, 'aria-expanded': false } do
