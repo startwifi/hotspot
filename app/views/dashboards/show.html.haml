@@ -71,6 +71,19 @@
         %th Link
       %tbody#events
 
+
+  .col-md-12
+    %h4 Charts
+    .col-md-6
+      %h4 Social networks
+      = pie_chart current_admin.company.users.group(:provider).count, width: '300px'
+    .col-md-6
+      %h4 Genders
+      = pie_chart current_admin.company.users.group(:gender).count, width: '300px'
+    .col-md-12
+      %h4 Activity
+      = line_chart current_admin.company.events.group_by_day(:created_at).count
+
 :javascript
   var eventDate = $(".event-row:first").attr("data-event-date");
   var getEvents = $.post("#{events_by_date_path}", { date: eventDate });

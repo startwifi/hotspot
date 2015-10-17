@@ -30,6 +30,8 @@ gem 'twitter'
 gem 'cancancan'
 gem 'odnoklassniki'
 gem 'browser'
+gem 'chartkick'
+gem 'groupdate'
 
 group :development, :test do
   gem 'byebug'

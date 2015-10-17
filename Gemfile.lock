@@ -83,6 +83,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    chartkick (1.4.1)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -128,6 +129,8 @@ GEM
     formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    groupdate (2.5.0)
+      activesupport (>= 3)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -402,6 +405,7 @@ DEPENDENCIES
   capistrano3-puma
   capybara
   carrierwave
+  chartkick
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
@@ -409,6 +413,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   font-awesome-rails
+  groupdate
   guard-rspec
   haml-rails
   has_secure_token
