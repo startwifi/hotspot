@@ -48,6 +48,8 @@ class EventsController < ApplicationController
     else
       render text: 'Error'
     end
+  rescue Koala::Facebook::ClientError => e
+    redirect_to auth_failure_path(message: e)
   end
 
   def post_twitter
