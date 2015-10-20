@@ -3,5 +3,5 @@ class Tw < ActiveRecord::Base
 
   belongs_to :company
 
-  validates :company, :post_text, presence: true
+  validates :company, :group_name, :post_text, presence: true
 end
