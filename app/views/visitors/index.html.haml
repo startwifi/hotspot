@@ -1,6 +1,5 @@
 .text-center
   %h1= @company.name
-  %p This is a free wifi hotspot. You need to sign in with a social network.
   %ul.list-inline
     - unless @company.fb.action.eql?('disabled')
       %li
