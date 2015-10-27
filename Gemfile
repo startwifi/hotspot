@@ -34,6 +34,10 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'exception_notification'
 
+# Localization
+gem 'rails-i18n', '~> 4.0'
+gem 'devise-i18n'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -64,4 +68,3 @@ group :test do
   gem 'faker'
   gem 'launchy'
 end
-
