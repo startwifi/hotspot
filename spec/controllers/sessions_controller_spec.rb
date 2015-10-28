@@ -2,11 +2,9 @@ require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
   let!(:company) { create(:company) }
-  let(:auth_link) { 'http://router/auth' }
 
   before do
     session[:company_token] = company.token
-    session[:auth_link] = "http://router/auth"
   end
 
   describe 'GET #create' do
@@ -25,9 +23,9 @@ RSpec.describe SessionsController, type: :controller do
         expect(session[:user_id]).not_to be_nil
       end
 
-      it 'redirects to the auth link' do
+      it 'redirects to the widget' do
         post :create, provider: :facebook
-        expect(response).to redirect_to auth_link
+        expect(response).to redirect_to widget_path
       end
     end
 
@@ -48,27 +46,8 @@ RSpec.describe SessionsController, type: :controller do
 
       it 'redirects to the auth link' do
         post :create, provider: :vkontakte
-        expect(response).to redirect_to auth_link
+        expect(response).to redirect_to widget_path
       end
     end
   end
-
-  describe '#destroy' do
-    before do
-      request.env['omniauth.auth'] = auth_mock_facebook
-      post :create, provider: :facebook
-    end
-
-    it 'resets the session' do
-      expect(session[:user_id]).not_to be_nil
-      delete :destroy
-      expect(session[:user_id]).to be_nil
-    end
-
-    it 'redirects to the auth link' do
-      delete :destroy
-      expect(response).to redirect_to auth_path
-    end
-  end
-
 end
