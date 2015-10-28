@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe User, type: :model do
   let(:user) { create(:user) }
 
@@ -8,10 +6,10 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of :provider }
     it { should validate_presence_of :uid }
     it { should validate_presence_of :company }
-    it { should belong_to :company }
   end
 
   describe 'association' do
+    it { should belong_to :company }
     it { should have_many(:events).dependent(:destroy) }
   end
 
@@ -45,5 +43,4 @@ RSpec.describe User, type: :model do
       expect(user.events).to match_array [first_event, second_event]
     end
   end
-
 end
