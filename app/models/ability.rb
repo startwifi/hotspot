@@ -2,12 +2,16 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= Admin.new # guest user (not logged in)
-    if user.admin?
+    user ||= User.new # guest user (not logged in)
+    if user.is_a?(Admin) && user.admin?
       can :manage, :all
-    else
-      can :read, User, company: user.company
-      can :manage, [Fb, Vk, Tw], company: user.company
+    elsif user.is_a?(Admin)
+      can [:read, :update], [Fb, Tw, Vk, In, Ok], company_id: user.company.id
+      can [:read, :update], Admin, company_id: user.company.id
+      can :read, Company, id: user.company.id
+      can :read, User, company_id: user.company.id
+      can :read, Event, company_id: user.company.id
+      can :read, Statistic, company_id: user.company.id
     end
   end
 end

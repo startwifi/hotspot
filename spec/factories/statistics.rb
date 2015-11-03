@@ -1,13 +1,13 @@
 FactoryGirl.define do
   factory :statistic do
-    user nil
-company nil
-provider "MyString"
-platform "MyString"
-platform_version "MyString"
-browser "MyString"
-browser_version "MyString"
-mac "MyString"
+    user
+    company
+    provider "Facebook"
+    platform "Mac"
+    platform_version "10.11"
+    browser "Safari"
+    browser_version "10"
+    mac { Faker::Internet.mac_address }
   end
 
 end

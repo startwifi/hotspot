@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :event do
-    user nil
+    user
     action "login"
   end
 
