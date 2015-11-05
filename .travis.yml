@@ -9,3 +9,5 @@ script:
   - RAILS_ENV=test bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
   - bundle exec rake spec
+notifications:
+  slack: startwifi:F06TJu0r4obmT3tMrvDWfW1p
