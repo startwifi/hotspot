@@ -3,23 +3,23 @@
   %ul.list-inline
     - unless @company.fb.action.eql?('disabled')
       %li
-        = link_to '/auth/facebook' do
+        = link_to '/auth/facebook', class: 'social' do
           = image_tag 'facebook.png'
     - unless @company.tw.action.eql?('disabled')
       %li
-        = link_to '/auth/twitter' do
+        = link_to '/auth/twitter', class: 'social' do
           = image_tag 'twitter.png'
     - unless @company.vk.action.eql?('disabled')
       %li
-        = link_to '/auth/vkontakte' do
+        = link_to '/auth/vkontakte', class: 'social' do
           = image_tag 'vkontakte.png'
     - unless @company.in.action.eql?('disabled')
       %li
-        = link_to '/auth/instagram' do
+        = link_to '/auth/instagram', class: 'social' do
           = image_tag 'instagram.png'
     - unless @company.ok.action.eql?('disabled')
       %li
-        = link_to '/auth/odnoklassniki' do
+        = link_to '/auth/odnoklassniki', class: 'social' do
           = image_tag 'ok.png'
   - if @company.card?
     %h3.text-center
@@ -29,6 +29,6 @@
   = image_tag @company.cover.url, alt: @company.name, class: 'img-responsive' if @company.cover?
 
 :javascript
-  $('a').click(function(){
+  $('.social').click(function(){
     $('.preloader').toggle()
   })
