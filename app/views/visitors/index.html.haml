@@ -28,3 +28,7 @@
         onclick: "location='#{router_url}'", class: 'btn btn-primary'
   = image_tag @company.cover.url, alt: @company.name, class: 'img-responsive' if @company.cover?
 
+:javascript
+  $('a').click(function(){
+    $('.preloader').toggle()
+  })
