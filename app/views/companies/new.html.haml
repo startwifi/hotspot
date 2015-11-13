@@ -1,4 +1,4 @@
-%h2 Add company
+%h2= t('.add_company')
 
 .row
   .col-md-offset-4.col-md-4
@@ -10,17 +10,17 @@
             %li= error
     = form_for @company do |f|
       .form-group
-        = f.label :name
+        = f.label :name, t('.name')
         = f.text_field :name, class: 'form-control'
       .form-group
-        = f.label :owner_name
+        = f.label :owner_name, t('.owner_name')
         = f.text_field :owner_name, class: 'form-control'
       .form-group
-        = f.label :phone
+        = f.label :phone, t('.phone')
         = f.text_field :phone, class: 'form-control'
       .form-group
-        = f.label :address
+        = f.label :address, t('.address')
         = f.text_field :address, class: 'form-control'
       .form-group
         = f.submit class: 'btn btn-primary'
-    %p= link_to 'Back', companies_path
+    %p= link_to t('.back'), companies_path

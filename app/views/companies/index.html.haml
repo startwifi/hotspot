@@ -1,15 +1,15 @@
-%h2 All companies
+%h2= t('.all_companies')
 
 - if @companies
   .table-responsive
     %table.table.table-striped
       %thead
-        %th Name
-        %th Contact name
-        %th Contact phone
-        %th Address
-        %th Token
-        %th Options
+        %th= t('.name')
+        %th= t('.contact')
+        %th= t('.phone')
+        %th= t('.address')
+        %th= t('.token')
+        %th= t('.options')
       - @companies.each do |company|
         %tr
           %td= company.name
@@ -17,5 +17,5 @@
           %td= company.phone
           %td= company.address
           %td= company.token
-          %td= link_to 'Show', company_path(company)
-  %p= link_to 'Add new company', new_company_path, class: 'btn btn-primary'
+          %td= link_to t('.show'), company_path(company)
+  %p= link_to t('.add_new'), new_company_path, class: 'btn btn-primary'

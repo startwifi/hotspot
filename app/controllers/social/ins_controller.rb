@@ -8,7 +8,7 @@ class Social::InsController < ApplicationController
   def update
     @in = current_admin.company.in
     if @in.update(in_params)
-      redirect_to edit_social_in_path, notice: "Facebook successfully updated."
+      redirect_to edit_social_in_path, notice: t('.success')
     else
       render :edit
     end
@@ -17,7 +17,8 @@ class Social::InsController < ApplicationController
   private
 
   def in_params
-    params.require(:in).permit(:group_name, :post_text, :post_link,
-      :link_redirect, :action, :post_image, :post_image_cache, :remove_post_image)
+    params.require(:in)
+      .permit(:group_name, :post_text, :post_link, :action, :link_redirect,
+              :post_image, :post_image_cache, :remove_post_image)
   end
 end

@@ -13,7 +13,7 @@ class SettingsController < ApplicationController
       @company.tw.update(tw_params)
       @company.in.update(in_params)
       @company.ok.update(ok_params)
-      redirect_to edit_settings_path, notice: 'Settings successfully updated.'
+      redirect_to edit_settings_path, notice: t('.success')
     else
       render :edit
     end
@@ -26,7 +26,7 @@ class SettingsController < ApplicationController
   def advanced_update
     @company = current_admin.company
     if @company.update(company_params)
-      redirect_to advanced_settings_path, notice: 'Settings successfully updated.'
+      redirect_to advanced_settings_path, notice: t('.success')
     else
       render :advanced
     end
@@ -55,7 +55,8 @@ class SettingsController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:link_redirect, :action, :cover,
-      :cover_cache, :remove_cover, :card, :card_cache, :remove_card)
+    params.require(:company)
+      .permit(:link_redirect, :action, :cover, :cover_cache, :remove_cover,
+              :card, :card_cache, :remove_card)
   end
 end

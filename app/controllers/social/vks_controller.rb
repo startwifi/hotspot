@@ -8,7 +8,7 @@ class Social::VksController < ApplicationController
   def update
     @vk = current_admin.company.vk
     if @vk.update(vk_params)
-      redirect_to edit_social_vk_path, notice: "Vk successfully updated."
+      redirect_to edit_social_vk_path, notice: t('.success')
     else
       render :edit
     end
@@ -17,7 +17,8 @@ class Social::VksController < ApplicationController
   private
 
   def vk_params
-    params.require(:vk).permit(:group_name, :post_text, :post_link,
-      :link_redirect, :action, :post_image, :post_image_cache, :remove_post_image)
+    params.require(:vk)
+      .permit(:group_name, :post_text, :post_link, :action, :link_redirect,
+              :post_image, :post_image_cache, :remove_post_image)
   end
 end

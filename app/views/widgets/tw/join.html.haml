@@ -1,10 +1,10 @@
 .panel.panel-default
   .panel-heading
     %i.fa.fa-twitter-square
-    Twitter: follow us for continue
+    = t('.header')
   .panel-body
     %h3= @company.name
     %h4= link_to "@#{@company.tw.group_name}", 'https://twitter.com/' + @company.tw.group_name
   .panel-footer
-    = link_to 'Follow us', event_subscribe_path(:tw), class: 'btn btn-primary btn-block'
-.text-center= link_to 'Cancel', auth_path
+    = link_to t('.follow'), event_subscribe_path(:tw), class: 'btn btn-primary btn-block'
+.text-center= link_to t('.cancel'), auth_path

@@ -1,11 +1,11 @@
-%h2 Dashboard
+%h2= t('.dashboard')
 
 .col-md-3
-  %h4 Statistics by month
+  %h4= t('.statistics_by_month')
   = form_tag :dashboard, method: 'get' do
     - month = params[:date] ? params[:date][:month].to_i : Date.today
     = select_month month, {}, {class: 'form-control', onchange: 'this.form.submit()'}
-  %h4 Current settings
+  %h4= t('.current_settings')
   %table
     %tr
       %td
@@ -37,7 +37,7 @@
     %table.table.table-striped.table-hover
       %thead
         %tr.text-center
-          %th Date
+          %th= t('.date')
           %th
             %i.fa.fa-facebook-square
             = @events.social_count(:facebook)
@@ -66,9 +66,9 @@
     %table.table.table-striped
       %thead
         %th
-        %th Time
-        %th Action
-        %th Link
+        %th= t('.time')
+        %th= t('.action')
+        %th= t('.link')
       %tbody#events
 
 :javascript

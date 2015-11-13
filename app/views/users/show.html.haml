@@ -3,24 +3,24 @@
 .col-md-6.col-md-offset-3
   %table.table.table-striped
     %tr
-      %th{width: '20%'} Name
+      %th{width: '20%'}= t('.name')
       %td= @user.name if @user.name
     %tr
-      %th Provider
+      %th= t('.provider')
       %td= @user.provider
     %tr
-      %th Uid
+      %th= t('.uid')
       %td= @user.uid
     %tr
-      %th Birthday
+      %th= t('.birthday')
       %td= @user.birthday
     %tr
-      %th Url
+      %th= t('.url')
       %td= link_to @user.url, @user.url
     %tr
-      %th Email
+      %th= t('.email')
       %td= @user.email
     %tr
-      %th Gender
+      %th= t('.gender')
       %td= @user.gender
-  %p= link_to 'Back', :back
+  %p= link_to t('.back'), :back

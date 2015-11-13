@@ -1,6 +1,6 @@
 - if object.errors.any?
   #error_explanation
-    %h2= "Form contains #{pluralize(object.errors.count, 'error')}:"
+    %h2= t('.form_contains', count: pluralize(object.errors.count, 'error'))
     %ul
       - object.errors.full_messages.each do |error|
         %li= error

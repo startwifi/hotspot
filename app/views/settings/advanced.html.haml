@@ -4,7 +4,7 @@
   .col-md-offset-4.col-md-4
     = form_for @company, url: advanced_settings_path, method: :put do |f|
       .form-group
-        = f.label :card
+        = f.label :card, t('.card')
         - if @company.card?
           %div
           = image_tag(@company.card)
@@ -15,6 +15,6 @@
       %div.checkbox
         %label
           = f.check_box :remove_card
-          = f.label :remove_card
+          = f.label :remove_card, t('.remove_card')
       .form-group
-        = f.submit 'Save settings', class: 'btn btn-primary'
+        = f.submit t('.save'), class: 'btn btn-primary'

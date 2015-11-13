@@ -1,7 +1,7 @@
 .panel.panel-default
   .panel-heading
     %i.fa.fa-vk
-    Vkontakte: subscribe for continue
+    = t('.header')
   .panel-body
     %h4= @company.name
     #vk_subscribe
@@ -11,4 +11,4 @@
       {
         location.replace("#{event_subscribe_path(:vk)}")
       });
-.text-center= link_to 'Cancel', auth_path
+.text-center= link_to t('.cancel'), auth_path

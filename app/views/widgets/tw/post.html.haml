@@ -1,14 +1,14 @@
 .panel.panel-default
   .panel-heading
     %i.fa.fa-twitter-square
-    Twitter: share post for continue
+    = t('.header')
   .panel-body
     %div
       %b= current_user.name
     %div
-      %small= "Today, #{Time.zone.now.strftime('%H:%M')}"
+      %small= t('.today', time: Time.zone.now.strftime('%H:%M'))
     %div= @company.tw.post_text
     %div= image_tag @company.tw.post_image, alt: @company.name, class: 'img-responsive'
   .panel-footer
-    = link_to 'Tweet', event_post_path(:tw), class: 'btn btn-primary btn-block'
-.text-center= link_to 'Cancel', auth_path
+    = link_to t('.tweet'), event_post_path(:tw), class: 'btn btn-primary btn-block'
+.text-center= link_to t('.cancel'), auth_path
