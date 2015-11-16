@@ -65,7 +65,7 @@ ru:
       dashboard: "Приборная панель"
       profile: "Профиль"
       settings: "Настройки"
-      sign_out: "Выйт"
+      sign_out: "Выйти"
       statistics: "Статистика"
   settings:
     advanced:
@@ -81,8 +81,10 @@ ru:
       like_page: "Лайкнуть страницу"
       make_post: "Создать пост"
       make_tweet: "Создать твит"
+      odnoklassniki: "Одноклассники"
       remove_cover: "Удалить обложку"
       save: "Сохранить настройки"
+      vkontakte: "ВКонтакте"
   shared:
     error_message:
       form_contains: "Форма содержит %{count}"
@@ -91,7 +93,7 @@ ru:
       facebook: Facebook
       instagram: Instagram
       odnoklassniki: "Одноклассники"
-      start_page: "Стартовая страница"
+      start_page: "Стартовая"
       twitter: Twitter
       vkontakte: "ВКонтакте"
   social:
@@ -108,6 +110,7 @@ ru:
       form:
         group_name: "Имя группы"
         link_redirect: "Ссылка переадресации"
+        post_image: "Изображение"
         post_link: "Ссылка в публикации"
         post_text: "Текст публикации"
         remove_post_image: "Удалить изображение"

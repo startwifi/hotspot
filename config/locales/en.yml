@@ -42,6 +42,7 @@ en:
         post_text: 'Post text'
         post_link: 'Post link'
         link_redirect: 'Redirection link'
+        post_image: 'Post image'
         remove_post_image: 'Remove image'
   application_controller:
     access_denied: 'Access denied'
@@ -129,6 +130,8 @@ en:
       link: 'Link'
   settings:
     edit:
+      vkontakte: 'Vkontakte'
+      odnoklassniki: 'Odnoklassniki'
       cover: 'Cover'
       join_group: 'Join group'
       like_page: 'Like page'
