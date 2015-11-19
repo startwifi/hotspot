@@ -1,11 +1,11 @@
 .panel.panel-default
   .panel-heading
     %i.fa.fa-odnoklassniki-square
-    Ok: subscribe for continue
+    = t('.header')
   .panel-body
     %h4= @company.name
     #ok_group_widget.text-center
-.text-center= link_to 'Cancel', auth_path
+.text-center= link_to t('.cancel'), auth_path
 
 :javascript
   !function (d, id, did, st) {

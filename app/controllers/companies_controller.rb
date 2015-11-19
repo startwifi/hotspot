@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
     @company.cover = Rails.root.join('app/assets/images/startwifi.png').open
     if @company.save
       @company.create_dummy_social(:fb, :vk, :tw, :in, :ok)
-      redirect_to companies_path, notice: 'Company successfully created.'
+      redirect_to companies_path, notice: t('.success')
     else
       render :new
     end
@@ -31,9 +31,9 @@ class CompaniesController < ApplicationController
     @admin = Admin.new(admin_params)
     @admin.company = @company
     if @admin.save
-      redirect_to @company, notice: 'Admin successfully added.'
+      redirect_to @company, notice: t('.success')
     else
-      flash.now[:alert] = 'Form contains some errors'
+      flash.now[:alert] = t('.errors')
       render :new_admin
     end
   end

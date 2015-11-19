@@ -1,0 +1,184 @@
+ru:
+  application_controller:
+    access_denied: "Доступ запрещен"
+    need_authorization: "Вам нужно войти для доступа к данной странице"
+  companies:
+    create:
+      success: "Компания успешно создана"
+    create_admin:
+      errors: "Форма содержит ошибки"
+      success: "Администратор успешно добавлен"
+    index:
+      add_new: "Добавить компанию"
+      address: "Адрес"
+      all_companies: "Все компании"
+      contact: "Контактное лицо"
+      name: "Название"
+      options: "Опции"
+      phone: "Телефон"
+      show: "Подробнее"
+      token: "Токен"
+    new:
+      add_company: "Добавить компанию"
+      address: "Адрес"
+      back: "Назад"
+      name: "Название"
+      owner_name: "Владелец"
+      phone: "Телефон"
+    new_admin:
+      back: "Назад"
+      email: "Эл. почта"
+      new_admin_company: "Новый администратор в %{name}"
+      password: "Пароль"
+      password_confirmation: "Подтверждение пароля"
+      register: "Зарегистрировать"
+    show:
+      add_new: "Добавить нового админа"
+      admins: "Администраторы"
+      company: "Компания %{name}"
+      email: "Эл. почта"
+      last_events: "Последние события"
+      last_signin: "Последний вход"
+  dashboards:
+    show:
+      action: "Действие"
+      current_settings: "Текущие настройки"
+      dashboard: "Приборная панель"
+      date: "Дата"
+      link: "Ссылка"
+      statistics_by_month: "Статистика за месяц"
+      time: "Время"
+  devise:
+    sessions:
+      new:
+        email_placeholder: "Эл. адрес"
+        password_placeholder: "Пароль"
+        sign_in: "Войти"
+  layouts:
+    application:
+      name: StartWiFi
+    navigation:
+      hotspot: StartWiFi
+    navigation_links:
+      all_users: "Все посетители"
+      companies: "Компании"
+      dashboard: "Приборная панель"
+      profile: "Профиль"
+      settings: "Настройки"
+      sign_out: "Выйти"
+      statistics: "Статистика"
+  settings:
+    advanced:
+      card: "Карта"
+      remove_card: "Удалить карту"
+      save: "Сохранить настройки"
+    edit:
+      cover: "Обложка"
+      disabled: "Отключено"
+      follow: "Зафоллоувить"
+      join_group: "Вступить в группу"
+      just_auth: "Простая авторизация"
+      like_page: "Лайкнуть страницу"
+      make_post: "Создать пост"
+      make_tweet: "Создать твит"
+      odnoklassniki: "Одноклассники"
+      remove_cover: "Удалить обложку"
+      save: "Сохранить настройки"
+      vkontakte: "ВКонтакте"
+  shared:
+    error_message:
+      form_contains: "Форма содержит %{count}"
+    settings_links:
+      advanced: "Дополнительно"
+      facebook: Facebook
+      instagram: Instagram
+      odnoklassniki: "Одноклассники"
+      start_page: "Стартовая"
+      twitter: Twitter
+      vkontakte: "ВКонтакте"
+  social:
+    fbs:
+      update:
+        success: "Настройки Facebook успешно обновлены"
+    ins:
+      update:
+        success: "Настройки Instagram успешно обновлены"
+    oks:
+      update:
+        success: "Настройки Одноклассники успешно обновлены"
+    shared:
+      form:
+        group_name: "Имя группы"
+        link_redirect: "Ссылка переадресации"
+        post_image: "Изображение"
+        post_link: "Ссылка в публикации"
+        post_text: "Текст публикации"
+        remove_post_image: "Удалить изображение"
+    tws:
+      update:
+        success: "Настройки Twitter успешно обновлены"
+    vks:
+      update:
+        success: "Настройки ВКонтакте успешно обновлены"
+  stats:
+    show:
+      activity: "Активность"
+      gender: "Пол"
+      social_networks: "Социальные сети"
+      statistics: "Статистика"
+  users:
+    index:
+      created: "Создан"
+      name: "Имя"
+      provider: "Провайдер"
+      uid: Uid
+      updated: "Обновлен"
+      users: "Посетители"
+    show:
+      back: "Назад"
+      birthday: "День рождения"
+      email: "Эл. почта"
+      gender: "Пол"
+      name: "Имя"
+      provider: "Провайдер"
+      uid: Uid
+      url: "Ссылка"
+  visitors:
+    index:
+      download_card: "Скачать бонус-карту"
+      welcome: "Это бесплатная Wi-Fi точка доступа. Для подключения к интернету достаточно войти через одну из социальных сетей"
+  widgets:
+    fb:
+      join:
+        cancel: "Отмена"
+        header: 'Facebook: лайкнуть для продолжения'
+      post:
+        cancel: "Отмена"
+        header: 'Facebook: сделать пост для продолжения'
+        share: "Сделать пост"
+        today: "Сегодня, %{time}"
+    ok:
+      join:
+        cancel: "Отмена"
+        header: 'Ok: вступить в группу для продолжения'
+      post:
+        cancel: "Отмена"
+        header: 'Ok: сделать пост для продолжения'
+        share: "Сделать пост"
+    tw:
+      join:
+        cancel: "Отмена"
+        follow: "Зафоллоувить нас"
+        header: 'Twitter: зафоллоувить для продолжения'
+      post:
+        cancel: "Отмена"
+        header: 'Twitter: опубликовать твит для продолжения'
+        tweet: "Твитнуть"
+    vk:
+      join:
+        cancel: "Отмена"
+        header: 'Vkontakte: подписаться для продолжения'
+      post:
+        cancel: "Отмена"
+        header: 'Vkontakte: опубликовать пост для продолжения'
+        share: "Сделать пост"

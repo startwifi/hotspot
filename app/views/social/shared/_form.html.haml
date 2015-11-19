@@ -1,17 +1,17 @@
 .form-group
-  = f.label :group_name
+  = f.label :group_name, t('.group_name')
   = f.text_field :group_name, class: 'form-control'
 .form-group
-  = f.label :post_text
+  = f.label :post_text, t('.post_text')
   = f.text_area :post_text, row: 4, class: 'form-control'
 .form-group
-  = f.label :post_link
+  = f.label :post_link, t('.post_link')
   = f.url_field :post_link, class: 'form-control'
 .form-group
-  = f.label :link_redirect
+  = f.label :link_redirect, t('.link_redirect')
   = f.url_field :link_redirect, class: 'form-control'
 .form-group
-  = f.label :post_image
+  = f.label :post_image, t('.post_image')
   - if object.post_image?
     %div
     = image_tag(object.post_image)
@@ -23,6 +23,6 @@
 %div.checkbox
   %label
     = f.check_box :remove_post_image
-    = f.label :remove_post_image
+    = f.label :remove_post_image, t('.remove_post_image')
 .form-group
   = f.submit class: 'btn btn-primary'

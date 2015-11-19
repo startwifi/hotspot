@@ -1,14 +1,14 @@
 .panel.panel-default
   .panel-heading
     %i.fa.fa-odnoklassniki-square
-    Ok: share post for continue
+    = t('.header')
   .panel-body
     %div
       %b= current_user.name
     %div
-      %small= "Today, #{Time.zone.now.strftime('%H:%M')}"
+      %small= t('.today', time: Time.zone.now.strftime('%H:%M'))
     %div= @company.ok.post_text
     %div= image_tag @company.ok.post_image, alt: @company.name, class: 'img-responsive'
   .panel-footer
-    = link_to 'Share post', event_post_path(:ok), class: 'btn btn-primary btn-block', id: 'button_post'
-.text-center= link_to 'Cancel', auth_path
+    = link_to t('.share'), event_post_path(:ok), class: 'btn btn-primary btn-block', id: 'button_post'
+.text-center= link_to t('.cancel'), auth_path

@@ -8,7 +8,7 @@ class Social::FbsController < ApplicationController
   def update
     @fb = current_admin.company.fb
     if @fb.update(fb_params)
-      redirect_to edit_social_fb_path, notice: "Facebook successfully updated."
+      redirect_to edit_social_fb_path, notice: t('.success')
     else
       render :edit
     end
@@ -17,7 +17,8 @@ class Social::FbsController < ApplicationController
   private
 
   def fb_params
-    params.require(:fb).permit(:group_name, :post_text, :post_link,
-      :link_redirect, :action, :post_image, :post_image_cache, :remove_post_image)
+    params.require(:fb)
+      .permit(:group_name, :post_text, :post_link, :action, :link_redirect,
+              :post_image, :post_image_cache, :remove_post_image)
   end
 end

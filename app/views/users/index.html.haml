@@ -1,13 +1,13 @@
-%h3 Users
+%h3= t('.users')
 
 .table-responsive
   %table.table.table-striped
     %thead
-      %th Name
-      %th Provider
-      %th Uid
-      %th Created at
-      %th Updated at
+      %th= t('.name')
+      %th= t('.provider')
+      %th= t('.uid')
+      %th= t('.created')
+      %th= t('.updated')
     %tbody
       - @users.each do |user|
         %tr

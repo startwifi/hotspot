@@ -20,4 +20,191 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  social:
+    fbs:
+      update:
+        success: 'Facebook successfully updated'
+    ins:
+      update:
+        success: 'Instagram successfully updated'
+    oks:
+      update:
+        success: 'Odnoklassniki successfully updated'
+    tws:
+      update:
+        success: 'Twitter successfully updated'
+    vks:
+      update:
+        success: 'Vkontakte successfully updated'
+    shared:
+      form:
+        group_name: 'Group name'
+        post_text: 'Post text'
+        post_link: 'Post link'
+        link_redirect: 'Redirection link'
+        post_image: 'Post image'
+        remove_post_image: 'Remove image'
+  application_controller:
+    access_denied: 'Access denied'
+    need_authorization: 'You need to sign in for access to this page'
+  companies:
+    index:
+      all_companies: 'All companies'
+      name: 'Name'
+      contact: 'Contact name'
+      phone: 'Phone'
+      address: 'Address'
+      token: 'Token'
+      options: 'Options'
+      show: 'Show'
+      add_new: 'Add new company'
+    show:
+      company: 'Company %{name}'
+      admins: 'Administrators'
+      email: 'Email'
+      last_signin: 'Last Sign In'
+      add_new: 'Add new admin'
+      last_events: 'Last events'
+    new:
+      add_company: 'Add company'
+      name: 'Name'
+      owner_name: 'Owner'
+      phone: 'Phone'
+      address: 'Address'
+      back: 'Back'
+    new_admin:
+      new_admin_company: 'New admin for %{name}'
+      email: 'Email'
+      password: 'Password'
+      password_confirmation: 'Password confirmation'
+      register: 'Sign up'
+      back: 'Back'
+    create:
+      success: 'Company successfully created'
+    create_admin:
+      success: 'Admin successfully added'
+      errors: 'Form contains some errors'
+  settings:
+    update:
+      success: 'Settings successfully updated'
+    advanced_update:
+      success: 'Settings successfully updated'
+  layouts:
+    application:
+      name: 'StartWiFi'
+    navigation:
+      hotspot: 'StartWiFi'
+    navigation_links:
+      companies: 'Companies'
+      dashboard: 'Dashboard'
+      statistics: 'Statistics'
+      settings: 'Settings'
+      all_users: 'All Users'
+      profile: 'Profile'
+      sign_out: 'Sign out'
+  shared:
+    error_message:
+      form_contains: 'Form contains %{count}:'
+    settings_links:
+      start_page: 'Start page'
+      advanced: 'Advanced'
+      facebook: 'Facebook'
+      vkontakte: 'Vkontakte'
+      twitter: 'Twitter'
+      instagram: 'Instagram'
+      odnoklassniki: 'Odnoklassniki'
+  devise:
+    sessions:
+      new:
+        email_placeholder: 'Email address'
+        password_placeholder: 'Password'
+        sign_in: 'Sign in'
+  dashboards:
+    show:
+      dashboard: 'Dashboard'
+      statistics_by_month: 'Statistics by month'
+      current_settings: 'Current settings'
+      date: 'Date'
+      time: 'Time'
+      action: 'Action'
+      link: 'Link'
+  settings:
+    edit:
+      vkontakte: 'Vkontakte'
+      odnoklassniki: 'Odnoklassniki'
+      cover: 'Cover'
+      join_group: 'Join group'
+      like_page: 'Like page'
+      make_post: 'Make post'
+      make_tweet: 'Make tweet'
+      just_auth: 'Just auth'
+      disabled: 'Disabled'
+      follow: 'Follow'
+      remove_cover: 'Remove cover'
+      save: 'Save settings'
+    advanced:
+      card: 'Card'
+      remove_card: 'Remove card'
+      save: 'Save settings'
+  stats:
+    show:
+      statistics: 'Statistics'
+      social_networks: 'Social networks'
+      gender: 'Gender'
+      activity: 'Activity'
+  users:
+    index:
+      users: 'Users'
+      name: 'Name'
+      provider: 'Provider'
+      uid: 'Uid'
+      created: 'Created'
+      updated: 'Updated'
+    show:
+      name: 'Name'
+      provider: 'Provider'
+      uid: 'Uid'
+      birthday: 'Birthday'
+      url: 'Url'
+      email: 'Email'
+      gender: 'Gender'
+      back: 'Back'
+  visitors:
+    index:
+      welcome: 'This is a free wifi hotspot. You need to sign in with a social network'
+      download_card: 'Download bonus card'
+  widgets:
+    fb:
+      join:
+        header: 'Facebook: like for continue'
+        cancel: 'Cancel'
+      post:
+        header: 'Facebook: share post for continue'
+        today: 'Today, %{time}'
+        share: 'Share post'
+        cancel: 'Cancel'
+    ok:
+      join:
+        header: 'Ok: subscribe for continue'
+        cancel: 'Cancel'
+      post:
+        header: 'Ok: share post for continue'
+        share: 'Share post'
+        cancel: 'Cancel'
+    tw:
+      join:
+        header: 'Twitter: follow us for continue'
+        follow: 'Follow us'
+        cancel: 'Cancel'
+      post:
+        header: 'Twitter: make tweet for continue'
+        tweet: 'Tweet'
+        cancel: 'Cancel'
+    vk:
+      join:
+        header: 'Vkontakte: subscribe for continue'
+        cancel: 'Cancel'
+      post:
+        header: 'Vkontakte: share post for continue'
+        share: 'Share post'
+        cancel: 'Cancel'

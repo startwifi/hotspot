@@ -1,11 +1,11 @@
 .panel.panel-default
   .panel-heading
     %i.fa.fa-facebook-square
-    Facebook: like for continue
+    = t('.header')
   .panel-body
     %h4= @company.name
-    .fb-like{'data-href': "https://www.facebook.com/#{@company.fb.group_name}", 
+    .fb-like{'data-href': "https://www.facebook.com/#{@company.fb.group_name}",
       'data-layout': 'standard',
       'data-show-faces': 'true',
       'data-share': 'false'}
-.text-center= link_to 'Cancel', auth_path
+.text-center= link_to t('.cancel'), auth_path

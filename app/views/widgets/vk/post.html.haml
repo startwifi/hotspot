@@ -1,20 +1,20 @@
 .panel.panel-default
   .panel-heading
     %i.fa.fa-vk
-    Vkontakte: share post for continue
+    = t('.header')
   .panel-body
     %div
       %b= current_user.name
     %div
-      %small= "Today, #{Time.zone.now.strftime('%H:%M')}"
+      %small= t('.today', time: Time.zone.now.strftime('%H:%M'))
     %div= @company.vk.post_text
     %div= image_tag @company.vk.post_image, alt: @company.name, class: 'img-responsive'
   .panel-footer
-    = link_to 'Share post', '#', class: 'btn btn-primary btn-block', id: 'button_post'
-.text-center= link_to 'Cancel', auth_path
+    = link_to t('.share'), '#', class: 'btn btn-primary btn-block', id: 'button_post'
+.text-center= link_to t('.cancel'), auth_path
 :javascript
   button_post.onclick = function() {
-    var delay = 200;
+    var delay = 500;
     window.open("https://vk.com/share.php?url=#{@company.vk.post_link}&description=#{@company.vk.post_text}&image=#{@image}&noparse=true", '', 'width=626,height=436');
     setTimeout('document.location.replace("#{event_post_path(:vk)}")', delay);
   };
