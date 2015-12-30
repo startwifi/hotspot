@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+  get 'scheduler/index'
+  end
+
   devise_for :admins,
     path: '/',
     path_names: {

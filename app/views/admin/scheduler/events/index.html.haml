@@ -1,0 +1,19 @@
+%h1 Listing admin_scheduler_events
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @admin_scheduler_events.each do |admin_scheduler_event|
+      %tr
+        %td= link_to 'Show', admin_scheduler_event
+        %td= link_to 'Edit', edit_admin_scheduler_event_path(admin_scheduler_event)
+        %td= link_to 'Destroy', admin_scheduler_event, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Event', new_admin_scheduler_event_path
