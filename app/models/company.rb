@@ -28,6 +28,8 @@ class Company < ActiveRecord::Base
     end
   end
 
+  private
+
   def get_group_name(social)
     case social
     when :fb then ENV['FB_GROUP_NAME']
@@ -40,11 +42,11 @@ class Company < ActiveRecord::Base
 
   def get_group_link(social)
     case social
-    when :fb then "https://facebook.com/" + ENV['FB_GROUP_NAME']
-    when :vk then "https://vk.com/" + ENV['VK_GROUP_NAME']
-    when :tw then "https://twitter.com/" + ENV['TW_GROUP_NAME']
-    when :in then "https://instagram.com/" + ENV['IN_GROUP_NAME']
-    when :ok then "http://ok.ru/group/" + ENV['OK_GROUP_NAME']
+    when :fb then 'https://facebook.com/' + ENV['FB_GROUP_NAME']
+    when :vk then 'https://vk.com/' + ENV['VK_GROUP_NAME']
+    when :tw then 'https://twitter.com/' + ENV['TW_GROUP_NAME']
+    when :in then 'https://instagram.com/' + ENV['IN_GROUP_NAME']
+    when :ok then 'http://ok.ru/group/' + ENV['OK_GROUP_NAME']
     end
   end
 end
