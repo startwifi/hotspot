@@ -1,0 +1,15 @@
+.row
+  .col-md-offset-4.col-md-4
+    = form_for :auth, url: '/auth/sms/callback' do |f|
+      - if params[:state] == 'confirm'
+        .form-group
+          = f.label :code
+          = f.text_field :code, class: 'form-control'
+        .form-group
+          = f.submit 'Confirm', class: 'btn btn-primary'
+      - else
+        .form-group
+          = f.label :phone
+          = f.text_field :phone, class: 'form-control'
+        .form-group
+          = f.submit 'Auth', class: 'btn btn-primary'

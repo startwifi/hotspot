@@ -46,6 +46,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'dotenv-rails'
+  gem 'annotate'
 end
 
 group :development do
