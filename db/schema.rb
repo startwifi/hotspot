@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012165135) do
+ActiveRecord::Schema.define(version: 20160117222845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_scheduler_events", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "startTime"
+    t.datetime "endTime"
+    t.string   "repeat"
+    t.integer  "company_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "admin_scheduler_events", ["company_id"], name: "index_admin_scheduler_events_on_company_id", using: :btree
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -106,6 +119,21 @@ ActiveRecord::Schema.define(version: 20151012165135) do
 
   add_index "oks", ["company_id"], name: "index_oks_on_company_id", using: :btree
 
+  create_table "sms", force: :cascade do |t|
+    t.integer  "company_id"
+    t.string   "group_id"
+    t.string   "group_name"
+    t.string   "action"
+    t.string   "link_redirect"
+    t.string   "post_text"
+    t.string   "post_link"
+    t.string   "post_image"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "sms", ["company_id"], name: "index_sms_on_company_id", using: :btree
+
   create_table "statistics", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "company_id"
@@ -167,12 +195,14 @@ ActiveRecord::Schema.define(version: 20151012165135) do
 
   add_index "vks", ["company_id"], name: "index_vks_on_company_id", using: :btree
 
+  add_foreign_key "admin_scheduler_events", "companies"
   add_foreign_key "admins", "companies"
   add_foreign_key "events", "companies"
   add_foreign_key "events", "users"
   add_foreign_key "fbs", "companies"
   add_foreign_key "ins", "companies"
   add_foreign_key "oks", "companies"
+  add_foreign_key "sms", "companies"
   add_foreign_key "statistics", "companies"
   add_foreign_key "statistics", "users"
   add_foreign_key "tws", "companies"

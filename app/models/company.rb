@@ -29,6 +29,7 @@ class Company < ActiveRecord::Base
   has_one :tw, dependent: :destroy
   has_one :in, dependent: :destroy
   has_one :ok, dependent: :destroy
+  has_one :sm, dependent: :destroy
 
   validates :name, :owner_name, :phone, :address, presence: true
 
