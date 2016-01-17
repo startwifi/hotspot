@@ -57,6 +57,6 @@ class SettingsController < ApplicationController
   def company_params
     params.require(:company)
       .permit(:link_redirect, :action, :cover, :cover_cache, :remove_cover,
-              :card, :card_cache, :remove_card)
+              :card, :card_cache, :remove_card, :sms)
   end
 end

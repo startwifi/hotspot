@@ -12,6 +12,7 @@
 #  owner_name :string
 #  cover      :string
 #  card       :string
+#  sms        :boolean          default(FALSE)
 #
 
 class Company < ActiveRecord::Base
@@ -29,7 +30,6 @@ class Company < ActiveRecord::Base
   has_one :tw, dependent: :destroy
   has_one :in, dependent: :destroy
   has_one :ok, dependent: :destroy
-  has_one :sm, dependent: :destroy
 
   validates :name, :owner_name, :phone, :address, presence: true
 
