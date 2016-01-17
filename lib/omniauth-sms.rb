@@ -17,7 +17,13 @@ module OmniAuth
       end
 
       def callback_phase
-        redirect request_path + '?state=confirm'
+        @form = ::Sms.new
+        @form.phone = request.params['auth']['phone']
+
+        @form.validate
+
+        p @form.errors
+        # redirect request_path + '?state=confirm'
       end
     end
   end

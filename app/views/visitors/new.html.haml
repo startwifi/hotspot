@@ -10,6 +10,7 @@
       - else
         .form-group
           = f.label :phone
-          = f.text_field :phone, class: 'form-control'
+          = f.text_field :phone, class: 'form-control', type: 'tel'
+          %span.help-block Format: +380441234567
         .form-group
           = f.submit 'Auth', class: 'btn btn-primary'

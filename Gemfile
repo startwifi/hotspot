@@ -34,6 +34,9 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'exception_notification'
 
+# Phone validator
+gem 'phony_rails'
+
 # Localization
 gem 'rails-i18n', '~> 4.0'
 gem 'devise-i18n'
