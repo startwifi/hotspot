@@ -22,7 +22,7 @@
       %li
         = link_to '/auth/odnoklassniki', class: 'social' do
           = image_tag 'ok.png'
-    - unless @company.sms.action.eql?('disabled')
+    - if @company.sms?
       %li
         = link_to '/auth/sms', class: 'social' do
           = image_tag 'sms.png'

@@ -23,10 +23,6 @@
         .form-group
           = ok.label :odnoklassniki, t('.odnoklassniki')
           = ok.select :action, [[t('.join_group'), :join], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
-      = fields_for @company.sms do |ok|
-        .form-group
-          = ok.label :sms, t('.sms')
-          = ok.select :action, [[t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
       .form-group
         = f.label :cover, t('.cover')
         - if @company.cover?
