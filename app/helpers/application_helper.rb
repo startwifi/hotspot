@@ -14,4 +14,13 @@ module ApplicationHelper
     when :alert then ""
     end
   end
+
+  def icon_class_by(provider)
+    case provider
+    when 'vkontakte' then 'vk'
+    when 'sms' then 'comments-o'
+    else
+      provider
+    end
+  end
 end
