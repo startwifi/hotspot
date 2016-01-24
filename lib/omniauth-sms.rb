@@ -5,25 +5,14 @@ module OmniAuth
     class Sms
       include OmniAuth::Strategy
 
-      option :fields, [:phone, :email]
+      option :smsauth_url, '/smsauth'
 
       def request_phase
-        form = OmniAuth::Form.new(:title => "SMS Auth", :url => callback_path)
-        options.fields.each do |field|
-          form.text_field field.to_s.capitalize.gsub("_", " "), field.to_s
-        end
-        form.button "Sign In"
-        form.to_response
+        redirect options.smsauth_url
       end
 
-      def callback_phase
-        @form = ::Sms.new
-        @form.phone = request.params['auth']['phone']
-
-        @form.validate
-
-        p @form.errors
-        # redirect request_path + '?state=confirm'
+      uid do
+        request.cookies[options.uid_field.to_s]
       end
     end
   end

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :sms do
+    get 'auth', to: 'auth#index'
+    post 'auth/send_sms'
+    post 'auth/validate'
+  end
+
   devise_for :admins,
     path: '/',
     path_names: {
