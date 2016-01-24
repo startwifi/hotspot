@@ -37,7 +37,7 @@ class Sms::AuthController < ApplicationController
       if hotp.verify(params[:sms][:code], session[:otp_counter])
         redirect_to '/auth/sms/callback'
       else
-        redirect_to :index, flash: { error: 'Вы ввели не правильной код подтверждения. Попробуйте снова' }
+        redirect_to :index, flash: { error: 'Вы ввели не правильный код подтверждения. Попробуйте снова' }
       end
     end
   end
