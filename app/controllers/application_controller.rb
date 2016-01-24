@@ -46,10 +46,13 @@ class ApplicationController < ActionController::Base
     when 'twitter'   then 'tw'
     when 'instagram' then 'in'
     when 'odnoklassniki' then 'ok'
+    else
+      current_user.provider
     end
 
-    if current_user.company.send(provider).link_redirect?
-      current_user.company.send(provider).link_redirect
+    provider_class = current_user.company.send(provider)
+    if provider_class && provider_class.try(:link_redirect?)
+      provider_class.link_redirect
     else
       session[:dst]
     end

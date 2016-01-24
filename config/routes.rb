@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :sms do
     get 'auth', to: 'auth#index'
     post 'auth/send_sms'
-    post 'auth/validate'
+    match 'auth/validate', via: [:get, :post]
   end
 
   devise_for :admins,

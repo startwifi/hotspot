@@ -12,7 +12,11 @@ module OmniAuth
       end
 
       uid do
-        request.cookies[options.uid_field.to_s]
+        session[options.uid_field.to_s]
+      end
+
+      info do
+        { name: uid }
       end
     end
   end

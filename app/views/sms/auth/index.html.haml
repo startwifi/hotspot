@@ -1,2 +1,15 @@
-%h1 Sms::Auth#index
-%p Find me in app/views/sms/auth/index.html.haml
+.row
+  .col-md-offset-4.col-md-4
+    - if @model.errors.any?
+      #error_explanation
+        %h2= "Найденны ошибки:"
+        %ul
+          - @model.errors.full_messages.each do |error|
+            %li= error
+    = form_for @model, url: sms_auth_send_sms_path do |f|
+      .form-group
+        = f.label :phone
+        = f.text_field :phone, class: 'form-control', type: 'tel'
+        %span.help-block Format: +380441234567
+      .form-group
+        = f.submit 'Auth', class: 'btn btn-primary'

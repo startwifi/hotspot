@@ -1,2 +1,8 @@
-%h1 Sms::Auth#validate
-%p Find me in app/views/sms/auth/validate.html.haml
+.row
+  .col-md-offset-4.col-md-4
+    = form_for :sms, url: sms_auth_validate_path do |f|
+      .form-group
+        = f.label :code
+        = f.text_field :code, class: 'form-control'
+      .form-group
+        = f.submit 'Confirm', class: 'btn btn-primary'

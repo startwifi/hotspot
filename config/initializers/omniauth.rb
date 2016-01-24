@@ -27,5 +27,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     redirect_uri: "http://hotspot.192.168.88.15.xip.io/auth/odnoklassniki/callback"
   provider :sms,
     smsauth_url: '/sms/auth',
-    uid_field: 'phone'
+    uid_field: 'otp_phone'
 end
