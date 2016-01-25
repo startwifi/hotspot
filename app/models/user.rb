@@ -70,12 +70,24 @@ class User < ActiveRecord::Base
     raw_info = auth.extra.raw_info
     user.url = auth.info.urls[user.provider.capitalize] || ''
     user.email = auth.info.email || ''
-    user.birthday = raw_info.bdate.to_date if raw_info.bdate
+    user.birthday = parse_vk_bdate(raw_info.bdate)
     user.gender = case raw_info.sex
       when 1 then :female
       when 2 then :male
       else ''
     end
+  end
+
+
+  def self.parse_vk_bdate(bdate)
+    return unless bdate
+
+    # Format "23.11.1981" or "21.9" (if year hidden)
+    day, month, year = bdate.split('.').map(&:to_i)
+
+    year ||= 1912 # Point for non year bdate
+
+    Date.new(year, month, day)
   end
 
   def self.create_twitter(user, auth)

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :sms do
+    get 'auth', to: 'auth#index'
+    post 'auth/send_sms'
+    match 'auth/validate', via: [:get, :post]
+  end
+
   devise_for :admins,
     path: '/',
     path_names: {
@@ -43,7 +49,6 @@ Rails.application.routes.draw do
   get '/event/:provider/post',      to: 'events#post',      as: 'event_post'
   get '/event/:provider/auth',      to: 'events#auth',      as: 'event_auth'
   get '/auth/:provider/callback',   to: 'sessions#create'
-  # post '/auth/:provider/callback',  to: 'sessions#create'
   get '/auth/failure', to: 'sessions#failure'
   get '/auth',         to: 'visitors#index'
 end
