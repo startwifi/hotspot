@@ -34,6 +34,12 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'exception_notification'
 
+# Phone validator
+gem 'phony_rails'
+
+# OTP Generator
+gem 'rotp'
+
 # Localization
 gem 'rails-i18n', '~> 4.0'
 gem 'devise-i18n'
@@ -46,6 +52,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'dotenv-rails'
+  gem 'annotate'
 end
 
 group :development do

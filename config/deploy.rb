@@ -1,7 +1,7 @@
 
 set :repo_url,        'git@github.com:gremax/hotspot.git'
 set :application,     'hotspot'
-set :user,            'deploy'
+set :user,            'mnt'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 

@@ -37,6 +37,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    annotate (2.7.0)
+      activerecord (>= 3.2, < 6.0)
+      rake (~> 10.4)
     arel (6.0.3)
     autoprefixer-rails (6.0.3)
       execjs
@@ -256,6 +259,10 @@ GEM
       omniauth-oauth2 (~> 1.1)
     orm_adapter (0.5.0)
     pg (0.18.3)
+    phony (2.15.14)
+    phony_rails (0.12.11)
+      activesupport (>= 3.0)
+      phony (~> 2.12)
     pry (0.10.2)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -309,6 +316,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rotp (2.1.1)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -400,6 +408,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   better_errors
   bootstrap-sass
   browser
@@ -439,6 +448,7 @@ DEPENDENCIES
   omniauth-twitter
   omniauth-vkontakte
   pg
+  phony_rails
   pry-doc
   pry-rails
   puma
@@ -446,6 +456,7 @@ DEPENDENCIES
   rails (= 4.2.4)
   rails-i18n (~> 4.0)
   rest-client
+  rotp
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
@@ -458,4 +469,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

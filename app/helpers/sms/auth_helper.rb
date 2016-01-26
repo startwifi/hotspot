@@ -1,0 +1,2 @@
+module Sms::AuthHelper
+end
