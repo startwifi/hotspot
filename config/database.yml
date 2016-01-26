@@ -5,6 +5,8 @@ default: &default
 
 development:
   <<: *default
+  username: hotspot
+  password: 123456
   database: hotspot_development
 
 test:
@@ -20,5 +22,5 @@ staging:
 production:
   <<: *default
   database: hotspot_production
-  username: postgres
-  password: <%= ENV['HOTSPOT_DATABASE_PASSWORD'] %>
+  username: hotspot
+  password: 123456

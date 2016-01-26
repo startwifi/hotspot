@@ -16,19 +16,6 @@ ActiveRecord::Schema.define(version: 20160117224305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admin_scheduler_events", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.datetime "startTime"
-    t.datetime "endTime"
-    t.string   "repeat"
-    t.integer  "company_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "admin_scheduler_events", ["company_id"], name: "index_admin_scheduler_events_on_company_id", using: :btree
-
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -181,7 +168,6 @@ ActiveRecord::Schema.define(version: 20160117224305) do
 
   add_index "vks", ["company_id"], name: "index_vks_on_company_id", using: :btree
 
-  add_foreign_key "admin_scheduler_events", "companies"
   add_foreign_key "admins", "companies"
   add_foreign_key "events", "companies"
   add_foreign_key "events", "users"
