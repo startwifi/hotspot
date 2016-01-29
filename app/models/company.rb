@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: companies
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  token      :string
+#  phone      :string
+#  address    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  owner_name :string
+#  cover      :string
+#  card       :string
+#  sms        :boolean          default(FALSE)
+#
+
 class Company < ActiveRecord::Base
   mount_uploader :cover, CoverUploader
   mount_uploader :card,  CardUploader

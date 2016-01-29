@@ -1,3 +1,28 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  provider   :string
+#  uid        :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  birthday   :date
+#  url        :string
+#  company_id :integer
+#  email      :string
+#  gender     :string
+#
+# Indexes
+#
+#  index_users_on_company_id  (company_id)
+#
+# Foreign Keys
+#
+#  fk_rails_7682a3bdfe  (company_id => companies.id)
+#
+
 RSpec.describe User, type: :model do
   let(:user) { create(:user) }
 
@@ -41,6 +66,20 @@ RSpec.describe User, type: :model do
 
     it 'returns array with events' do
       expect(user.events).to match_array [first_event, second_event]
+    end
+  end
+
+  describe '.parse_vk_bdate' do
+    it 'should return nil if bdate nil' do
+      expect(User.parse_vk_bdate(nil)).to be_nil
+    end
+
+    it 'should return full date if persist' do
+      expect(User.parse_vk_bdate('12.11.1988')).to match Date.new(1988, 11, 12)
+    end
+
+    it 'should return date with 1912 year if year is not present in bday' do
+      expect(User.parse_vk_bdate('12.11')).to match Date.new(1912, 11, 12)
     end
   end
 end

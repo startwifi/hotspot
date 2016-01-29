@@ -69,6 +69,7 @@ ru:
       statistics: "Статистика"
   settings:
     advanced:
+      sms: "SMS Авторизация"
       card: "Карта"
       remove_card: "Удалить карту"
       save: "Сохранить настройки"

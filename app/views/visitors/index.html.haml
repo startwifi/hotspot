@@ -22,6 +22,10 @@
       %li
         = link_to '/auth/odnoklassniki', class: 'social' do
           = image_tag 'ok.png'
+    - if @company.sms?
+      %li
+        = link_to '/auth/sms', class: 'social' do
+          = image_tag 'sms.png'
   - if @company.card?
     %h3.text-center
       = link_to t('.download_card'), @company.card.url,

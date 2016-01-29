@@ -32,6 +32,11 @@
         %i.fa.fa-odnoklassniki
       %td
         = @company.ok.nil? ? 'off' : @company.ok.action
+    %tr
+      %td
+        %i.fa.fa-comments-o
+      %td
+        = @company.sms? ? 'auth' : 'off'
 .col-md-9
   .col-md-5
     %table.table.table-striped.table-hover
@@ -53,6 +58,9 @@
           %th
             %i.fa.fa-odnoklassniki
             = @events.social_count(:odnoklassniki)
+          %th
+            %i.fa.fa-comments-o
+            = @events.social_count(:sms)
       %tbody
         - @days_range.each do |event_date|
           %tr.event-row{'data-event-date': event_date}
@@ -62,6 +70,7 @@
             %td= @events.by_date(event_date).social_count(:twitter)
             %td= @events.by_date(event_date).social_count(:instagram)
             %td= @events.by_date(event_date).social_count(:odnoklassniki)
+            %td= @events.by_date(event_date).social_count(:sms)
   .col-md-7
     %table.table.table-striped
       %thead
