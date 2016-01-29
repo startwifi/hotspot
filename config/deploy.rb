@@ -1,5 +1,5 @@
 
-set :repo_url,        'git@github.com:gremax/hotspot.git'
+set :repo_url,        'git@bitbucket.org:startwifi/hotspot.git'
 set :application,     'hotspot'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
