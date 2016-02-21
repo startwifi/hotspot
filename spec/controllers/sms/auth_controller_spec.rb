@@ -9,9 +9,9 @@ RSpec.describe Sms::AuthController, type: :controller do
     end
   end
 
-  describe "GET #send" do
+  describe "GET #send_sms" do
     it "returns http success" do
-      get :send
+      get :send_sms
       expect(response).to have_http_status(:success)
     end
   end

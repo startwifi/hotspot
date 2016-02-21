@@ -26,14 +26,22 @@
       %li
         = link_to '/auth/sms', class: 'social' do
           = image_tag 'sms.png'
+
+  - if @company.tos?
+    = render 'tos_modal'
+    %p
+      = check_box_tag 'accept_tos', 'yes', false
+      %label{ for: 'accept_tos'}
+        = t('visitors.index.tos')
+        = link_to t('visitors.index.tos_link'), '#', data: { toggle:"modal", target: '#tos' }
+
   - if @company.card?
     %h3.text-center
       = link_to t('.download_card'), @company.card.url,
         download: @company.name.underscore.parameterize("_"),
         onclick: "location='#{router_url}'", class: 'btn btn-primary'
+
   = image_tag @company.cover.url, alt: @company.name, class: 'img-responsive' if @company.cover?
 
 :javascript
-  $('.social').click(function(){
-    $('.preloader').toggle()
-  })
+  initializeTos(#{@company.tos?});

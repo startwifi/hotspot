@@ -3,9 +3,10 @@
 .row
   .col-md-offset-4.col-md-4
     = form_for @company, url: advanced_settings_path, method: :put do |f|
-      .form-group
-        = f.label :sms, t('.sms')
-        = f.check_box :sms
+      %div.checkbox
+        %label
+          = f.check_box :sms
+          = f.label :sms, t('.sms')
       .form-group
         = f.label :card, t('.card')
         - if @company.card?

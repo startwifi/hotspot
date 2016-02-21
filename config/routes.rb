@@ -44,11 +44,18 @@ Rails.application.routes.draw do
     get  '/new_admin', to: 'companies#new_admin',    on: :member
     post '/admin',     to: 'companies#create_admin', on: :member
   end
+  resources :pages, only: :tos do
+     collection do
+      get 'tos'
+      get 'tos_edit'
+      put 'tos_update'
+    end
+  end
   post '/events/by_date',           to: 'events#by_date',   as: 'events_by_date'
   get '/event/:provider/subscribe', to: 'events#subscribe', as: 'event_subscribe'
   get '/event/:provider/post',      to: 'events#post',      as: 'event_post'
   get '/event/:provider/auth',      to: 'events#auth',      as: 'event_auth'
   get '/auth/:provider/callback',   to: 'sessions#create'
   get '/auth/failure', to: 'sessions#failure'
-  get '/auth',         to: 'visitors#index'
+  get '/auth', to: 'visitors#index'
 end

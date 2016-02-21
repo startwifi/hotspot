@@ -1,5 +1,4 @@
 class VisitorsController < ApplicationController
-
   layout 'visitors'
 
   def index
@@ -12,5 +11,4 @@ class VisitorsController < ApplicationController
     @company = Company.find_by_token(session[:company_token])
     render_404 unless @company
   end
-
 end

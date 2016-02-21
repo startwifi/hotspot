@@ -98,6 +98,7 @@ en:
       companies: 'Companies'
       dashboard: 'Dashboard'
       statistics: 'Statistics'
+      tos: 'ToS'
       settings: 'Settings'
       all_users: 'All Users'
       profile: 'Profile'
@@ -130,6 +131,7 @@ en:
       link: 'Link'
   settings:
     edit:
+      tos: 'Terms of Service'
       vkontakte: 'Vkontakte'
       odnoklassniki: 'Odnoklassniki'
       cover: 'Cover'
@@ -143,6 +145,7 @@ en:
       remove_cover: 'Remove cover'
       save: 'Save settings'
     advanced:
+      sms: 'SMS Authorization'
       card: 'Card'
       remove_card: 'Remove card'
       save: 'Save settings'
@@ -173,6 +176,10 @@ en:
     index:
       welcome: 'This is a free wifi hotspot. You need to sign in with a social network'
       download_card: 'Download bonus card'
+      tos: "By signing in you agree with our"
+      tos_link: "Terms of Service"
+    tos:
+      back: "Back"
   widgets:
     fb:
       join:
@@ -208,3 +215,10 @@ en:
         header: 'Vkontakte: share post for continue'
         share: 'Share post'
         cancel: 'Cancel'
+  pages:
+    tos: 'Terms of Service'
+    new: 'Add new'
+    edit: 'Edit'
+    save: 'Save'
+    success: 'ToS successfully updated'
+    markdown: 'You can use *markdown* syntax'

@@ -1,0 +1,10 @@
+%h2= t('pages.tos')
+
+.row
+  .col-md-offset-3.col-md-6
+    = form_for @company, url: tos_update_pages_path, method: :put do |f|
+      .form-group
+        = f.text_area :tos_text, rows: 20, class: 'form-control'
+      .form-group
+        = f.submit t('pages.save'), class: 'btn btn-primary'
+    %p.text-center.small= t('pages.markdown')
