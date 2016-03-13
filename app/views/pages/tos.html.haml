@@ -1,0 +1,8 @@
+%h2= t('pages.tos')
+
+.row
+  .col-md-offset-3.col-md-6
+    = markdown(@company.tos_text) if @company.tos_text.present?
+    - link_text = @company.tos_text.present? ? t('pages.new') : t('pages.edit')
+    .text-center
+      %p= link_to link_text, tos_edit_pages_path, class: 'btn btn-primary'

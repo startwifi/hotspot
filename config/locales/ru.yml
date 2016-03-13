@@ -48,6 +48,8 @@ ru:
       link: "Ссылка"
       statistics_by_month: "Статистика за месяц"
       time: "Время"
+      birthdays: 'Ближайшие Дни рождения'
+      user: 'Пользователь'
   devise:
     sessions:
       new:
