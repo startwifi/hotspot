@@ -76,14 +76,19 @@ class EventsController < ApplicationController
   end
 
   def post_twitter
-      client = twitter_client
-      if current_user.company.tw.post_image?
-        client.update_with_media(current_user.company.tw.post_text, File.new("#{current_user.company.tw.post_image.path}"))
-      else
-        client.update(current_user.company.tw.post_text)
-      end
-      current_user.add_event(:post)
-      redirect_to router_url
+    client = twitter_client
+    if current_user.company.tw.post_image?
+      client.update_with_media(current_user.company.tw.post_text, File.new("#{current_user.company.tw.post_image.path}"))
+    else
+      client.update(current_user.company.tw.post_text)
+    end
+    current_user.add_event(:post)
+    redirect_to router_url
+  end
+
+  def is_member
+    current_user.add_event(:member)
+    redirect_to router_url
   end
 
   def by_date

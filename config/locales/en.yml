@@ -155,6 +155,7 @@ en:
       social_networks: 'Social networks'
       gender: 'Gender'
       activity: 'Activity'
+      events: 'Events by type'
   users:
     index:
       users: 'Users'
@@ -215,6 +216,12 @@ en:
         header: 'Vkontakte: share post for continue'
         share: 'Share post'
         cancel: 'Cancel'
+  events:
+    join: 'Joined in group'
+    post: 'Created a post'
+    auth: 'Only authentication'
+    member: 'Already member'
+    unknown: 'Unknown action'
   pages:
     tos: 'Terms of Service'
     new: 'Add new'
