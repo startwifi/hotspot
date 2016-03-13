@@ -1,10 +1,17 @@
 %h2= t('.statistics')
-.col-md-6
-  %h3= t('.social_networks')
-  = pie_chart @social_networks
-.col-md-6
-  %h3= t('.gender')
-  = pie_chart @genders
-.col-md-12
-  %h3= t('.activity')
-  = line_chart @activity
+.row
+  .col-md-12
+    %h3= t('.activity')
+    = line_chart activity_stats_path
+.row
+  .col-md-12
+    %h3= t('.social_networks')
+    = pie_chart social_networks_stats_path
+.row
+  .col-md-12
+    %h3= t('.events')
+    = pie_chart events_stats_path
+.row
+  .col-md-12
+    %h3= t('.gender')
+    = pie_chart gender_stats_path

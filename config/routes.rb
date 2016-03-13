@@ -55,7 +55,17 @@ Rails.application.routes.draw do
   get '/event/:provider/subscribe', to: 'events#subscribe', as: 'event_subscribe'
   get '/event/:provider/post',      to: 'events#post',      as: 'event_post'
   get '/event/:provider/auth',      to: 'events#auth',      as: 'event_auth'
+  get '/event/:provider/is_member', to: 'events#is_member', as: 'event_member'
   get '/auth/:provider/callback',   to: 'sessions#create'
   get '/auth/failure', to: 'sessions#failure'
   get '/auth', to: 'visitors#index'
+
+  resources :stats, only: :show do
+    collection do
+      get :social_networks
+      get :gender
+      get :activity
+      get :events
+    end
+  end
 end
