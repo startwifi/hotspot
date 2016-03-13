@@ -7,6 +7,7 @@ class DashboardsController < ApplicationController
       @recent_events = @company.events.today.order('created_at DESC')
       @days_range = get_range.to_a.reverse
       @events = get_events_by_month
+      @birthdays = @company.users.birthdays
     else
       redirect_to companies_path
     end

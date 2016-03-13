@@ -37,6 +37,18 @@
         %i.fa.fa-comments-o
       %td
         = @company.sms? ? 'auth' : 'off'
+  .row
+    %h4= t('.birthdays')
+    %table.table.table-striped.table-hover
+      %thead
+        %tr.text-center
+          %th= t('.date')
+          %th= t('.user')
+        - @birthdays.each do |user|
+          %tr
+            %th= user.birthday
+            %th= link_to user.name, user_path(user.id)
+
 .col-md-9
   .col-md-5
     %table.table.table-striped.table-hover

@@ -129,6 +129,8 @@ en:
       time: 'Time'
       action: 'Action'
       link: 'Link'
+      birthdays: 'Birthdays'
+      user: 'User'
   settings:
     edit:
       tos: 'Terms of Service'
