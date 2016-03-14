@@ -91,5 +91,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, alert: t('.need_authorization')
     end
   end
-
 end

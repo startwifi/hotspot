@@ -2,5 +2,5 @@
   %tr
     %th= fa_icon icon_class_by event.user.provider
     %td= event.created_at.strftime("%H:%M:%S")
-    %td= event.action
+    %td= humanize_event(event.action)
     %td= link_to event.user.name, user_path(event.user)

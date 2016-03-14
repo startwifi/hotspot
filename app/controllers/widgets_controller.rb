@@ -21,7 +21,7 @@ class WidgetsController < ApplicationController
     when 'post'
       render 'widgets/fb/post'
     when 'join'
-      is_member?('fb', @company.fb.group_id) ? redirect_to(router_url) : render('widgets/fb/join')
+      is_member?('fb', @company.fb.group_id) ? redirect_to(event_member_path(:fb)) : render('widgets/fb/join')
     when 'auth'
       redirect_to event_auth_path(:fb)
     end
@@ -44,7 +44,7 @@ class WidgetsController < ApplicationController
       @image = @company.vk.post_image? ? "#{root_url.chop + @company.vk.post_image.url}": nil
       render 'widgets/vk/post'
     when 'join'
-      is_member?('vk', @company.vk.group_name) ? redirect_to(router_url) : render('widgets/vk/join')
+      is_member?('vk', @company.vk.group_name) ? redirect_to(event_member_path(:vk)) : render('widgets/vk/join')
     when 'auth'
       redirect_to event_auth_path(:vk)
     end
@@ -66,7 +66,7 @@ class WidgetsController < ApplicationController
     when 'post'
       render 'widgets/ok/post'
     when 'join'
-      is_member?('ok', @company.ok.group_name) ? redirect_to(router_url) : render('widgets/ok/join')
+      is_member?('ok', @company.ok.group_name) ? redirect_to(event_member_path(:ok)) : render('widgets/ok/join')
     when 'auth'
       redirect_to event_auth_path(:ok)
     end

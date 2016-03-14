@@ -29,6 +29,11 @@ class User < ActiveRecord::Base
   has_many :statistics, dependent: :destroy
   validates :name, :provider, :uid, :company, presence: true
 
+  scope :birthdays, -> { where("extract(month from birthday) = ? AND
+                               extract(day from birthday) >= ?",
+                               Date.today.strftime('%m'),
+                               Date.today.strftime('%d')) }
+
   def add_event(action)
     events.create!(action: action, provider: self.provider, company: self.company)
   end
