@@ -66,7 +66,6 @@ ru:
       companies: "Компании"
       dashboard: "Приборная панель"
       profile: "Профиль"
-      tos: "Соглашение"
       settings: "Настройки"
       sign_out: "Выйти"
       statistics: "Статистика"
@@ -99,6 +98,7 @@ ru:
       form_contains: "Форма содержит %{count}"
     settings_links:
       advanced: "Дополнительно"
+      tos: "Соглашение"
       facebook: Facebook
       instagram: Instagram
       odnoklassniki: "Одноклассники"
