@@ -13,6 +13,8 @@
 #  cover      :string
 #  card       :string
 #  sms        :boolean          default(FALSE)
+#  tos        :boolean          default(FALSE)
+#  tos_text   :text
 #
 
 class Company < ActiveRecord::Base

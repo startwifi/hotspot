@@ -23,6 +23,10 @@
         .form-group
           = ok.label :odnoklassniki, t('.odnoklassniki')
           = ok.select :action, [[t('.join_group'), :join], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
+      %div.checkbox
+        %label
+          = f.check_box :tos
+          = f.label :tos, t('.tos')
       .form-group
         = f.label :cover, t('.cover')
         - if @company.cover?

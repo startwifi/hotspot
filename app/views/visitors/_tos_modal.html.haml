@@ -1,0 +1,9 @@
+.modal.fade#tos{tabindex: '-1', role: 'dialog'}
+  .modal-dialog{role: 'document'}
+    .modal-content
+      .modal-header
+        %button.close{'data-dismiss': 'modal', 'aria-label': 'Close'}
+          %span{'aria-hidden': true} &times;
+        %h4.modal-title#tosLable= t('pages.tos')
+      .modal-body.tos-modal
+        = markdown(@company.tos_text) if @company.tos.present?

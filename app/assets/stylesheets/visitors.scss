@@ -1,0 +1,31 @@
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  background: #fff;
+  z-index: 100500;
+  .spinner {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: url(image_path('spinner.gif')) no-repeat 50% 50%;
+    margin: -32px 0 0 -32px;
+  }
+}
+
+.disabled {
+  cursor: default;
+  img {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+  }
+}
+
+.tos-modal {
+  text-align: justify;
+}
