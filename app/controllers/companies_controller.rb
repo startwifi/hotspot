@@ -18,6 +18,8 @@ class CompaniesController < ApplicationController
   before_filter :authenticate_admin!
   load_and_authorize_resource
 
+  layout 'visitors', only: :suspended
+
   def index
   end
 
@@ -31,6 +33,9 @@ class CompaniesController < ApplicationController
 
   def new_admin
     @admin = Admin.new
+  end
+
+  def edit
   end
 
   def create
@@ -52,6 +57,36 @@ class CompaniesController < ApplicationController
       flash.now[:alert] = t('.errors')
       render :new_admin
     end
+  end
+
+  def update
+    if @company.update(company_params)
+      redirect_to @company, notice: t('.success')
+    else
+      flash.now[:alert] = t('.errors')
+      render :edit
+    end
+  end
+
+  def destroy
+    if @company.destroy
+      redirect_to companies_path, notice: t('.success')
+    else
+      redirect_to @company, alert: t('.errors')
+    end
+  end
+
+  def hold
+    toggle_status = CompanySuspendService.new(@company)
+    if toggle_status.call
+      redirect_to companies_path, notice: t('.success')
+    else
+      redirect_to companies_path, alert: t('.errors')
+    end
+  end
+
+  def suspended
+    flash.now[:error] = "Обслуживание приостановлено"
   end
 
   private

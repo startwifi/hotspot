@@ -41,6 +41,10 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :show]
   resources :companies do
+    member do
+      put :hold
+      get :suspended
+    end
     get  '/new_admin', to: 'companies#new_admin',    on: :member
     post '/admin',     to: 'companies#create_admin', on: :member
   end

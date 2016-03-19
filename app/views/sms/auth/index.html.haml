@@ -2,14 +2,14 @@
   .col-md-offset-4.col-md-4
     - if @model.errors.any?
       #error_explanation
-        %h2= "Найденны ошибки:"
+        %h2= t('.errors')
         %ul
           - @model.errors.full_messages.each do |error|
             %li= error
     = form_for @model, url: sms_auth_send_sms_path do |f|
       .form-group
-        = f.label :phone
+        = f.label :phone, t('.phone')
         = f.text_field :phone, class: 'form-control', type: 'tel'
-        %span.help-block Format: +380441234567
+        %span.help-block Format: +123987453232
       .form-group
-        = f.submit 'Auth', class: 'btn btn-primary'
+        = f.submit t('.auth'), class: 'btn btn-primary'

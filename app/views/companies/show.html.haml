@@ -1,17 +1,48 @@
 %h2= t('.company', name: @company.name)
 
-.col-md-6
-  %h3= t('.admins')
-  %table.table.table-striped
-    %thead
-      %th= t('.email')
-      %th= t('.last_signin')
-    %tbody
-      - @admins.each do |admin|
+.row
+  .col-md-6
+    %h3= t('.details')
+    %table.table.table-striped
+      %thead
+        %th= t('.attribute')
+        %th= t('.description')
+      %tbody
         %tr
-          %td= admin.email
-          %td= admin.last_sign_in_at
-  %p= link_to t('.add_new'), new_admin_company_path(@company), class: 'btn btn-primary'
-.col-md-6
-  %h3= t('.last_events')
+          %th= t('.name')
+          %td= @company.name
+        %tr
+          %th= t('.contact')
+          %td= @company.owner_name
+        %tr
+          %th= t('.phone')
+          %td= @company.phone
+        %tr
+          %th= t('.address')
+          %td= @company.address
+        %tr
+          %th= t('.token')
+          %td= @company.token
+        %tr
+          %th= t('.options')
+          %td
+            = link_to t('.edit'), edit_company_path(@company)
+            = link_to company_path(@company), method: :delete,
+                                             data: { confirm: "#{t('.sure')}" } do
+              = t('.delete')
+  .col-md-6
+    %h3= t('.admins')
+    %table.table.table-striped
+      %thead
+        %th= t('.email')
+        %th= t('.last_signin')
+      %tbody
+        - @admins.each do |admin|
+          %tr
+            %td= admin.email
+            %td= admin.last_sign_in_at
+    %p= link_to t('.add_new'), new_admin_company_path(@company), class: 'btn btn-primary'
+.row
+  .col-md-6
+    %h3= t('.last_events')
 
