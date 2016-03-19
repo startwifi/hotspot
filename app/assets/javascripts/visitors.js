@@ -7,14 +7,6 @@ jQuery.fn.extend({
   }
 });
 
-$(window).load(function(){
-  $('.preloader').fadeOut();
-});
-
-$('.social').click(function(){
-  $('.preloader').toggle();
-});
-
 function initializeTos(enableTos) {
   if (enableTos) {
     $('body').on('click', 'a.disabled', function(event) {
@@ -29,4 +21,16 @@ function initializeTos(enableTos) {
       };
     });
   };
+};
+
+var preloaderFadeOut = function(){
+  $('.preloader').fadeOut();
 }
+
+$(document).ready(preloaderFadeOut);
+$(document).on('page:load', preloaderFadeOut);
+
+$('.social').click(function(){
+  $('.preloader').toggle();
+});
+

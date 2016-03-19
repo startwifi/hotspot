@@ -7,8 +7,6 @@ class Sms::AuthController < ApplicationController
     @model = Sms.new
   end
 
-  # def send
-  # end
   def send_sms
     @model = Sms.new(params[:sms])
 
