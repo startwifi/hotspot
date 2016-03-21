@@ -6,4 +6,4 @@
           %span{'aria-hidden': true} &times;
         %h4.modal-title#tosLable= t('pages.tos')
       .modal-body.tos-modal
-        = markdown(@company.tos_text) if @company.tos.present?
+        = markdown(@company.tos_text) if @company.tos_text.present?

@@ -1,7 +1,7 @@
 Rails.application.config.middleware.use ExceptionNotification::Rack, email: {
   email_prefix: "[ERROR] ",
-  sender_address: %{"notifier" <notifier@test.startwifi.me>},
-  exception_recipients: %w{exceptions@test.startwifi.me}
+  sender_address: %{"notifier" <notifier@startwifi.me>},
+  exception_recipients: %w{exceptions@startwifi.me}
 }
 
 Rails.application.configure do
@@ -67,8 +67,17 @@ Rails.application.configure do
   # config.action_controller.asset_host = 'http://assets.example.com'
 
   # ActionMailer settings
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    :user_name => Rails.application.secrets.sendgrid_username,
+    :password => Rails.application.secrets.sendgrid_password,
+    :domain => 'startwifi.me',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
