@@ -1,0 +1,21 @@
+- if @company.errors.any?
+  #error_explanation
+    %h2= "Form contains #{pluralize(@company.errors.count, 'error')}:"
+    %ul
+      - @company.errors.full_messages.each do |error|
+        %li= error
+= form_for @company do |f|
+  .form-group
+    = f.label :name, t('.name')
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :owner_name, t('.owner_name')
+    = f.text_field :owner_name, class: 'form-control'
+  .form-group
+    = f.label :phone, t('.phone')
+    = f.text_field :phone, class: 'form-control'
+  .form-group
+    = f.label :address, t('.address')
+    = f.text_field :address, class: 'form-control'
+  .form-group
+    = f.submit class: 'btn btn-primary'

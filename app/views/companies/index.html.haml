@@ -1,21 +1,28 @@
 %h2= t('.all_companies')
 
 - if @companies
-  .table-responsive
-    %table.table.table-striped
-      %thead
-        %th= t('.name')
-        %th= t('.contact')
-        %th= t('.phone')
-        %th= t('.address')
-        %th= t('.token')
-        %th= t('.options')
-      - @companies.each do |company|
-        %tr
-          %td= company.name
-          %td= company.owner_name
-          %td= company.phone
-          %td= company.address
-          %td= company.token
-          %td= link_to t('.show'), company_path(company)
-  %p= link_to t('.add_new'), new_company_path, class: 'btn btn-primary'
+  .row
+    .col-md-offset-3.col-md-6
+      .table-responsive
+        %table.table.table-striped
+          %thead
+            %th= t('.name')
+            %th= t('.token')
+            %th= t('.status')
+            %th= t('.options')
+          - @companies.each do |company|
+            %tr
+              %td= link_to company.name, company
+              %td= company.token
+              %td
+                = link_to hold_company_path(company), method: :put do
+                  = company_status(company)
+              %td
+                = link_to company_path(company), title: t('.show') do
+                  %span.glyphicon.glyphicon-cog
+                = link_to edit_company_path(company), title: t('.edit') do
+                  %span.glyphicon.glyphicon-pencil
+                = link_to company_path(company), title: t('.delete'), method: :delete,
+                                                data: { confirm: "#{t('.sure')}" } do
+                  %span.glyphicon.glyphicon-trash
+      %p= link_to t('.add_new'), new_company_path, class: 'btn btn-primary'

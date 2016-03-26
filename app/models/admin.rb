@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #  company_id             :integer
 #  admin                  :boolean
+#  active                 :boolean          default(TRUE)
 #
 # Indexes
 #
@@ -36,4 +37,8 @@ class Admin < ActiveRecord::Base
          :validatable
 
   belongs_to :company
+
+  def active_for_authentication?
+    super && active?
+  end
 end

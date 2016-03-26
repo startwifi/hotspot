@@ -57,14 +57,32 @@ en:
       token: 'Token'
       options: 'Options'
       show: 'Show'
+      edit: 'Edit'
+      delete: 'Delete'
       add_new: 'Add new company'
+      sure: 'Are you sure?'
+      status: 'Status'
     show:
+      name: 'Name'
+      contact: 'Contact name'
+      phone: 'Phone'
+      address: 'Address'
+      token: 'Token'
+      options: 'Options'
+      show: 'Show'
+      edit: 'Edit'
+      delete: 'Delete'
+      sure: 'Are you sure?'
+      status: 'Status'
       company: 'Company %{name}'
       admins: 'Administrators'
       email: 'Email'
       last_signin: 'Last Sign In'
       add_new: 'Add new admin'
       last_events: 'Last events'
+      details: 'Company details'
+      attribute: 'Attribute'
+      description: 'Description'
     new:
       add_company: 'Add company'
       name: 'Name'
@@ -79,11 +97,22 @@ en:
       password_confirmation: 'Password confirmation'
       register: 'Sign up'
       back: 'Back'
+    edit:
+      edit_company: 'Edit company'
     create:
       success: 'Company successfully created'
     create_admin:
       success: 'Admin successfully added'
       errors: 'Form contains some errors'
+    update:
+      success: 'Company successfully updated'
+      errors: 'Form contains some errors'
+    destroy:
+      success: 'Company successfully deleted'
+      errors: 'You can not destroy this company'
+    hold:
+      success: 'Company status successfully changed'
+      errors: 'You can not change company status'
   settings:
     update:
       success: 'Settings successfully updated'
@@ -231,3 +260,9 @@ en:
     save: 'Save'
     success: 'ToS successfully updated'
     markdown: 'You can use *markdown* syntax'
+  sms:
+    auth:
+      index:
+        errors: "Errors"
+        auth: "Let's go"
+        phone: "Phone"

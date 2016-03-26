@@ -10,5 +10,6 @@ class VisitorsController < ApplicationController
     end
     @company = Company.find_by_token(session[:company_token])
     render_404 unless @company
+    redirect_to suspended_company_path(@company) unless @company.try(:active)
   end
 end

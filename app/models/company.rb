@@ -15,6 +15,7 @@
 #  sms        :boolean          default(FALSE)
 #  tos        :boolean          default(FALSE)
 #  tos_text   :text
+#  active     :boolean          default(TRUE)
 #
 
 class Company < ActiveRecord::Base
