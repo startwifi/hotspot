@@ -12,10 +12,10 @@
 #  owner_name :string
 #  cover      :string
 #  card       :string
-#  sms        :boolean          default(FALSE)
 #  tos        :boolean          default(FALSE)
 #  tos_text   :text
 #  active     :boolean          default(TRUE)
+#  sms_auth   :string
 #
 
 class Company < ActiveRecord::Base
@@ -23,6 +23,8 @@ class Company < ActiveRecord::Base
   mount_uploader :card,  CardUploader
 
   has_secure_token
+
+  SMS_AUTH_TYPES = %w(normal preauth)
 
   has_many :users, dependent: :destroy
   has_many :admins, dependent: :destroy
@@ -35,6 +37,7 @@ class Company < ActiveRecord::Base
   has_one :ok, dependent: :destroy
 
   validates :name, :owner_name, :phone, :address, presence: true
+  validates :sms_auth, inclusion: { in: SMS_AUTH_TYPES }
 
   def create_dummy_social(*socials)
     socials.each do |social|

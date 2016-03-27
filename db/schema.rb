@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324192519) do
+ActiveRecord::Schema.define(version: 20160402085305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 20160324192519) do
     t.string   "owner_name"
     t.string   "cover"
     t.string   "card"
-    t.boolean  "sms",        default: false
     t.boolean  "tos",        default: false
     t.text     "tos_text"
     t.boolean  "active",     default: true
+    t.string   "sms_auth"
   end
 
   create_table "events", force: :cascade do |t|

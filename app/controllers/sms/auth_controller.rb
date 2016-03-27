@@ -2,6 +2,7 @@ require 'rotp'
 
 class Sms::AuthController < ApplicationController
   layout 'visitors'
+  before_action :load_company
 
   def index
     @model = Sms.new
@@ -22,7 +23,7 @@ class Sms::AuthController < ApplicationController
       code = hotp.at(session[:otp_counter])
 
       ret = @model.send_sms(code)
-      redirect_to sms_auth_validate_path, flash: { notice: "На номер #{@model.phone} был выслан код подтверждения" }
+      redirect_to sms_auth_validate_path, notice: t('.success', phone: @model.phone)
     else
       render :index
     end
@@ -35,8 +36,15 @@ class Sms::AuthController < ApplicationController
       if hotp.verify(params[:sms][:code], session[:otp_counter])
         redirect_to '/auth/sms/callback'
       else
-        redirect_to :index, flash: { error: 'Вы ввели не правильный код подтверждения. Попробуйте снова' }
+        redirect_to :back, alert: t('.errors')
       end
     end
+  end
+
+  private
+
+  def load_company
+    @company = Company.find_by_token(session[:company_token])
+    redirect_to auth_path if @company.sms_auth.blank? || user_signed_in?
   end
 end
