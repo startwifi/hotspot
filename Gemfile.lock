@@ -356,6 +356,7 @@ GEM
     shoulda-matchers (3.0.0)
       activesupport (>= 4.0.0)
     simple_oauth (0.3.1)
+    slack-notifier (1.5.1)
     slop (3.6.0)
     spring (1.4.0)
     spring-commands-rspec (1.0.4)
@@ -463,6 +464,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shoulda-matchers
+  slack-notifier
   spring
   spring-commands-rspec
   turbolinks
