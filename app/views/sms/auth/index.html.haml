@@ -1,3 +1,4 @@
+= render 'header'
 .row
   .col-md-offset-4.col-md-4
     - if @model.errors.any?
@@ -9,7 +10,8 @@
     = form_for @model, url: sms_auth_send_sms_path do |f|
       .form-group
         = f.label :phone, t('.phone')
-        = f.text_field :phone, class: 'form-control', type: 'tel'
-        %span.help-block Format: +123987453232
+        = f.text_field :phone, class: 'form-control', type: 'tel',
+          placeholder: t('.placeholder')
+        %span.help-block= "#{t('.format')} #{t('.placeholder')}"
       .form-group
         = f.submit t('.auth'), class: 'btn btn-primary'

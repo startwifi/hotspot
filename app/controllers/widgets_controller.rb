@@ -9,12 +9,15 @@ class WidgetsController < ApplicationController
     when 'vkontakte' then widget_vk
     when 'instagram' then widget_in
     when 'odnoklassniki' then widget_ok
-    else
-      redirect_to event_auth_path(current_user.provider)
+    when 'sms' then widget_sms
     end
   end
 
   private
+
+  def widget_sms
+    redirect_to event_auth_path(current_user.provider)
+  end
 
   def widget_fb
     case @company.fb.action

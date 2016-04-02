@@ -54,8 +54,18 @@ class EventsController < ApplicationController
   end
 
   def auth
+    case params[:provider]
+    when 'sms'
+      sms = current_user.company.sms_auth
+      if sms.present? && sms.eql?('preauth')
+        redirect_to auth_path
+      else
+        redirect_to router_url
+      end
+    else
+      redirect_to router_url
+    end
     current_user.add_event(:auth)
-    redirect_to router_url
   end
 
   def post_facebook

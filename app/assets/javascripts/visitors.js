@@ -27,10 +27,11 @@ var preloaderFadeOut = function(){
   $('.preloader').fadeOut();
 }
 
-$(document).ready(preloaderFadeOut);
-$(document).on('page:load', preloaderFadeOut);
-
-$('.social').click(function(){
-  $('.preloader').toggle();
+$(document).ready(function(){
+  preloaderFadeOut();
+  $('.social').click(function(){
+    $('.preloader').show();
+  });
 });
 
+$(document).on('page:load', preloaderFadeOut);

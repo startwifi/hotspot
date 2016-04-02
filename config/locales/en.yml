@@ -176,7 +176,10 @@ en:
       remove_cover: 'Remove cover'
       save: 'Save settings'
     advanced:
-      sms: 'SMS Authorization'
+      sms: 'SMS authorization'
+      disabled: 'Disabled'
+      enabled: 'Enabled'
+      preauth: 'Pre-authorization'
       card: 'Card'
       remove_card: 'Remove card'
       save: 'Save settings'
@@ -263,6 +266,16 @@ en:
   sms:
     auth:
       index:
-        errors: "Errors"
         auth: "Let's go"
-        phone: "Phone"
+        errors: 'Form contains some errors'
+        format: 'Format:'
+        phone: 'Phone number'
+        placeholder: '+123206241212'
+        welcome: 'Authorize with SMS'
+      send_sms:
+        success: 'SMS code sent to %{phone}'
+      validate:
+        back: 'Back'
+        code: 'Code'
+        confirm: 'Confirm'
+        errors: 'Wrong auth code. Try again.'

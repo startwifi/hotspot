@@ -10,6 +10,7 @@ class VisitorsController < ApplicationController
     end
     @company = Company.find_by_token(session[:company_token])
     render_404 unless @company
-    redirect_to suspended_company_path(@company) unless @company.try(:active)
+    redirect_to suspended_company_path(@company) and return unless @company.try(:active)
+    redirect_to sms_auth_path if @company.sms_auth.eql?('preauth') && !user_signed_in?
   end
 end

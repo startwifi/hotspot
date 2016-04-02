@@ -3,10 +3,9 @@
 .row
   .col-md-offset-4.col-md-4
     = form_for @company, url: advanced_settings_path, method: :put do |f|
-      %div.checkbox
-        %label
-          = f.check_box :sms
-          = f.label :sms, t('.sms')
+      .form-group
+        = f.label :sms_auth, t('.sms')
+        = f.select :sms_auth, [[t('.disabled'), nil], [t('.enabled'), :normal], [t('.preauth'), :preauth]], {}, class: 'form-control'
       .form-group
         = f.label :card, t('.card')
         - if @company.card?
