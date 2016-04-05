@@ -45,4 +45,16 @@
 .row
   .col-md-6
     %h3= t('.last_events')
-
+    %table.table.table-striped
+      %thead
+        %th
+        %th= t('dashboards.show.time')
+        %th= t('dashboards.show.action')
+        %th= t('dashboards.show.link')
+      %tbody
+        - @company.events.last25.each do |event|
+          %tr
+            %th= fa_icon icon_class_by event.user.provider
+            %td= event.created_at
+            %td= humanize_event(event.action)
+            %td= link_to event.user.name, user_path(event.user)
