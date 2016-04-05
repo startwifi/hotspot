@@ -43,15 +43,15 @@ ActiveRecord::Schema.define(version: 20160402085305) do
     t.string   "token"
     t.string   "phone"
     t.string   "address"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "owner_name"
     t.string   "cover"
     t.string   "card"
     t.boolean  "tos",        default: false
     t.text     "tos_text"
     t.boolean  "active",     default: true
-    t.string   "sms_auth"
+    t.string   "sms_auth",   default: "disabled"
   end
 
   create_table "events", force: :cascade do |t|

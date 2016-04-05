@@ -1,10 +1,4 @@
 Rails.application.config.middleware.use ExceptionNotification::Rack,
-  email: {
-    email_prefix: "[ERROR] ",
-    sender_address: %{"notifier" <notifier@startwifi.me>},
-    exception_recipients: %w{gremych@gmail.com},
-    delivery_method: :smtp
-  },
   slack: {
     webhook_url: "https://hooks.slack.com/services/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",
     channel: "#exceptions",

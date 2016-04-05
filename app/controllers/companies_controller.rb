@@ -12,6 +12,10 @@
 #  owner_name :string
 #  cover      :string
 #  card       :string
+#  tos        :boolean          default(FALSE)
+#  tos_text   :text
+#  active     :boolean          default(TRUE)
+#  sms_auth   :string           default("disabled")
 #
 
 class CompaniesController < ApplicationController
