@@ -162,6 +162,7 @@ en:
       user: 'User'
   settings:
     edit:
+      settings: 'Settings'
       tos: 'Terms of Service'
       vkontakte: 'Vkontakte'
       odnoklassniki: 'Odnoklassniki'

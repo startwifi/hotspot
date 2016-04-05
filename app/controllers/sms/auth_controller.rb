@@ -45,6 +45,8 @@ class Sms::AuthController < ApplicationController
 
   def load_company
     @company = Company.find_by_token(session[:company_token])
-    redirect_to auth_path if @company.sms_auth.blank? || user_signed_in?
+    if @company.nil? || @company.sms_auth.eql?('disabled') || user_signed_in?
+      redirect_to auth_path
+    end
   end
 end

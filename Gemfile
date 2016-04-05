@@ -32,7 +32,6 @@ gem 'odnoklassniki'
 gem 'browser'
 gem 'chartkick'
 gem 'groupdate'
-gem 'exception_notification'
 gem 'redcarpet'
 
 # Phone validator
@@ -44,6 +43,10 @@ gem 'rotp'
 # Localization
 gem 'rails-i18n', '~> 4.0'
 gem 'devise-i18n'
+
+# Dev Notifications
+gem 'exception_notification'
+gem 'slack-notifier'
 
 group :development, :test do
   gem 'byebug'

@@ -5,19 +5,6 @@
     = form_for @company, url: advanced_settings_path, method: :put do |f|
       .form-group
         = f.label :sms_auth, t('.sms')
-        = f.select :sms_auth, [[t('.disabled'), nil], [t('.enabled'), :normal], [t('.preauth'), :preauth]], {}, class: 'form-control'
-      .form-group
-        = f.label :card, t('.card')
-        - if @company.card?
-          %div
-          = image_tag(@company.card)
-        = f.file_field :card
-        %p.help-block
-          = @company.card.extension_white_list.join(', ')
-        = f.hidden_field :card_cache
-      %div.checkbox
-        %label
-          = f.check_box :remove_card
-          = f.label :remove_card, t('.remove_card')
+        = f.select :sms_auth, [[t('.disabled'), :disabled], [t('.enabled'), :normal], [t('.preauth'), :preauth]], {}, class: 'form-control'
       .form-group
         = f.submit t('.save'), class: 'btn btn-primary'

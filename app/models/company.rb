@@ -15,7 +15,7 @@
 #  tos        :boolean          default(FALSE)
 #  tos_text   :text
 #  active     :boolean          default(TRUE)
-#  sms_auth   :string
+#  sms_auth   :string           default("disabled")
 #
 
 class Company < ActiveRecord::Base
@@ -24,7 +24,7 @@ class Company < ActiveRecord::Base
 
   has_secure_token
 
-  SMS_AUTH_TYPES = %w(normal preauth)
+  SMS_AUTH_TYPES = %w(disabled normal preauth)
 
   has_many :users, dependent: :destroy
   has_many :admins, dependent: :destroy

@@ -57,7 +57,7 @@ class EventsController < ApplicationController
     case params[:provider]
     when 'sms'
       sms = current_user.company.sms_auth
-      if sms.present? && sms.eql?('preauth')
+      if sms.eql?('preauth')
         redirect_to auth_path
       else
         redirect_to router_url
