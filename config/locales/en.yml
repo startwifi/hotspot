@@ -181,6 +181,7 @@ en:
       disabled: 'Disabled'
       enabled: 'Enabled'
       preauth: 'Pre-authorization'
+      preauth_normal: 'Pre-authorization + authorization'
       card: 'Card'
       remove_card: 'Remove card'
       save: 'Save settings'
@@ -200,6 +201,7 @@ en:
       created: 'Created'
       updated: 'Updated'
     show:
+      user: 'User'
       name: 'Name'
       provider: 'Provider'
       uid: 'Uid'
@@ -208,6 +210,8 @@ en:
       email: 'Email'
       gender: 'Gender'
       back: 'Back'
+      information: 'Information'
+      user_devices: 'User devices'
   visitors:
     index:
       welcome: 'This is a free wifi hotspot. You need to sign in with a social network'
@@ -256,6 +260,7 @@ en:
     post: 'Created a post'
     auth: 'Only authentication'
     member: 'Already member'
+    identification: 'Identification'
     unknown: 'Unknown action'
   pages:
     tos: 'Terms of Service'

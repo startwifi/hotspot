@@ -12,6 +12,7 @@ class Ability
       can :read, User, company_id: user.company.id
       can :read, Event, company_id: user.company.id
       can :read, Statistic, company_id: user.company.id
+      can :read, Device, company_id: user.company.id
       can :manage, Router do |router|
         router.company == user.company
       end 

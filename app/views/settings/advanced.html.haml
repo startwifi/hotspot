@@ -5,6 +5,6 @@
     = form_for @company, url: advanced_settings_path, method: :put do |f|
       .form-group
         = f.label :sms_auth, t('.sms')
-        = f.select :sms_auth, [[t('.disabled'), :disabled], [t('.enabled'), :normal], [t('.preauth'), :preauth]], {}, class: 'form-control'
+        = f.select :sms_auth, [[t('.disabled'), :disabled], [t('.enabled'), :normal], [t('.preauth'), :preauth], [t('.preauth_normal'), :preauth_normal]], {}, class: 'form-control'
       .form-group
         = f.submit t('.save'), class: 'btn btn-primary'

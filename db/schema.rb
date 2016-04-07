@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411053412) do
+ActiveRecord::Schema.define(version: 20160425172517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 20160411053412) do
     t.boolean  "active",     default: true
     t.string   "sms_auth",   default: "disabled"
   end
+
+  create_table "devices", force: :cascade do |t|
+    t.integer  "company_id"
+    t.macaddr  "mac"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "devices", ["company_id"], name: "index_devices_on_company_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
@@ -134,9 +143,9 @@ ActiveRecord::Schema.define(version: 20160411053412) do
     t.string   "platform_version"
     t.string   "browser"
     t.string   "browser_version"
-    t.string   "mac"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.macaddr  "mac"
   end
 
   add_index "statistics", ["company_id"], name: "index_statistics_on_company_id", using: :btree

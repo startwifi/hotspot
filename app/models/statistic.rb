@@ -10,9 +10,9 @@
 #  platform_version :string
 #  browser          :string
 #  browser_version  :string
-#  mac              :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  mac              :macaddr
 #
 # Indexes
 #

@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
   helper_method :correct_user?
   helper_method :make_link
   helper_method :router_url
+  helper_method :mac_address
 
   private
 
@@ -90,5 +91,10 @@ class ApplicationController < ActionController::Base
     if !current_user
       redirect_to root_url, alert: t('.need_authorization')
     end
+  end
+
+  # TODO: Improve this method
+  def mac_address(mac)
+    mac.gsub('%3A',':')
   end
 end

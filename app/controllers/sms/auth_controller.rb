@@ -34,7 +34,7 @@ class Sms::AuthController < ApplicationController
       hotp = ROTP::HOTP.new(session[:otp_secret])
 
       if hotp.verify(params[:sms][:code], session[:otp_counter])
-        redirect_to '/auth/sms/callback'
+        validation_success
       else
         redirect_to :back, alert: t('.errors')
       end
@@ -42,6 +42,20 @@ class Sms::AuthController < ApplicationController
   end
 
   private
+
+  def validation_success
+    if @company.sms_auth.eql?('preauth_normal') && session[:preauth_normal].blank?
+      @company.devices.find_or_create_by(mac: session[:mac])
+      session[:preauth_normal] = true
+      redirect_to auth_path
+    elsif @company.sms_auth.eql?('preauth') && session[:preauth].blank?
+      @company.devices.find_or_create_by(mac: session[:mac])
+      session[:preauth] = true
+      redirect_to auth_path
+    else
+      redirect_to '/auth/sms/callback'
+    end
+  end
 
   def load_company
     @company = Company.find_by_token(session[:company_token])

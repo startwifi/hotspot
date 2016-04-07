@@ -9,6 +9,8 @@ module EventsHelper
       t('events.auth')
     when 'member'
       t('events.member')
+    when 'identification'
+      t('events.identification')
     else
       t('events.unknown')
     end

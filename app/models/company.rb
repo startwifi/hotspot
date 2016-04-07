@@ -24,13 +24,14 @@ class Company < ActiveRecord::Base
 
   has_secure_token
 
-  SMS_AUTH_TYPES = %w(disabled normal preauth)
+  SMS_AUTH_TYPES = %w(disabled normal preauth preauth_normal)
 
   has_many :users, dependent: :destroy
   has_many :admins, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :statistics, dependent: :destroy
   has_many :routers, dependent: :destroy
+  has_many :devices, dependent: :destroy
   has_one :vk, dependent: :destroy
   has_one :fb, dependent: :destroy
   has_one :tw, dependent: :destroy

@@ -40,7 +40,8 @@ class User < ActiveRecord::Base
 
   def add_statistic(browser, mac)
     statistics.create!(company: self.company, provider: self.provider,
-      platform: browser.platform, browser: browser.name, mac: mac)
+                       platform: browser.platform, browser: browser.name,
+                       mac: mac)
   end
 
   def self.from_omniauth(auth, company)
@@ -83,7 +84,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
   def self.parse_vk_bdate(bdate)
     return unless bdate
 
@@ -109,5 +109,9 @@ class User < ActiveRecord::Base
     user.email = auth.info.email || ''
     user.birthday = Date.strptime(raw_info.birthday, '%Y-%m-%d') if raw_info.birthday
     user.gender = raw_info.gender
+  end
+
+  def macs
+    statistics.collect(&:mac).compact.uniq
   end
 end

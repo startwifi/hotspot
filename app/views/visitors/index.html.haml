@@ -22,7 +22,7 @@
       %li
         = link_to '/auth/odnoklassniki', class: 'social' do
           = image_tag 'ok.png'
-    - if @company.sms_auth.eql?('normal')
+    - if @company.sms_auth.eql?('normal') || @company.sms_auth.eql?('preauth_normal')
       %li
         = link_to '/auth/sms', class: 'social' do
           = image_tag 'sms.png'

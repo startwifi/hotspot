@@ -10,27 +10,40 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+
 gem 'haml-rails'
+
+# Authentication
+gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'omniauth-twitter'
 gem 'omniauth-instagram'
 gem 'omniauth-odnoklassniki'
+
+# Authorization
+gem 'cancancan'
+
+# Api wrappers
+gem 'koala'
+gem 'twitter'
+gem 'odnoklassniki'
+
+# Design
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
-gem 'devise'
+
+# Statistics
+gem 'browser'
+gem 'chartkick'
+
+# Tools
 gem 'puma'
 gem 'has_secure_token'
 gem 'rest-client'
-gem 'koala'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'twitter'
-gem 'cancancan'
-gem 'odnoklassniki'
-gem 'browser'
-gem 'chartkick'
 gem 'groupdate'
 gem 'redcarpet'
 gem 'mtik'

@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
   resources :routers
   resources :users, only: [:index, :show]
+  resources :devices, only: :show
   resources :companies do
     member do
       put :hold
