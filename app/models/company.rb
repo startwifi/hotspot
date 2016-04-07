@@ -70,4 +70,9 @@ class Company < ActiveRecord::Base
     when :ok then "http://ok.ru/group/" + ENV['OK_GROUP_NAME']
     end
   end
+
+  def sms
+    return true unless self.sms_auth.eql?('disabled')
+    false
+  end
 end
