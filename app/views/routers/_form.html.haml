@@ -1,0 +1,21 @@
+- if @router.errors.any?
+  #error_explanation
+    %h2= "Form contains #{pluralize(@router.errors.count, 'error')}:"
+    %ul
+      - @router.errors.full_messages.each do |error|
+        %li= error
+= form_for @router do |f|
+  .form-group
+    = f.label :name, t('.name')
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :ip_address, t('.ip_address')
+    = f.text_field :ip_address, class: 'form-control'
+  .form-group
+    = f.label :password, t('.password')
+    = f.text_field :password, class: 'form-control'
+  .form-group
+    = f.label :login, t('.login')
+    = f.text_field :login, class: 'form-control'
+  .form-group
+    = f.submit t('.save'), class: 'btn btn-primary'

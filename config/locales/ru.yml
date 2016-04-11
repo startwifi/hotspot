@@ -70,6 +70,43 @@ ru:
     hold:
       success: "Статус компании успешно изменен"
       errors: "Вы не можете изменить статус компании"
+  routers:
+    show:
+      ip_address: "IP Адрес"
+      password: "Пароль"
+      login: "Логин"
+      back: "Назад"
+      name: "Название"
+      details: "Детально о роутере"
+      attribute: "Атрибут"
+      description: "Описание"
+    create:
+      success: "Роутер успешно добавлен"
+    index:
+      add_new: "Добавить роутер"
+      ip_address: "IP Адрес"
+      all_routers: "Все роутеры"
+      name: "Название"
+      options: "Опции"
+      edit: "Редактировать"
+      delete: "Удалить"
+      sure: "Вы действительно хотите удалить роутер?"
+      status: "Статус"
+      available: "Доступен"
+      not_available: "Недоступен"
+    new:
+      add_router: "Добавить роутер"
+      form:
+    edit:
+      edit_router: "Редактировать роутер"
+      back: "Назад"
+    form:
+      ip_address: "IP Адрес"
+      password: "Пароль"
+      login: "Логин"
+      back: "Назад"
+      name: "Название"
+      save: "Сохранить"
   dashboards:
     show:
       action: "Действие"
@@ -100,6 +137,7 @@ ru:
       settings: "Настройки"
       sign_out: "Выйти"
       statistics: "Статистика"
+      routers: "Точки доступа"
   settings:
     update:
       success: "Настройки успешно обновлены"

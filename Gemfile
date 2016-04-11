@@ -33,6 +33,7 @@ gem 'browser'
 gem 'chartkick'
 gem 'groupdate'
 gem 'redcarpet'
+gem 'mtik'
 
 # Phone validator
 gem 'phony_rails'

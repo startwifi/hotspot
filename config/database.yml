@@ -6,6 +6,8 @@ default: &default
 development:
   <<: *default
   database: hotspot_development
+  username: lastoller
+  password: 44b
 
 test:
   <<: *default

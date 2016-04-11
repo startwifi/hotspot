@@ -39,6 +39,8 @@ Rails.application.routes.draw do
       put 'advanced', to: 'settings#advanced_update'
     end
   end
+
+  resources :routers
   resources :users, only: [:index, :show]
   resources :companies do
     member do

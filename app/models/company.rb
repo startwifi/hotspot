@@ -30,6 +30,7 @@ class Company < ActiveRecord::Base
   has_many :admins, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :statistics, dependent: :destroy
+  has_many :routers, dependent: :destroy
   has_one :vk, dependent: :destroy
   has_one :fb, dependent: :destroy
   has_one :tw, dependent: :destroy

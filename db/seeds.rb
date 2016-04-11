@@ -70,6 +70,6 @@ admin.save!
 puts '******************'
 puts
 puts 'Auth URL:'
-puts "http://localhost:3000/auth?hs[token]=#{company.token}}"
+puts "http://localhost:3000/auth?hs[token]=#{company.token}"
 puts
 puts '******************'

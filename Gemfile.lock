@@ -208,6 +208,7 @@ GEM
     mini_magick (4.3.5)
     mini_portile (0.6.2)
     minitest (5.8.1)
+    mtik (4.0.3)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -442,6 +443,7 @@ DEPENDENCIES
   koala
   launchy
   mini_magick
+  mtik
   odnoklassniki
   omniauth
   omniauth-facebook

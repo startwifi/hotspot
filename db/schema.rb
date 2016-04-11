@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402085305) do
+ActiveRecord::Schema.define(version: 20160411053412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,21 @@ ActiveRecord::Schema.define(version: 20160402085305) do
   end
 
   add_index "oks", ["company_id"], name: "index_oks_on_company_id", using: :btree
+
+  create_table "routers", force: :cascade do |t|
+    t.integer  "company_id",                    null: false
+    t.string   "ip_address",                    null: false
+    t.string   "name"
+    t.string   "login",                         null: false
+    t.string   "password",                      null: false
+    t.boolean  "available",      default: true
+    t.datetime "last_pinged_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "routers", ["company_id"], name: "index_routers_on_company_id", using: :btree
+  add_index "routers", ["ip_address", "company_id"], name: "index_routers_on_ip_address_and_company_id", unique: true, using: :btree
 
   create_table "statistics", force: :cascade do |t|
     t.integer  "user_id"

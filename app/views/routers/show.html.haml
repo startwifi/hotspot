@@ -1,0 +1,20 @@
+.row
+  .col-md-6
+    %h3= t('.details')
+    %table.table.table-striped
+      %thead
+        %th= t('.attribute')
+        %th= t('.description')
+      %tbody
+        %tr
+          %th= t('.ip_address')
+          %td= @router.ip_address
+        %tr
+          %th= t('.name')
+          %td= @router.name
+        %tr
+          %th= t('.login')
+          %td= @router.login
+        %tr
+          %th= t('.password')
+          %td= @router.password

@@ -5,6 +5,7 @@
     %li= link_to t('.dashboard'), dashboard_path
     %li= link_to t('.statistics'), stats_path
     %li= link_to t('.settings'), edit_settings_path
+    %li= link_to t('.routers'), routers_path
   %li.dropdown
     = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown', role: 'button', 'aria-haspopup': true, 'aria-expanded': false } do
       = image_tag get_avatar, class: 'profile-image img-circle'
