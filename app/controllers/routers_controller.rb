@@ -1,6 +1,7 @@
 class RoutersController < ApplicationController
   before_action :load_company
   before_action :find_router, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   def index
     @routers = @company.routers
@@ -18,7 +19,7 @@ class RoutersController < ApplicationController
 
     @router.ping
 
-    if @router.online? && @router.save
+    if @router.available? && @router.save
       redirect_to routers_path
     else
       render :new
@@ -31,7 +32,7 @@ class RoutersController < ApplicationController
   def update
     @router.ping
 
-    if @router.online? && @router.update(router_params)
+    if @router.available? && @router.update(router_params)
       redirect_to routers_path
     else
       render :edit

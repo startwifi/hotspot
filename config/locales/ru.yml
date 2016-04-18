@@ -1,4 +1,5 @@
 ru:
+  back: "Назад"
   application_controller:
     access_denied: "Доступ запрещен"
     need_authorization: "Вам нужно войти для доступа к данной странице"

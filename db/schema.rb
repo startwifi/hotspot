@@ -112,12 +112,12 @@ ActiveRecord::Schema.define(version: 20160411053412) do
   add_index "oks", ["company_id"], name: "index_oks_on_company_id", using: :btree
 
   create_table "routers", force: :cascade do |t|
-    t.integer  "company_id",                    null: false
-    t.string   "ip_address",                    null: false
+    t.integer  "company_id"
+    t.string   "ip_address",                     null: false
     t.string   "name"
-    t.string   "login",                         null: false
-    t.string   "password",                      null: false
-    t.boolean  "available",      default: true
+    t.string   "login",                          null: false
+    t.string   "password",                       null: false
+    t.boolean  "available",      default: false
     t.datetime "last_pinged_at"
     t.datetime "created_at"
     t.datetime "updated_at"

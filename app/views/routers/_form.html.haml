@@ -12,10 +12,10 @@
     = f.label :ip_address, t('.ip_address')
     = f.text_field :ip_address, class: 'form-control'
   .form-group
+    = f.label :login, t('.login')
+    = f.text_field :login, class: 'form-control'  
+  .form-group
     = f.label :password, t('.password')
     = f.text_field :password, class: 'form-control'
-  .form-group
-    = f.label :login, t('.login')
-    = f.text_field :login, class: 'form-control'
   .form-group
     = f.submit t('.save'), class: 'btn btn-primary'
