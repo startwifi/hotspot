@@ -18,5 +18,3 @@
 /.ruby-gemset
 /.env
 /public/uploads
-
-/config/database.yml
