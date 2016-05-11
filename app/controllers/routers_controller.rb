@@ -30,9 +30,10 @@ class RoutersController < ApplicationController
   end
 
   def update
+    @router.assign_attributes(router_params)
     @router.ping
 
-    if @router.available? && @router.update(router_params)
+    if @router.available? && @router.save
       redirect_to routers_path
     else
       render :edit
