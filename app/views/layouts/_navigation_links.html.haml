@@ -16,6 +16,10 @@
           %span.gl-right.glyphicon.glyphicon-th-list
           = t('.all_users')
       %li
+        = link_to devices_path do
+          %span.gl-right.glyphicon.glyphicon-phone
+          = t('.all_devices')
+      %li
         = link_to edit_admin_registration_path do
           %span.gl-right.glyphicon.glyphicon-user
           = t('.profile')

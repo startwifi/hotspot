@@ -132,6 +132,7 @@ ru:
       hotspot: StartWiFi
     navigation_links:
       all_users: "Все посетители"
+      all_devices: "Все устройства"
       companies: "Компании"
       dashboard: "Приборная панель"
       profile: "Профиль"
@@ -146,6 +147,7 @@ ru:
       success: "Настройки успешно обновлены"
     advanced:
       sms: "SMS авторизация"
+      sms_auth_link_redirect: "Ссылка перенаправления"
       disabled: "Отключена"
       enabled: "Включена"
       preauth: "Только идентификация"

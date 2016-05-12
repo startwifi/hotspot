@@ -12,6 +12,15 @@
             %tr
               %th{width: '15%'}= fa_icon icon_class_by user.provider
               %td= link_to user.name, user
+    - if @phones.any?
+      %h3= t('.phones')
+      %table.table.table-striped
+        %thead
+          %th= t('.user_phone')
+        %tbody
+          - @phones.each do |phone|
+            %tr
+              %td= phone
   .col-md-6
     %h3= t('.events_by_device')
     %table.table.table-striped

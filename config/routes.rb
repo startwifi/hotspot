@@ -41,8 +41,8 @@ Rails.application.routes.draw do
   end
 
   resources :routers
-  resources :users, only: [:index, :show]
-  resources :devices, only: :show
+  resources :users, only: %w(index show)
+  resources :devices, only: %w(index show)
   resources :companies do
     member do
       put :hold

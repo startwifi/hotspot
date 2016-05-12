@@ -45,11 +45,11 @@ class Sms::AuthController < ApplicationController
 
   def validation_success
     if @company.sms_auth.eql?('preauth_normal') && session[:preauth_normal].blank?
-      @company.devices.find_or_create_by(mac: session[:mac])
+      @company.devices.find_or_create_by(mac: session[:mac], phone: session[:otp_phone])
       session[:preauth_normal] = true
       redirect_to auth_path
     elsif @company.sms_auth.eql?('preauth') && session[:preauth].blank?
-      @company.devices.find_or_create_by(mac: session[:mac])
+      @company.devices.find_or_create_by(mac: session[:mac], phone: session[:otp_phone])
       session[:preauth] = true
       redirect_to auth_path
     else

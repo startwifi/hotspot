@@ -7,6 +7,7 @@
 #  mac        :macaddr
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  phone      :string
 #
 # Indexes
 #

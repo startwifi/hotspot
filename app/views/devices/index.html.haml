@@ -3,4 +3,4 @@
   .col-md-12
     %ul
       - @devices.each do |device|
-        %li= link_to device.mac, device
+        %li= link_to device.mac, device_path(device.mac)

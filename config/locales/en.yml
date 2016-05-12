@@ -129,6 +129,7 @@ en:
       statistics: 'Statistics'
       settings: 'Settings'
       all_users: 'All Users'
+      all_devices: 'All Devices'
       profile: 'Profile'
       sign_out: 'Sign out'
   shared:
@@ -178,6 +179,7 @@ en:
       save: 'Save settings'
     advanced:
       sms: 'SMS authorization'
+      sms_auth_link_redirect: 'Sms auth link redirect'
       disabled: 'Disabled'
       enabled: 'Enabled'
       preauth: 'Pre-authorization'

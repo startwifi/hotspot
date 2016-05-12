@@ -2,20 +2,21 @@
 #
 # Table name: companies
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  token      :string
-#  phone      :string
-#  address    :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  owner_name :string
-#  cover      :string
-#  card       :string
-#  tos        :boolean          default(FALSE)
-#  tos_text   :text
-#  active     :boolean          default(TRUE)
-#  sms_auth   :string           default("disabled")
+#  id                     :integer          not null, primary key
+#  name                   :string
+#  token                  :string
+#  phone                  :string
+#  address                :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  owner_name             :string
+#  cover                  :string
+#  card                   :string
+#  tos                    :boolean          default(FALSE)
+#  tos_text               :text
+#  active                 :boolean          default(TRUE)
+#  sms_auth               :string           default("disabled")
+#  sms_auth_link_redirect :string
 #
 
 class Company < ActiveRecord::Base
