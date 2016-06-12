@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524174620) do
+ActiveRecord::Schema.define(version: 20160614170438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,9 +61,11 @@ ActiveRecord::Schema.define(version: 20160524174620) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "phone"
+    t.integer  "user_id"
   end
 
   add_index "devices", ["company_id"], name: "index_devices_on_company_id", using: :btree
+  add_index "devices", ["user_id"], name: "index_devices_on_user_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
@@ -136,6 +138,18 @@ ActiveRecord::Schema.define(version: 20160524174620) do
 
   add_index "routers", ["company_id"], name: "index_routers_on_company_id", using: :btree
   add_index "routers", ["ip_address", "company_id"], name: "index_routers_on_ip_address_and_company_id", unique: true, using: :btree
+
+  create_table "sms", force: :cascade do |t|
+    t.integer "company_id"
+    t.string  "action"
+    t.string  "link_redirect"
+    t.string  "wall_head"
+    t.text    "wall_text"
+    t.string  "wall_image"
+    t.boolean "adv",           default: false
+  end
+
+  add_index "sms", ["company_id"], name: "index_sms_on_company_id", using: :btree
 
   create_table "statistics", force: :cascade do |t|
     t.integer  "user_id"

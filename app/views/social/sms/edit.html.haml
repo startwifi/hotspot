@@ -1,0 +1,36 @@
+= render 'shared/settings_links'
+
+.row
+  .col-md-offset-4.col-md-4
+    - if @sms.errors.any?
+      = render 'shared/error_message', object: @sms
+    = form_for @sms, url: social_sms_path do |f|
+      %div.checkbox
+        %label
+          = f.check_box :adv
+          = f.label :adv, t('.sms_advert')
+      .form-group
+        = f.label :wall_head, t('.wall_head')
+        = f.text_field :wall_head, class: 'form-control'
+      .form-group
+        = f.label :wall_text, t('.wall_text')
+        = f.text_area :wall_text, row: 4, class: 'form-control'
+      .form-group
+        = f.label :link_redirect, t('.link_redirect')
+        = f.url_field :link_redirect, class: 'form-control'
+      .form-group
+        = f.label :wall_image, t('.wall_image')
+        - if @sms.wall_image?
+          %div
+          = image_tag(@sms.wall_image)
+        = f.file_field :wall_image
+        %p.help-block
+          537x240px:
+          = @sms.wall_image.extension_white_list.join(', ')
+        = f.hidden_field :wall_image_cache
+      %div.checkbox
+        %label
+          = f.check_box :remove_wall_image
+          = f.label :remove_wall_image, t('.remove_wall_image')
+      .form-group
+        = f.submit class: 'btn btn-primary'

@@ -52,11 +52,8 @@ class ApplicationController < ActionController::Base
     end
 
     provider_class = current_user.company.send(provider)
-    sms_redirect = current_user.company.sms_auth_link_redirect
     if provider_class && provider_class.try(:link_redirect?)
       provider_class.link_redirect
-    elsif provider.eql?('sms') && sms_redirect.present?
-      sms_redirect
     else
       session[:dst]
     end

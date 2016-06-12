@@ -23,6 +23,10 @@
         .form-group
           = ok.label :odnoklassniki, t('.odnoklassniki')
           = ok.select :action, [[t('.join_group'), :join], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
+      = fields_for @company.sms do |sms|
+        .form-group
+          = sms.label :sms, t('.sms')
+          = sms.select :action, [[t('.disabled'), :disabled], [t('.just_auth'), :auth], [t('.sms_ident'), :ident], [t('.sms_ident_auth'), :ident_auth]], {}, class: 'form-control'
       %div.checkbox
         %label
           = f.check_box :tos

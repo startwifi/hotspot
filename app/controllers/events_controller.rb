@@ -54,7 +54,16 @@ class EventsController < ApplicationController
   end
 
   def auth
-    current_user.add_event(:auth)
+    case params[:provider]
+    when 'sms_ident_auth'
+      current_user.add_event(:sms_ident)
+    when 'sms_ident'
+      current_user.add_event(:sms_ident)
+    when 'sms_ident_adv'
+      current_user.add_event(:sms_ident_adv)
+    else
+      current_user.add_event(:auth)
+    end
     redirect_to router_url
   end
 

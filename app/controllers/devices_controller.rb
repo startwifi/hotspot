@@ -6,7 +6,7 @@ class DevicesController < ApplicationController
 
   def show
     @device = Device.find_by_mac(params[:id])
-    @phones = Device.where(mac: @device.mac).collect(&:phone)
     authorize! :show, @device
+    @phones = Device.where(mac: @device.mac).collect(&:phone)
   end
 end

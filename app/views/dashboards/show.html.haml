@@ -36,7 +36,7 @@
       %td
         %i.fa.fa-comments-o
       %td
-        = @company.sms_auth
+        = @company.sms.nil? ? 'off' : @company.sms.action
   .row
     %h4= t('.birthdays')
     %table.table.table-striped.table-hover

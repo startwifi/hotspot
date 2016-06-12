@@ -24,11 +24,15 @@
     = link_to edit_social_ok_path do
       %i.fa.fa-lg.fa-odnoklassniki-square
       = t('.odnoklassniki')
+  %li{class: "#{controller?('social/sms') ? 'active' : ''}"}
+    = link_to edit_social_sms_path do
+      %i.fa.fa-lg.fa-comments
+      = t('.sms')
   %li{class: "#{controller?('pages') && (action?('tos') || action?('tos_edit')) ? 'active' : ''}"}
     = link_to tos_pages_path do
       %i.fa.fa-lg.fa-check-square
       = t('.tos')
-  %li{class: "#{controller?('settings') && action?('advanced') ? 'active' : ''}"}
+  -# %li{class: "#{controller?('settings') && action?('advanced') ? 'active' : ''}"}
     = link_to advanced_settings_path do
       %i.fa.fa-lg.fa-cogs
       = t('.advanced')

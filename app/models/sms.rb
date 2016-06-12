@@ -1,17 +1,25 @@
-require 'smsc_api'
+# == Schema Information
+#
+# Table name: sms
+#
+#  id            :integer          not null, primary key
+#  company_id    :integer
+#  action        :string
+#  link_redirect :string
+#  wall_head     :string
+#  wall_text     :text
+#  wall_image    :string
+#  adv           :boolean          default(FALSE)
+#
+# Indexes
+#
+#  index_sms_on_company_id  (company_id)
+#
 
-class Sms
-  include ActiveModel::Model
+class Sms < ActiveRecord::Base
+  mount_uploader :wall_image, SmsUploader
 
-  attr_accessor :phone
+  belongs_to :company
 
-  validates_plausible_phone :phone, presence: true, with: /\A\+\d+/
-
-  def send_sms(code)
-    sms = SMSC.new()
-    ret = sms.send_sms(phone, "Ваш пароль: #{code}", 1)
-
-    ret
-  end
-
+  validates :company, presence: true
 end

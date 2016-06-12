@@ -13,6 +13,7 @@ class SettingsController < ApplicationController
       @company.tw.update(tw_params)
       @company.in.update(in_params)
       @company.ok.update(ok_params)
+      @company.sms.update(sms_params)
       redirect_to edit_settings_path, notice: t('.success')
     else
       render :edit
@@ -52,6 +53,10 @@ class SettingsController < ApplicationController
 
   def ok_params
     params.require(:ok).permit(:action)
+  end
+
+  def sms_params
+    params.require(:sms).permit(:action)
   end
 
   def company_params
