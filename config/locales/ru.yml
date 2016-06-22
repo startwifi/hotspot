@@ -146,12 +146,6 @@ ru:
     advanced_update:
       success: "Настройки успешно обновлены"
     advanced:
-      sms: "SMS авторизация"
-      sms_auth_link_redirect: "Ссылка перенаправления"
-      disabled: "Отключена"
-      enabled: "Включена"
-      preauth: "Только идентификация"
-      preauth_normal: "Идентификация + авторизация"
       card: "Карта"
       remove_card: "Удалить карту"
       save: "Сохранить настройки"
@@ -170,6 +164,9 @@ ru:
       remove_cover: "Удалить обложку"
       save: "Сохранить настройки"
       vkontakte: "ВКонтакте"
+      sms: "SMS"
+      sms_ident: "Идентификация"
+      sms_ident_auth: "Идентификация + авторизация"
   shared:
     error_message:
       form_contains: "Форма содержит %{count}"
@@ -206,6 +203,16 @@ ru:
     vks:
       update:
         success: "Настройки ВКонтакте успешно обновлены"
+    sms:
+      edit:
+        sms_advert: "Рекламная страница после идентификации"
+        link_redirect: "Ссылка переадресации"
+        wall_head: "Заголовок"
+        wall_image: "Изображение"
+        wall_text: "Рекламный текст"
+        remove_wall_image: "Удалить изображение"
+      update:
+        success: "Настройки SMS успешно обновлены"
   stats:
     show:
       events: "События по типу"
@@ -276,12 +283,17 @@ ru:
         cancel: "Отмена"
         header: 'Vkontakte: опубликовать пост для продолжения'
         share: "Сделать пост"
+    sms:
+      adv:
+        continue: "Продолжить"
+        today: "Сегодня"
   events:
     join: "Вступление в группу"
     post: "Создание поста"
     auth: "Простая авторизация"
     member: "Уже подписан (в группе)"
     identification: "SMS идентификация"
+    ident_adv: "Просмотр рекламы"
     unknown: "Неизвестное действие"
   pages:
     tos: "Пользовательское соглашение"

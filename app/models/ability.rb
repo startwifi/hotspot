@@ -6,7 +6,7 @@ class Ability
     if user.is_a?(Admin) && user.admin?
       can :manage, :all
     elsif user.is_a?(Admin)
-      can [:read, :update], [Fb, Tw, Vk, In, Ok], company_id: user.company.id
+      can [:read, :update], [Fb, Tw, Vk, In, Ok, Sms], company_id: user.company.id
       can [:read, :update], Admin, company_id: user.company.id
       can :read, Company, id: user.company.id
       can :read, User, company_id: user.company.id

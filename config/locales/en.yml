@@ -36,6 +36,16 @@ en:
     vks:
       update:
         success: 'Vkontakte successfully updated'
+    vks:
+      edit:
+        sms_advert: 'Advert page after identification'
+        link_redirect: 'Redirection link'
+        wall_head: 'Header'
+        wall_image: 'Image'
+        wall_text: 'Text on the page'
+        remove_wall_image: 'Remove image'
+      update:
+        success: 'SMS successfully updated'
     shared:
       form:
         group_name: 'Group name'
@@ -177,13 +187,10 @@ en:
       follow: 'Follow'
       remove_cover: 'Remove cover'
       save: 'Save settings'
+      sms: 'SMS'
+      sms_ident: 'Identification'
+      sms_ident_auth: 'Identification with authorization'
     advanced:
-      sms: 'SMS authorization'
-      sms_auth_link_redirect: 'Sms auth link redirect'
-      disabled: 'Disabled'
-      enabled: 'Enabled'
-      preauth: 'Pre-authorization'
-      preauth_normal: 'Pre-authorization + authorization'
       card: 'Card'
       remove_card: 'Remove card'
       save: 'Save settings'
@@ -218,10 +225,10 @@ en:
     index:
       welcome: 'This is a free wifi hotspot. You need to sign in with a social network'
       download_card: 'Download bonus card'
-      tos: "By signing in you agree with our"
-      tos_link: "Terms of Service"
+      tos: 'By signing in you agree with our'
+      tos_link: 'Terms of Service'
     tos:
-      back: "Back"
+      back: 'Back'
   widgets:
     fb:
       join:
@@ -257,12 +264,17 @@ en:
         header: 'Vkontakte: share post for continue'
         share: 'Share post'
         cancel: 'Cancel'
+    sms:
+      adv:
+        continue: 'Continue'
+        today: 'Today'
   events:
     join: 'Joined in group'
     post: 'Created a post'
     auth: 'Only authentication'
     member: 'Already member'
     identification: 'Identification'
+    ident_adv: 'Advert view'
     unknown: 'Unknown action'
   pages:
     tos: 'Terms of Service'

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resource :tw, only: [:edit, :update]
     resource :in, only: [:edit, :update]
     resource :ok, only: [:edit, :update]
+    resource :sms, only: [:edit, :update]
   end
   resource  :settings,  only: [:edit, :update] do
     member do

@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   belongs_to :company
   has_many :events, dependent: :destroy
   has_many :statistics, dependent: :destroy
+  has_many :devices
   validates :name, :provider, :uid, :company, presence: true
 
   scope :birthdays, -> { where("extract(month from birthday) = ? AND

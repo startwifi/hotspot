@@ -7,11 +7,8 @@ class SessionsController < ApplicationController
     browser = Browser.new(ua: request.env['HTTP_USER_AGENT'])
     user = User.from_omniauth(request.env['omniauth.auth'], company)
     save_access_token(user.provider)
-    company.devices.find_or_create_by(mac: session[:mac])
+    company.devices.find_or_create_by(mac: session[:mac], user: user)
     user.add_statistic(browser, session[:mac])
-    if session[:preauth_normal].present? || session[:preauth].present?
-      company.events.create!(action: 'identification', provider: 'sms', user: user)
-    end
     session[:user_id] = user.id
     company ? redirect_to(widget_path) : render_404
   end

@@ -12,9 +12,10 @@ class VisitorsController < ApplicationController
     render_404 unless @company
     redirect_to suspended_company_path(@company) and return unless @company.try(:active)
 
-    if @company.sms_auth.eql?('preauth') || @company.sms_auth.eql?('preauth_normal')
+    if @company.sms.action.eql?('ident') || @company.sms.action.eql?('ident_auth')
       device = @company.devices.find_by_mac(session[:mac])
-      redirect_to sms_auth_path unless device
+      return redirect_to sms_auth_path unless device
+      render 'widgets/sms/adv' if @company.sms.action.eql?('ident') && @company.sms.adv
     end
   end
 end

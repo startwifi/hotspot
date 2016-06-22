@@ -38,6 +38,7 @@ class Company < ActiveRecord::Base
   has_one :tw, dependent: :destroy
   has_one :in, dependent: :destroy
   has_one :ok, dependent: :destroy
+  has_one :sms, dependent: :destroy
 
   validates :name, :owner_name, :phone, :address, presence: true
   validates :sms_auth, inclusion: { in: SMS_AUTH_TYPES }
@@ -75,7 +76,17 @@ class Company < ActiveRecord::Base
   end
 
   def sms
-    return true unless self.sms_auth.eql?('disabled')
-    false
+    super || ensure_sms_settings
+  end
+
+  private
+
+  def ensure_sms_settings
+    create_sms(
+      action: 'disabled',
+      link_redirect: ENV['LINK_REDIRECT'],
+      wall_head: 'StartWifi',
+      wall_image: Rails.root.join('app/assets/images/startwifi.png').open
+    )
   end
 end

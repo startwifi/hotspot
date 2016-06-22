@@ -16,7 +16,21 @@ class WidgetsController < ApplicationController
   private
 
   def widget_sms
-    redirect_to event_auth_path(current_user.provider)
+    case @company.sms.action
+    when 'auth'
+      redirect_to event_auth_path(:sms)
+    when 'ident_auth'
+      current_user.add_event(:sms_ident)
+      session[:sms_auth_success] = true
+      render 'visitors/index'
+    when 'ident'
+      if @company.sms.adv
+        current_user.add_event(:sms_ident)
+        render 'widgets/sms/adv'
+      else
+        redirect_to event_auth_path(:sms_ident)
+      end
+    end
   end
 
   def widget_fb
@@ -81,6 +95,7 @@ class WidgetsController < ApplicationController
     when 'facebook'      then 'fb'
     when 'twitter'       then 'tw'
     when 'odnoklassniki' then 'ok'
+    when 'sms'           then 'visitors'
     end
   end
 

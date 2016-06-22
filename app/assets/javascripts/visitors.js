@@ -29,9 +29,26 @@ var preloaderFadeOut = function(){
 
 $(document).ready(function(){
   preloaderFadeOut();
+
   $('.social').click(function(){
     $('.preloader').show();
   });
+
+  $('#continue_btn').disable(true);
+
+  var timer = 30;
+  var interval = setInterval(function() {
+    timer--;
+    $('span#timer').text(timer);
+    if (timer == 0) {
+      $('span#timer').remove();
+      $('#continue_btn').disable(false);
+    }
+  }, 1000);
+
+  return setTimer = function(){
+    setTimeout()
+  };
 });
 
 $(document).on('page:load', preloaderFadeOut);

@@ -22,13 +22,13 @@
       %li
         = link_to '/auth/odnoklassniki', class: 'social' do
           = image_tag 'ok.png'
-    - if @company.sms_auth.eql?('normal') || @company.sms_auth.eql?('preauth_normal')
+    - if @company.sms.action.eql?('auth') || @company.sms.action.eql?('ident_auth')
       %li
         = link_to '/auth/sms', class: 'social' do
           = image_tag 'sms.png'
 
   - if @company.tos?
-    = render 'tos_modal'
+    = render 'visitors/tos_modal'
     %p
       = check_box_tag 'accept_tos', 'yes', false
       %label{ for: 'accept_tos'}
