@@ -207,6 +207,7 @@ en:
       name: 'Name'
       provider: 'Provider'
       uid: 'Uid'
+      email: 'Email'
       created: 'Created'
       updated: 'Updated'
     show:

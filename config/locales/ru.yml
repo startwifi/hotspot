@@ -226,6 +226,7 @@ ru:
       name: "Имя"
       provider: "Провайдер"
       uid: Uid
+      email: "Эл. почта"
       updated: "Обновлен"
       users: "Посетители"
     show:

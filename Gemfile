@@ -42,10 +42,17 @@ gem 'chartkick'
 gem 'puma'
 gem 'has_secure_token'
 gem 'rest-client'
+
+# Uploads
 gem 'carrierwave'
 gem 'mini_magick'
+
+# Others
 gem 'groupdate'
 gem 'redcarpet'
+gem 'ransack'
+
+# Router
 gem 'mtik'
 
 # Phone validator
