@@ -115,4 +115,16 @@ class User < ActiveRecord::Base
   def macs
     statistics.collect(&:mac).compact.uniq
   end
+
+  def self.to_csv
+    attributes = %w(id name gender provider uid email birthday created_at updated_at)
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |user|
+        csv << attributes.map{ |attr| user.send(attr) }
+      end
+    end
+  end
 end

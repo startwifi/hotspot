@@ -210,6 +210,7 @@ en:
       email: 'Email'
       created: 'Created'
       updated: 'Updated'
+      download: 'Download:'
     show:
       user: 'User'
       name: 'Name'

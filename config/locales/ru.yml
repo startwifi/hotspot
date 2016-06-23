@@ -229,6 +229,7 @@ ru:
       email: "Эл. почта"
       updated: "Обновлен"
       users: "Посетители"
+      download: "Скачать:"
     show:
       user: "Пользователь"
       back: "Назад"
