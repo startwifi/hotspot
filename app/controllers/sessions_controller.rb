@@ -28,6 +28,8 @@ class SessionsController < ApplicationController
       session[:user_secret] = request.env['omniauth.auth']['credentials']['secret']
     when 'odnoklassniki'
       session[:user_token] = request.env['omniauth.auth']['credentials']['refresh_token']
+    when 'vkontakte'
+      session[:user_token] = request.env['omniauth.auth']['credentials']['token']
     end
   end
 end
