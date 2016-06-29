@@ -10,7 +10,7 @@
       = fields_for @company.vk do |vk|
         .form-group
           = vk.label :vkontakte, t('.vkontakte')
-          = vk.select :action, [[t('.join_group'), :join], [t('.make_post'), :post], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
+          = vk.select :action, [[t('.join_group'), :join], [t('.upload_photo'), :post], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
       = fields_for @company.tw do |tw|
         .form-group
           = tw.label :twitter

@@ -7,6 +7,8 @@ module EventsHelper
       t('events.post')
     when 'auth'
       t('events.auth')
+    when 'photo'
+      t('events.photo')
     when 'member'
       t('events.member')
     when 'sms_ident'

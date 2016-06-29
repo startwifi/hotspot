@@ -171,6 +171,7 @@ ru:
       like_page: "Лайкнуть страницу"
       make_post: "Создать пост"
       make_tweet: "Создать твит"
+      upload_photo: "Загрузить фотографию"
       odnoklassniki: "Одноклассники"
       remove_cover: "Удалить обложку"
       save: "Сохранить настройки"
@@ -268,36 +269,36 @@ ru:
     fb:
       join:
         cancel: "Отмена"
-        header: 'Facebook: лайкнуть для продолжения'
+        header: "Facebook: лайкнуть для продолжения"
       post:
         cancel: "Отмена"
-        header: 'Facebook: сделать пост для продолжения'
+        header: "Facebook: сделать пост для продолжения"
         share: "Сделать пост"
         today: "Сегодня, %{time}"
     ok:
       join:
         cancel: "Отмена"
-        header: 'Ok: вступить в группу для продолжения'
+        header: "Ok: вступить в группу для продолжения"
       post:
         cancel: "Отмена"
-        header: 'Ok: сделать пост для продолжения'
+        header: "Ok: сделать пост для продолжения"
         share: "Сделать пост"
     tw:
       join:
         cancel: "Отмена"
         follow: "Зафоллоувить нас"
-        header: 'Twitter: зафоллоувить для продолжения'
+        header: "Twitter: зафоллоувить для продолжения"
       post:
         cancel: "Отмена"
-        header: 'Twitter: опубликовать твит для продолжения'
+        header: "Twitter: опубликовать твит для продолжения"
         tweet: "Твитнуть"
     vk:
       join:
         cancel: "Отмена"
-        header: 'Vkontakte: подписаться для продолжения'
+        header: "Vkontakte: подписаться для продолжения"
       post:
         cancel: "Отмена"
-        header: 'Vkontakte: опубликовать пост для продолжения'
+        header: "Vkontakte: опубликовать пост для продолжения"
         share: "Сделать пост"
     sms:
       adv:
@@ -306,6 +307,7 @@ ru:
   events:
     join: "Вступление в группу"
     post: "Создание поста"
+    photo: "Загрузка фото в альбом"
     auth: "Простая авторизация"
     member: "Уже подписан (в группе)"
     identification: "SMS идентификация"
