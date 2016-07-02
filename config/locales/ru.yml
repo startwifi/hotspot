@@ -117,8 +117,19 @@ ru:
       link: "Ссылка"
       statistics_by_month: "Статистика за месяц"
       time: "Время"
-      birthdays: 'Ближайшие Дни рождения'
-      user: 'Пользователь'
+      birthdays: "Ближайшие Дни рождения"
+      user: "Пользователь"
+  devices:
+    index:
+      devices: "Все устройства"
+    show:
+      devices: "Статистика по MAC"
+      providers: "Пользователи"
+      user_account: "Пользовательский аккаунт"
+      events_by_device: "События по устройству"
+      date: "Дата"
+      action: "Действие"
+      link: "Пользователь"
   devise:
     sessions:
       new:
@@ -167,6 +178,9 @@ ru:
       sms: "SMS"
       sms_ident: "Идентификация"
       sms_ident_auth: "Идентификация + авторизация"
+      layout: "Шаблон"
+      visitors: "Стандартный шаблон"
+      visitors_bg: "Шаблон с фоном"
   shared:
     error_message:
       form_contains: "Форма содержит %{count}"

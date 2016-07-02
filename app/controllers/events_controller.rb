@@ -56,6 +56,7 @@ class EventsController < ApplicationController
   def auth
     case params[:provider]
     when 'sms_ident_auth'
+      return current_user.add_event(:auth) if session[:sms_auth_success].present?
       current_user.add_event(:sms_ident)
     when 'sms_ident'
       current_user.add_event(:sms_ident)

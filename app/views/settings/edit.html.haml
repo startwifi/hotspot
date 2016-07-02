@@ -27,6 +27,9 @@
         .form-group
           = sms.label :sms, t('.sms')
           = sms.select :action, [[t('.disabled'), :disabled], [t('.just_auth'), :auth], [t('.sms_ident'), :ident], [t('.sms_ident_auth'), :ident_auth]], {}, class: 'form-control'
+      .form-group
+        = f.label :layout, t('.layout')
+        = f.select :layout, [[t('.visitors'), :visitors], [t('.visitors_bg'), :visitors_bg]], {}, class: 'form-control'
       %div.checkbox
         %label
           = f.check_box :tos

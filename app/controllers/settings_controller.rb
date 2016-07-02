@@ -72,7 +72,8 @@ class SettingsController < ApplicationController
       :tos,
       :tos_text,
       :sms_auth,
-      :sms_auth_link_redirect
+      :sms_auth_link_redirect,
+      :layout
     )
   end
 end

@@ -123,6 +123,17 @@ en:
     hold:
       success: 'Company status successfully changed'
       errors: 'You can not change company status'
+  devices:
+    index:
+      devices: 'All devices'
+    show:
+      devices: 'Statistics by MAC'
+      providers: 'Providers'
+      user_account: 'User account'
+      events_by_device: 'Events by device'
+      date: 'Date'
+      action: 'Action'
+      link: 'User'
   settings:
     update:
       success: 'Settings successfully updated'
@@ -190,6 +201,9 @@ en:
       sms: 'SMS'
       sms_ident: 'Identification'
       sms_ident_auth: 'Identification with authorization'
+      layout: 'Template'
+      visitors: 'Default template'
+      visitors_bg: 'Template with background cover'
     advanced:
       card: 'Card'
       remove_card: 'Remove card'

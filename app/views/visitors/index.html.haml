@@ -29,11 +29,10 @@
 
   - if @company.tos?
     = render 'visitors/tos_modal'
-    %p
+    %label{ for: 'accept_tos'}
       = check_box_tag 'accept_tos', 'yes', false
-      %label{ for: 'accept_tos'}
-        = t('visitors.index.tos')
-        = link_to t('visitors.index.tos_link'), '#', data: { toggle:"modal", target: '#tos' }
+      = t('visitors.index.tos')
+      = link_to t('visitors.index.tos_link'), '#', data: { toggle:"modal", target: '#tos' }
 
   - if @company.card?
     %h3.text-center
@@ -41,7 +40,8 @@
         download: @company.name.underscore.parameterize("_"),
         onclick: "location='#{router_url}'", class: 'btn btn-primary'
 
-  = image_tag @company.cover.url, alt: @company.name, class: 'img-responsive' if @company.cover?
+  - if @company.cover? && @company.layout? && @company.layout.eql?('visitors')
+    = image_tag @company.cover.url, alt: @company.name, class: 'img-responsive'
 
 :javascript
   initializeTos(#{@company.tos?});

@@ -1,12 +1,10 @@
 class DevicesController < ApplicationController
-  load_and_authorize_resource only: :index
+  load_and_authorize_resource find_by: :mac
 
   def index
+    @devices = @devices.select(:mac).distinct
   end
 
   def show
-    @device = Device.find_by_mac(params[:id])
-    authorize! :show, @device
-    @phones = Device.where(mac: @device.mac).collect(&:phone)
   end
 end

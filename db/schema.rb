@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614170438) do
+ActiveRecord::Schema.define(version: 20160703170311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160614170438) do
     t.boolean  "active",                 default: true
     t.string   "sms_auth",               default: "disabled"
     t.string   "sms_auth_link_redirect"
+    t.string   "layout"
   end
 
   create_table "devices", force: :cascade do |t|

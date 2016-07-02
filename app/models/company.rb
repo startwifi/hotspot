@@ -17,6 +17,7 @@
 #  active                 :boolean          default(TRUE)
 #  sms_auth               :string           default("disabled")
 #  sms_auth_link_redirect :string
+#  layout                 :string
 #
 
 class Company < ActiveRecord::Base

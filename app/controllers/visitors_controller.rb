@@ -1,5 +1,5 @@
 class VisitorsController < ApplicationController
-  layout 'visitors'
+  layout :visitors_layout
 
   def index
     if params[:hs]
@@ -16,6 +16,15 @@ class VisitorsController < ApplicationController
       device = @company.devices.find_by_mac(session[:mac])
       return redirect_to sms_auth_path unless device
       render 'widgets/sms/adv' if @company.sms.action.eql?('ident') && @company.sms.adv
+    end
+  end
+
+  private
+
+  def visitors_layout
+    case @company.layout
+    when 'visitors_bg' then 'visitors_bg'
+    else 'visitors'
     end
   end
 end
