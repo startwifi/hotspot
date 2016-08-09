@@ -10,11 +10,5 @@
     %div= @company.vk.post_text
     %div= image_tag @company.vk.post_image, alt: @company.name, class: 'img-responsive'
   .panel-footer
-    = link_to t('.share'), '#', class: 'btn btn-primary btn-block', id: 'button_post'
+    = link_to t('.share'), event_post_path(:vk), class: 'btn btn-primary btn-block'
 .text-center= link_to t('.cancel'), auth_path
-:javascript
-  button_post.onclick = function() {
-    var delay = 500;
-    window.open("https://vk.com/share.php?url=#{@company.vk.post_link}&description=#{u @company.vk.post_text}&image=#{@image}&noparse=true", '', 'width=626,height=436');
-    setTimeout('document.location.replace("#{event_post_path(:vk)}")', delay);
-  };

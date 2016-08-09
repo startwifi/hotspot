@@ -46,8 +46,12 @@ class EventsController < ApplicationController
     when 'fb'
       post_facebook
     when 'vk'
-      current_user.add_event(:post)
-      redirect_to router_url
+      if VkPhotoUploadService.new(current_user.company, session[:user_token]).call
+        current_user.add_event(:photo)
+        redirect_to router_url
+      else
+        redirect_to auth_url
+      end
     when 'tw'
       post_twitter
     end

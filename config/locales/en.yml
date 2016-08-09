@@ -193,6 +193,7 @@ en:
       like_page: 'Like page'
       make_post: 'Make post'
       make_tweet: 'Make tweet'
+      upload_photo: 'Upload photo'
       just_auth: 'Just auth'
       disabled: 'Disabled'
       follow: 'Follow'
@@ -287,6 +288,7 @@ en:
   events:
     join: 'Joined in group'
     post: 'Created a post'
+    photo: 'Photo upload'
     auth: 'Only authentication'
     member: 'Already member'
     identification: 'Identification'
