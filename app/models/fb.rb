@@ -34,8 +34,8 @@ class Fb < ActiveRecord::Base
 
   def get_group_id
     begin
-      oauth = Koala::Facebook::OAuth.new(Rails.application.secrets.facebook_key,
-                                         Rails.application.secrets.facebook_secret)
+      oauth = Koala::Facebook::OAuth.new(Figaro.env.facebook_key,
+                                         Figaro.env.facebook_secret)
       graph = Koala::Facebook::API.new(oauth.get_app_access_token)
       self.group_id = graph.get_object(self.group_name)['id']
     rescue

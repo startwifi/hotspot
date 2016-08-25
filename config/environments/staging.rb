@@ -74,8 +74,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    :user_name => Rails.application.secrets.sendgrid_username,
-    :password => Rails.application.secrets.sendgrid_password,
+    :user_name => Figaro.env.sendgrid_username,
+    :password => Figaro.env.sendgrid_password,
     :domain => 'startwifi.me',
     :address => 'smtp.sendgrid.net',
     :port => 587,
