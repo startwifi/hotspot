@@ -30,7 +30,7 @@ set :bundle_binstubs, nil
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/application.yml}
 set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
 namespace :puma do
@@ -62,6 +62,13 @@ namespace :deploy do
     on roles(:app) do
       before 'deploy:restart', 'puma:start'
       invoke 'deploy'
+    end
+  end
+
+  desc 'Upload config'
+  task :setup do
+    on roles(:all) do
+      upload!("config/application.yml", "#{deploy_to}/shared/config/application.yml")
     end
   end
 
