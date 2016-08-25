@@ -42,6 +42,7 @@ gem 'chartkick'
 gem 'puma'
 gem 'has_secure_token'
 gem 'rest-client'
+gem 'figaro'
 
 # Uploads
 gem 'carrierwave'
@@ -76,7 +77,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
-  gem 'dotenv-rails'
   gem 'annotate'
 end
 

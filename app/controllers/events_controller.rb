@@ -115,8 +115,8 @@ class EventsController < ApplicationController
 
   def twitter_client
     Twitter::REST::Client.new do |config|
-      config.consumer_key        = Rails.application.secrets.twitter_key
-      config.consumer_secret     = Rails.application.secrets.twitter_secret
+      config.consumer_key        = Figaro.env.twitter_key
+      config.consumer_secret     = Figaro.env.twitter_secret
       config.access_token        = session[:user_token]
       config.access_token_secret = session[:user_secret]
     end

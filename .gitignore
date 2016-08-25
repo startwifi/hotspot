@@ -11,10 +11,13 @@
 /log/*
 !/log/.keep
 /tmp
+.sass-cache
 
 # Other
 .DS_Store
 /.powenv
-/.ruby-gemset
 /.env
 /public/uploads
+
+# Ignore application configuration
+/config/application.yml
