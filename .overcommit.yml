@@ -1,0 +1,45 @@
+PreCommit:
+  # Style Check
+  RuboCop:
+    enabled: true
+    on_warn: fail
+
+  # Security Check
+  Brakeman:
+    enabled: true
+    on_warn: fail
+
+  # Style Check in HAML
+  HamlLint:
+    enabled: true
+    on_warn: fail
+
+  # YAML Check
+  YamlSyntax:
+    enabled: true
+    on_warn: fail
+
+  # Dependency Check
+  BundleCheck:
+    enabled: true
+    on_warn: fail
+
+  # Migration Check
+  RailsSchemaUpToDate:
+    enabled: true
+    on_warn: fail
+
+  # Checks for hard tabs in files
+  HardTabs:
+    enabled: true
+    on_warn: fail
+
+PrePush:
+    # Unit & Integration TEST
+  RSpec:
+    enabled: true
+    on_warn: fail
+
+  BundleInstall:
+    enabled: true
+    on_warn: fail

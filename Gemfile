@@ -91,6 +91,15 @@ group :development do
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
+  gem 'overcommit', require: false
+  # A static analysis security vulnerability scanner
+  gem 'brakeman', require: false
+  # Syntax checker for HAML
+  gem 'haml-lint', require: false
+  # Syntax checker for CSS
+  gem 'ruby_css_lint', require: false
+  # A Ruby static code analyzer
+  gem 'rubocop', require: false
 end
 
 group :test do
