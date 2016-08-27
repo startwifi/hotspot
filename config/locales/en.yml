@@ -57,6 +57,18 @@ en:
   application_controller:
     access_denied: 'Access denied'
     need_authorization: 'You need to sign in for access to this page'
+  admins:
+    form:
+      email: 'Email'
+      password: 'Password'
+      password_confirmation: 'Password confirmation'
+      register: 'Sign up'
+    new:
+      new_admin_company: 'New admin for %{name}'
+      back: 'Back'
+    create:
+      success: 'Admin successfully added'
+      errors: 'Form contains some errors'
   companies:
     index:
       all_companies: 'All companies'
@@ -95,25 +107,16 @@ en:
       description: 'Description'
     new:
       add_company: 'Add company'
+      back: 'Back'
+    form:
       name: 'Name'
       owner_name: 'Owner'
       phone: 'Phone'
       address: 'Address'
-      back: 'Back'
-    new_admin:
-      new_admin_company: 'New admin for %{name}'
-      email: 'Email'
-      password: 'Password'
-      password_confirmation: 'Password confirmation'
-      register: 'Sign up'
-      back: 'Back'
     edit:
       edit_company: 'Edit company'
     create:
       success: 'Company successfully created'
-    create_admin:
-      success: 'Admin successfully added'
-      errors: 'Form contains some errors'
     update:
       success: 'Company successfully updated'
       errors: 'Form contains some errors'

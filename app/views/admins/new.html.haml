@@ -1,0 +1,7 @@
+%h2= t('.new_admin_company', name: @company.name)
+
+.row
+  .col-md-offset-4.col-md-4
+    = render 'form'
+    %p= link_to t('.back'), company_path(@company)
+

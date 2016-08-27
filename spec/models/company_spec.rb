@@ -1,19 +1,3 @@
-# == Schema Information
-#
-# Table name: companies
-#
-#  id         :integer          not null, primary key
-#  name       :string
-#  token      :string
-#  phone      :string
-#  address    :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  owner_name :string
-#  cover      :string
-#  card       :string
-#
-
 RSpec.describe Company, type: :model do
   describe 'validation' do
     it { should validate_presence_of :name }
