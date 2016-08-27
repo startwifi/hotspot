@@ -23,9 +23,9 @@ Rails.application.routes.draw do
     put '/profile',      to: 'devise/registrations#update', as: 'admin_registration'
   end
 
-  resource  :dashboard, only: :show
-  resource  :stats,     only: :show
-  resource  :widget,    only: :show
+  resource :dashboard, only: :show
+  resource :stats, only: :show
+  resource :widget, only: :show
   namespace :social do
     resource :vk, only: [:edit, :update]
     resource :fb, only: [:edit, :update]
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resource :ok, only: [:edit, :update]
     resource :sms, only: [:edit, :update]
   end
-  resource  :settings,  only: [:edit, :update] do
+  resource :settings, only: [:edit, :update] do
     member do
       get 'advanced'
       put 'advanced', to: 'settings#advanced_update'
@@ -45,18 +45,17 @@ Rails.application.routes.draw do
   resources :users, only: %w(index show)
   resources :devices, only: %w(index show)
   resources :companies do
+    resources :admins, only: %w(new create)
     member do
       put :hold
       get :suspended
     end
-    get  '/new_admin', to: 'companies#new_admin',    on: :member
-    post '/admin',     to: 'companies#create_admin', on: :member
   end
   resources :pages, only: :tos do
-     collection do
-      get 'tos'
-      get 'tos_edit'
-      put 'tos_update'
+    collection do
+      get :tos
+      get :tos_edit
+      put :tos_update
     end
   end
   post '/events/by_date',           to: 'events#by_date',   as: 'events_by_date'

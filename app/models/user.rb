@@ -1,28 +1,3 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id         :integer          not null, primary key
-#  name       :string
-#  provider   :string
-#  uid        :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  birthday   :date
-#  url        :string
-#  company_id :integer
-#  email      :string
-#  gender     :string
-#
-# Indexes
-#
-#  index_users_on_company_id  (company_id)
-#
-# Foreign Keys
-#
-#  fk_rails_7682a3bdfe  (company_id => companies.id)
-#
-
 class User < ActiveRecord::Base
   belongs_to :company
   has_many :events, dependent: :destroy
@@ -32,8 +7,8 @@ class User < ActiveRecord::Base
 
   scope :birthdays, -> { where("extract(month from birthday) = ? AND
                                extract(day from birthday) >= ?",
-                               Date.today.strftime('%m'),
-                               Date.today.strftime('%d')) }
+                               Time.zone.today.strftime('%m'),
+                               Time.zone.today.strftime('%d')) }
 
   def add_event(action)
     events.create!(action: action, provider: self.provider, company: self.company)
@@ -79,10 +54,10 @@ class User < ActiveRecord::Base
     user.email = auth.info.email || ''
     user.birthday = parse_vk_bdate(raw_info.bdate)
     user.gender = case raw_info.sex
-      when 1 then :female
-      when 2 then :male
-      else ''
-    end
+                    when 1 then :female
+                    when 2 then :male
+                    else ''
+                  end
   end
 
   def self.parse_vk_bdate(bdate)

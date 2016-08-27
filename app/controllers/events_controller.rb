@@ -1,26 +1,3 @@
-# == Schema Information
-#
-# Table name: events
-#
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  action     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  provider   :string
-#  company_id :integer
-#
-# Indexes
-#
-#  index_events_on_company_id  (company_id)
-#  index_events_on_user_id     (user_id)
-#
-# Foreign Keys
-#
-#  fk_rails_0cb5590091  (user_id => users.id)
-#  fk_rails_88786fdf2d  (company_id => companies.id)
-#
-
 class EventsController < ApplicationController
   def subscribe
     case params[:provider]
@@ -73,7 +50,7 @@ class EventsController < ApplicationController
   end
 
   def post_facebook
-    image = current_user.company.fb.post_image? ? "#{root_url.chop + current_user.company.fb.post_image.url}" : nil
+    image = current_user.company.fb.post_image? ? (root_url.chop + current_user.company.fb.post_image.url).to_s : nil
     graph = Koala::Facebook::API.new(session[:user_token])
     share = graph.put_wall_post(current_user.company.fb.post_text,
       { link: current_user.company.fb.post_link,
@@ -92,7 +69,7 @@ class EventsController < ApplicationController
   def post_twitter
     client = twitter_client
     if current_user.company.tw.post_image?
-      client.update_with_media(current_user.company.tw.post_text, File.new("#{current_user.company.tw.post_image.path}"))
+      client.update_with_media(current_user.company.tw.post_text, File.new(current_user.company.tw.post_image.path))
     else
       client.update(current_user.company.tw.post_text)
     end

@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-RSpec.describe ApplicationController, type: :controller do
+describe ApplicationController, type: :controller do
   controller do
     def index
       render text: "This is anonymous controller"
@@ -8,10 +6,10 @@ RSpec.describe ApplicationController, type: :controller do
   end
 
   describe 'Base' do
-    it 'should change locale by ?locale=uk param' do
-      get :index, locale: 'uk'
+    it 'should change locale by ?locale=en param' do
+      get :index, locale: 'en'
 
-      expect(I18n.locale).to eq :uk
+      expect(I18n.locale).to eq :en
     end
   end
 end

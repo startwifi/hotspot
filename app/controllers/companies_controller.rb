@@ -1,25 +1,5 @@
-# == Schema Information
-#
-# Table name: companies
-#
-#  id         :integer          not null, primary key
-#  name       :string
-#  token      :string
-#  phone      :string
-#  address    :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  owner_name :string
-#  cover      :string
-#  card       :string
-#  tos        :boolean          default(FALSE)
-#  tos_text   :text
-#  active     :boolean          default(TRUE)
-#  sms_auth   :string           default("disabled")
-#
-
 class CompaniesController < ApplicationController
-  before_filter :authenticate_admin!
+  before_action :authenticate_admin!
   load_and_authorize_resource
 
   layout 'visitors', only: :suspended
@@ -35,31 +15,16 @@ class CompaniesController < ApplicationController
   def new
   end
 
-  def new_admin
-    @admin = Admin.new
-  end
-
   def edit
   end
 
   def create
     @company.cover = Rails.root.join('app/assets/images/startwifi.png').open
     if @company.save
-      @company.create_dummy_social(:fb, :vk, :tw, :in, :ok)
+      DummySocialService.new(@company, :fb, :vk, :tw, :in, :ok).call
       redirect_to companies_path, notice: t('.success')
     else
       render :new
-    end
-  end
-
-  def create_admin
-    @admin = Admin.new(admin_params)
-    @admin.company = @company
-    if @admin.save
-      redirect_to @company, notice: t('.success')
-    else
-      flash.now[:alert] = t('.errors')
-      render :new_admin
     end
   end
 
@@ -97,9 +62,5 @@ class CompaniesController < ApplicationController
 
   def company_params
     params.require(:company).permit(:name, :owner_name, :phone, :address)
-  end
-
-  def admin_params
-    params.require(:admin).permit(:email, :password, :password_confirmation)
   end
 end
