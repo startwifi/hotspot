@@ -3,12 +3,21 @@ ru:
   application_controller:
     access_denied: "Доступ запрещен"
     need_authorization: "Вам нужно войти для доступа к данной странице"
+  admins:
+    form:
+      password: "Пароль"
+      password_confirmation: "Подтверждение пароля"
+      register: "Зарегистрировать"
+      email: "Эл. почта"
+    new:
+      back: "Назад"
+      new_admin_company: "Новый администратор в %{name}"
+    create:
+      errors: "Форма содержит ошибки"
+      success: "Администратор успешно добавлен"
   companies:
     create:
       success: "Компания успешно создана"
-    create_admin:
-      errors: "Форма содержит ошибки"
-      success: "Администратор успешно добавлен"
     index:
       add_new: "Добавить компанию"
       address: "Адрес"
@@ -26,18 +35,13 @@ ru:
     new:
       add_company: "Добавить компанию"
       edit_company: "Редактировать компанию"
-      address: "Адрес"
       back: "Назад"
+    form:
+      address: "Адрес"
       name: "Название"
       owner_name: "Владелец"
       phone: "Телефон"
-    new_admin:
-      back: "Назад"
-      email: "Эл. почта"
-      new_admin_company: "Новый администратор в %{name}"
-      password: "Пароль"
-      password_confirmation: "Подтверждение пароля"
-      register: "Зарегистрировать"
+      save: "Сохранить"
     edit:
       edit_company: "Редактировать компанию"
       back: "Назад"

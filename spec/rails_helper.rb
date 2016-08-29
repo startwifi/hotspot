@@ -34,7 +34,11 @@ RSpec.configure do |config|
 
   # Omniauth helpers
   config.include Omniauth::Mock
-  config.include Omniauth::SessionHelpers, type: :feature  
+  config.include Omniauth::SessionHelpers, type: :feature
+
+  # Devise helpers
+  config.include Devise::TestHelpers, type: :controller
+  config.extend ControllersSpecHelper, type: :controller
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
