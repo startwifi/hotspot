@@ -1,344 +1,345 @@
 ru:
-  back: "Назад"
+  back: 'Назад'
   application_controller:
-    access_denied: "Доступ запрещен"
-    need_authorization: "Вам нужно войти для доступа к данной странице"
+    access_denied: 'Доступ запрещен'
+    need_authorization: 'Вам нужно войти для доступа к данной странице'
   admins:
     form:
-      password: "Пароль"
-      password_confirmation: "Подтверждение пароля"
-      register: "Зарегистрировать"
-      email: "Эл. почта"
+      password: 'Пароль'
+      password_confirmation: 'Подтверждение пароля'
+      register: 'Зарегистрировать'
+      email: 'Эл. почта'
     new:
-      back: "Назад"
-      new_admin_company: "Новый администратор в %{name}"
+      back: 'Назад'
+      new_admin_company: 'Новый администратор в %{name}'
     create:
-      errors: "Форма содержит ошибки"
-      success: "Администратор успешно добавлен"
+      errors: 'Форма содержит ошибки'
+      success: 'Администратор успешно добавлен'
   companies:
     create:
-      success: "Компания успешно создана"
+      success: 'Компания успешно создана'
     index:
-      add_new: "Добавить компанию"
-      address: "Адрес"
-      all_companies: "Все компании"
-      contact: "Контактное лицо"
-      name: "Название"
-      options: "Опции"
-      phone: "Телефон"
-      show: "Подробнее"
-      token: "Токен"
-      edit: "Редактировать"
-      delete: "Удалить"
-      sure: "Вы действительно хотите удалить компанию?"
-      status: "Статус"
+      add_new: 'Добавить компанию'
+      address: 'Адрес'
+      all_companies: 'Все компании'
+      contact: 'Контактное лицо'
+      name: 'Название'
+      options: 'Опции'
+      phone: 'Телефон'
+      show: 'Подробнее'
+      token: 'Токен'
+      edit: 'Редактировать'
+      delete: 'Удалить'
+      sure: 'Вы действительно хотите удалить компанию?'
+      status: 'Статус'
     new:
-      add_company: "Добавить компанию"
-      edit_company: "Редактировать компанию"
-      back: "Назад"
+      add_company: 'Добавить компанию'
+      edit_company: 'Редактировать компанию'
+      back: 'Назад'
     form:
-      address: "Адрес"
-      name: "Название"
-      owner_name: "Владелец"
-      phone: "Телефон"
-      save: "Сохранить"
+      address: 'Адрес'
+      name: 'Название'
+      owner_name: 'Владелец'
+      phone: 'Телефон'
+      save: 'Сохранить'
     edit:
-      edit_company: "Редактировать компанию"
-      back: "Назад"
+      edit_company: 'Редактировать компанию'
+      back: 'Назад'
     show:
-      address: "Адрес"
-      contact: "Контактное лицо"
-      name: "Название"
-      options: "Опции"
-      phone: "Телефон"
-      show: "Подробнее"
-      token: "Токен"
-      edit: "Редактировать"
-      delete: "Удалить"
-      sure: "Вы действительно хотите удалить компанию?"
-      status: "Статус"
-      add_new: "Добавить нового админа"
-      admins: "Администраторы"
-      company: "Компания %{name}"
-      email: "Эл. почта"
-      last_events: "Последние события"
-      last_signin: "Последний вход"
-      details: "Детально о компании"
-      attribute: "Атрибут"
-      description: "Описание"
+      address: 'Адрес'
+      contact: 'Контактное лицо'
+      name: 'Название'
+      options: 'Опции'
+      phone: 'Телефон'
+      show: 'Подробнее'
+      token: 'Токен'
+      edit: 'Редактировать'
+      delete: 'Удалить'
+      sure: 'Вы действительно хотите удалить компанию?'
+      status: 'Статус'
+      add_new: 'Добавить нового админа'
+      admins: 'Администраторы'
+      company: 'Компания %{name}'
+      email: 'Эл. почта'
+      last_events: 'Последние события'
+      last_signin: 'Последний вход'
+      details: 'Детально о компании'
+      attribute: 'Атрибут'
+      description: 'Описание'
     update:
-      success: "Данные компании успешно обновлены"
-      errors: "Форма содержит ошибки"
+      success: 'Данные компании успешно обновлены'
+      errors: 'Форма содержит ошибки'
     destroy:
-      success: "Компания успешно удалена"
-      error: "Вы не можете удалить эту компанию"
+      success: 'Компания успешно удалена'
+      error: 'Вы не можете удалить эту компанию'
     hold:
-      success: "Статус компании успешно изменен"
-      errors: "Вы не можете изменить статус компании"
+      success: 'Статус компании успешно изменен'
+      errors: 'Вы не можете изменить статус компании'
   routers:
     show:
-      ip_address: "IP Адрес"
-      password: "Пароль"
-      login: "Логин"
-      back: "Назад"
-      name: "Название"
-      details: "Детально о роутере"
-      attribute: "Атрибут"
-      description: "Описание"
+      ip_address: 'IP Адрес'
+      password: 'Пароль'
+      login: 'Логин'
+      back: 'Назад'
+      name: 'Название'
+      details: 'Детально о роутере'
+      attribute: 'Атрибут'
+      description: 'Описание'
     create:
-      success: "Роутер успешно добавлен"
+      success: 'Роутер успешно добавлен'
     index:
-      add_new: "Добавить роутер"
-      ip_address: "IP Адрес"
-      all_routers: "Все роутеры"
-      name: "Название"
-      options: "Опции"
-      edit: "Редактировать"
-      delete: "Удалить"
-      sure: "Вы действительно хотите удалить роутер?"
-      status: "Статус"
-      available: "Доступен"
-      not_available: "Недоступен"
+      add_new: 'Добавить роутер'
+      ip_address: 'IP Адрес'
+      all_routers: 'Все роутеры'
+      name: 'Название'
+      options: 'Опции'
+      edit: 'Редактировать'
+      delete: 'Удалить'
+      sure: 'Вы действительно хотите удалить роутер?'
+      status: 'Статус'
+      available: 'Доступен'
+      not_available: 'Недоступен'
     new:
-      add_router: "Добавить роутер"
+      add_router: 'Добавить роутер'
       form:
     edit:
-      edit_router: "Редактировать роутер"
-      back: "Назад"
+      edit_router: 'Редактировать роутер'
+      back: 'Назад'
     form:
-      ip_address: "IP Адрес"
-      password: "Пароль"
-      login: "Логин"
-      back: "Назад"
-      name: "Название"
-      save: "Сохранить"
+      ip_address: 'IP Адрес'
+      password: 'Пароль'
+      login: 'Логин'
+      back: 'Назад'
+      name: 'Название'
+      save: 'Сохранить'
   dashboards:
     show:
-      action: "Действие"
-      current_settings: "Текущие настройки"
-      dashboard: "Приборная панель"
-      date: "Дата"
-      link: "Ссылка"
-      statistics_by_month: "Статистика за месяц"
-      time: "Время"
-      birthdays: "Ближайшие Дни рождения"
-      user: "Пользователь"
+      action: 'Действие'
+      current_settings: 'Текущие настройки'
+      dashboard: 'Приборная панель'
+      date: 'Дата'
+      link: 'Ссылка'
+      statistics_by_month: 'Статистика за месяц'
+      time: 'Время'
+      birthdays: 'Ближайшие Дни рождения'
+      user: 'Пользователь'
   devices:
     index:
-      devices: "Все устройства"
+      devices: 'Все устройства'
     show:
-      devices: "Статистика по MAC"
-      providers: "Пользователи"
-      user_account: "Пользовательский аккаунт"
-      events_by_device: "События по устройству"
-      date: "Дата"
-      action: "Действие"
-      link: "Пользователь"
+      devices: 'Статистика по MAC'
+      providers: 'Пользователи'
+      user_account: 'Пользовательский аккаунт'
+      events_by_device: 'События по устройству'
+      date: 'Дата'
+      action: 'Действие'
+      link: 'Пользователь'
   devise:
     sessions:
       new:
-        email_placeholder: "Эл. адрес"
-        password_placeholder: "Пароль"
-        sign_in: "Войти"
+        email_placeholder: 'Эл. адрес'
+        password_placeholder: 'Пароль'
+        sign_in: 'Войти'
   layouts:
     application:
-      name: StartWiFi
+      name: 'StartWiFi'
     navigation:
-      hotspot: StartWiFi
+      hotspot: 'StartWiFi'
     navigation_links:
-      all_users: "Все посетители"
-      all_devices: "Все устройства"
-      companies: "Компании"
-      dashboard: "Приборная панель"
-      profile: "Профиль"
-      settings: "Настройки"
-      sign_out: "Выйти"
-      statistics: "Статистика"
-      routers: "Точки доступа"
+      all_users: 'Все посетители'
+      all_devices: 'Все устройства'
+      companies: 'Компании'
+      dashboard: 'Приборная панель'
+      profile: 'Профиль'
+      settings: 'Настройки'
+      sign_out: 'Выйти'
+      statistics: 'Статистика'
+      routers: 'Точки доступа'
   settings:
     update:
-      success: "Настройки успешно обновлены"
+      success: 'Настройки успешно обновлены'
     advanced_update:
-      success: "Настройки успешно обновлены"
+      success: 'Настройки успешно обновлены'
     advanced:
-      card: "Карта"
-      remove_card: "Удалить карту"
-      save: "Сохранить настройки"
+      card: 'Карта'
+      remove_card: 'Удалить карту'
+      save: 'Сохранить настройки'
     edit:
-      settings: "Настройки"
-      tos: "Пользовательское соглашение"
-      cover: "Обложка"
-      disabled: "Отключено"
-      follow: "Зафоллоувить"
-      join_group: "Вступить в группу"
-      just_auth: "Простая авторизация"
-      like_page: "Лайкнуть страницу"
-      make_post: "Создать пост"
-      make_tweet: "Создать твит"
-      upload_photo: "Загрузить фотографию"
-      odnoklassniki: "Одноклассники"
-      remove_cover: "Удалить обложку"
-      save: "Сохранить настройки"
-      vkontakte: "ВКонтакте"
-      sms: "SMS"
-      sms_ident: "Идентификация"
-      sms_ident_auth: "Идентификация + авторизация"
-      layout: "Шаблон"
-      visitors: "Стандартный шаблон"
-      visitors_bg: "Шаблон с фоном"
+      settings: 'Настройки'
+      tos: 'Пользовательское соглашение'
+      cover: 'Обложка'
+      disabled: 'Отключено'
+      follow: 'Зафоллоувить'
+      join_group: 'Вступить в группу'
+      just_auth: 'Простая авторизация'
+      like_page: 'Лайкнуть страницу'
+      make_post: 'Создать пост'
+      make_tweet: 'Создать твит'
+      upload_photo: 'Загрузить фотографию'
+      odnoklassniki: 'Одноклассники'
+      remove_cover: 'Удалить обложку'
+      save: 'Сохранить настройки'
+      vkontakte: 'ВКонтакте'
+      sms: 'SMS'
+      sms_ident: 'Идентификация'
+      sms_ident_auth: 'Идентификация + авторизация'
+      layout: 'Шаблон'
+      visitors: 'Стандартный шаблон'
+      visitors_bg: 'Шаблон с фоном'
   shared:
     error_message:
-      form_contains: "Форма содержит %{count}"
+      form_contains: 'Форма содержит %{count}'
     settings_links:
-      advanced: "Дополнительно"
-      tos: "Соглашение"
-      facebook: Facebook
-      instagram: Instagram
-      odnoklassniki: "Одноклассники"
-      start_page: "Стартовая"
-      twitter: Twitter
-      vkontakte: "ВКонтакте"
+      advanced: 'Дополнительно'
+      tos: 'Соглашение'
+      facebook: 'Facebook'
+      instagram: 'Instagram'
+      odnoklassniki: 'Одноклассники'
+      start_page: 'Стартовая'
+      twitter: 'Twitter'
+      vkontakte: 'ВКонтакте'
   social:
     fbs:
       update:
-        success: "Настройки Facebook успешно обновлены"
+        success: 'Настройки Facebook успешно обновлены'
     ins:
       update:
-        success: "Настройки Instagram успешно обновлены"
+        success: 'Настройки Instagram успешно обновлены'
     oks:
       update:
-        success: "Настройки Одноклассники успешно обновлены"
+        success: 'Настройки Одноклассники успешно обновлены'
     shared:
       form:
-        group_name: "Имя группы"
-        link_redirect: "Ссылка переадресации"
-        post_image: "Изображение"
-        post_link: "Ссылка в публикации"
-        post_text: "Текст публикации"
-        remove_post_image: "Удалить изображение"
+        group_name: 'Имя группы'
+        link_redirect: 'Ссылка переадресации'
+        post_image: 'Изображение'
+        post_link: 'Ссылка в публикации'
+        post_text: 'Текст публикации'
+        remove_post_image: 'Удалить изображение'
     tws:
       update:
-        success: "Настройки Twitter успешно обновлены"
+        success: 'Настройки Twitter успешно обновлены'
     vks:
       update:
-        success: "Настройки ВКонтакте успешно обновлены"
+        success: 'Настройки ВКонтакте успешно обновлены'
     sms:
       edit:
-        sms_advert: "Рекламная страница после идентификации"
-        link_redirect: "Ссылка переадресации"
-        wall_head: "Заголовок"
-        wall_image: "Изображение"
-        wall_text: "Рекламный текст"
-        remove_wall_image: "Удалить изображение"
+        sms_advert: 'Рекламная страница после идентификации'
+        link_redirect: 'Ссылка переадресации'
+        wall_head: 'Заголовок'
+        wall_image: 'Изображение'
+        wall_text: 'Рекламный текст'
+        remove_wall_image: 'Удалить изображение'
       update:
-        success: "Настройки SMS успешно обновлены"
+        success: 'Настройки SMS успешно обновлены'
   stats:
     show:
-      events: "События по типу"
-      activity: "Активность"
-      gender: "Пол"
-      social_networks: "Социальные сети"
-      statistics: "Статистика"
+      events: 'События по типу'
+      activity: 'Активность'
+      gender: 'Пол'
+      social_networks: 'Социальные сети'
+      statistics: 'Статистика'
   users:
     index:
-      created: "Создан"
-      name: "Имя"
-      provider: "Провайдер"
-      uid: Uid
-      email: "Эл. почта"
-      updated: "Обновлен"
-      users: "Посетители"
-      download: "Скачать:"
+      created: 'Создан'
+      name: 'Имя'
+      provider: 'Провайдер'
+      uid: 'Uid'
+      email: 'Эл. почта'
+      updated: 'Обновлен'
+      users: 'Посетители'
+      download: 'Скачать:'
     show:
-      user: "Пользователь"
-      back: "Назад"
-      birthday: "День рождения"
-      email: "Эл. почта"
-      gender: "Пол"
-      name: "Имя"
-      provider: "Провайдер"
-      uid: Uid
-      url: "Ссылка"
-      information: "Информация"
-      user_devices: "Устройства пользователя"
+      user: 'Пользователь'
+      back: 'Назад'
+      birthday: 'День рождения'
+      email: 'Эл. почта'
+      gender: 'Пол'
+      name: 'Имя'
+      provider: 'Провайдер'
+      uid: 'Uid'
+      url: 'Ссылка'
+      information: 'Информация'
+      user_devices: 'Устройства пользователя'
   visitors:
     index:
-      download_card: "Скачать бонус-карту"
-      welcome: "Это бесплатная Wi-Fi точка доступа. Для подключения к интернету достаточно войти через одну из социальных сетей"
-      tos: "Я согласен с условиями"
-      tos_link: "пользовательского соглашения"
+      download_card: 'Скачать бонус-карту'
+      welcome: 'Это бесплатная Wi-Fi точка доступа. Для подключения к интернету достаточно войти через одну из социальных сетей'
+      tos: 'Я согласен с условиями'
+      tos_link: 'пользовательского соглашения'
     tos:
-      back: "Вернуться назад"
+      back: 'Вернуться назад'
   widgets:
     fb:
       join:
-        cancel: "Отмена"
-        header: "Facebook: лайкнуть для продолжения"
+        cancel: 'Отмена'
+        header: 'Facebook: лайкнуть для продолжения'
       post:
-        cancel: "Отмена"
-        header: "Facebook: сделать пост для продолжения"
-        share: "Сделать пост"
-        today: "Сегодня, %{time}"
+        cancel: 'Отмена'
+        header: 'Facebook: сделать пост для продолжения'
+        share: 'Сделать пост'
+        today: 'Сегодня, %{time}'
     ok:
       join:
-        cancel: "Отмена"
-        header: "Ok: вступить в группу для продолжения"
+        cancel: 'Отмена'
+        header: 'Ok: вступить в группу для продолжения'
       post:
-        cancel: "Отмена"
-        header: "Ok: сделать пост для продолжения"
-        share: "Сделать пост"
+        cancel: 'Отмена'
+        header: 'Ok: сделать пост для продолжения'
+        share: 'Сделать пост'
     tw:
       join:
-        cancel: "Отмена"
-        follow: "Зафоллоувить нас"
-        header: "Twitter: зафоллоувить для продолжения"
+        cancel: 'Отмена'
+        follow: 'Зафоллоувить нас'
+        header: 'Twitter: зафоллоувить для продолжения'
       post:
-        cancel: "Отмена"
-        header: "Twitter: опубликовать твит для продолжения"
-        tweet: "Твитнуть"
+        cancel: 'Отмена'
+        header: 'Twitter: опубликовать твит для продолжения'
+        tweet: 'Твитнуть'
     vk:
       join:
-        cancel: "Отмена"
-        header: "Vkontakte: подписаться для продолжения"
+        cancel: 'Отмена'
+        header: 'Vkontakte: подписаться для продолжения'
       post:
-        cancel: "Отмена"
-        header: "Vkontakte: опубликовать пост для продолжения"
-        share: "Сделать пост"
+        cancel: 'Отмена'
+        header: 'Vkontakte: опубликовать пост для продолжения'
+        share: 'Сделать пост'
     sms:
       adv:
-        continue: "Продолжить"
-        today: "Сегодня"
+        continue: 'Продолжить'
+        today: 'Сегодня'
   events:
-    join: "Вступление в группу"
-    post: "Создание поста"
-    photo: "Загрузка фото в альбом"
-    auth: "Простая авторизация"
-    member: "Уже подписан (в группе)"
-    identification: "SMS идентификация"
-    ident_adv: "Просмотр рекламы"
-    unknown: "Неизвестное действие"
+    auth: 'Простая авторизация'
+    identification: 'SMS идентификация'
+    ident_adv: 'Просмотр рекламы'
+    join: 'Вступление в группу'
+    login: 'Аутентификация'
+    member: 'Уже подписан (в группе)'
+    post: 'Создание поста'
+    photo: 'Загрузка фото в альбом'
+    unknown: 'Неизвестное действие'
   pages:
-    tos: "Пользовательское соглашение"
-    new: "Добавить новое"
-    edit: "Редактировать"
-    save: "Сохранить"
-    success: "Пользовательское соглашение успешно обновлено"
-    markdown: "Вы можете использовать *markdown* синтаксис"
+    tos: 'Пользовательское соглашение'
+    new: 'Добавить новое'
+    edit: 'Редактировать'
+    save: 'Сохранить'
+    success: 'Пользовательское соглашение успешно обновлено'
+    markdown: 'Вы можете использовать *markdown* синтаксис'
   router:
-    please_connect: "Роутер недоступен. Пожалуйста убедитесь, что он подключен к сети"  
+    please_connect: 'Роутер недоступен. Пожалуйста убедитесь, что он подключен к сети'  
   sms:
     auth:
       index:
-        auth: "Продолжить"
-        errors: "Форма содержит ошибки"
-        format: "Формат:"
-        phone: "Мобильный телефон"
-        placeholder: "+123206241212"
-        welcome: "Для продолжения необходимо авторизироваться с помощью кода из sms-сообщения, полученного на ваш мобильный телефон"
+        auth: 'Продолжить'
+        errors: 'Форма содержит ошибки'
+        format: 'Формат:'
+        phone: 'Мобильный телефон'
+        placeholder: '+123206241212'
+        welcome: 'Для продолжения необходимо авторизироваться с помощью кода из sms-сообщения, полученного на ваш мобильный телефон'
       send_sms:
-        success: "На номер %{phone} был выслан код подтверждения"
+        success: 'На номер %{phone} был выслан код подтверждения'
       validate:
-        back: "Назад"
-        code: "Код авторизации"
-        confirm: "Подтвердить"
-        errors: "Вы ввели неправильный код подтверждения. Попробуйте снова."
+        back: 'Назад'
+        code: 'Код авторизации'
+        confirm: 'Подтвердить'
+        errors: 'Вы ввели неправильный код подтверждения. Попробуйте снова.'
