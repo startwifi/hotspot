@@ -56,7 +56,6 @@ GEM
     browser (1.0.1)
     buftok (0.2.0)
     builder (3.2.2)
-    byebug (6.0.2)
     cancancan (1.12.0)
     capistrano (3.4.0)
       i18n
@@ -447,7 +446,6 @@ DEPENDENCIES
   bootstrap-sass
   brakeman
   browser
-  byebug
   cancancan
   capistrano
   capistrano-bundler

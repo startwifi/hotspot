@@ -71,7 +71,7 @@ gem 'exception_notification'
 gem 'slack-notifier'
 
 group :development, :test do
-  gem 'byebug'
+  gem 'pry-rails'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails'
@@ -80,7 +80,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'pry-rails'
   gem 'pry-doc'
   gem 'better_errors'
   gem 'quiet_assets'

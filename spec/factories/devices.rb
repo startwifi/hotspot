@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :device do
-    user nil
-mac ""
+    user
+    company
+    mac { Faker::Internet.mac_address }
   end
-
 end

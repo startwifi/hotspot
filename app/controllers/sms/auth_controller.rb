@@ -22,7 +22,7 @@ class Sms::AuthController < ApplicationController
       hotp = ROTP::HOTP.new(session[:otp_secret])
       code = hotp.at(session[:otp_counter])
 
-      ret = @model.send_sms(code)
+      @model.send_sms(code)
       redirect_to sms_auth_validate_path, notice: t('.success', phone: @model.phone)
     else
       render :index
