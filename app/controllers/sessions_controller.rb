@@ -1,16 +1,14 @@
 class SessionsController < ApplicationController
+  before_action :load_company
+  before_action :load_user
+  before_action :save_access_token
+  before_action :save_statistics
 
   def create
-    # render json: request.env['omniauth.auth']
-    # return
-    company = Company.find_by_token(session[:company_token])
-    browser = Browser.new(ua: request.env['HTTP_USER_AGENT'])
-    user = User.from_omniauth(request.env['omniauth.auth'], company)
-    save_access_token(user.provider)
-    company.devices.find_or_create_by(mac: session[:mac], user: user)
-    user.add_statistic(browser, session[:mac])
-    session[:user_id] = user.id
-    company ? redirect_to(widget_path) : render_404
+    return render_404 unless @company && @user
+
+    session[:user_id] = @user.id
+    redirect_to widget_path
   end
 
   def failure
@@ -19,17 +17,33 @@ class SessionsController < ApplicationController
 
   private
 
-  def save_access_token(provider)
-    case provider
+  def load_company
+    @company = Company.find_by_token(session[:company_token])
+  end
+
+  def load_user
+    @user = CreateWithOmniauthService.new(@company, request.env['omniauth.auth']).call
+  end
+
+  def save_statistics
+    StatisticService.new(@user, request).call
+  end
+
+  def credentials
+    @credentials ||= request.env['omniauth.auth']['credentials']
+  end
+
+  def save_access_token
+    case @user.provider
     when 'facebook'
-      session[:user_token] = request.env['omniauth.auth']['credentials']['token']
+      session[:user_token] = credentials['token']
     when 'twitter'
-      session[:user_token] = request.env['omniauth.auth']['credentials']['token']
-      session[:user_secret] = request.env['omniauth.auth']['credentials']['secret']
+      session[:user_token] = credentials['token']
+      session[:user_secret] = credentials['secret']
     when 'odnoklassniki'
-      session[:user_token] = request.env['omniauth.auth']['credentials']['refresh_token']
+      session[:user_token] = credentials['refresh_token']
     when 'vkontakte'
-      session[:user_token] = request.env['omniauth.auth']['credentials']['token']
+      session[:user_token] = credentials['token']
     end
   end
 end

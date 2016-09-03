@@ -15,6 +15,8 @@ module EventsHelper
       t('events.identification')
     when 'sms_ident_adv'
       t('events.ident_adv')
+    when 'login'
+      t('events.login')
     else
       t('events.unknown')
     end
