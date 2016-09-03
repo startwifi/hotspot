@@ -1,5 +1,5 @@
 
-set :repo_url,        'git@bitbucket.org:startwifi/hotspot.git'
+set :repo_url,        'git@github.com:gremax/hotspot.git'
 set :application,     'hotspot'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
@@ -19,7 +19,7 @@ set :puma_error_log,  "#{release_path}/log/puma.access.log"
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
-set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+set :puma_init_active_record, true # Change to false when not using ActiveRecord
 set :bundle_binstubs, nil
 
 ## Defaults:
@@ -83,6 +83,16 @@ namespace :deploy do
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
+end
+
+namespace :git do
+  task :update_repo_url do
+    on roles(:all) do
+      within repo_path do
+        execute :git, 'remote', 'set-url', 'origin', fetch(:repo_url)
+      end
+    end
+  end
 end
 
 # ps aux | grep puma    # Get puma pid
