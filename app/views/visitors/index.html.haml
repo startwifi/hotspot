@@ -4,32 +4,32 @@
   %ul.list-inline
     - unless @company.fb.action.eql?('disabled')
       %li
-        = link_to '/auth/facebook', class: 'social' do
+        = link_to '/facebook', class: 'social' do
           = image_tag 'facebook.png'
     - unless @company.tw.action.eql?('disabled')
       %li
-        = link_to '/auth/twitter', class: 'social' do
+        = link_to '/twitter', class: 'social' do
           = image_tag 'twitter.png'
     - unless @company.vk.action.eql?('disabled')
       %li
-        = link_to '/auth/vkontakte', class: 'social' do
+        = link_to '/vkontakte', class: 'social' do
           = image_tag 'vkontakte.png'
     - unless @company.in.action.eql?('disabled')
       %li
-        = link_to '/auth/instagram', class: 'social' do
+        = link_to '/instagram', class: 'social' do
           = image_tag 'instagram.png'
     - unless @company.ok.action.eql?('disabled')
       %li
-        = link_to '/auth/odnoklassniki', class: 'social' do
+        = link_to '/odnoklassniki', class: 'social' do
           = image_tag 'ok.png'
     - if @company.sms.action.eql?('auth') || @company.sms.action.eql?('ident_auth')
       %li
-        = link_to '/auth/sms', class: 'social' do
+        = link_to '/sms/authorize', class: 'social' do
           = image_tag 'sms.png'
 
   - if @company.tos?
     = render 'visitors/tos_modal'
-    %label{ for: 'accept_tos'}
+    %label{ for: 'accept_tos' }
       = check_box_tag 'accept_tos', 'yes', false
       = t('visitors.index.tos')
       = link_to t('visitors.index.tos_link'), '#', data: { toggle:"modal", target: '#tos' }

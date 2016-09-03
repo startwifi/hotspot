@@ -51,7 +51,7 @@ describe VisitorsController, type: :controller do
 
       it 'should redirect to sms auth' do
         get :index
-        expect(response).to redirect_to sms_auth_path
+        expect(response).to redirect_to sms_authorize_path
       end
 
       it 'should render :index' do
