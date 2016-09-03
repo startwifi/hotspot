@@ -10,7 +10,7 @@ class VisitorsController < ApplicationController
 
     if @company.sms.action.eql?('ident') || @company.sms.action.eql?('ident_auth')
       device = @company.devices.find_by_mac(session[:mac])
-      return redirect_to sms_auth_path unless device
+      return redirect_to sms_authorize_path unless device
       return unless @company.sms.action.eql?('ident') && @company.sms.adv
       render 'widgets/sms/adv'
     end

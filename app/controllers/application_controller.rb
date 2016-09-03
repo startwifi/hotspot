@@ -9,14 +9,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
-  def after_sign_in_path_for(resource_or_scope)
-    dashboard_path
-  end
-
-  def after_sign_out_path_for(resource_or_scope)
-    root_path
-  end
-
   def current_ability
     @current_ability ||= Ability.new(current_admin)
   end
@@ -32,7 +24,7 @@ class ApplicationController < ActionController::Base
   private
 
   def make_link(link, dst, mac)
-    "#{link}?dst=#{dst}&username=T-#{mac}"
+    "#{link}?username=T-#{mac}&dst=#{dst}"
   end
 
   def router_url
@@ -42,14 +34,14 @@ class ApplicationController < ActionController::Base
 
   def destination_link
     provider = case current_user.provider
-    when 'vkontakte' then 'vk'
-    when 'facebook'  then 'fb'
-    when 'twitter'   then 'tw'
-    when 'instagram' then 'in'
-    when 'odnoklassniki' then 'ok'
-    else
-      current_user.provider
-    end
+               when 'vkontakte' then 'vk'
+               when 'facebook'  then 'fb'
+               when 'twitter'   then 'tw'
+               when 'instagram' then 'in'
+               when 'odnoklassniki' then 'ok'
+               else
+                 current_user.provider
+               end
 
     provider_class = current_user.company.send(provider)
     if provider_class && provider_class.try(:link_redirect?)
