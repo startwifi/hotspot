@@ -1,6 +1,9 @@
 require 'omniauth-sms'
 
-OmniAuth.config.logger = Rails.logger
+OmniAuth.configure do |config|
+  config.logger = Rails.logger
+  config.path_prefix = nil
+end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook,

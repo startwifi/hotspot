@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
-  before_action :load_company
-  before_action :load_user
-  before_action :save_access_token
-  before_action :save_statistics
+  before_action :load_company, only: :create
+  before_action :load_user, only: :create
+  before_action :save_access_token, only: :create
+  before_action :save_statistics, only: :create
 
   def create
     return render_404 unless @company && @user

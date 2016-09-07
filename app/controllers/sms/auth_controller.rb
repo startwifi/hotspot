@@ -37,7 +37,7 @@ class Sms::AuthController < ApplicationController
         if @company.sms.action.eql?('ident_auth') && session[:sms_auth_success].present?
           return redirect_to event_auth_path(:sms)
         end
-        return redirect_to '/auth/sms/callback'
+        return redirect_to '/sms/callback'
       else
         redirect_to :back, alert: t('.errors')
       end
