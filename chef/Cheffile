@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'https://supermarket.getchef.com/api/v1'
+
+cookbook 'chef-solo-search'
+cookbook 'users'
+cookbook 'sudo'
+cookbook 'openssh'
+cookbook 'nginx'
+cookbook 'rvm', git: 'https://github.com/martinisoft/chef-rvm.git'
+cookbook 'postgresql', git: 'https://github.com/phlipper/chef-postgresql.git'
+cookbook 'nodejs', '~> 2.4.2'
+cookbook 'firewall', '~> 2.5.1'
+cookbook 'imagemagick'
+cookbook 'monit'

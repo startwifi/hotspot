@@ -1,0 +1,9 @@
+{
+  "id": "deploy",
+  "password": "$1$aArMy0fO$HopfUsplBk6Nx43N9aXTI0",
+  "ssh_keys": [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDvZJYyH2CPk9dwrBfUi+9lKNPMUxTGcmdfYXd/L8U1MEX+rP+JfFx3HXHButT2dyL886GeuytxjcCi2es+g8/tWj/CvIoLWese0BMz+DFjUjBNKYTbvTI3Fb4YzOHegHWMEjiYqdVRv/x0H0yup3RsSVK2TyHqQ/o4hy7y8J5kyUEqV6+g1uHaBqlmqVjn82koW1YH55kfctaXDKvqiflLEayVDojWc6l9pLfDRYonV8doa7x4REM4qiaQr7Z5dC5TIB8jLtr68Zab3mYLqUXkZIWL08VChqJQmm2kyQ8/ZD53ANtZFg5szzdFoOdNx7w7tYwjuYdynUCha7Lei+Rl admin@startwifi.me"
+  ],
+  "groups": ["sudo" ,"sysadmin", "www-data", "rvm"],
+  "shell": "\/bin\/bash"
+}

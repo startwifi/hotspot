@@ -1,0 +1,106 @@
+{
+  "authorization": {
+    "sudo": {
+      "groups": ["sysadmin"],
+      "users": ["deploy", "ubuntu"],
+      "passwordless": "false"
+    }
+  },
+  "users": ["deploy"],
+  "openssh": {
+    "server": {
+      "allow_agent_forwarding": "yes",
+      "allow_tcp_forwarding": "no",
+      "login_grace_time": "30s",
+      "password_authentication": "no",
+      "permit_root_login": "no",
+      "r_s_a_authentication": "no"
+    },
+    "client": {
+      "github.com": {
+        "user_known_hosts_file": "/dev/null",
+        "strict_host_key_checking": "no"
+      }
+    }
+  },
+  "nginx": {
+    "install_method": "source",
+    "default_site_enabled": false,
+    "source": {
+      "version": "1.11.3",
+      "checksum": "4a667f40f9f3917069db1dea1f2d5baa612f1fa19378aadf71502e846a424610"
+    }
+  },
+  "rvm": {
+    "user_default_ruby": "2.3.1",
+    "user_install_rubies": true,
+    "installs": {
+      "deploy": true
+    },
+    "user_installs": [
+      {
+        "user": "deploy"
+      }
+    ],
+    "gpg": {}
+  },
+  "postgresql": {
+    "version": "9.4",
+    "users": [
+      {
+        "username": "deploy",
+        "encrypted_password": "$1$FQNV9grL$u.G4YnW.bcSYHZpNiBfKs0",
+        "superuser": true,
+        "createdb": true,
+        "login": true
+      }
+    ],
+    "databases": [
+      {
+        "name": "hotspot_production",
+        "owner": "deploy",
+        "template": "template0",
+        "encoding": "UTF-8",
+        "locale": "en_US.UTF-8"
+      }
+    ]
+  },
+  "monit": {
+      "web_interface": {
+        "enable":  true,
+        "use_syslog": true,
+        "port":    2812,
+        "address": "localhost",
+        "allow":   ["localhost", "startwifi:phu1Tex"]
+      }
+    },
+
+  "firewall": {
+    "allow_ssh": true
+  },
+
+  "run_list": [
+    "recipe[chef-solo-search]",
+    "recipe[openssh]",
+    "recipe[users::sysadmins]",
+    "recipe[firewall::default]",
+    "recipe[rg-firewall]",
+    "recipe[sudo]",
+    "recipe[nginx]",
+    "recipe[pre-rvm]",
+    "recipe[monit]",
+    "recipe[rvm::user]",
+    "recipe[postgresql::server]",
+    "recipe[postgresql::client]",
+    "recipe[nodejs::nodejs]",
+    "recipe[apt-packages]",
+    //"recipe[imagemagick::devel]",
+    //"recipe[rg-imagemagick-policy]",
+    "recipe[nginx-template-production]",
+    "recipe[rg-monit-production]"
+  ],
+
+  "automatic": {
+    "ipaddress": "139.59.154.143"
+  }
+}
