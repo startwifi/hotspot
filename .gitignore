@@ -18,6 +18,7 @@
 /.powenv
 /.env
 /public/uploads
+/chef
 
 # Ignore application configuration
 /config/application.yml
