@@ -68,6 +68,7 @@ gem 'devise-i18n'
 # Dev Notifications
 gem 'exception_notification'
 gem 'slack-notifier'
+gem 'airbrake', '~> 5.4'
 
 group :development, :test do
   gem 'pry-rails'
