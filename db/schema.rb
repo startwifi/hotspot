@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703170311) do
+ActiveRecord::Schema.define(version: 20161006184957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20160703170311) do
     t.string   "sms_auth",               default: "disabled"
     t.string   "sms_auth_link_redirect"
     t.string   "layout"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   create_table "devices", force: :cascade do |t|
@@ -110,6 +112,25 @@ ActiveRecord::Schema.define(version: 20160703170311) do
 
   add_index "ins", ["company_id"], name: "index_ins_on_company_id", using: :btree
 
+  create_table "networks", force: :cascade do |t|
+    t.integer  "company_id"
+    t.cidr     "local_network"
+    t.inet     "local_range_begin"
+    t.inet     "local_range_end"
+    t.inet     "local_gateway"
+    t.cidr     "hotspot_network"
+    t.inet     "hotspot_range_begin"
+    t.inet     "hotspot_range_end"
+    t.inet     "hotspot_gateway"
+    t.inet     "hotspot_address"
+    t.inet     "net"
+    t.integer  "lease_time"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "networks", ["company_id"], name: "index_networks_on_company_id", using: :btree
+
   create_table "oks", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "group_id"
@@ -135,6 +156,8 @@ ActiveRecord::Schema.define(version: 20160703170311) do
     t.datetime "last_pinged_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ssid"
+    t.macaddr  "radio_mac"
   end
 
   add_index "routers", ["company_id"], name: "index_routers_on_company_id", using: :btree
@@ -218,6 +241,7 @@ ActiveRecord::Schema.define(version: 20160703170311) do
   add_foreign_key "events", "users"
   add_foreign_key "fbs", "companies"
   add_foreign_key "ins", "companies"
+  add_foreign_key "networks", "companies"
   add_foreign_key "oks", "companies"
   add_foreign_key "statistics", "companies"
   add_foreign_key "statistics", "users"

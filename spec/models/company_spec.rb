@@ -14,6 +14,7 @@ RSpec.describe Company, type: :model do
     it { should have_many(:statistics).dependent(:destroy) }
     it { should have_many(:routers).dependent(:destroy) }
     it { should have_many(:devices).dependent(:destroy) }
+    it { should have_one(:network).dependent(:destroy) }
     it { should have_one(:vk).dependent(:destroy) }
     it { should have_one(:fb).dependent(:destroy) }
     it { should have_one(:tw).dependent(:destroy) }
