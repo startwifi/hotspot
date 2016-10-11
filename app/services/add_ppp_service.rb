@@ -4,7 +4,6 @@ class AddPppUserService
     @token = @company.token
     @hs_name = "#{@token}_hs"
     @comment = "#{router.name} mikrotik"
-    @ssid = router.ssid
 
     @local_gateway = @company.network.local_gateway
 
@@ -14,10 +13,6 @@ class AddPppUserService
 
     # Need from company
     @radio_mac = router.radio_mac
-
-    # Auth options
-    @auth_type = "wpa-psk,wpa2-psk,wpa-eap,wpa2-eap"
-    @encryption = "aes-ccm,tkip"
   end
 
   def run
@@ -28,13 +23,10 @@ class AddPppUserService
   private
 
   def configure_ppp
-    router.add_ppp_profile(@token, @local_gateway, @hs_name, @comment)
     router.add_ppp_user(@token, @user_password, @token, @local_gateway, @user_address, @comment)
   end
 
   def configure_capsman
-    router.add_capsman_security(@token, @auth_type, @encryption, @user_password, @comment)
-    router.add_capsman_config(@token, @ssid, @token, @token, "public", @comment)
     router.add_capsman_server(@radio_mac, @token, @comment)
   end
 

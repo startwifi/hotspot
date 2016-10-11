@@ -27,6 +27,10 @@ class Company < ActiveRecord::Base
     super || ensure_sms_settings
   end
 
+  def network
+    super # || ensure_network
+  end
+
   private
 
   def ensure_sms_settings
@@ -36,5 +40,9 @@ class Company < ActiveRecord::Base
       wall_head: 'StartWifi',
       wall_image: Rails.root.join('app/assets/images/startwifi.png').open
     )
+  end
+
+  def ensure_network
+    CreateNetworkService.new(self).run
   end
 end

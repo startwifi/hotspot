@@ -189,6 +189,7 @@ GEM
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     iniparse (1.4.2)
+    ipaddress (0.8.3)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -471,6 +472,7 @@ DEPENDENCIES
   haml-lint
   haml-rails
   has_secure_token
+  ipaddress
   jbuilder (~> 2.6.0)
   jquery-rails
   koala

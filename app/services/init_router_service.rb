@@ -4,6 +4,7 @@ class InitRouterService
     @hs_name = "#{@token}_hs"
     @local_name = "#{@token}_local"
     @comment = company.name
+    @ssid = 'StartWiFi'
 
     # Company network
     @network = company.network
@@ -15,13 +16,16 @@ class InitRouterService
     @local_network = @network.local_network
     @hs_gateway = @network.hotspot_gateway
     @local_gateway = @network.local_gateway
+    @net = @network.net
+    @wifi_password = @network.wifi_password
 
     # Need from company
-    @net = Figaro.env.router_net
     @dns = Figaro.env.router_dns
 
     # Auth options
     @login_by = "cookie,http-chap,trial,mac-cookie"
+    @auth_type = "wpa-psk,wpa2-psk,wpa-eap,wpa2-eap"
+    @encryption = "aes-ccm,tkip"
   end
 
   def run
@@ -30,6 +34,8 @@ class InitRouterService
     configure_dhcp
     configure_hotspot
     configure_nat
+    configure_ppp
+    configure_capsman
     router.reset_html(@token)
   end
 
@@ -58,6 +64,15 @@ class InitRouterService
   def configure_nat
     router.add_nat(@hs_network, @comment)
     router.add_nat(@local_network, @comment)
+  end
+
+  def configure_ppp
+    router.add_ppp_profile(@token, @local_gateway, @hs_name, @comment)
+  end
+
+  def configure_capsman
+    router.add_capsman_security(@token, @auth_type, @encryption, @wifi_password, @comment)
+    router.add_capsman_config(@token, @ssid, @token, @token, "public", @comment)
   end
 
   def router

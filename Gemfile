@@ -54,6 +54,7 @@ gem 'ransack'
 
 # Router
 gem 'mtik'
+gem 'ipaddress'
 
 # Phone validator
 gem 'phony_rails'
