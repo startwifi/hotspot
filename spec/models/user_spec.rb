@@ -1,16 +1,16 @@
 describe User, type: :model do
   let(:user) { create(:user) }
 
-  describe 'validation' do
-    it { should validate_presence_of :name }
-    it { should validate_presence_of :provider }
-    it { should validate_presence_of :uid }
-    it { should validate_presence_of :company }
+  describe 'associations' do
+    it { should belong_to(:company) }
+    it { should have_many(:events).dependent(:destroy) }
   end
 
-  describe 'association' do
-    it { should belong_to :company }
-    it { should have_many(:events).dependent(:destroy) }
+  describe 'validation' do
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:provider) }
+    it { should validate_presence_of(:uid) }
+    it { should validate_presence_of(:company) }
   end
 
   describe 'attributes' do

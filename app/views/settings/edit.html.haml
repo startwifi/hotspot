@@ -1,8 +1,8 @@
 = render 'shared/settings_links'
 
-.row
-  .col-md-offset-4.col-md-4
-    = form_for @company, url: settings_path, method: :put do |f|
+= form_for @company, url: settings_path, method: :put do |f|
+  .row
+    .col-md-6
       = fields_for @company.fb do |fb|
         .form-group
           = fb.label :facebook
@@ -19,6 +19,7 @@
         .form-group
           = ins.label :instagram
           = ins.select :action, [[t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
+    .col-md-6
       = fields_for @company.ok do |ok|
         .form-group
           = ok.label :odnoklassniki, t('.odnoklassniki')
@@ -27,13 +28,15 @@
         .form-group
           = sms.label :sms, t('.sms')
           = sms.select :action, [[t('.disabled'), :disabled], [t('.just_auth'), :auth], [t('.sms_ident'), :ident], [t('.sms_ident_auth'), :ident_auth]], {}, class: 'form-control'
+      = fields_for @company.guest do |guest|
+        .form-group
+          = guest.label :action, t('.auth')
+          = guest.select :action, [[t('.disabled'), :disabled], [t('.password'), :auth], [t('.skip'), :skip]], {}, class: 'form-control'
       .form-group
         = f.label :layout, t('.layout')
         = f.select :layout, [[t('.visitors'), :visitors], [t('.visitors_bg'), :visitors_bg]], {}, class: 'form-control'
-      %div.checkbox
-        %label
-          = f.check_box :tos
-          = f.label :tos, t('.tos')
+  .row
+    .col-md-6
       .form-group
         = f.label :cover, t('.cover')
         - if @company.cover?
@@ -43,9 +46,14 @@
         %p.help-block
           = @company.cover.extension_white_list.join(', ')
         = f.hidden_field :cover_cache
-      %div.checkbox
+      .checkbox
         %label
           = f.check_box :remove_cover
           = f.label :remove_cover, t('.remove_cover')
+    .col-md-6
+      .checkbox
+        %label
+          = f.check_box :tos
+          = f.label :tos, t('.tos')
       .form-group
         = f.submit t('.save'), class: 'btn btn-primary'

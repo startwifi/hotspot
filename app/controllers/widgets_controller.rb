@@ -10,10 +10,25 @@ class WidgetsController < ApplicationController
     when 'instagram' then widget_in
     when 'odnoklassniki' then widget_ok
     when 'sms' then widget_sms
+    when 'guest' then widget_guest
     end
   end
 
   private
+
+  def widget_guest
+    case @company.guest.action
+    when 'skip'
+      if @company.guest.adv
+        current_user.add_event(:guest_skip)
+        render 'widgets/guest/adv'
+      else
+        redirect_to event_auth_path(:guest_skip)
+      end
+    when 'password'
+      redirect_to event_auth_path(:guest_password)
+    end
+  end
 
   def widget_sms
     case @company.sms.action
@@ -94,6 +109,7 @@ class WidgetsController < ApplicationController
     when 'facebook'      then 'fb'
     when 'twitter'       then 'tw'
     when 'odnoklassniki' then 'ok'
+    when 'guest'         then 'visitors'
     when 'sms'           then 'visitors'
     end
   end

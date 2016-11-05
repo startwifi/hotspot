@@ -72,6 +72,7 @@ gem 'airbrake', '~> 5.4'
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'byebug'
   gem 'spring'
   gem 'rspec-rails'
   gem 'factory_girl_rails'

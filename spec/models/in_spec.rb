@@ -1,10 +1,10 @@
-RSpec.describe In, type: :model do
-  describe 'validation' do
-    it { should validate_presence_of :company }
-    it { should validate_presence_of :group_name }
+describe In, type: :model do
+  describe 'associations' do
+    it { should belong_to(:company) }
   end
 
-  describe 'associations' do
-    it { should belong_to :company }
+  describe 'validation' do
+    it { should validate_presence_of(:company) }
+    it { should validate_presence_of(:group_name) }
   end
 end

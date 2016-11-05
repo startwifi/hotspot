@@ -1,0 +1,13 @@
+.panel.panel-default
+  .panel-heading
+    %i.fa.fa-comments
+    = @company.guest.wall_head
+  .panel-body
+    %div
+      %small= t('.today', time: Time.zone.now.strftime('%H:%M'))
+    %div= @company.guest.wall_text
+    %div= image_tag @company.guest.wall_image, alt: @company.name, class: 'img-responsive'
+  .panel-footer
+    = link_to event_auth_path(:guest_adv), class: 'btn btn-primary btn-block', id: 'continue_btn' do
+      = t('.continue')
+      %span#timer

@@ -4,7 +4,6 @@ RSpec.describe Company, type: :model do
     it { should validate_presence_of :owner_name }
     it { should validate_presence_of :phone }
     it { should validate_presence_of :address }
-    it { should validate_inclusion_of(:sms_auth).in_array(Company::SMS_AUTH_TYPES) }
   end
 
   describe 'associations' do
@@ -20,5 +19,7 @@ RSpec.describe Company, type: :model do
     it { should have_one(:tw).dependent(:destroy) }
     it { should have_one(:ok).dependent(:destroy) }
     it { should have_one(:in).dependent(:destroy) }
+    it { should have_one(:sms).dependent(:destroy) }
+    it { should have_one(:guest).dependent(:destroy) }
   end
 end

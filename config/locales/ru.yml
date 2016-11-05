@@ -183,6 +183,10 @@ ru:
       sms: 'SMS'
       sms_ident: 'Идентификация'
       sms_ident_auth: 'Идентификация + авторизация'
+      auth: 'Дополнительная авторизация'
+      password: 'Вход по паролю'
+      skip: 'Пропустить авторизацию'
+      auth_password: 'Пароль для авторизации'
       layout: 'Шаблон'
       visitors: 'Стандартный шаблон'
       visitors_bg: 'Шаблон с фоном'
@@ -198,6 +202,8 @@ ru:
       start_page: 'Стартовая'
       twitter: 'Twitter'
       vkontakte: 'ВКонтакте'
+      sms: 'СМС'
+      guest: 'Гость'
   social:
     fbs:
       update:
@@ -222,6 +228,17 @@ ru:
     vks:
       update:
         success: 'Настройки ВКонтакте успешно обновлены'
+    guests:
+      edit:
+        advert: 'Показать рекламу'
+        link_redirect: 'Ссылка переадресации'
+        wall_head: 'Заголовок'
+        wall_image: 'Изображение'
+        wall_text: 'Рекламный текст'
+        remove_wall_image: 'Удалить изображение'
+        password: 'Пароль для авторизации'
+      update:
+        success: 'Настройки успешно обновлены'
     sms:
       edit:
         sms_advert: 'Рекламная страница после идентификации'
@@ -263,12 +280,17 @@ ru:
       user_devices: 'Устройства пользователя'
   visitors:
     index:
+      continue: 'Пропустить'
       download_card: 'Скачать бонус-карту'
-      welcome: 'Это бесплатная Wi-Fi точка доступа. Для подключения к интернету достаточно войти через одну из социальных сетей'
       tos: 'Я согласен с условиями'
       tos_link: 'пользовательского соглашения'
+      welcome: 'Это бесплатная Wi-Fi точка доступа. Для подключения к интернету достаточно войти через одну из социальных сетей'
+    password:
+      placeholder: 'Введите пароль'
     tos:
       back: 'Вернуться назад'
+    auth_by_password:
+      error: 'Неверный пароль!'
   widgets:
     fb:
       join:
@@ -287,6 +309,7 @@ ru:
         cancel: 'Отмена'
         header: 'Ok: сделать пост для продолжения'
         share: 'Сделать пост'
+        today: 'Сегодня, %{time}'
     tw:
       join:
         cancel: 'Отмена'
@@ -296,6 +319,7 @@ ru:
         cancel: 'Отмена'
         header: 'Twitter: опубликовать твит для продолжения'
         tweet: 'Твитнуть'
+        today: 'Сегодня, %{time}'
     vk:
       join:
         cancel: 'Отмена'
@@ -304,12 +328,20 @@ ru:
         cancel: 'Отмена'
         header: 'Vkontakte: опубликовать пост для продолжения'
         share: 'Сделать пост'
+        today: 'Сегодня, %{time}'
     sms:
       adv:
         continue: 'Продолжить'
-        today: 'Сегодня'
+        today: 'Сегодня, %{time}'
+    guest:
+      adv:
+        continue: 'Продолжить'
+        today: 'Сегодня, %{time}'
   events:
     auth: 'Простая авторизация'
+    guest_adv: 'Просмотр рекламы'
+    guest_skip: 'Пропуск авторизации'
+    guest_password: 'Вход по паролю'
     identification: 'SMS идентификация'
     ident_adv: 'Просмотр рекламы'
     join: 'Вступление в группу'
