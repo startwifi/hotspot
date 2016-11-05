@@ -17,6 +17,12 @@ module EventsHelper
       t('events.ident_adv')
     when 'login'
       t('events.login')
+    when 'guest_skip'
+      t('events.guest_skip')
+    when 'guest_adv'
+      t('events.guest_adv')
+    when 'guest_password'
+      t('events.guest_password')
     else
       t('events.unknown')
     end

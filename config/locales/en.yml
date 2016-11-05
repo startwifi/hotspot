@@ -15,7 +15,18 @@ en:
     vks:
       update:
         success: 'Vkontakte successfully updated'
-    vks:
+    guests:
+      edit:
+        advert: 'Advert page after identification'
+        link_redirect: 'Redirection link'
+        wall_head: 'Header'
+        wall_image: 'Image'
+        wall_text: 'Text on the page'
+        remove_wall_image: 'Remove image'
+        password: 'Password for auth'
+      update:
+        success: 'Settings successfully updated'
+    sms:
       edit:
         sms_advert: 'Advert page after identification'
         link_redirect: 'Redirection link'
@@ -147,6 +158,8 @@ en:
       twitter: 'Twitter'
       instagram: 'Instagram'
       odnoklassniki: 'Odnoklassniki'
+      sms: 'SMS'
+      guest: 'Guest'
   devise:
     sessions:
       new:
@@ -185,6 +198,10 @@ en:
       sms_ident: 'Identification'
       sms_ident_auth: 'Identification with authorization'
       layout: 'Template'
+      auth: 'Additional auth'
+      password: 'Sign in by password'
+      skip: 'Skip auth'
+      auth_password: 'Password for auth'
       visitors: 'Default template'
       visitors_bg: 'Template with background cover'
     advanced:
@@ -222,13 +239,22 @@ en:
       user_devices: 'User devices'
   visitors:
     index:
-      welcome: 'This is a free wifi hotspot. You need to sign in with a social network'
+      continue: 'Skip'
       download_card: 'Download bonus card'
       tos: 'By signing in you agree with our'
       tos_link: 'Terms of Service'
+      welcome: 'This is a free wifi hotspot. You need to sign in with a social network'
+    password:
+      placeholder: 'Input password'
     tos:
       back: 'Back'
+    auth_by_password:
+      error: 'Wrong password!'
   widgets:
+    guest:
+      adv:
+        continue: 'Continue'
+        today: 'Today, %{time}'
     fb:
       join:
         header: 'Facebook: like for continue'
@@ -246,6 +272,7 @@ en:
         header: 'Ok: share post for continue'
         share: 'Share post'
         cancel: 'Cancel'
+        today: 'Today, %{time}'
     tw:
       join:
         header: 'Twitter: follow us for continue'
@@ -255,6 +282,7 @@ en:
         header: 'Twitter: make tweet for continue'
         tweet: 'Tweet'
         cancel: 'Cancel'
+        today: 'Today, %{time}'
     vk:
       join:
         header: 'Vkontakte: subscribe for continue'
@@ -263,12 +291,16 @@ en:
         header: 'Vkontakte: share post for continue'
         share: 'Share post'
         cancel: 'Cancel'
+        today: 'Today, %{time}'
     sms:
       adv:
         continue: 'Continue'
-        today: 'Today'
+        today: 'Today, %{time}'
   events:
     auth: 'Only authentication'
+    guest_adv: 'Advert shown'
+    guest_skip: 'Auth skipped'
+    guest_password: 'Sign in by password'
     identification: 'Identification'
     ident_adv: 'Advert view'
     join: 'Joined in group'

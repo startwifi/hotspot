@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :load_company
+  load_and_authorize_resource :company, through: :current_admin, singleton: true
 
   def tos
   end
@@ -20,9 +20,5 @@ class PagesController < ApplicationController
 
   def company_params
     params.require(:company).permit(:tos_text)
-  end
-
-  def load_company
-    @company = current_admin.company
   end
 end

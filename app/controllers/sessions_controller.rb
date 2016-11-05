@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
 
   def create
     return render_404 unless @company && @user
-
     session[:user_id] = @user.id
     redirect_to widget_path
   end
@@ -19,6 +18,7 @@ class SessionsController < ApplicationController
 
   def load_company
     @company = Company.find_by_token(session[:company_token])
+    render_404 unless @company
   end
 
   def load_user

@@ -34,6 +34,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # TODO: URGENT! Need to rewrite (access without action)
   def auth
     case params[:provider]
     when 'sms_ident_auth'
@@ -43,6 +44,12 @@ class EventsController < ApplicationController
       current_user.add_event(:sms_ident)
     when 'sms_ident_adv'
       current_user.add_event(:sms_ident_adv)
+    when 'guest_skip'
+      current_user.add_event(:guest_skip)
+    when 'guest_adv'
+      current_user.add_event(:guest_adv)
+    when 'guest_password'
+      current_user.add_event(:guest_password)
     else
       current_user.add_event(:auth)
     end

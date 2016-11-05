@@ -15,6 +15,7 @@
 
 # Other
 .DS_Store
+/.byebug_history
 /.powenv
 /.env
 /public/uploads

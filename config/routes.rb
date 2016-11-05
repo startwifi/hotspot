@@ -22,12 +22,7 @@ Rails.application.routes.draw do
 
     resource :dashboard, only: :show
     resource :stats, only: :show
-    resource :settings, only: %w(edit update) do
-      member do
-        get 'advanced'
-        put 'advanced', to: 'settings#advanced_update'
-      end
-    end
+    resource :settings, only: %w(edit update)
 
     resources :users, only: %w(index show)
     resources :devices, only: %w(index show)
@@ -61,6 +56,7 @@ Rails.application.routes.draw do
       resource :in, only: %w(edit update)
       resource :ok, only: %w(edit update)
       resource :sms, only: %w(edit update)
+      resource :guest, only: %w(edit update)
     end
     post '/events/by_date', to: 'events#by_date', as: 'events_by_date'
   end
@@ -74,6 +70,7 @@ Rails.application.routes.draw do
       match 'auth/validate', via: %w(get post)
     end
 
+    post '/password', to: 'visitors#auth_by_password'
     get '/:provider/subscribe', to: 'events#subscribe', as: 'event_subscribe'
     get '/:provider/post', to: 'events#post', as: 'event_post'
     get '/:provider/auth', to: 'events#auth', as: 'event_auth'
