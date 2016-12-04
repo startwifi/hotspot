@@ -17,7 +17,7 @@ class VisitorsController < ApplicationController
   end
 
   def auth_by_password
-    if @company && @company.guest.authenticate(params[:password])
+    if @company && @company.guest.password_digest && @company.guest.authenticate(params[:password])
       redirect_to event_auth_path(:guest_password)
     else
       flash[:alert] = t('.error')
