@@ -1,12 +1,10 @@
 class SettingsController < ApplicationController
-  before_filter :authenticate_admin!
+  load_and_authorize_resource :company, through: :current_admin, singleton: true
 
   def edit
-    @company = current_admin.company
   end
 
   def update
-    @company = current_admin.company
     if @company.update(company_params)
       @company.fb.update(fb_params)
       @company.vk.update(vk_params)
@@ -14,22 +12,10 @@ class SettingsController < ApplicationController
       @company.in.update(in_params)
       @company.ok.update(ok_params)
       @company.sms.update(sms_params)
+      @company.guest.update(guest_params)
       redirect_to edit_settings_path, notice: t('.success')
     else
       render :edit
-    end
-  end
-
-  def advanced
-    @company = current_admin.company
-  end
-
-  def advanced_update
-    @company = current_admin.company
-    if @company.update(company_params)
-      redirect_to advanced_settings_path, notice: t('.success')
-    else
-      render :advanced
     end
   end
 
@@ -59,6 +45,10 @@ class SettingsController < ApplicationController
     params.require(:sms).permit(:action)
   end
 
+  def guest_params
+    params.require(:guest).permit(:action)
+  end
+
   def company_params
     params.require(:company).permit(
       :link_redirect,
@@ -71,8 +61,6 @@ class SettingsController < ApplicationController
       :remove_card,
       :tos,
       :tos_text,
-      :sms_auth,
-      :sms_auth_link_redirect,
       :layout
     )
   end

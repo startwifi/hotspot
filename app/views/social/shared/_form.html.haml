@@ -20,9 +20,9 @@
     537x240px:
     = object.post_image.extension_white_list.join(', ')
   = f.hidden_field :post_image_cache
-%div.checkbox
+.checkbox
   %label
     = f.check_box :remove_post_image
     = f.label :remove_post_image, t('.remove_post_image')
 .form-group
-  = f.submit class: 'btn btn-primary'
+  = f.submit t('settings.edit.save'), class: 'btn btn-primary'

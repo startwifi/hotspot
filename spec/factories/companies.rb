@@ -5,6 +5,5 @@ FactoryGirl.define do
     token "j4g2gs92sg3"
     phone "123 45 67"
     address "Dnz"
-    sms_auth "disabled"
   end
 end

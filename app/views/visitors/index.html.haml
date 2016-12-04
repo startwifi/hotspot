@@ -27,6 +27,12 @@
         = link_to '/sms/authorize', class: 'social' do
           = image_tag 'sms.png'
 
+  - if @company.guest.action.eql?('skip')
+    .list-inline= link_to t('.continue'), '/guest', class: 'btn btn-lg btn-success'
+
+  - if @company.guest.action.eql?('auth')
+    = render 'visitors/password'
+
   - if @company.tos?
     = render 'visitors/tos_modal'
     %label{ for: 'accept_tos' }

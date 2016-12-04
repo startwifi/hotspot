@@ -37,7 +37,7 @@ RSpec.configure do |config|
   config.include Omniauth::SessionHelpers, type: :feature
 
   # Devise helpers
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllersSpecHelper, type: :controller
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

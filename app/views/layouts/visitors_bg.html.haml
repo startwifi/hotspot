@@ -1,13 +1,13 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:name => "viewport", content: "width=device-width, initial-scale=1.0"}/
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }/
+    %meta{ :name => "viewport", content: "width=device-width, initial-scale=1.0" }/
     %title Hotspot
     = stylesheet_link_tag 'application', media: 'all'
-    = javascript_include_tag 'application'
+    = javascript_include_tag 'oauth'
     = csrf_meta_tags
-  %body{style: "background-image: url('#{asset_path(@company.cover)}');"}
+  %body{ style: "background-image: url('#{asset_path(@company.cover)}');" }
     .preloader
       %span.spinner
     .container.col-md-offset-4.col-md-4.welcome

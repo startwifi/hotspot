@@ -1,3 +1,4 @@
+require 'omniauth-guest'
 require 'omniauth-sms'
 
 OmniAuth.configure do |config|
@@ -31,4 +32,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :sms,
     smsauth_url: '/sms/auth',
     uid_field: 'otp_phone'
+  provider :guest
 end

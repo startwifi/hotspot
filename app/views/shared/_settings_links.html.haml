@@ -1,38 +1,38 @@
 %h2= t('settings.edit.settings')
 %ul.nav.nav-tabs.nav-justified.settings-links
-  %li{class: "#{controller?('settings') && action?('edit')? 'active' : ''}"}
+  %li{ class: controller?('settings') && action?('edit') ? 'active' : '' }
     = link_to edit_settings_path do
       %i.fa.fa-lg.fa-home
       = t('.start_page')
-  %li{class: "#{controller?('social/fbs') ? 'active' : ''}"}
+  %li{ class: controller?('social/fbs') ? 'active' : '' }
     = link_to edit_social_fb_path do
       %i.fa.fa-lg.fa-facebook-square
       = t('.facebook')
-  %li{class: "#{controller?('social/vks') ? 'active' : ''}"}
+  %li{ class: controller?('social/vks') ? 'active' : '' }
     = link_to edit_social_vk_path do
       %i.fa.fa-lg.fa-vk
       = t('.vkontakte')
-  %li{class: "#{controller?('social/tws') ? 'active' : ''}"}
+  %li{ class: controller?('social/tws') ? 'active' : '' }
     = link_to edit_social_tw_path do
       %i.fa.fa-lg.fa-twitter-square
       = t('.twitter')
-  %li{class: "#{controller?('social/ins') ? 'active' : ''}"}
+  %li{ class: controller?('social/ins') ? 'active' : '' }
     = link_to edit_social_in_path do
       %i.fa.fa-lg.fa-instagram
       = t('.instagram')
-  %li{class: "#{controller?('social/oks') ? 'active' : ''}"}
+  %li{ class: controller?('social/oks') ? 'active' : '' }
     = link_to edit_social_ok_path do
       %i.fa.fa-lg.fa-odnoklassniki-square
       = t('.odnoklassniki')
-  %li{class: "#{controller?('social/sms') ? 'active' : ''}"}
+  %li{ class: controller?('social/sms') ? 'active' : '' }
     = link_to edit_social_sms_path do
       %i.fa.fa-lg.fa-comments
       = t('.sms')
-  %li{class: "#{controller?('pages') && (action?('tos') || action?('tos_edit')) ? 'active' : ''}"}
+  %li{ class: controller?('social/guests') ? 'active' : '' }
+    = link_to edit_social_guest_path do
+      %i.fa.fa-lg.fa-unlock
+      = t('.guest')
+  %li{ class: controller?('pages') && (action?('tos') || action?('tos_edit')) ? 'active' : '' }
     = link_to tos_pages_path do
       %i.fa.fa-lg.fa-check-square
       = t('.tos')
-  -# %li{class: "#{controller?('settings') && action?('advanced') ? 'active' : ''}"}
-    = link_to advanced_settings_path do
-      %i.fa.fa-lg.fa-cogs
-      = t('.advanced')

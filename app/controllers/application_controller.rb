@@ -35,10 +35,12 @@ class ApplicationController < ActionController::Base
   def destination_link
     provider = case current_user.provider
                when 'vkontakte' then 'vk'
-               when 'facebook'  then 'fb'
-               when 'twitter'   then 'tw'
+               when 'facebook' then 'fb'
+               when 'twitter' then 'tw'
                when 'instagram' then 'in'
                when 'odnoklassniki' then 'ok'
+               when 'sms' then 'sms'
+               when 'guest' then 'guest'
                else
                  current_user.provider
                end
@@ -52,7 +54,10 @@ class ApplicationController < ActionController::Base
   end
 
   def render_404
-    raise ActionController::RoutingError.new('Not Found')
+    respond_to do |type|
+      type.html { render status: :not_found, file: 'visitors/404', formats: :html }
+      type.all  { render status: :not_found, nothing: true }
+    end
   end
 
   def get_avatar

@@ -36,7 +36,7 @@ $(document).ready(function(){
 
   $('#continue_btn').disable(true);
 
-  var timer = 30;
+  var timer = 15;
   var interval = setInterval(function() {
     timer--;
     $('span#timer').text(timer);

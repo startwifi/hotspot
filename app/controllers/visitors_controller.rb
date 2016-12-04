@@ -5,7 +5,7 @@ class VisitorsController < ApplicationController
   layout :visitors_layout
 
   def index
-    render_404 unless @company
+    return render_404 unless @company
     redirect_to suspended_company_path(@company) and return unless @company.try(:active)
 
     if @company.sms.action.eql?('ident') || @company.sms.action.eql?('ident_auth')
@@ -16,13 +16,20 @@ class VisitorsController < ApplicationController
     end
   end
 
+  def auth_by_password
+    if @company && @company.guest.authenticate(params[:password])
+      redirect_to event_auth_path(:guest_password)
+    else
+      flash[:alert] = t('.error')
+      redirect_to auth_path
+    end
+  end
+
   private
 
   def visitors_layout
-    case @company.layout
-    when 'visitors_bg' then 'visitors_bg'
-    else 'visitors'
-    end
+    return unless @company
+    @company.layout.eql?('visitors_bg') ? 'visitors_bg' : 'visitors'
   end
 
   def save_params

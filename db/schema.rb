@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006184957) do
+ActiveRecord::Schema.define(version: 20161107201547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20161006184957) do
     t.string   "layout"
     t.float    "lat"
     t.float    "lng"
+    t.string   "router_auth"
   end
 
   create_table "devices", force: :cascade do |t|
@@ -97,6 +98,21 @@ ActiveRecord::Schema.define(version: 20161006184957) do
 
   add_index "fbs", ["company_id"], name: "index_fbs_on_company_id", using: :btree
 
+  create_table "guests", force: :cascade do |t|
+    t.integer  "company_id"
+    t.string   "action"
+    t.string   "link_redirect"
+    t.string   "wall_head"
+    t.text     "wall_text"
+    t.string   "wall_image"
+    t.boolean  "adv",             default: false
+    t.string   "password_digest"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "guests", ["company_id"], name: "index_guests_on_company_id", using: :btree
+
   create_table "ins", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "group_id"
@@ -127,6 +143,7 @@ ActiveRecord::Schema.define(version: 20161006184957) do
     t.integer  "lease_time"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "wifi_password"
   end
 
   add_index "networks", ["company_id"], name: "index_networks_on_company_id", using: :btree
