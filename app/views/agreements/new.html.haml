@@ -1,0 +1,6 @@
+%h2= t('.add_agreement')
+
+.row
+  .col-md-offset-2.col-md-8
+    = render 'form', form_path: agreements_path
+    %p= link_to t('.back'), agreements_path

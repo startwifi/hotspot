@@ -15,6 +15,32 @@ ru:
     create:
       errors: 'Форма содержит ошибки'
       success: 'Администратор успешно добавлен'
+  agreements:
+    form:
+      agreement_text: 'Текст соглашения'
+      language: 'Язык текста'
+      privacy_policy: 'Соглашение о конфиденциальности'
+      russian: 'Русский'
+      save: 'Сохранить'
+      tos: 'Пользовательское соглашение'
+    index:
+      add_new: 'Добавить новое'
+      agreements: 'Соглашения'
+      edit: 'Редактировать'
+      language: 'Язык'
+      name: 'Название'
+      options: 'Опции'
+      privacy_policy: 'Соглашение о конфиденциальности'
+      tos: 'Пользовательское соглашение'
+      success: 'Соглашение добавлено'
+    new:
+      add_agreement: 'Добавить соглашение'
+      back: 'Назад'
+    show:
+      privacy_policy: 'Соглашение о конфиденциальности'
+      tos: 'Пользовательское соглашение'
+    update:
+      success: 'Соглашение обновлено'
   companies:
     create:
       success: 'Компания успешно создана'
@@ -146,6 +172,7 @@ ru:
     navigation:
       hotspot: 'StartWiFi'
     navigation_links:
+      agreements: 'Соглашения'
       all_users: 'Все посетители'
       all_devices: 'Все устройства'
       companies: 'Компании'

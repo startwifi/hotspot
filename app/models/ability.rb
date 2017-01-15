@@ -16,6 +16,8 @@ class Ability
       can :manage, Router do |router|
         router.company == user.company
       end 
+    else
+      can :read, Agreement
     end
   end
 end

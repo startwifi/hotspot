@@ -1,0 +1,2 @@
+class Tos < Agreement
+end

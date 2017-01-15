@@ -1,0 +1,7 @@
+- if @agreement
+  %h2= @agreement.type == 'Tos' ? t('.tos') : t('.privacy_policy')
+
+.row
+  .col-md-12
+    .jumbotron
+      = markdown(@agreement.agreement_text) if @agreement.present?
