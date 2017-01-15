@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :landings, only: :show
 
+  get '/:agreement', to: 'agreements#show', constraints: { subdomain: '', agreement: /(tos|privacy_policy)/ }
+
   match '/', to: 'landings#show', constraints: { subdomain: '' }, via: :get
 
   constraints AdminSubdomain do
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
     resource :stats, only: :show
     resource :settings, only: %w(edit update)
 
+    resources :agreements
     resources :users, only: %w(index show)
     resources :devices, only: %w(index show)
     resources :routers

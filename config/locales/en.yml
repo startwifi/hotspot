@@ -59,6 +59,32 @@ en:
     create:
       success: 'Admin successfully added'
       errors: 'Form contains some errors'
+  agreements:
+    form:
+      agreement_text: 'Agreement text'
+      language: 'Language'
+      privacy_policy: 'Privacy Policy'
+      russian: 'Russian'
+      save: 'Save'
+      tos: 'ToS'
+    index:
+      add_new: 'Add new'
+      agreements: 'Agreements'
+      edit: 'Edit'
+      language: 'Language'
+      name: 'Name'
+      options: 'Options'
+      privacy_policy: 'Privacy Policy'
+      tos: 'ToS'
+      success: 'Agreement successfully created'
+    new:
+      add_agreement: 'Add agreement'
+      back: 'Back'
+    show:
+      privacy_policy: 'Privacy Policy'
+      tos: 'ToS'
+    update:
+      success: 'Agreement successfully updated'
   companies:
     index:
       all_companies: 'All companies'
@@ -138,6 +164,7 @@ en:
     navigation:
       hotspot: 'StartWiFi'
     navigation_links:
+      agreements: 'Agreements'
       companies: 'Companies'
       dashboard: 'Dashboard'
       statistics: 'Statistics'

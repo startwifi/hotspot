@@ -1,0 +1,20 @@
+- if @agreement.errors.any?
+  #error_explanation
+    %h2
+      Form contains
+      = pluralize(@agreement.errors.count, 'error')
+    %ul
+      - @agreement.errors.full_messages.each do |error|
+        %li= error
+= form_for @agreement, url: form_path do |f|
+  .form-group
+    = f.label :type
+    = f.select :type, [[t('.tos'), Tos.name], [t('.privacy_policy'), PrivacyPolicy.name]], {}, class: 'form-control'
+  .form-group
+    = f.label :agreement_text, t('.agreement_text')
+    = f.text_area :agreement_text, class: 'form-control', rows: 15
+  .form-group
+    = f.label :language
+    = f.select :language, [[t('.russian'), :russian]], {}, class: 'form-control'
+  .form-group
+    = f.submit t('.save'), class: 'btn btn-primary'

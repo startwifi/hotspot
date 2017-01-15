@@ -1,0 +1,18 @@
+%h2= t('.agreements')
+
+.row
+  .col-md-offset-4.col-md-4
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %th= t('.name')
+          %th= t('.language')
+          %th.text-center= t('.options')
+        - @agreements.each do |agreement|
+          %tr
+            %td= agreement.type == 'Tos' ? t('.tos') : t('.privacy_policy')
+            %td= agreement.language
+            %td.text-center
+              = link_to edit_agreement_path(agreement), title: t('.edit') do
+                %span.glyphicon.glyphicon-pencil
+    %p= link_to t('.add_new'), new_agreement_path, class: 'btn btn-primary'
