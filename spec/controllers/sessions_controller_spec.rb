@@ -14,36 +14,39 @@ describe SessionsController, type: :controller do
       end
 
       it 'creates a user' do
-        expect { post :create, provider: :facebook }.to change{ User.count }.by(1)
+        expect { post :create, params: { provider: :facebook } }
+          .to change{ User.count }.by(1)
       end
 
       it 'creates an event' do
-        expect { post :create, provider: :facebook }.to change{ Event.count }.by(1)
+        expect { post :create, params: { provider: :facebook } }
+          .to change{ Event.count }.by(1)
       end
 
       it 'creates a device' do
-        expect { post :create, provider: :facebook }.to change{ Device.count }.by(1)
+        expect { post :create, params: { provider: :facebook } }
+          .to change{ Device.count }.by(1)
       end
 
       it 'creates a session' do
         expect(session[:user_id]).to be_nil
-        post :create, provider: :facebook
+        post :create, params: { provider: :facebook }
         expect(session[:user_id]).not_to be_nil
       end
 
       it 'redirects to the widget' do
-        post :create, provider: :facebook
+        post :create, params: { provider: :facebook }
         expect(response).to redirect_to widget_path
       end
 
       it 'saves user token' do
-        post :create, provider: :facebook
+        post :create, params: { provider: :facebook }
         expect(session[:user_token]).to eq auth.credentials.token
       end
 
       context 'saves for new user' do
         before do
-          post :create, provider: :facebook
+          post :create, params: { provider: :facebook }
           @user = User.first
         end
 
@@ -74,13 +77,13 @@ describe SessionsController, type: :controller do
 
       context 'updates for existing user' do
         before do
-          post :create, provider: :facebook
+          post :create, params: { provider: :facebook }
           @user = User.first
           auth.info.name = 'Redneb Zeugirdor'
           auth.extra.raw_info.birthday = '03/30/2030'
           auth.info.urls.Facebook = 'https://facebook.com/bender'
           request.env['omniauth.auth'] = auth
-          post :create, provider: :facebook
+          post :create, params: { provider: :facebook }
           @user.reload
         end
 
@@ -106,36 +109,39 @@ describe SessionsController, type: :controller do
       end
 
       it 'creates a user' do
-        expect { post :create, provider: :vkontakte }.to change{ User.count }.by(1)
+        expect { post :create, params: { provider: :vkontakte } }
+          .to change{ User.count }.by(1)
       end
 
       it 'creates an event' do
-        expect { post :create, provider: :vkontakte }.to change{ Event.count }.by(1)
+        expect { post :create, params: { provider: :vkontakte } }
+          .to change{ Event.count }.by(1)
       end
 
       it 'creates a device' do
-        expect { post :create, provider: :vkontakte }.to change{ Device.count }.by(1)
+        expect { post :create, params: { provider: :vkontakte } }
+          .to change{ Device.count }.by(1)
       end
 
       it 'creates a session' do
         expect(session[:user_id]).to be_nil
-        post :create, provider: :vkontakte
+        post :create, params: { provider: :vkontakte }
         expect(session[:user_id]).not_to be_nil
       end
 
       it 'redirects to the auth link' do
-        post :create, provider: :vkontakte
+        post :create, params: { provider: :vkontakte }
         expect(response).to redirect_to widget_path
       end
 
       it 'saves user token' do
-        post :create, provider: :vkontakte
+        post :create, params: { provider: :vkontakte }
         expect(session[:user_token]).to eq auth.credentials.token
       end
 
       context 'saves for new user' do
         before do
-          post :create, provider: :vkontakte
+          post :create, params: { provider: :vkontakte }
           @user = User.first
         end
 
@@ -166,14 +172,15 @@ describe SessionsController, type: :controller do
 
       context 'updates for existing user' do
         before do
-          post :create, provider: :vkontakte
+          post :create, params: { provider: :vkontakte }
           @user = User.first
           auth.info.name = 'Redneb Zeugirdor'
           auth.extra.raw_info.bdate = '30.03.2030'
           auth.info.urls.Vkontakte = 'https://vk.com/redneb'
           auth.extra.raw_info.sex = 1
           request.env['omniauth.auth'] = auth
-          post :create, provider: :vkontakte
+          post :create, params: { provider: :vkontakte }
+          @user = User.first
           @user.reload
         end
 
@@ -203,36 +210,39 @@ describe SessionsController, type: :controller do
       end
 
       it 'creates a user' do
-        expect { post :create, provider: :odnoklassniki }.to change{ User.count }.by(1)
+        expect { post :create, params: { provider: :odnoklassniki } }
+          .to change{ User.count }.by(1)
       end
 
       it 'creates an event' do
-        expect { post :create, provider: :odnoklassniki }.to change{ Event.count }.by(1)
+        expect { post :create, params: { provider: :odnoklassniki } }
+          .to change{ Event.count }.by(1)
       end
 
       it 'creates a device' do
-        expect { post :create, provider: :odnoklassniki }.to change{ Device.count }.by(1)
+        expect { post :create, params: { provider: :odnoklassniki } }
+          .to change{ Device.count }.by(1)
       end
 
       it 'creates a session' do
         expect(session[:user_id]).to be_nil
-        post :create, provider: :odnoklassniki
+        post :create, params: { provider: :odnoklassniki }
         expect(session[:user_id]).not_to be_nil
       end
 
       it 'redirects to the auth link' do
-        post :create, provider: :odnoklassniki
+        post :create, params: { provider: :odnoklassniki }
         expect(response).to redirect_to widget_path
       end
 
       it 'saves user token' do
-        post :create, provider: :odnoklassniki
+        post :create, params: { provider: :odnoklassniki }
         expect(session[:user_token]).to eq auth.credentials.refresh_token
       end
 
       context 'saves for new user' do
         before do
-          post :create, provider: :odnoklassniki
+          post :create, params: { provider: :odnoklassniki }
           @user = User.first
         end
 
@@ -263,14 +273,14 @@ describe SessionsController, type: :controller do
 
       context 'updates for existing user' do
         before do
-          post :create, provider: :odnoklassniki
+          post :create, params: { provider: :odnoklassniki }
           @user = User.first
           auth.info.name = 'Redneb Zeugirdor'
           auth.extra.raw_info.birthday = '2030-03-30'
           auth.info.urls.Odnoklassniki = 'http://www.odnoklassniki.ru/profile/bender'
           auth.extra.raw_info.gender = 'female'
           request.env['omniauth.auth'] = auth
-          post :create, provider: :odnoklassniki
+          post :create, params: { provider: :odnoklassniki }
           @user.reload
         end
 
@@ -300,41 +310,44 @@ describe SessionsController, type: :controller do
       end
 
       it 'creates a user' do
-        expect { post :create, provider: :twitter }.to change{ User.count }.by(1)
+        expect { post :create, params: { provider: :twitter } }
+          .to change{ User.count }.by(1)
       end
 
       it 'creates an event' do
-        expect { post :create, provider: :twitter }.to change{ Event.count }.by(1)
+        expect { post :create, params: { provider: :twitter } }
+          .to change{ Event.count }.by(1)
       end
 
       it 'creates a device' do
-        expect { post :create, provider: :twitter }.to change{ Device.count }.by(1)
+        expect { post :create, params: { provider: :twitter } }
+          .to change{ Device.count }.by(1)
       end
 
       it 'creates a session' do
         expect(session[:user_id]).to be_nil
-        post :create, provider: :twitter
+        post :create, params: { provider: :twitter }
         expect(session[:user_id]).not_to be_nil
       end
 
       it 'redirects to the widget' do
-        post :create, provider: :twitter
+        post :create, params: { provider: :twitter }
         expect(response).to redirect_to widget_path
       end
 
       it 'saves user token' do
-        post :create, provider: :twitter
+        post :create, params: { provider: :twitter }
         expect(session[:user_token]).to eq auth.credentials.token
       end
 
       it 'saves user secret' do
-        post :create, provider: :twitter
+        post :create, params: { provider: :twitter }
         expect(session[:user_secret]).to eq auth.credentials.secret
       end
 
       context 'saves for new user' do
         before do
-          post :create, provider: :twitter
+          post :create, params: { provider: :twitter }
           @user = User.first
         end
 
@@ -365,12 +378,12 @@ describe SessionsController, type: :controller do
 
       context 'updates for existing user' do
         before do
-          post :create, provider: :twitter
+          post :create, params: { provider: :twitter }
           @user = User.first
           auth.info.name = 'Redneb Zeugirdor'
           auth.info.urls.Twitter = 'https://twitter.com/redneb'
           request.env['omniauth.auth'] = auth
-          post :create, provider: :twitter
+          post :create, params: { provider: :twitter }
           @user.reload
         end
 
@@ -392,31 +405,34 @@ describe SessionsController, type: :controller do
       end
 
       it 'creates a user' do
-        expect { post :create, provider: :instagram }.to change{ User.count }.by(1)
+        expect { post :create, params: { provider: :instagram } }
+          .to change{ User.count }.by(1)
       end
 
       it 'creates an event' do
-        expect { post :create, provider: :instagram }.to change{ Event.count }.by(1)
+        expect { post :create, params: { provider: :instagram } }
+          .to change{ Event.count }.by(1)
       end
 
       it 'creates a device' do
-        expect { post :create, provider: :instagram }.to change{ Device.count }.by(1)
+        expect { post :create, params: { provider: :instagram } }
+          .to change{ Device.count }.by(1)
       end
 
       it 'creates a session' do
         expect(session[:user_id]).to be_nil
-        post :create, provider: :instagram
+        post :create, params: { provider: :instagram }
         expect(session[:user_id]).not_to be_nil
       end
 
       it 'redirects to the widget' do
-        post :create, provider: :instagram
+        post :create, params: { provider: :instagram }
         expect(response).to redirect_to widget_path
       end
 
       context 'saves for new user' do
         before do
-          post :create, provider: :instagram
+          post :create, params: { provider: :instagram }
           @user = User.first
         end
 
@@ -447,12 +463,12 @@ describe SessionsController, type: :controller do
 
       context 'updates for existing user' do
         before do
-          post :create, provider: :instagram
+          post :create, params: { provider: :instagram }
           @user = User.first
           auth.info.name = 'Redneb Zeugirdor'
           auth.info.nickname = 'redneb'
           request.env['omniauth.auth'] = auth
-          post :create, provider: :instagram
+          post :create, params: { provider: :instagram }
           @user.reload
         end
 

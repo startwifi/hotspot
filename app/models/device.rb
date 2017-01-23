@@ -1,4 +1,4 @@
-class Device < ActiveRecord::Base
+class Device < ApplicationRecord
   belongs_to :company
   belongs_to :user, touch: true
   has_many :statistics, foreign_key: :mac, primary_key: :mac

@@ -1,4 +1,4 @@
-class Guest < ActiveRecord::Base
+class Guest < ApplicationRecord
   mount_uploader :wall_image, GuestUploader
 
   has_secure_password(validations: false)

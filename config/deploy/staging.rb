@@ -8,7 +8,7 @@
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 server '46.101.221.193', port: 3456, roles: [:web, :app, :db], primary: true
 
-set :branch, 'develop'
+set :branch, 'master'
 
 set :rails_env, :staging
 
