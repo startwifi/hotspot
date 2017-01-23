@@ -25,7 +25,7 @@ describe CompaniesController, type: :controller do
     let(:company) { companies.first }
     let!(:admins) { create_list(:admin, 2, company: company) }
 
-    before { get :show, id: company }
+    before { get :show, params: { id: company } }
 
     it 'responds successfully with an HTTP 200 status code' do
       expect(response).to be_success
@@ -54,17 +54,17 @@ describe CompaniesController, type: :controller do
       let!(:company) { attributes_for(:company) }
 
       it 'creates a company' do
-        expect { post :create, company: company }
+        expect { post :create, params: { company: company } }
           .to change(Company, :count).by(1)
       end
 
       it 'redirects to all companies' do
-        post :create, company: company
+        post :create, params: { company: company }
         expect(response).to redirect_to companies_path
       end
 
       it 'assigns a notice' do
-        post :create, company: company
+        post :create, params: { company: company }
         expect(flash.notice).not_to be_nil
       end
     end
@@ -73,12 +73,12 @@ describe CompaniesController, type: :controller do
       let!(:company) { attributes_for(:company, name: nil) }
 
       it 'does not create a company' do
-        expect { post :create, company: company }
+        expect { post :create, params: { company: company } }
           .not_to change(Company, :count)
       end
 
       it 'renders a company form' do
-        post :create, company: company
+        post :create, params: { company: company }
         expect(response).to render_template :new
       end
     end

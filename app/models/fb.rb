@@ -1,4 +1,4 @@
-class Fb < ActiveRecord::Base
+class Fb < ApplicationRecord
   mount_uploader :post_image, FbUploader
 
   validates :company, :group_id, :group_name, presence: true

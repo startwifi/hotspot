@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'rails', '4.2.7'
+gem 'rails', '~> 5.0.1'
 gem 'pg'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 3.0.2'
-gem 'coffee-rails', '~> 4.2.1'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.6.0'
+gem 'jbuilder'
 
 gem 'haml-rails'
 
@@ -62,7 +62,7 @@ gem 'phony_rails'
 gem 'rotp'
 
 # Localization
-gem 'rails-i18n', '~> 4.0'
+gem 'rails-i18n'
 gem 'devise-i18n'
 
 # Dev Notifications
@@ -82,7 +82,6 @@ end
 group :development do
   gem 'pry-doc'
   gem 'better_errors'
-  gem 'quiet_assets'
   gem 'spring-commands-rspec'
   gem 'capistrano',         require: false
   gem 'capistrano-rvm',     require: false
@@ -101,9 +100,10 @@ group :development do
 end
 
 group :test do
-  gem 'database_cleaner'
-  gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'faker'
   gem 'launchy'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
 end

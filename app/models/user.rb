@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   belongs_to :company
   has_many :events, dependent: :destroy
   has_many :statistics, dependent: :destroy

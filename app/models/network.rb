@@ -1,4 +1,4 @@
-class Network < ActiveRecord::Base
+class Network < ApplicationRecord
   belongs_to :company
 
   validates :local_network, :local_range_begin, :local_range_end, :local_gateway,

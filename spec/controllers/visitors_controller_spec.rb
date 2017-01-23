@@ -24,7 +24,7 @@ describe VisitorsController, type: :controller do
 
     context 'invalid params' do
       xit 'raises RoutingError' do
-        expect{ get :index }.to raise_error(ActionController::RoutingError)
+        expect { get :index }.to raise_error(ActionController::RoutingError)
       end
     end
 

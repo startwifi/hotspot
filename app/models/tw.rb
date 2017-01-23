@@ -1,4 +1,4 @@
-class Tw < ActiveRecord::Base
+class Tw < ApplicationRecord
   mount_uploader :post_image, TwUploader
 
   belongs_to :company
