@@ -288,8 +288,9 @@ en:
         cancel: 'Cancel'
       post:
         header: 'Facebook: share post for continue'
+        placeholder_post_text: 'Your comment'
         today: 'Today, %{time}'
-        share: 'Share post'
+        share: 'Post to Facebook'
         cancel: 'Cancel'
     ok:
       join:

@@ -59,7 +59,7 @@ class EventsController < ApplicationController
   def post_facebook
     image = current_user.company.fb.post_image? ? (root_url.chop + current_user.company.fb.post_image.url).to_s : nil
     graph = Koala::Facebook::API.new(session[:user_token])
-    share = graph.put_wall_post(current_user.company.fb.post_text,
+    share = graph.put_wall_post(params[:post_text],
       { link: current_user.company.fb.post_link,
       description: current_user.company.fb.post_text,
       picture: image })
@@ -70,7 +70,7 @@ class EventsController < ApplicationController
       render text: 'Error'
     end
   rescue Koala::Facebook::ClientError => e
-    redirect_to auth_failure_path(message: e)
+    redirect_to failure_path(message: e.fb_error_message)
   end
 
   def post_twitter
