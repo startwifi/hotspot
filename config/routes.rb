@@ -75,7 +75,7 @@ Rails.application.routes.draw do
 
     post '/password', to: 'visitors#auth_by_password'
     get '/:provider/subscribe', to: 'events#subscribe', as: 'event_subscribe'
-    get '/:provider/post', to: 'events#post', as: 'event_post'
+    match '/:provider/post', to: 'events#post', as: 'event_post', via: [:get, :post]
     get '/:provider/auth', to: 'events#auth', as: 'event_auth'
     get '/:provider/is_member', to: 'events#is_member', as: 'event_member'
     get '/:provider/callback', to: 'sessions#create'

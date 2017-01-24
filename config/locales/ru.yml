@@ -326,7 +326,8 @@ ru:
       post:
         cancel: 'Отмена'
         header: 'Facebook: сделать пост для продолжения'
-        share: 'Сделать пост'
+        placeholder_post_text: 'Добавить комментарий'
+        share: 'Опубликовать на Facebook'
         today: 'Сегодня, %{time}'
     ok:
       join:
