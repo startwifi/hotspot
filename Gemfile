@@ -84,11 +84,14 @@ group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'spring-commands-rspec'
-  gem 'capistrano',         require: false
-  gem 'capistrano-rvm',     require: false
-  gem 'capistrano-rails',   require: false
+  gem 'knife-solo', require: false
+  gem 'knife-solo_data_bag', require: false
+  gem 'librarian-chef', require: false
+  gem 'capistrano', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
+  gem 'capistrano3-puma', require: false
   gem 'overcommit', require: false
   # A static analysis security vulnerability scanner
   gem 'brakeman', require: false
