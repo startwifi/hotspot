@@ -19,7 +19,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'omniauth-twitter'
 gem 'omniauth-instagram'
-gem 'omniauth-odnoklassniki', git: 'https://github.com/incubus/omniauth-odnoklassniki'
+gem 'omniauth-odnoklassniki', git: 'https://github.com/startwifi/omniauth-odnoklassniki'
 
 # Authorization
 gem 'cancancan'

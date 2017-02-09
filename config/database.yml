@@ -14,11 +14,8 @@ test:
 staging:
   <<: *default
   database: hotspot_staging
-  username: postgres
-  password: <%= Figaro.env.database_password %>
 
 production:
   <<: *default
+  host: <%= ENV["POSTGRES_HOST"] %>
   database: hotspot_production
-  username: postgres
-  password: <%= Figaro.env.database_password %>
