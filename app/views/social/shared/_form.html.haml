@@ -1,28 +1,41 @@
-.form-group
-  = f.label :group_name, t('.group_name')
-  = f.text_field :group_name, class: 'form-control'
-.form-group
-  = f.label :post_text, t('.post_text')
-  = f.text_area :post_text, row: 4, class: 'form-control'
-.form-group
-  = f.label :post_link, t('.post_link')
-  = f.url_field :post_link, class: 'form-control'
-.form-group
-  = f.label :link_redirect, t('.link_redirect')
-  = f.url_field :link_redirect, class: 'form-control'
-.form-group
-  = f.label :post_image, t('.post_image')
-  - if object.post_image?
-    %div
-    = image_tag(object.post_image)
-  = f.file_field :post_image
-  %p.help-block
-    537x240px:
-    = object.post_image.extension_white_list.join(', ')
-  = f.hidden_field :post_image_cache
-.checkbox
-  %label
-    = f.check_box :remove_post_image
-    = f.label :remove_post_image, t('.remove_post_image')
-.form-group
-  = f.submit t('settings.edit.save'), class: 'btn btn-primary'
+.row
+  .col-md-6
+    .form-group
+      = f.label :group_name, t('.group_name')
+      = f.text_field :group_name, class: 'form-control'
+    .form-group
+      = f.label :post_link, t('.post_link')
+      = f.url_field :post_link, class: 'form-control'
+    .form-group
+      = f.label :post_text, t('.post_text')
+      = f.text_area :post_text, row: 4, class: 'form-control'
+    .form-group
+      = f.label :post_image, t('.post_image')
+      - if object.post_image?
+        %div
+        = image_tag(object.post_image)
+      = f.file_field :post_image
+      %p.help-block
+        537x240px:
+        = object.post_image.extension_white_list.join(', ')
+      = f.hidden_field :post_image_cache
+    .checkbox
+      %label
+        = f.check_box :remove_post_image
+        = f.label :remove_post_image, t('.remove_post_image')
+  .col-md-6
+    .form-group
+      = f.label :link_redirect, t('.link_redirect')
+      = f.url_field :link_redirect, class: 'form-control'
+    .form-group
+      = f.label :api_key, t('.api_key')
+      = f.text_field :api_key, class: 'form-control'
+    .form-group
+      = f.label :api_secret, t('.api_secret')
+      = f.text_field :api_secret, class: 'form-control'
+    - if current_page?(controller: 'social/oks', action: 'edit')
+      .form-group
+        = f.label :api_public, t('.api_public')
+        = f.text_field :api_public, class: 'form-control'
+    .form-group
+      = f.submit t('settings.edit.save'), class: 'btn btn-primary'

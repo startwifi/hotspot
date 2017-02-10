@@ -1,12 +1,11 @@
 class Social::SmsController < ApplicationController
-  before_filter :authenticate_admin!
+  load_and_authorize_resource :company, through: :current_admin, singleton: true
+  load_and_authorize_resource :sms, through: :company, singleton: true
 
   def edit
-    @sms = current_admin.company.sms
   end
 
   def update
-    @sms = current_admin.company.sms
     if @sms.update(sms_params)
       redirect_to edit_social_sms_path, notice: t('.success')
     else

@@ -79,6 +79,7 @@ Rails.application.routes.draw do
     get '/:provider/auth', to: 'events#auth', as: 'event_auth'
     get '/:provider/is_member', to: 'events#is_member', as: 'event_member'
     get '/:provider/callback', to: 'sessions#create'
+    get '/:provider/setup', to: 'sessions#setup'
     get '/failure', to: 'sessions#failure'
     get '/', to: 'visitors#index', as: :auth
   end

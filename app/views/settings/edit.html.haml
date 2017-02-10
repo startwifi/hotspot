@@ -1,59 +1,60 @@
 = render 'shared/settings_links'
 
 = form_for @company, url: settings_path, method: :put do |f|
-  .row
-    .col-md-6
-      = fields_for @company.fb do |fb|
+  .col-md-8.col-md-offset-2
+    .row
+      .col-md-6
+        = fields_for @company.fb do |fb|
+          .form-group
+            = fb.label :facebook
+            = fb.select :action, [[t('.like_page'), :join], [t('.make_post'), :post], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
+        = fields_for @company.vk do |vk|
+          .form-group
+            = vk.label :vkontakte, t('.vkontakte')
+            = vk.select :action, [[t('.join_group'), :join], [t('.upload_photo'), :post], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
+        = fields_for @company.tw do |tw|
+          .form-group
+            = tw.label :twitter
+            = tw.select :action,[[t('.follow'), :join], [t('.make_tweet'), :post], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
+        = fields_for @company.in do |ins|
+          .form-group
+            = ins.label :instagram
+            = ins.select :action, [[t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
+      .col-md-6
+        = fields_for @company.ok do |ok|
+          .form-group
+            = ok.label :odnoklassniki, t('.odnoklassniki')
+            = ok.select :action, [[t('.join_group'), :join], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
+        = fields_for @company.sms do |sms|
+          .form-group
+            = sms.label :sms, t('.sms')
+            = sms.select :action, [[t('.disabled'), :disabled], [t('.just_auth'), :auth], [t('.sms_ident'), :ident], [t('.sms_ident_auth'), :ident_auth]], {}, class: 'form-control'
+        = fields_for @company.guest do |guest|
+          .form-group
+            = guest.label :action, t('.auth')
+            = guest.select :action, [[t('.disabled'), :disabled], [t('.password'), :auth], [t('.skip'), :skip]], {}, class: 'form-control'
         .form-group
-          = fb.label :facebook
-          = fb.select :action, [[t('.like_page'), :join], [t('.make_post'), :post], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
-      = fields_for @company.vk do |vk|
+          = f.label :layout, t('.layout')
+          = f.select :layout, [[t('.visitors'), :visitors], [t('.visitors_bg'), :visitors_bg]], {}, class: 'form-control'
+    .row
+      .col-md-6
         .form-group
-          = vk.label :vkontakte, t('.vkontakte')
-          = vk.select :action, [[t('.join_group'), :join], [t('.upload_photo'), :post], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
-      = fields_for @company.tw do |tw|
+          = f.label :cover, t('.cover')
+          - if @company.cover?
+            %div
+            = image_tag(@company.cover)
+          = f.file_field :cover
+          %p.help-block
+            = @company.cover.extension_white_list.join(', ')
+          = f.hidden_field :cover_cache
+        .checkbox
+          %label
+            = f.check_box :remove_cover
+            = f.label :remove_cover, t('.remove_cover')
+      .col-md-6
+        .checkbox
+          %label
+            = f.check_box :tos
+            = f.label :tos, t('.tos')
         .form-group
-          = tw.label :twitter
-          = tw.select :action,[[t('.follow'), :join], [t('.make_tweet'), :post], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
-      = fields_for @company.in do |ins|
-        .form-group
-          = ins.label :instagram
-          = ins.select :action, [[t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
-    .col-md-6
-      = fields_for @company.ok do |ok|
-        .form-group
-          = ok.label :odnoklassniki, t('.odnoklassniki')
-          = ok.select :action, [[t('.join_group'), :join], [t('.just_auth'), :auth], [t('.disabled'), :disabled]], {}, class: 'form-control'
-      = fields_for @company.sms do |sms|
-        .form-group
-          = sms.label :sms, t('.sms')
-          = sms.select :action, [[t('.disabled'), :disabled], [t('.just_auth'), :auth], [t('.sms_ident'), :ident], [t('.sms_ident_auth'), :ident_auth]], {}, class: 'form-control'
-      = fields_for @company.guest do |guest|
-        .form-group
-          = guest.label :action, t('.auth')
-          = guest.select :action, [[t('.disabled'), :disabled], [t('.password'), :auth], [t('.skip'), :skip]], {}, class: 'form-control'
-      .form-group
-        = f.label :layout, t('.layout')
-        = f.select :layout, [[t('.visitors'), :visitors], [t('.visitors_bg'), :visitors_bg]], {}, class: 'form-control'
-  .row
-    .col-md-6
-      .form-group
-        = f.label :cover, t('.cover')
-        - if @company.cover?
-          %div
-          = image_tag(@company.cover)
-        = f.file_field :cover
-        %p.help-block
-          = @company.cover.extension_white_list.join(', ')
-        = f.hidden_field :cover_cache
-      .checkbox
-        %label
-          = f.check_box :remove_cover
-          = f.label :remove_cover, t('.remove_cover')
-    .col-md-6
-      .checkbox
-        %label
-          = f.check_box :tos
-          = f.label :tos, t('.tos')
-      .form-group
-        = f.submit t('.save'), class: 'btn btn-primary'
+          = f.submit t('.save'), class: 'btn btn-primary'

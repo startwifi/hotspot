@@ -243,6 +243,9 @@ ru:
         success: 'Настройки Одноклассники успешно обновлены'
     shared:
       form:
+        api_key: 'App id'
+        api_public: 'App public'
+        api_secret: 'App secret'
         group_name: 'Имя группы'
         link_redirect: 'Ссылка переадресации'
         post_image: 'Изображение'

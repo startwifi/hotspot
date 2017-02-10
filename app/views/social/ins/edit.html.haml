@@ -1,7 +1,7 @@
 = render 'shared/settings_links'
 
 .row
-  .col-md-offset-4.col-md-4
+  .col-md-8.col-md-offset-2
     - if @in.errors.any?
       = render 'shared/error_message', object: @in
     = form_for @in, url: social_in_path do |f|

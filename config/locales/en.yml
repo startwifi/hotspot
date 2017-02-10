@@ -38,6 +38,9 @@ en:
         success: 'SMS successfully updated'
     shared:
       form:
+        api_key: 'App id'
+        api_public: 'App public'
+        api_secret: 'App secret'
         group_name: 'Group name'
         post_text: 'Post text'
         post_link: 'Post link'

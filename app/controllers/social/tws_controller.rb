@@ -1,12 +1,11 @@
 class Social::TwsController < ApplicationController
-  before_filter :authenticate_admin!
+  load_and_authorize_resource :company, through: :current_admin, singleton: true
+  load_and_authorize_resource through: :company, singleton: true
 
   def edit
-    @tw = current_admin.company.tw
   end
 
   def update
-    @tw = current_admin.company.tw
     if @tw.update(tw_params)
       redirect_to edit_social_tw_path, notice: t('.success')
     else
@@ -17,8 +16,17 @@ class Social::TwsController < ApplicationController
   private
 
   def tw_params
-    params.require(:tw)
-      .permit(:group_name, :post_text, :post_link, :action, :link_redirect,
-              :post_image, :post_image_cache, :remove_post_image)
+    params.require(:tw).permit(
+      :group_name,
+      :post_text,
+      :post_link,
+      :action,
+      :link_redirect,
+      :post_image,
+      :post_image_cache,
+      :remove_post_image,
+      :api_key,
+      :api_secret
+    )
   end
 end

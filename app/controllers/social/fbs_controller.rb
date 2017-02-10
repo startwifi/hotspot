@@ -1,12 +1,11 @@
 class Social::FbsController < ApplicationController
-  before_filter :authenticate_admin!
+  load_and_authorize_resource :company, through: :current_admin, singleton: true
+  load_and_authorize_resource through: :company, singleton: true
 
   def edit
-    @fb = current_admin.company.fb
   end
 
   def update
-    @fb = current_admin.company.fb
     if @fb.update(fb_params)
       redirect_to edit_social_fb_path, notice: t('.success')
     else
@@ -17,8 +16,17 @@ class Social::FbsController < ApplicationController
   private
 
   def fb_params
-    params.require(:fb)
-      .permit(:group_name, :post_text, :post_link, :action, :link_redirect,
-              :post_image, :post_image_cache, :remove_post_image)
+    params.require(:fb).permit(
+      :group_name,
+      :post_text,
+      :post_link,
+      :action,
+      :link_redirect,
+      :post_image,
+      :post_image_cache,
+      :remove_post_image,
+      :api_key,
+      :api_secret
+    )
   end
 end

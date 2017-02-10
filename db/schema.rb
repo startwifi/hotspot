@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115145442) do
+ActiveRecord::Schema.define(version: 20170210162957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,11 +31,10 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.integer  "company_id"
     t.boolean  "admin"
     t.boolean  "active",                 default: true
+    t.index ["company_id"], name: "index_admins_on_company_id", using: :btree
+    t.index ["email"], name: "index_admins_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "admins", ["company_id"], name: "index_admins_on_company_id", using: :btree
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "agreements", force: :cascade do |t|
     t.string   "type"
@@ -74,10 +72,9 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.datetime "updated_at", null: false
     t.string   "phone"
     t.integer  "user_id"
+    t.index ["company_id"], name: "index_devices_on_company_id", using: :btree
+    t.index ["user_id"], name: "index_devices_on_user_id", using: :btree
   end
-
-  add_index "devices", ["company_id"], name: "index_devices_on_company_id", using: :btree
-  add_index "devices", ["user_id"], name: "index_devices_on_user_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
@@ -86,10 +83,9 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.datetime "updated_at", null: false
     t.string   "provider"
     t.integer  "company_id"
+    t.index ["company_id"], name: "index_events_on_company_id", using: :btree
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
-
-  add_index "events", ["company_id"], name: "index_events_on_company_id", using: :btree
-  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "fbs", force: :cascade do |t|
     t.integer  "company_id"
@@ -102,9 +98,10 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.string   "post_image"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "api_key"
+    t.string   "api_secret"
+    t.index ["company_id"], name: "index_fbs_on_company_id", using: :btree
   end
-
-  add_index "fbs", ["company_id"], name: "index_fbs_on_company_id", using: :btree
 
   create_table "guests", force: :cascade do |t|
     t.integer  "company_id"
@@ -117,9 +114,8 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.string   "password_digest"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.index ["company_id"], name: "index_guests_on_company_id", using: :btree
   end
-
-  add_index "guests", ["company_id"], name: "index_guests_on_company_id", using: :btree
 
   create_table "ins", force: :cascade do |t|
     t.integer  "company_id"
@@ -132,9 +128,10 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.string   "post_image"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "api_key"
+    t.string   "api_secret"
+    t.index ["company_id"], name: "index_ins_on_company_id", using: :btree
   end
-
-  add_index "ins", ["company_id"], name: "index_ins_on_company_id", using: :btree
 
   create_table "networks", force: :cascade do |t|
     t.integer  "company_id"
@@ -152,9 +149,8 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "wifi_password"
+    t.index ["company_id"], name: "index_networks_on_company_id", using: :btree
   end
-
-  add_index "networks", ["company_id"], name: "index_networks_on_company_id", using: :btree
 
   create_table "oks", force: :cascade do |t|
     t.integer  "company_id"
@@ -167,9 +163,11 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.string   "post_image"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "api_key"
+    t.string   "api_secret"
+    t.string   "api_public"
+    t.index ["company_id"], name: "index_oks_on_company_id", using: :btree
   end
-
-  add_index "oks", ["company_id"], name: "index_oks_on_company_id", using: :btree
 
   create_table "routers", force: :cascade do |t|
     t.integer  "company_id"
@@ -183,10 +181,9 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.datetime "updated_at"
     t.string   "ssid"
     t.macaddr  "radio_mac"
+    t.index ["company_id"], name: "index_routers_on_company_id", using: :btree
+    t.index ["ip_address", "company_id"], name: "index_routers_on_ip_address_and_company_id", unique: true, using: :btree
   end
-
-  add_index "routers", ["company_id"], name: "index_routers_on_company_id", using: :btree
-  add_index "routers", ["ip_address", "company_id"], name: "index_routers_on_ip_address_and_company_id", unique: true, using: :btree
 
   create_table "sms", force: :cascade do |t|
     t.integer "company_id"
@@ -196,9 +193,8 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.text    "wall_text"
     t.string  "wall_image"
     t.boolean "adv",           default: false
+    t.index ["company_id"], name: "index_sms_on_company_id", using: :btree
   end
-
-  add_index "sms", ["company_id"], name: "index_sms_on_company_id", using: :btree
 
   create_table "statistics", force: :cascade do |t|
     t.integer  "user_id"
@@ -211,10 +207,9 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.macaddr  "mac"
+    t.index ["company_id"], name: "index_statistics_on_company_id", using: :btree
+    t.index ["user_id"], name: "index_statistics_on_user_id", using: :btree
   end
-
-  add_index "statistics", ["company_id"], name: "index_statistics_on_company_id", using: :btree
-  add_index "statistics", ["user_id"], name: "index_statistics_on_user_id", using: :btree
 
   create_table "tws", force: :cascade do |t|
     t.integer  "company_id"
@@ -227,9 +222,10 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.string   "post_image"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "api_key"
+    t.string   "api_secret"
+    t.index ["company_id"], name: "index_tws_on_company_id", using: :btree
   end
-
-  add_index "tws", ["company_id"], name: "index_tws_on_company_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -242,9 +238,8 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.integer  "company_id"
     t.string   "email"
     t.string   "gender"
+    t.index ["company_id"], name: "index_users_on_company_id", using: :btree
   end
-
-  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
 
   create_table "vks", force: :cascade do |t|
     t.integer  "company_id"
@@ -257,9 +252,10 @@ ActiveRecord::Schema.define(version: 20170115145442) do
     t.string   "post_image"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "api_key"
+    t.string   "api_secret"
+    t.index ["company_id"], name: "index_vks_on_company_id", using: :btree
   end
-
-  add_index "vks", ["company_id"], name: "index_vks_on_company_id", using: :btree
 
   add_foreign_key "admins", "companies"
   add_foreign_key "events", "companies"

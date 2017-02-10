@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :load_company, only: :create
+  before_action :load_company, only: %w(create setup)
   before_action :load_user, only: :create
   before_action :save_access_token, only: :create
   before_action :save_statistics, only: :create
@@ -12,6 +12,12 @@ class SessionsController < ApplicationController
 
   def failure
     redirect_to auth_url, alert: "Authentication error: #{params[:message].humanize}"
+  end
+
+  def setup
+    api_credentials = OmniauthSetupService.new(@company, params[:provider]).call
+    request.env['omniauth.strategy'].options.merge!(api_credentials)
+    render plain: 'Omniauth setup phase', status: 404
   end
 
   private

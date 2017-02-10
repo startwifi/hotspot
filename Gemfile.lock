@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/incubus/omniauth-odnoklassniki
+  revision: b194d117dd5393bbef030b67dd5d5ca3966bd454
+  specs:
+    omniauth-odnoklassniki (0.0.5)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,7 +48,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
-    airbrake (5.7.0)
+    airbrake (5.7.1)
       airbrake-ruby (~> 1.7)
     airbrake-ruby (1.7.1)
     airbrussh (1.1.2)
@@ -62,7 +70,7 @@ GEM
     buftok (0.2.0)
     builder (3.2.3)
     byebug (9.0.6)
-    cancancan (1.15.0)
+    cancancan (1.16.0)
     capistrano (3.7.2)
       airbrussh (>= 1.0.0)
       capistrano-harrow
@@ -264,9 +272,6 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    omniauth-odnoklassniki (0.0.5)
-      omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.0)
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
@@ -321,7 +326,7 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails-i18n (5.0.2)
+    rails-i18n (5.0.3)
       i18n (~> 0.7)
       railties (~> 5.0)
     railties (5.0.1)
@@ -406,7 +411,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.11.5)
+    sshkit (1.12.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     sysexits (1.2.0)
@@ -486,7 +491,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-instagram
-  omniauth-odnoklassniki
+  omniauth-odnoklassniki!
   omniauth-twitter
   omniauth-vkontakte
   overcommit

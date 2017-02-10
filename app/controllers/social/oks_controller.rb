@@ -1,12 +1,11 @@
 class Social::OksController < ApplicationController
-  before_filter :authenticate_admin!
+  load_and_authorize_resource :company, through: :current_admin, singleton: true
+  load_and_authorize_resource through: :company, singleton: true
 
   def edit
-    @ok = current_admin.company.ok
   end
 
   def update
-    @ok = current_admin.company.ok
     if @ok.update(ok_params)
       redirect_to edit_social_ok_path, notice: t('.success')
     else
@@ -17,8 +16,18 @@ class Social::OksController < ApplicationController
   private
 
   def ok_params
-    params.require(:ok)
-      .permit(:group_name, :post_text, :post_link, :action, :link_redirect,
-              :post_image, :post_image_cache, :remove_post_image)
+    params.require(:ok).permit(
+      :group_name,
+      :post_text,
+      :post_link,
+      :action,
+      :link_redirect,
+      :post_image,
+      :post_image_cache,
+      :remove_post_image,
+      :api_key,
+      :api_secret,
+      :api_public
+    )
   end
 end
