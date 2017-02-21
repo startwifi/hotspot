@@ -9,7 +9,7 @@ class Sms::AuthController < ApplicationController
   end
 
   def send_sms
-    @model = SmsSender.new(params[:sms_sender])
+    @model = SmsSender.new(sms_params)
 
     if @model.validate
       session[:otp_secret] ||= ROTP::Base32.random_base32
@@ -47,9 +47,13 @@ class Sms::AuthController < ApplicationController
   private
 
   def load_company
-    @company = Company.find_by_token(session[:company_token])
+    @company = Company.find_by(token: session[:company_token])
     if @company.nil? || @company.sms.action.eql?('disabled')
       redirect_to auth_path
     end
+  end
+
+  def sms_params
+    params.require(:sms_sender).permit(:phone)
   end
 end
