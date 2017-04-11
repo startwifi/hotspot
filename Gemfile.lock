@@ -353,6 +353,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rollbar (2.14.1)
+      multi_json
     rotp (3.3.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
@@ -506,6 +508,7 @@ DEPENDENCIES
   ransack
   redcarpet
   rest-client
+  rollbar
   rotp
   rspec-rails
   rubocop
