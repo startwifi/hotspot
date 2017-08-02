@@ -103,17 +103,28 @@ ru:
       errors: 'Вы не можете изменить статус компании'
   routers:
     show:
+      board-name: 'Модель'
+      version: 'Версия'
+      uptime: 'В сети'
       ip_address: 'IP Адрес'
-      password: 'Пароль'
-      login: 'Логин'
       back: 'Назад'
       name: 'Название'
+      cpu-load: 'Процессор'
+      free-memory: 'Память'
+      free-hdd: 'Диск'
+      users: 'Пользователи'
+      settings: 'Настройки'
       details: 'Детально о роутере'
       attribute: 'Атрибут'
       description: 'Описание'
+      user_mac: 'MAC Адрес'
+      user_signal: 'Сигнал'
+      user_bytes: 'Трафик'
     create:
       success: 'Роутер успешно добавлен'
+      error: 'Роутер недоступен'
     index:
+      board-name: 'Роутер'
       add_new: 'Добавить роутер'
       ip_address: 'IP Адрес'
       all_routers: 'Все роутеры'
@@ -123,6 +134,7 @@ ru:
       delete: 'Удалить'
       sure: 'Вы действительно хотите удалить роутер?'
       status: 'Статус'
+      uptime: 'В сети'
       available: 'Доступен'
       not_available: 'Недоступен'
     new:
@@ -130,6 +142,8 @@ ru:
       form:
     edit:
       edit_router: 'Редактировать роутер'
+      success: 'Роутер успешно обновлен'
+      error: 'Роутер недоступен'
       back: 'Назад'
     form:
       ip_address: 'IP Адрес'
@@ -389,7 +403,7 @@ ru:
     success: 'Пользовательское соглашение успешно обновлено'
     markdown: 'Вы можете использовать *markdown* синтаксис'
   router:
-    please_connect: 'Роутер недоступен. Пожалуйста убедитесь, что он подключен к сети'  
+    please_connect: 'Роутер недоступен. Пожалуйста убедитесь, что он подключен к сети'
   sms:
     auth:
       index:

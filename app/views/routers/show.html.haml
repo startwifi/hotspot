@@ -1,20 +1,48 @@
-.row
-  .col-md-6
-    %h3= t('.details')
-    %table.table.table-striped
-      %thead
-        %th= t('.attribute')
-        %th= t('.description')
-      %tbody
-        %tr
-          %th= t('.ip_address')
-          %td= @router.ip_address
-        %tr
-          %th= t('.name')
-          %td= @router.name
-        %tr
-          %th= t('.login')
-          %td= @router.login
-        %tr
-          %th= t('.password')
-          %td= @router.password
+- if @router.present?
+
+  - mk = @router.resources[0]
+  .container
+    .row
+      %table.table.table-striped.text-center
+        %tbody
+          %thead
+            %th
+            %th.text-center= t('.name')
+            %th.text-center= t('.ip_address')
+            %th.text-center= t('.board-name')
+            %th.text-center= t('.version')
+            %th.text-center= t('.uptime')
+            %th.text-center= t('.cpu-load')
+            %th.text-center= t('.free-memory')
+            %th.text-center= t('.free-hdd')
+          %tr
+            %th.text-center
+              %span.glyphicon.glyphicon-cloud
+            %td= @router.name
+            %td= @router.ip_address
+            %td= mk['board-name']
+            %td= mk['version']
+            %td= mk['uptime']
+            %td= number_to_percentage(mk['cpu-load'], precision: 2)
+            %td= number_to_human_size(mk['free-memory'])
+            %td= number_to_human_size(mk['free-hdd-space'])
+    .row
+      .col-md-6
+        %h3= t('.users')
+        %table.table.table-striped.text-center
+          %tbody
+            %thead
+              %th.text-center= t('.user_mac')
+              %th.text-center= t('.user_signal')
+              %th.text-center= t('.uptime')
+              %th.text-center= t('.user_bytes')
+
+          - @router.users.each do |user|
+            %tr
+              %td= user['mac-address']
+              %td= user['rx-signal']
+              %td= user['uptime']
+              %td= user['bytes']
+
+      .col-md-6
+        %h3= t('.settings')

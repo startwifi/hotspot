@@ -148,8 +148,8 @@ ActiveRecord::Schema.define(version: 20170210162957) do
     t.integer  "lease_time"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.string   "wifi_password"
     t.index ["company_id"], name: "index_networks_on_company_id", using: :btree
+    t.string   "wifi_password"
   end
 
   create_table "oks", force: :cascade do |t|

@@ -1,25 +1,30 @@
-%h2= t('.all_routers')
-
-.row
-  .col-md-offset-2.col-md-8
-    %p= link_to t('.add_new'), new_router_path, class: 'btn btn-primary'
+.container
+  .row
 
     - if @routers.present?
       .table-responsive
         %table.table.table-striped
           %thead
-            %th= t('.ip_address')
-            %th= t('.name')
+            %th.text-center= t('.board-name')
+            %th.text-center= t('.name')
+            %th.text-center= t('.ip_address')
             %th.text-center= t('.status')
+            %th.text-center= t('.uptime')
             %th.text-center= t('.options')
           - @routers.each do |router|
+            - mk = router.resources[0]
             %tr
-              %td= link_to router.ip_address, router
-              %td= router.name
-              %td.text-center= t(".#{router.available? ? 'available' : 'not_available'}")
+              %td.text-center= link_to mk['board-name'], router
+              %td.text-center= router.name
+              %td.text-center= router.ip_address
+              %td.text-center= t(".#{router.ping ? 'available' : 'not_available'}")
+              %td.text-center= mk['uptime']
               %td.text-center
                 = link_to edit_router_path(router), title: t('.edit') do
                   %span.glyphicon.glyphicon-pencil
                 = link_to router_path(router), title: t('.delete'), method: :delete,
                                                 data: { confirm: "#{t('.sure')}" } do
                   %span.glyphicon.glyphicon-trash
+  .row
+    .col-md-offset-10.col-md-2
+      %p= link_to t('.add_new'), new_router_path, class: 'btn btn-primary'
