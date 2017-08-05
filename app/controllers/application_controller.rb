@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  include HotSpot::LocaleSwitcher # see {root}/lib folder
-
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  before_action :set_locale
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 
   def current_ability
     @current_ability ||= Ability.new(current_admin)
+  end
+
+  def set_locale
+    I18n.locale = select_locale
   end
 
   helper_method :get_avatar
@@ -66,11 +70,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    begin
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    rescue
-      nil
-    end
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def user_signed_in?
@@ -93,5 +93,17 @@ class ApplicationController < ActionController::Base
   # TODO: Improve this method
   def mac_address(mac)
     mac.gsub('%3A',':')
+  end
+
+  def select_locale
+    if defined?(params) && params[:locale]
+      params[:locale]
+    elsif current_user
+      current_user.company.locale
+    elsif current_admin && current_admin.company
+      current_admin.company.locale
+    else
+      I18n.default_locale
+    end
   end
 end

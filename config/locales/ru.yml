@@ -68,6 +68,10 @@ ru:
       owner_name: 'Владелец'
       phone: 'Телефон'
       save: 'Сохранить'
+      locale: 'Язык'
+      locale_english: 'English'
+      locale_czech: 'Český'
+      locale_russian: 'Русский'
     edit:
       edit_company: 'Редактировать компанию'
       back: 'Назад'
