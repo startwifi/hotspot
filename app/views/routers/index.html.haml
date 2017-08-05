@@ -12,13 +12,13 @@
             %th.text-center= t('.uptime')
             %th.text-center= t('.options')
           - @routers.each do |router|
-            - mk = router.resources[0]
+            - ping = router.ping
             %tr
-              %td.text-center= link_to mk['board-name'], router
+              %td.text-center= ping ? link_to(router.resources[0]['board-name'], router) : t('.not_available')
               %td.text-center= router.name
               %td.text-center= router.ip_address
-              %td.text-center= t(".#{router.ping ? 'available' : 'not_available'}")
-              %td.text-center= mk['uptime']
+              %td.text-center= t(".#{ping ? 'available' : 'not_available'}")
+              %td.text-center= ping ? router.resources[0]['uptime'] : t('.not_available')
               %td.text-center
                 = link_to edit_router_path(router), title: t('.edit') do
                   %span.glyphicon.glyphicon-pencil

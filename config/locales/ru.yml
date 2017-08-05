@@ -120,9 +120,14 @@ ru:
       user_mac: 'MAC Адрес'
       user_signal: 'Сигнал'
       user_bytes: 'Трафик'
+      hotspot_settings: 'HotSpot'
+      wifi_settings: 'Радио'
+      no_wifi_users: 'Нет подключенных пользователей'
+      cloud_settings: 'Облако'
     create:
       success: 'Роутер успешно добавлен'
       error: 'Роутер недоступен'
+      wrong_login: 'Неверный логин или пароль'
     index:
       board-name: 'Роутер'
       add_new: 'Добавить роутер'

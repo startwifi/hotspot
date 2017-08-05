@@ -6,24 +6,59 @@ class Mikrotik
   end
 
   def connect
-    @connect ||= MTik::Connection.new(host: @host, user: @user, pass: @passwd)
+    begin
+       @connect ||= MTik::Connection.new(host: @host, user: @user, pass: @passwd, conn_timeout: 1)
     rescue Errno::ETIMEDOUT, Errno::ENETUNREACH,
       Errno::EHOSTUNREACH => exception
+    end
   end
 
   def ping(address='google.com', count=1)
-    connect.get_reply(
+    connect ? connect.get_reply(
       '/ping',
       '=.proplist=host,time',
       "=address=#{address}",
       "=count=#{count}"
-    )
+    ) : false
   end
 
   def get_resources
-    connect.get_reply(
+    connect ? connect.get_reply(
       '/system/resource/print',
       '=.proplist=board-name,version,uptime,cpu-load,free-memory,free-hdd-space'
+    ) : false
+  end
+
+  def get_addresses
+    connect.get_reply(
+      '/ip/address/print'
+    )
+  end
+
+  def get_bridge
+    connect.get_reply(
+      '/interface/bridge/print',
+      '=.proplist=name,disabled,comment'
+    )
+  end
+
+  def get_bridge_port
+    connect.get_reply(
+      '/interface/bridge/port/print',
+      '=.proplist=interface,bridge,disabled,comment'
+    )
+  end
+
+  def get_wifi_interfaces
+    connect.get_reply(
+      '/interface/wireless/print',
+      '=.proplist=name,interface-type,ssid,disabled,comment'
+    )
+  end
+
+  def get_wifi_users
+    connect.get_reply(
+      '/interface/wireless/registration-table/print'
     )
   end
 
@@ -39,6 +74,20 @@ class Mikrotik
     connect.get_reply(
       '/caps-man/remote-cap/print',
       '=.proplist=address,base-mac,board,version,identity,state'
+    )
+  end
+
+  def get_hotspot_servers
+    connect.get_reply(
+      '/ip/hotspot/print',
+      '=.proplist=name,interface,address-pool,profile,addresses-per-mac'
+    )
+  end
+
+  def get_hotspot_profiles(profile)
+    connect.get_reply(
+      '/ip/hotspot/profile/print',
+      "?name=#{profile}"
     )
   end
 
@@ -61,6 +110,12 @@ class Mikrotik
      '/ip/firewall/connection/print',
      '=.proplist=src-address,dst-address,reply-src-address,reply-dst-address,protocol,tcp-state,timeout,orig-bytes,repl-bytes',
      "?src-address=#{ip}"
+    )
+  end
+
+  def get_l2tp_clients
+    connect.get_reply(
+      '/interface/l2tp-client/print'
     )
   end
 

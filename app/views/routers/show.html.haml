@@ -6,7 +6,6 @@
       %table.table.table-striped.text-center
         %tbody
           %thead
-            %th
             %th.text-center= t('.name')
             %th.text-center= t('.ip_address')
             %th.text-center= t('.board-name')
@@ -16,8 +15,6 @@
             %th.text-center= t('.free-memory')
             %th.text-center= t('.free-hdd')
           %tr
-            %th.text-center
-              %span.glyphicon.glyphicon-cloud
             %td= @router.name
             %td= @router.ip_address
             %td= mk['board-name']
@@ -27,7 +24,7 @@
             %td= number_to_human_size(mk['free-memory'])
             %td= number_to_human_size(mk['free-hdd-space'])
     .row
-      .col-md-6
+      .col-md-4
         %h3= t('.users')
         %table.table.table-striped.text-center
           %tbody
@@ -37,12 +34,27 @@
               %th.text-center= t('.uptime')
               %th.text-center= t('.user_bytes')
 
-          - @router.users.each do |user|
-            %tr
-              %td= user['mac-address']
-              %td= user['rx-signal']
-              %td= user['uptime']
-              %td= user['bytes']
+            - if @router.wifi_users.present?
+              - @router.wifi_users.each do |user|
+                %tr
+                  %td= user
+            - else
+        .alert-success.text-center= t('.no_wifi_users')
 
-      .col-md-6
+      .col-md-8
         %h3= t('.settings')
+        .col-md-4
+          %h5= t('.hotspot_settings')
+          %ul
+          - @router.hotspot_servers.each do |server|
+            %li= server['name']
+        .col-md-4
+          %h5= t('.wifi_settings')
+          %ul
+          - @router.wifi_interfaces.each do |interface|
+            %li= "#{interface['name']} #{interface['ssid']}"
+        .col-md-4
+          %h5= t('.cloud_settings')
+          %ul
+          - @router.l2tp_clients.each do |client|
+            %li= client['name']
