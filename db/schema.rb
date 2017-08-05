@@ -60,9 +60,6 @@ ActiveRecord::Schema.define(version: 20170210162957) do
     t.string   "sms_auth",               default: "disabled"
     t.string   "sms_auth_link_redirect"
     t.string   "layout"
-    t.float    "lat"
-    t.float    "lng"
-    t.string   "router_auth"
   end
 
   create_table "devices", force: :cascade do |t|
@@ -148,7 +145,6 @@ ActiveRecord::Schema.define(version: 20170210162957) do
     t.integer  "lease_time"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.string   "wifi_password"
     t.index ["company_id"], name: "index_networks_on_company_id", using: :btree
   end
 

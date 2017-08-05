@@ -16,12 +16,16 @@ class RoutersController < ApplicationController
 
   def create
     @router = @company.routers.build(router_params)
-
-    @router.ping
-
-    if @router.available? && @router.save
-      redirect_to routers_path
-    else
+    begin
+      if @router.ping && @router.save
+        InitRouterService.new(@company).run
+        redirect_to routers_path, notice: t('.success')
+      else
+        flash.now[:alert] = t('.error')
+        render :new
+      end
+    rescue MTik::Error
+      flash.now[:alert] = t('.wrong_login')
       render :new
     end
   end
@@ -31,18 +35,16 @@ class RoutersController < ApplicationController
 
   def update
     @router.assign_attributes(router_params)
-    @router.ping
-
-    if @router.available? && @router.save
-      redirect_to routers_path
+    if @router.ping && @router.save
+      redirect_to routers_path, notice: t('.success')
     else
+      flash.now[:alert] = t('.error')
       render :edit
     end
   end
 
   def destroy
     @router.destroy
-
     redirect_to routers_path
   end
 

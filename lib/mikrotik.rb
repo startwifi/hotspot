@@ -6,37 +6,123 @@ class Mikrotik
   end
 
   def connect
-    @connect ||= MTik::Connection.new(host: @host, user: @user, pass: @passwd)
-  end
-
-  def ping(address="google.com", count=1)
-    connect.get_reply(
-      '/ping',
-      "=address=#{address}",
-      "=count=#{count}"
-    )
-  end
-
-  def hand_response(response)
-    response.each do |res|
-      case res.first[0]
-      when "!re"
-        res.each do |r|
-          Rails.logger.info "#{r[0]}:\t#{r[1]}"
-        end
-      when "!done"
-        Rails.logger.info res.first[0]
-      when "!trap"
-        Rails.logger.info res["message"]
-      else
-        Rails.logger.info res
-      end
+    begin
+       @connect ||= MTik::Connection.new(host: @host, user: @user, pass: @passwd, conn_timeout: 1)
+    rescue Errno::ETIMEDOUT, Errno::ENETUNREACH,
+      Errno::EHOSTUNREACH => exception
     end
   end
 
+  def ping(address='google.com', count=1)
+    connect ? connect.get_reply(
+      '/ping',
+      '=.proplist=host,time',
+      "=address=#{address}",
+      "=count=#{count}"
+    ) : false
+  end
+
   def get_resources
+    connect ? connect.get_reply(
+      '/system/resource/print',
+      '=.proplist=board-name,version,uptime,cpu-load,free-memory,free-hdd-space'
+    ) : false
+  end
+
+  def get_addresses
     connect.get_reply(
-      '/system/resource/print'
+      '/ip/address/print'
+    )
+  end
+
+  def get_bridge
+    connect.get_reply(
+      '/interface/bridge/print',
+      '=.proplist=name,disabled,comment'
+    )
+  end
+
+  def get_bridge_port
+    connect.get_reply(
+      '/interface/bridge/port/print',
+      '=.proplist=interface,bridge,disabled,comment'
+    )
+  end
+
+  def get_wifi_interfaces
+    connect.get_reply(
+      '/interface/wireless/print',
+      '=.proplist=name,interface-type,ssid,disabled,comment'
+    )
+  end
+
+  def get_wifi_users
+    connect.get_reply(
+      '/interface/wireless/registration-table/print'
+    )
+  end
+
+  def get_capsman_hosts(ssid)
+    connect.get_reply(
+      '/caps-man/registration-table/print',
+      '=.proplist=mac-address,rx-signal,uptime,bytes',
+      "?ssid=#{ssid}"
+    )
+  end
+
+  def get_capsman_caps
+    connect.get_reply(
+      '/caps-man/remote-cap/print',
+      '=.proplist=address,base-mac,board,version,identity,state'
+    )
+  end
+
+  def get_hotspot_servers
+    connect.get_reply(
+      '/ip/hotspot/print',
+      '=.proplist=name,interface,address-pool,profile,addresses-per-mac'
+    )
+  end
+
+  def get_hotspot_profiles(profile)
+    connect.get_reply(
+      '/ip/hotspot/profile/print',
+      "?name=#{profile}"
+    )
+  end
+
+  def get_hotspot_hosts
+    connect.get_reply(
+      '/ip/hotspot/host/print',
+      '=.proplist=mac-address,address,server,uptime,idle-timeout,authorized'
+    )
+  end
+
+  def get_hotspot_active
+    connect.get_reply(
+      '/ip/hotspot/active/print',
+      '=.proplist=mac-address,address,server,user,uptime,session-time-left'
+    )
+  end
+
+  def get_ip_connection(ip)
+    connect.get_reply(
+     '/ip/firewall/connection/print',
+     '=.proplist=src-address,dst-address,reply-src-address,reply-dst-address,protocol,tcp-state,timeout,orig-bytes,repl-bytes',
+     "?src-address=#{ip}"
+    )
+  end
+
+  def get_l2tp_clients
+    connect.get_reply(
+      '/interface/l2tp-client/print'
+    )
+  end
+
+  def get_active_ppp_users
+    connect.get_reply(
+      '/ppp/active/print',
+      '=.proplist=name,address,uptime'
     )
   end
 
@@ -84,15 +170,15 @@ class Mikrotik
       "=interface=#{interface}",
       "=address-pool=#{pool}",
       "=lease-time=#{lease_time}",
-      "=add-arp=yes",
-      "=disabled=no"
+      '=add-arp=yes',
+      '=disabled=no'
     )
   end
 
   def add_nat(address, comment)
     connect.get_reply(
       '/ip/firewall/nat/add',
-      "=action=masquerade",
+      '=action=masquerade',
       '=chain=srcnat',
       "=src-address=#{address}",
       "=comment=#{comment}"
@@ -136,7 +222,7 @@ class Mikrotik
       "=trial-uptime-limit=#{trial_uptime}",
       "=trial-uptime-reset=#{trial_reset}",
       "=trial-user-profile=#{trial_profile}",
-      "=use-radius=no"
+      '=use-radius=no'
     )
   end
 

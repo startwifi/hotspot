@@ -5,20 +5,20 @@ class InitRouterService
     @local_name = "#{@token}_local"
     @comment = company.name
 
+    # Company router
+    @mk = company.routers.last
+
     # Company network
-    @network = company.network
-    @lease_time = @network.lease_time
-    @local_range = "#{@network.local_range_begin}-#{@network.local_range_end}"
-    @hs_range = "#{@network.hotspot_range_begin}-#{@network.hotspot_range_end}"
-    @hs_address = @network.hotspot_address
-    @hs_network = @network.hotspot_network
-    @local_network = @network.local_network
-    @hs_gateway = @network.hotspot_gateway
-    @local_gateway = @network.local_gateway
+    #@network = company.network
+    @lease_time = "12h"#@network.lease_time
+    @hs_range = "192.168.82.10-192.168.82.210"#"#{@network.hotspot_range_begin}-#{@network.hotspot_range_end}"
+    @hs_address = "192.168.82.1/24"#@network.hotspot_address
+    @hs_network = "192.168.82.0/24"#@network.hotspot_network
+    @hs_gateway = "192.168.82.1"#@network.hotspot_gateway
 
     # Need from company
-    @net = Figaro.env.router_net
-    @dns = Figaro.env.router_dns
+    @net = "192.168.82.0"#Figaro.env.router_net
+    @dns = "auth.startwifi.me"#Figaro.env.router_dns
 
     # Auth options
     @login_by = "cookie,http-chap,trial,mac-cookie"
@@ -40,7 +40,7 @@ class InitRouterService
   end
 
   def configure_pool
-    router.add_pool(@local_name, @local_range)
+    #router.add_pool(@local_name, @local_range)
     router.add_pool(@hs_name, @hs_range)
     router.add_address(@hs_address, @token, @net, @comment)
   end
@@ -57,14 +57,14 @@ class InitRouterService
 
   def configure_nat
     router.add_nat(@hs_network, @comment)
-    router.add_nat(@local_network, @comment)
+    #router.add_nat(@local_network, @comment)
   end
 
   def router
     @router ||= Mikrotik.new(
-      Figaro.env.router_host,
-      Figaro.env.router_user,
-      Figaro.env.router_pass
+      @mk.ip_address,#Figaro.env.router_host,
+      @mk.login,#Figaro.env.router_user,
+      @mk.password#Figaro.env.router_pass
     )
   end
 end

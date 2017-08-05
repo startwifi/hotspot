@@ -1,5 +1,4 @@
 class Router < ActiveRecord::Base
-  CONNECTION_TIMEOUT_IN_SECONDS = 10
 
   belongs_to :company
 
@@ -7,14 +6,51 @@ class Router < ActiveRecord::Base
   validates :ip_address, uniqueness: { scope: :company_id }
 
   def ping
-    self.last_pinged_at = Time.now
-    MTik::Connection.new(host: ip_address, user: login, pass: password, conn_timeout: CONNECTION_TIMEOUT_IN_SECONDS)
-    self.available = true
-  rescue Errno::ETIMEDOUT, Errno::ENETUNREACH, Errno::EHOSTUNREACH => exception
-    self.available = false
-    self.errors[:ip_address] << I18n.t('router.please_connect')
-  rescue MTik::Error => exception
-    self.available = false
-    self.errors[:ip_address] << exception.message
+    connection.ping
+  end
+
+  def resources
+    connection.get_resources
+  end
+
+  def hotspot_servers
+    hand(connection.get_hotspot_servers)
+  end
+
+  def hotspot_profiles(profile)
+    hand(connection.get_hotspot_profiles(profile))
+  end
+
+  def l2tp_clients
+    hand(connection.get_l2tp_clients)
+  end
+
+  def wifi_interfaces
+    hand(connection.get_wifi_interfaces)
+  end
+
+  def wifi_users
+    hand(connection.get_wifi_users)
+  end
+
+  def hand(response)
+    hand_data = Array.new
+    response.each do |res|
+      case res.first[0]
+      when "!re"
+        hand_data.push(res)
+      when "!trap"
+        Rails.logger.info res["message"]
+      end
+    end
+    return hand_data
+  end
+
+  def connection
+    @router ||= Mikrotik.new(
+      ip_address,
+      login,
+      password
+    )
   end
 end
