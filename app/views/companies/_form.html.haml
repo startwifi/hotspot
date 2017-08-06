@@ -20,4 +20,7 @@
     = f.label :address, t('.address')
     = f.text_field :address, class: 'form-control'
   .form-group
+    = f.label :locale, t('.locale')
+    = f.select :locale, [[t('.locale_russian'), 'ru'], [t('.locale_english'), 'en'], [t('.locale_czech'), 'cz']], {}, class: 'form-control'
+  .form-group
     = f.submit t('.save'), class: 'btn btn-primary'
