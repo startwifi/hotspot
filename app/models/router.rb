@@ -2,6 +2,8 @@ class Router < ActiveRecord::Base
 
   belongs_to :company
 
+  has_secure_token
+
   validates :ip_address, :login, :password, presence: true
   validates :ip_address, uniqueness: { scope: :company_id }
 

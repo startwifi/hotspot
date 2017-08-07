@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210162957) do
+ActiveRecord::Schema.define(version: 20170806205357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(version: 20170210162957) do
     t.datetime "updated_at"
     t.string   "ssid"
     t.macaddr  "radio_mac"
+    t.string   "token"
     t.index ["company_id"], name: "index_routers_on_company_id", using: :btree
     t.index ["ip_address", "company_id"], name: "index_routers_on_ip_address_and_company_id", unique: true, using: :btree
   end
