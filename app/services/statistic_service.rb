@@ -17,6 +17,7 @@ class StatisticService
       company: @user.company,
       provider: @user.provider,
       platform: browser.platform, browser: browser.name,
+      #
       mac: @request.session[:mac]
     )
   end

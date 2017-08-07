@@ -15,6 +15,14 @@ class Router < ActiveRecord::Base
     connection.get_resources
   end
 
+  def hotspot_connections(mark)
+    hand(connection.get_connection(mark))
+  end
+
+  def bridge_port(interface)
+    hand(connection.get_bridge_port(interface))
+  end
+
   def hotspot_servers
     hand(connection.get_hotspot_servers)
   end
@@ -33,6 +41,10 @@ class Router < ActiveRecord::Base
 
   def wifi_users
     hand(connection.get_wifi_users)
+  end
+
+  def lease(mac)
+    hand(connection.get_dhcp_lease(mac))
   end
 
   def hand(response)

@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   before_action :load_company, only: %w(create setup)
+  #before_action :load_router, only: %w(create setup)
+  #before_action :load_router_user, only: :create
   before_action :load_user, only: :create
   before_action :save_access_token, only: :create
   before_action :save_statistics, only: :create
@@ -25,6 +27,15 @@ class SessionsController < ApplicationController
   def load_company
     @company = Company.find_by_token(session[:company_token])
     render_404 unless @company
+  end
+
+  def load_router
+    @router = Router.find_by_token(session[:router_token])
+    render_404 unless @router
+  end
+
+  def load_router_user
+    @router.get_wifi_users
   end
 
   def load_user

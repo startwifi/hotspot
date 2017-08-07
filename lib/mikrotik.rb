@@ -29,23 +29,115 @@ class Mikrotik
     ) : false
   end
 
-  def get_addresses
+  def fetch_login_page(token, name)
+    connect.get_reply(
+      '/tool/fetch',
+      "url=http://startwifi.me/#{name}/login.html",
+      "dst-path=flash/#{token}/login.html"
+    )
+  end
+
+  def get_identity
+    connect.get_reply(
+      '/system/identity/print'
+    )
+  end
+
+  def get_bridge(name)
+    connect.get_reply(
+      '/interface/bridge/print',
+      "?name=#{name}"
+    )
+  end
+
+  def get_bridge_port(interface)
+    connect.get_reply(
+      '/interface/bridge/port/print',
+      "?interface=#{interface}"
+    )
+  end
+
+  def set_bridge_port(id, bridge)
+    connect.get_reply(
+      '/interface/bridge/port/set',
+      "numbers=#{id}",
+      "=bridge=#{bridge}"
+    )
+  end
+
+  def get_pool(name)
+    connect.get_reply(
+      '/ip/pool/print',
+      "?name=#{name}"
+    )
+  end
+
+  def get_all_addresses
     connect.get_reply(
       '/ip/address/print'
     )
   end
 
-  def get_bridge
+  def get_address(name)
     connect.get_reply(
-      '/interface/bridge/print',
-      '=.proplist=name,disabled,comment'
+      '/ip/address/print',
+      "?interface=#{name}"
     )
   end
 
-  def get_bridge_port
+  def get_dhcp_network(name)
     connect.get_reply(
-      '/interface/bridge/port/print',
-      '=.proplist=interface,bridge,disabled,comment'
+      '/ip/dhcp-server/network/print',
+      "?comment=#{name}"
+    )
+  end
+
+  def get_dhcp_server(name)
+    connect.get_reply(
+      '/ip/dhcp-server/print',
+      "?name=#{name}"
+    )
+  end
+
+  def get_dhcp_lease(mac)
+    connect.get_reply(
+      '/ip/dhcp-server/lease/print',
+      "?mac-address=#{mac}"
+    )
+  end
+
+  def get_nat(name)
+    connect.get_reply(
+      '/ip/firewall/nat/print',
+      "?comment=#{comment}"
+    )
+  end
+
+  def get_hotspot_server_profile(name)
+    connect.get_reply(
+      '/ip/hotspot/profile/print',
+      "?name=#{name}"
+    )
+  end
+
+  def get_hotspot_user_profile(name)
+    connect.get_reply(
+      '/ip/hotspot/user/profile/print',
+      "?name=#{name}"
+    )
+  end
+
+  def get_hotspot_servers
+    connect.get_reply(
+      '/ip/hotspot/print',
+      '=.proplist=name,interface,address-pool,profile,addresses-per-mac'
+    )
+  end
+
+  def get_hotspot_server(name)
+    connect.get_reply(
+      '/ip/hotspot/print',
+      "?name=#{name}"
     )
   end
 
@@ -77,20 +169,6 @@ class Mikrotik
     )
   end
 
-  def get_hotspot_servers
-    connect.get_reply(
-      '/ip/hotspot/print',
-      '=.proplist=name,interface,address-pool,profile,addresses-per-mac'
-    )
-  end
-
-  def get_hotspot_profiles(profile)
-    connect.get_reply(
-      '/ip/hotspot/profile/print',
-      "?name=#{profile}"
-    )
-  end
-
   def get_hotspot_hosts
     connect.get_reply(
       '/ip/hotspot/host/print',
@@ -105,11 +183,10 @@ class Mikrotik
     )
   end
 
-  def get_ip_connection(ip)
+  def get_connection(mark)
     connect.get_reply(
      '/ip/firewall/connection/print',
-     '=.proplist=src-address,dst-address,reply-src-address,reply-dst-address,protocol,tcp-state,timeout,orig-bytes,repl-bytes',
-     "?src-address=#{ip}"
+     "?connection-mark=#{mark}"
     )
   end
 
@@ -163,12 +240,12 @@ class Mikrotik
     )
   end
 
-  def add_dhcp_server(name, interface, pool, lease_time)
+  def add_dhcp_server(name, lease_time)
     connect.get_reply(
       '/ip/dhcp-server/add',
       "=name=#{name}",
-      "=interface=#{interface}",
-      "=address-pool=#{pool}",
+      "=interface=#{name}",
+      "=address-pool=#{name}",
       "=lease-time=#{lease_time}",
       '=add-arp=yes',
       '=disabled=no'
@@ -182,6 +259,18 @@ class Mikrotik
       '=chain=srcnat',
       "=src-address=#{address}",
       "=comment=#{comment}"
+    )
+  end
+
+  def add_connection_mark(interface, mark)
+    connect.get_reply(
+      '/ip/firewall/mangle/add',
+      '=chain=forward',
+      "=in-interface=#{interface}",
+      'action=mark-connection',
+      "=new-connection-mark=#{mark}",
+      'passthrough=yes',
+      "=comment=#{mark}"
     )
   end
 
@@ -209,30 +298,39 @@ class Mikrotik
     )
   end
 
-  def add_hotspot_profile(name, hs_address, dns, directory, login_by, cookie_time, trial_uptime, trial_reset, trial_profile)
+  def add_hotspot_user_profile(name, trial_uptime)
+    connect.get_reply(
+      '/ip/hotspot/user/profile/add',
+      "=name=#{name}",
+      "=session-timeout=#{trial_uptime}",
+      '=shared-users=2'
+    )
+  end
+
+  def add_hotspot_profile(name, hs_address, dns, login_by, trial_uptime)
     connect.get_reply(
       '/ip/hotspot/profile/add',
       "=name=#{name}",
       "=hotspot-address=#{hs_address}",
       "=dns-name=#{dns}",
-      "=html-directory=#{directory}",
+      "=html-directory=#{name}",
       "=login-by=#{login_by}",
-      "=http-cookie-lifetime=#{cookie_time}",
+      "=http-cookie-lifetime=#{trial_uptime}",
       '=split-user-domain=no',
       "=trial-uptime-limit=#{trial_uptime}",
-      "=trial-uptime-reset=#{trial_reset}",
-      "=trial-user-profile=#{trial_profile}",
+      "=trial-uptime-reset=#{trial_uptime}",
+      "=trial-user-profile=#{name}",
       '=use-radius=no'
     )
   end
 
-  def add_hotspot_server(interface, name, pool, profile)
+  def add_hotspot_server(name)
     connect.get_reply(
       '/ip/hotspot/add',
-      "=interface=#{interface}",
+      "=interface=#{name}",
       "=name=#{name}",
-      "=address-pool=#{pool}",
-      "=profile=#{profile}",
+      "=address-pool=#{name}",
+      "=profile=#{name}",
       '=disabled=no'
     )
   end

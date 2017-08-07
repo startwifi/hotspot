@@ -24,7 +24,7 @@
             %td= number_to_human_size(mk['free-memory'])
             %td= number_to_human_size(mk['free-hdd-space'])
     .row
-      .col-md-4
+      .col-md-5
         %h3= t('.users')
         %table.table.table-striped.text-center
           %tbody
@@ -37,11 +37,16 @@
             - if @router.wifi_users.present?
               - @router.wifi_users.each do |user|
                 %tr
-                  %td= user
+                  %td= user['mac-address']
+                  %td= user['signal-strength']
+                  %td= user['uptime']
+                  %td= user['bytes']
             - else
-        .alert-success.text-center= t('.no_wifi_users')
-
-      .col-md-8
+              .alert-success.text-center= t('.no_wifi_users')
+        - @router.hotspot_connections(@company.token).each do |connection|
+          .well
+            %p= "#{connection['src-address']} => #{connection['dst-address']}"
+      .col-md-7
         %h3= t('.settings')
         .col-md-4
           %h5= t('.hotspot_settings')
@@ -52,9 +57,10 @@
           %h5= t('.wifi_settings')
           %ul
           - @router.wifi_interfaces.each do |interface|
-            %li= "#{interface['name']} #{interface['ssid']}"
+            %li= interface['name']
         .col-md-4
           %h5= t('.cloud_settings')
           %ul
           - @router.l2tp_clients.each do |client|
             %li= client['name']
+          .well
