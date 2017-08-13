@@ -68,7 +68,7 @@ gem 'devise-i18n'
 # Dev Notifications
 gem 'exception_notification'
 gem 'slack-notifier'
-gem 'airbrake', '~> 5.4'
+gem 'airbrake', '~> 6.2'
 gem 'rollbar'
 
 group :development, :test do
