@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/incubus/omniauth-odnoklassniki
+  remote: https://github.com/startwifi/omniauth-odnoklassniki
   revision: b194d117dd5393bbef030b67dd5d5ca3966bd454
   specs:
     omniauth-odnoklassniki (0.0.5)
