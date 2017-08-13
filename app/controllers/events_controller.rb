@@ -59,10 +59,7 @@ class EventsController < ApplicationController
   def post_facebook
     image = current_user.company.fb.post_image? ? (root_url.chop + current_user.company.fb.post_image.url).to_s : nil
     graph = Koala::Facebook::API.new(session[:user_token])
-    share = graph.put_wall_post(params[:post_text],
-      { link: current_user.company.fb.post_link,
-      description: current_user.company.fb.post_text,
-      picture: image })
+    share = graph.put_picture(image, caption: current_user.company.fb.post_text)
     if share['id']
       current_user.add_event(:post)
       redirect_to router_url

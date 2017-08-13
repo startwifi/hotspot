@@ -8,7 +8,6 @@
         %b= current_user.name
       %div
         %small= t('.today', time: Time.zone.now.strftime('%H:%M'))
-      %div= text_area_tag :post_text, nil, rows: 3, placeholder: t('.placeholder_post_text'), class: 'form-control'
       %div= @company.fb.post_text
       %div= image_tag @company.fb.post_image, alt: @company.name, class: 'img-responsive'
     .panel-footer
